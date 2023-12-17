@@ -5,11 +5,9 @@ interface Props {
   folder: Folder;
 }
 
-function FolderInfo({ folder }: Props) {
-  const folderName = folder?.name;
-  const owner = folder?.owner;
-  const ownerName = owner?.name;
-  const ownerProfileImg = owner?.profileImageSource;
+const FolderInfo = ({ folder }: Props) => {
+  const { name: folderName } = folder;
+  const { name: ownerName, profileImageSource: ownerProfileImg } = folder.owner;
 
   return (
     <S.Container>
@@ -18,6 +16,6 @@ function FolderInfo({ folder }: Props) {
       <S.H1>{folderName}</S.H1>
     </S.Container>
   );
-}
+};
 
 export default FolderInfo;

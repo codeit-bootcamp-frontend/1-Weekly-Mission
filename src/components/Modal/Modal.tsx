@@ -1,6 +1,6 @@
 import { createPortal } from 'react-dom';
 import * as S from './Modal.style';
-import { MouseEvent, ReactNode, useEffect, useState } from 'react';
+import { MouseEvent, ReactNode, useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
   children: ReactNode;
 }
 
-export default function Modal({ close, children }: Props) {
+const Modal = ({ close, children }: Props) => {
   const [modalRoot, setModalRoot] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -23,13 +23,17 @@ export default function Modal({ close, children }: Props) {
     };
   }, []);
 
+  const stopPropagation = useCallback((e: MouseEvent<HTMLElement>) => {
+    e.stopPropagation();
+  }, []);
+
   if (!modalRoot) return null;
 
   return createPortal(
     <div>
       <S.Overlay />
       <S.Wrapper onClick={close}>
-        <S.Container onClick={(e) => e.stopPropagation()}>
+        <S.Container onClick={stopPropagation}>
           <S.CloseButton onClick={close}>
             <Image
               src='/assets/images/_close.png'
@@ -44,4 +48,6 @@ export default function Modal({ close, children }: Props) {
     </div>,
     modalRoot
   );
-}
+};
+
+export default Modal;

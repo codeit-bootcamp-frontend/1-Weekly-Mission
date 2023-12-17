@@ -1,26 +1,21 @@
+import { useFormContext } from 'react-hook-form';
+import { useState } from 'react';
 import * as S from './Input.style';
-import { FocusEventHandler, useState } from 'react';
 
 interface Props {
   id: string;
   passwordType?: boolean;
   placeholder?: string;
-  onBlur?: FocusEventHandler<HTMLInputElement>;
-  errorMessage?: string;
-  hasError?: boolean;
 }
 
-export default function Input({
-  id,
-  passwordType = false,
-  placeholder,
-  onBlur,
-  errorMessage,
-  hasError = false,
-}: Props) {
+const Input = ({ id, passwordType = false, placeholder }: Props) => {
   const [showPassword, setShowPassword] = useState(false);
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
 
-  const togglePasswordVisibility = () => {
+  const handleTogglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
@@ -29,21 +24,25 @@ export default function Input({
       <S.Wrapper>
         <S.Input
           id={id}
-          $error={hasError}
+          $error={!!errors[id]}
           $passwordType={passwordType}
           type={passwordType && !showPassword ? 'password' : 'text'}
           placeholder={placeholder}
-          onBlur={onBlur}
+          {...register(id)}
         />
-        {passwordType && (
+        {passwordType ? (
           <S.Button
             src={`/assets/images/eye-${showPassword ? 'on' : 'off'}.svg`}
             alt='비밀번호 표시 전환'
-            onClick={togglePasswordVisibility}
+            onClick={handleTogglePasswordVisibility}
           />
-        )}
+        ) : null}
       </S.Wrapper>
-      {hasError && <S.ErrorMessage>{errorMessage}</S.ErrorMessage>}
+      {errors[id] ? (
+        <S.ErrorMessage>{String(errors[id]?.message)}</S.ErrorMessage>
+      ) : null}
     </S.Container>
   );
-}
+};
+
+export default Input;

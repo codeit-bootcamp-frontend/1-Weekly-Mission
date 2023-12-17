@@ -7,7 +7,7 @@ interface Props {
   isScrolled: boolean;
 }
 
-function AddLinkForm({ isScrolled }: Props) {
+const AddLinkForm = ({ isScrolled }: Props) => {
   const [value, setValue] = useState('');
   const [showFooter, setShowFooter] = useState(false);
   const footerRef = useContext(FooterRefContext);
@@ -18,11 +18,7 @@ function AddLinkForm({ isScrolled }: Props) {
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setShowFooter(true);
-      } else {
-        setShowFooter(false);
-      }
+      setShowFooter(entry.isIntersecting);
     });
 
     const currentRef = footerRef?.current;
@@ -53,6 +49,6 @@ function AddLinkForm({ isScrolled }: Props) {
       </S.Form>
     </S.FormContainer>
   );
-}
+};
 
 export default AddLinkForm;

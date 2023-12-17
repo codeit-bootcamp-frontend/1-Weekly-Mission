@@ -1,18 +1,18 @@
 import * as S from './Profile.style';
 
 interface Props {
-  data?: {
+  profile?: {
     name: string;
     email: string;
-    profileImageSource: string;
-    image_source: string;
+    profileImageSource?: string;
+    image_source?: string;
   };
 }
 
-function Profile({ data }: Props) {
-  if (!data) return null;
+const Profile = ({ profile }: Props) => {
+  if (!profile) return null;
 
-  const { name, email, profileImageSource, image_source } = data;
+  const { name, email, profileImageSource, image_source } = profile;
 
   return (
     <S.Container>
@@ -24,6 +24,6 @@ function Profile({ data }: Props) {
       <S.P>{email}</S.P>
     </S.Container>
   );
-}
+};
 
 export default Profile;

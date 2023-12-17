@@ -10,35 +10,35 @@ interface Props {
   folders: Folder[];
 }
 
-function FolderList({ folders }: Props) {
+const FolderList = ({ folders }: Props) => {
   const [selectedId, setSelectedId] = useState<string | undefined>('');
   const [selectedName, setSelectedName] = useState('전체');
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalAddFolderIsOpen, setModalAddFolderIsOpen] = useState(false);
 
-  const handleAllClick = () => {
+  const handleSelectEntire = () => {
     setSelectedId('');
     setSelectedName('전체');
   };
 
-  const handleClick = (id: number, name: string) => {
+  const handleSelectFolder = (id: number, name: string) => {
     setSelectedId(String(id));
     setSelectedName(name);
   };
 
   return (
     <>
-      {folders && (
+      {folders ? (
         <S.FolderListContainer>
           <S.FolderContainer>
             <Link href='/folder'>
-              <S.Folder onClick={handleAllClick} selected={!selectedId}>
+              <S.Folder onClick={handleSelectEntire} selected={!selectedId}>
                 전체
               </S.Folder>
             </Link>
             {folders?.map((folder) => (
               <Link href={`/folder?folderId=${folder.id}`} key={folder.id}>
                 <S.Folder
-                  onClick={() => handleClick(folder.id, folder.name)}
+                  onClick={() => handleSelectFolder(folder.id, folder.name)}
                   id={String(folder.id)}
                   selected={selectedId ? +selectedId === folder.id : false}>
                   {folder.name}
@@ -46,7 +46,7 @@ function FolderList({ folders }: Props) {
               </Link>
             ))}
           </S.FolderContainer>
-          <S.AddFolderButton onClick={() => setModalIsOpen(true)}>
+          <S.AddFolderButton onClick={() => setModalAddFolderIsOpen(true)}>
             <span>폴더 추가</span>
             <img
               className='notMobile'
@@ -59,16 +59,16 @@ function FolderList({ folders }: Props) {
               alt='추가 아이콘'
             />
           </S.AddFolderButton>
-          {modalIsOpen && (
-            <Modal close={() => setModalIsOpen(false)}>
+          {modalAddFolderIsOpen ? (
+            <Modal close={() => setModalAddFolderIsOpen(false)}>
               <ModalAddFolder />
             </Modal>
-          )}
+          ) : null}
         </S.FolderListContainer>
-      )}
+      ) : null}
       <CurrentFolderInfo selectedName={selectedName} selectedId={selectedId} />
     </>
   );
-}
+};
 
 export default FolderList;

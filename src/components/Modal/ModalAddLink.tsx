@@ -6,7 +6,7 @@ interface Props {
   url: string;
 }
 
-export function ModalAddLink({ folders, url }: Props) {
+const ModalAddLink = ({ folders, url }: Props) => {
   return (
     <>
       <S.TitleContainer>
@@ -14,17 +14,18 @@ export function ModalAddLink({ folders, url }: Props) {
         <S.Subtitle>{url}</S.Subtitle>
       </S.TitleContainer>
       <S.FolderList>
-        {folders &&
-          folders.map((folder) => (
-            <S.FolderListItem key={folder.id}>
-              {folder.name}
-              <span>{folder.link.count}개 링크</span>
-            </S.FolderListItem>
-          ))}
+        {folders
+          ? folders.map((folder) => (
+              <S.FolderListItem key={folder.id}>
+                {folder.name}
+                <span>{folder.link.count}개 링크</span>
+              </S.FolderListItem>
+            ))
+          : null}
       </S.FolderList>
       <S.SubmitButton>추가하기</S.SubmitButton>
     </>
   );
-}
+};
 
 export default ModalAddLink;

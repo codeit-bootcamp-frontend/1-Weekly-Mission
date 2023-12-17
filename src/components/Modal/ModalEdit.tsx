@@ -4,7 +4,7 @@ interface Props {
   folderName: string;
 }
 
-function ModalEdit({ folderName }: Props) {
+const ModalEdit = ({ folderName }: Props) => {
   return (
     <>
       <S.TitleContainer>
@@ -16,6 +16,6 @@ function ModalEdit({ folderName }: Props) {
       </S.Form>
     </>
   );
-}
+};
 
 export default ModalEdit;

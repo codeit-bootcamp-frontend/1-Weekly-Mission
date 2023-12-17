@@ -1,7 +1,7 @@
 import * as S from './Card.style';
 import { formatDate, formatTimeDiff } from '@utils/format';
 import { Popover } from 'react-tiny-popover';
-import { MouseEvent, useState } from 'react';
+import { MouseEvent, useCallback, useState } from 'react';
 import Modal from '@components/Modal';
 import ModalDeleteLink from '@components/Modal/ModalDeleteLink';
 import ModalAddLink from '@components/Modal/ModalAddLink';
@@ -15,7 +15,7 @@ interface Props {
   item: Data;
 }
 
-function Card({ folders, item }: Props) {
+const Card = ({ folders, item }: Props) => {
   const [popoverIsOpen, setPopoverIsOpen] = useState(false);
   const [modalDeleteLinkIsOpen, setModalDeleteLinkIsOpen] = useState(false);
   const [modalAddLinkIsOpen, setModalAddLinkIsOpen] = useState(false);
@@ -23,6 +23,35 @@ function Card({ folders, item }: Props) {
   const { image_source, created_at, title, description, url } = item;
   const timeDiff = formatTimeDiff(created_at);
   const date = formatDate(created_at);
+
+  const handleOpenPopover = useCallback((e: MouseEvent) => {
+    e.preventDefault();
+    setPopoverIsOpen(!popoverIsOpen);
+  }, []);
+
+  const handleClosePopover = useCallback(() => {
+    setPopoverIsOpen(false);
+  }, []);
+
+  const handleOpenModalDeleteLink = useCallback((e: MouseEvent) => {
+    e.preventDefault();
+    setModalDeleteLinkIsOpen(true);
+  }, []);
+
+  const handleCloseModalDeleteLink = useCallback((e: MouseEvent) => {
+    e.preventDefault();
+    setModalDeleteLinkIsOpen(false);
+  }, []);
+
+  const handleOpenModalAddLink = useCallback((e: MouseEvent) => {
+    e.preventDefault();
+    setModalAddLinkIsOpen(true);
+  }, []);
+
+  const handleCloseModalAddLink = useCallback((e: MouseEvent) => {
+    e.preventDefault();
+    setModalAddLinkIsOpen(false);
+  }, []);
 
   return (
     <Link href={url} target='_blank' rel='noopener noreferrer'>
@@ -40,48 +69,28 @@ function Card({ folders, item }: Props) {
         <Popover
           isOpen={popoverIsOpen}
           positions={'bottom'}
-          onClickOutside={() => setPopoverIsOpen(false)}
+          onClickOutside={handleClosePopover}
           content={
             <S.PopoverContainer>
-              <S.PopoverButton
-                onClick={(e) => {
-                  e.preventDefault();
-                  setModalDeleteLinkIsOpen(true);
-                }}>
+              <S.PopoverButton onClick={handleOpenModalDeleteLink}>
                 삭제하기
               </S.PopoverButton>
-              {modalDeleteLinkIsOpen && (
-                <Modal
-                  close={(e: MouseEvent) => {
-                    e.preventDefault();
-                    setModalDeleteLinkIsOpen(false);
-                  }}>
+              {modalDeleteLinkIsOpen ? (
+                <Modal close={handleCloseModalDeleteLink}>
                   <ModalDeleteLink url={url} />
                 </Modal>
-              )}
-              <S.PopoverButton
-                onClick={(e) => {
-                  e.preventDefault();
-                  setModalAddLinkIsOpen(true);
-                }}>
+              ) : null}
+              <S.PopoverButton onClick={handleOpenModalAddLink}>
                 폴더에 추가
               </S.PopoverButton>
-              {modalAddLinkIsOpen && (
-                <Modal
-                  close={(e: MouseEvent) => {
-                    e.preventDefault();
-                    setModalAddLinkIsOpen(false);
-                  }}>
+              {modalAddLinkIsOpen ? (
+                <Modal close={handleCloseModalAddLink}>
                   <ModalAddLink folders={folders} url={url} />
                 </Modal>
-              )}
+              ) : null}
             </S.PopoverContainer>
           }>
-          <S.KebabButton
-            onClick={(e: MouseEvent) => {
-              e.preventDefault();
-              setPopoverIsOpen(!popoverIsOpen);
-            }}>
+          <S.KebabButton onClick={handleOpenPopover}>
             <img src='/assets/images/kebab.svg' alt='케밥 버튼' />
           </S.KebabButton>
         </Popover>
@@ -91,6 +100,6 @@ function Card({ folders, item }: Props) {
       </S.Info>
     </Link>
   );
-}
+};
 
 export default Card;

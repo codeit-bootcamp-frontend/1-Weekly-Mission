@@ -11,7 +11,7 @@ interface Props {
   };
 }
 
-function SampleCard({ item }: Props) {
+const SampleCard = ({ item }: Props) => {
   if (!item) return null;
 
   const { imageSource, createdAt, title, description, url } = item;
@@ -39,6 +39,6 @@ function SampleCard({ item }: Props) {
       </S.Info>
     </div>
   );
-}
+};
 
 export default SampleCard;

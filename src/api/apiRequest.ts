@@ -1,12 +1,12 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://bootcamp-api.codeit.kr/api/',
+  baseURL: process.env.NEXT_PUBLIC_BASE_URL,
 });
 
-const fetch = async (options: AxiosRequestConfig) => {
+const apiRequest = async (options: AxiosRequestConfig) => {
   const response = await api({ ...options });
   return response;
 };
 
-export default fetch;
+export default apiRequest;

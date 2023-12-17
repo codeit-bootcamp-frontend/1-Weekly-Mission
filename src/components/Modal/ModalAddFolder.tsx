@@ -1,6 +1,6 @@
 import * as S from './Modal.style';
 
-function ModalAddFolder() {
+const ModalAddFolder = () => {
   return (
     <>
       <S.TitleContainer>
@@ -12,6 +12,6 @@ function ModalAddFolder() {
       </S.Form>
     </>
   );
-}
+};
 
 export default ModalAddFolder;

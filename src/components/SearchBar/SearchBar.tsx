@@ -6,7 +6,7 @@ interface Props {
   setSearchKeyword: (value: string) => void;
 }
 
-function SearchBar({ setSearchKeyword }: Props) {
+const SearchBar = ({ setSearchKeyword }: Props) => {
   const [value, setValue] = useState('');
 
   const handleValueChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -28,7 +28,7 @@ function SearchBar({ setSearchKeyword }: Props) {
           placeholder='링크를 검색해 보세요.'
         />
         <S.SearchIcon src='/assets/images/search.svg' alt='검색 아이콘' />
-        {value && (
+        {value ? (
           <S.DeleteIcon onClick={handleDeleteClick}>
             <Image
               fill
@@ -36,15 +36,15 @@ function SearchBar({ setSearchKeyword }: Props) {
               alt='검색어 삭제 아이콘'
             />
           </S.DeleteIcon>
-        )}
+        ) : null}
       </S.Form>
-      {value && (
+      {value ? (
         <S.Text>
           <span>{value}</span>으로 검색한 결과입니다.
         </S.Text>
-      )}
+      ) : null}
     </S.Container>
   );
-}
+};
 
 export default SearchBar;

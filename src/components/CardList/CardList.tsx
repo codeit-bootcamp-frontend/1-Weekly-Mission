@@ -10,7 +10,7 @@ interface Props {
   searchKeyword: string;
 }
 
-function CardList({ folders, items, searchKeyword }: Props) {
+const CardList = ({ folders, items, searchKeyword }: Props) => {
   const lowerCaseKeyword = searchKeyword.toLowerCase();
 
   const filteredItems = useMemo(
@@ -23,23 +23,19 @@ function CardList({ folders, items, searchKeyword }: Props) {
     [items, lowerCaseKeyword]
   );
 
+  if (!filteredItems?.length) {
+    return <S.NoLink>저장된 링크가 없습니다</S.NoLink>;
+  }
+
   return (
-    <>
-      {!filteredItems?.length ? (
-        <S.NoLink>저장된 링크가 없습니다</S.NoLink>
-      ) : (
-        filteredItems && (
-          <S.CardListContainer>
-            {filteredItems.map((item) => (
-              <S.CardContainer key={item.id}>
-                <Card folders={folders} item={item} />
-              </S.CardContainer>
-            ))}
-          </S.CardListContainer>
-        )
-      )}
-    </>
+    <S.CardListContainer>
+      {filteredItems.map((item) => (
+        <S.CardContainer key={item.id}>
+          <Card folders={folders} item={item} />
+        </S.CardContainer>
+      ))}
+    </S.CardListContainer>
   );
-}
+};
 
 export default CardList;

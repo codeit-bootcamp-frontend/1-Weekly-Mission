@@ -3,7 +3,7 @@ import SearchBar from '@components/SearchBar';
 import SampleCardList from '@components/SampleCardList';
 import { MainDiv } from '@styles/MainDiv';
 import { useState } from 'react';
-import fetch from '@api/fetch';
+import apiRequest from '@api/apiRequest';
 import Layout from '@components/Layout/Layout';
 
 export interface Folder {
@@ -29,26 +29,38 @@ export interface Link {
   imageSource?: string;
 }
 
+export interface SampleUserProfile {
+  id: number;
+  name: string;
+  email: string;
+  profileImageSource: string;
+}
+
 interface Props {
   folder: Folder;
+  profile: SampleUserProfile;
 }
 
 export async function getStaticProps() {
-  const response = await fetch({ url: '/sample/folder' });
-  const folder = response.data?.folder;
+  const response1 = await apiRequest({ url: '/sample/folder' });
+  const folder = response1.data?.folder;
+
+  const response2 = await apiRequest({ url: '/sample/user' });
+  const profile = response2.data;
 
   return {
     props: {
       folder: folder,
+      profile: profile,
     },
   };
 }
 
-export default function Shared({ folder }: Props) {
+const Shared = ({ folder, profile }: Props) => {
   const [searchKeyword, setSearchKeyword] = useState('');
 
   return (
-    <Layout>
+    <Layout profile={profile}>
       <FolderInfo folder={folder} />
       <MainDiv>
         <SearchBar setSearchKeyword={setSearchKeyword} />
@@ -56,4 +68,6 @@ export default function Shared({ folder }: Props) {
       </MainDiv>
     </Layout>
   );
-}
+};
+
+export default Shared;

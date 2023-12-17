@@ -10,7 +10,7 @@ interface Props {
   selectedId: string | undefined;
 }
 
-function CurrentFolderInfo({ selectedName, selectedId }: Props) {
+const CurrentFolderInfo = ({ selectedName, selectedId }: Props) => {
   const [modalShareIsOpen, setModalShareIsOpen] = useState(false);
   const [modalEditIsOpen, setModalEditIsOpen] = useState(false);
   const [modalDeleteIsOpen, setModalDeleteIsOpen] = useState(false);
@@ -23,32 +23,32 @@ function CurrentFolderInfo({ selectedName, selectedId }: Props) {
           <img src='/assets/images/share.svg' alt='공유 아이콘' />
           <span>공유</span>
         </button>
-        {modalShareIsOpen && (
+        {modalShareIsOpen ? (
           <Modal close={() => setModalShareIsOpen(false)}>
             <ModalShare folderName={selectedName} folderId={selectedId} />
           </Modal>
-        )}
+        ) : null}
         <button onClick={() => setModalEditIsOpen(true)}>
           <img src='/assets/images/name-change.svg' alt='이름 변경 아이콘' />
           <span>이름 변경</span>
         </button>
-        {modalEditIsOpen && (
+        {modalEditIsOpen ? (
           <Modal close={() => setModalEditIsOpen(false)}>
             <ModalEdit folderName={selectedName} />
           </Modal>
-        )}
+        ) : null}
         <button onClick={() => setModalDeleteIsOpen(true)}>
           <img src='/assets/images/delete.svg' alt='삭제 아이콘' />
           <span>삭제</span>
         </button>
-        {modalDeleteIsOpen && (
+        {modalDeleteIsOpen ? (
           <Modal close={() => setModalDeleteIsOpen(false)}>
             <ModalDelete folderName={selectedName} />
           </Modal>
-        )}
+        ) : null}
       </S.OptionContainer>
     </S.Container>
   );
-}
+};
 
 export default CurrentFolderInfo;

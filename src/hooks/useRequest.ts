@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback, DependencyList } from 'react';
-import fetch from '@api/fetch';
+import apiRequest from '@api/apiRequest';
 import { AxiosRequestConfig } from 'axios';
 
 interface UseRequestOptions {
@@ -15,11 +15,11 @@ interface UseRequestReturn<T> {
   fetch: (args?: AxiosRequestConfig) => Promise<{ data?: T; error?: Error }>;
 }
 
-function useRequest<T>({
+const useRequest = <T>({
   deps = [],
   skip = false,
   options,
-}: UseRequestOptions): UseRequestReturn<T> {
+}: UseRequestOptions): UseRequestReturn<T> => {
   const [data, setData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
@@ -30,7 +30,7 @@ function useRequest<T>({
       setError(null);
 
       try {
-        const { data: fetchedData } = await fetch({ ...options, ...args });
+        const { data: fetchedData } = await apiRequest({ ...options, ...args });
         setData(() => fetchedData);
         return { data: fetchedData };
       } catch (err) {
@@ -49,6 +49,6 @@ function useRequest<T>({
   }, deps);
 
   return { data, isLoading, error, fetch: refetch };
-}
+};
 
 export default useRequest;
