@@ -15,7 +15,8 @@
     "react": "^18",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18",
-    "react-hook-form": "^7.48.2"
+    "react-hook-form": "^7.48.2",
+    "zustand": "^4.4.7"
   },
   "devDependencies": {
     "@types/node": "^20",

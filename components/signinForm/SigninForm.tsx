@@ -3,7 +3,6 @@ import { Input } from "../input/Input";
 import PasswordInput from "../passwordInput/PasswordInput";
 import styles from "./SignInForm.module.css";
 import Button from "../button/Button";
-import { SIGNIN_ENDPOINT, instance } from "@/api/services/config";
 import { useRouter } from "next/router";
 import axios from "axios";
 import {
@@ -12,7 +11,17 @@ import {
   EMAIL_PATTERN,
   PASSWORD_PATTERN,
 } from "@/constants/authConstant";
-import { setAccessToken } from "@/utils/localStorage";
+import {
+  SIGNIN_ENDPOINT,
+  USERS_ENDPOINT,
+  instance,
+} from "@/api/services/config";
+import {
+  getAccessToken,
+  setAccessToken,
+  setRefreshToken,
+} from "@/utils/localStorage";
+import useUserStore from "@/hooks/useStore";
 
 export interface FormValues {
   email: string;
@@ -29,6 +38,22 @@ export function SigninForm() {
     setError,
   } = useForm<FormValues>({ mode: "onBlur" });
 
+  const { setUser } = useUserStore();
+
+  const getUser = async () => {
+    try {
+      const res = await instance.get(USERS_ENDPOINT, {
+        headers: {
+          Authorization: `Bearer ${getAccessToken()}`,
+        },
+      });
+      const nextUser = res?.data.data;
+      setUser(nextUser);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const onSubmit = handleSubmit(async (data: FormValues) => {
     let res;
     try {
@@ -37,7 +62,10 @@ export function SigninForm() {
         password: data.password,
       });
       const accessToken = res?.data.data.accessToken;
+      const refreshToken = res?.data.data.refreshToken;
       setAccessToken(accessToken);
+      setRefreshToken(refreshToken);
+      await getUser();
       res?.status === 200 && router.push("/folder");
     } catch (error) {
       if (axios.isAxiosError(error) && error.response?.status === 400) {
