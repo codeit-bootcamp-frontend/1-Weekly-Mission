@@ -1,16 +1,16 @@
 import Footer from "@/components/footer/Footer";
-import { GlobalNav } from "@/components/globalNav/GlobalNav.style";
+import GlobalNav from "@/components/globalNav/GlobalNav";
 import * as S from "@/layouts/globalLayout/GlobalLayout.style";
-import { UserProvider } from "@/utils/UserContext";
+import { AuthProvider } from "@/utils/AuthProvider";
 function GlobalLayout() {
   return (
-    <UserProvider>
+    <AuthProvider>
       <S.GlobalLayout>
         <GlobalNav />
         <S.MainContent></S.MainContent>
         <Footer />
       </S.GlobalLayout>
-    </UserProvider>
+    </AuthProvider>
   );
 }
 

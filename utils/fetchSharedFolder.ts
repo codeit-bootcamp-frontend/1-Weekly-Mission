@@ -1,4 +1,4 @@
-import { Links } from "@/types/type";
+import { Link } from "@/types/type";
 import { axiosInstance } from "./axiosInstance";
 
 interface Folder {
@@ -27,7 +27,7 @@ const fetchSharedFolder = async (folderId: string) => {
 
   const [userRes, linksRes] = await Promise.all([
     axiosInstance.get<User>(`users/${userId}`),
-    axiosInstance.get<Links>(`users/${userId}/links?folderId=${folderId}`),
+    axiosInstance.get<{ data: Link[] }>(`users/${userId}/links?folderId=${folderId}`),
   ]);
 
   const userData = userRes.data.data[0];

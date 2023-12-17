@@ -1,11 +1,11 @@
 import * as S from "@/components/globalNav/GlobalNav.style";
-import { useGetUser } from "@/hooks/useGetUser";
+import { useUser } from "@/utils/AuthProvider";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 const GlobalNav = () => {
-  const { data } = useGetUser();
-  const { email = "", profileImageSource = "" } = data || {};
+  const { user } = useUser();
+  const { email = "", image_source: profileImageSource = "" } = user || {};
   const { pathname } = useRouter();
 
   return (
@@ -14,15 +14,15 @@ const GlobalNav = () => {
         <Link href="/">
           <S.LogoImage />
         </Link>
-        {data ? (
-          <Link href="/folder/all">
+        {user ? (
+          <Link href="/folder">
             <S.UserInfo>
               <S.ProfileImg src={profileImageSource} />
               <S.UserEmail>{email}</S.UserEmail>
             </S.UserInfo>
           </Link>
         ) : (
-          <Link href="/folder/all">
+          <Link href="/user/signin">
             <S.LoginButton>로그인</S.LoginButton>
           </Link>
         )}

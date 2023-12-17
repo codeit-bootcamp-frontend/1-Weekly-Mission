@@ -2,7 +2,7 @@ import Footer from "@/components/footer/Footer";
 import GlobalNav from "@/components/globalNav/GlobalNav";
 import GlobalStyle from "@/layouts/GlobalStyle";
 import * as S from "@/layouts/globalLayout/GlobalLayout.style";
-import { UserProvider } from "@/utils/UserContext";
+import { AuthProvider } from "@/utils/AuthProvider";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -37,9 +37,9 @@ export default function App({ Component, pageProps }: AppProps) {
           content="https://a1b2c3d4zzzzzznextts.vercel.app/images/image-for-meta-tag-test.jpg"
         />
       </Head>
-      {useLayout ? (
-        <UserProvider>
-          <GlobalStyle />
+      <AuthProvider>
+        <GlobalStyle />
+        {useLayout ? (
           <S.GlobalLayout>
             <GlobalNav />
             <S.MainContent>
@@ -47,13 +47,10 @@ export default function App({ Component, pageProps }: AppProps) {
             </S.MainContent>
             <Footer />
           </S.GlobalLayout>
-        </UserProvider>
-      ) : (
-        <>
-          <GlobalStyle />
+        ) : (
           <Component {...pageProps} />
-        </>
-      )}
+        )}
+      </AuthProvider>
     </>
   );
 }

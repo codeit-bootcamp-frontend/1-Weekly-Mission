@@ -3,6 +3,7 @@ import CardList from "@/components/cardList/CardList";
 import FolderSearchBar from "@/components/folderSearchBar/FolderSearchBar";
 import SharedFolderInfo from "@/components/folderUserInfo/SharedFolderInfo";
 import useGetSharedFolder from "@/hooks/useGetSharedFolder";
+import defaultProfileImage from "@/images/Avatar.png";
 import * as S from "@/layouts/shared/Shared.style";
 import { MappedLink } from "@/types/type";
 import Head from "next/head";
@@ -29,12 +30,18 @@ const SharedPage = () => {
       <Head>
         <title>{owner && folder ? `${owner?.name}님의 ${folder?.name} 폴더 - Linkbrary` : "Linkbrary"}</title>
       </Head>
-      {owner && folder && (
+      {owner && folder ? (
         <SharedFolderInfo profileImage={owner.profileImageSource} ownerName={owner.name} folderName={folder.name} />
+      ) : (
+        <SharedFolderInfo
+          profileImage={defaultProfileImage.src}
+          ownerName="존재하지 않는 사용자"
+          folderName="존재하지 않는 폴더"
+        />
       )}
       <S.SharedPageWrap>
         <S.SharedPage>
-          {loading || !data.links ? (
+          {loading ? (
             <LoadingSpinner />
           ) : (
             <>
