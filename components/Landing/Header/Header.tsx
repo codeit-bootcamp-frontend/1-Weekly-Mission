@@ -26,7 +26,7 @@ const Header = () => {
           <Link href={"/share"}>
             <Styled.LinkButton>운영자 링크 구경가기</Styled.LinkButton>
           </Link>
-          <Link href={isLogin ? "/folder" : "/"}>
+          <Link href={isLogin ? "/folder" : "/signin"}>
             <Styled.LinkButton onClick={LinkButtonClick}>
               링크 관리 페이지
             </Styled.LinkButton>

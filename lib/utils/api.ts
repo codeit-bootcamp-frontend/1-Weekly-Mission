@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useEffectOnce } from "@/lib/hooks/useEffectOnce";
 import axios from "@/lib/utils/axiosInstance";
 import { Folders, Links } from "../types/data";
@@ -54,7 +54,7 @@ export function useFetchFolderData(folderId: string) {
   });
   const router = useRouter();
 
-  const execute = async () => {
+  const execute = useCallback(async () => {
     try {
       const requestFolderLists = axios.get("/folders");
       const requestLinks = axios.get(
@@ -81,9 +81,11 @@ export function useFetchFolderData(folderId: string) {
     } catch {
       router.push("/404");
     }
-  };
+  }, [folderId, router]);
 
-  useEffectOnce(execute);
+  useEffect(() => {
+    execute();
+  }, [execute]);
 
   return { folderData, linkData };
 }
