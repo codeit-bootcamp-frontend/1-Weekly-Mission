@@ -1,27 +1,13 @@
-import { MouseEvent, useEffect, useRef, useState } from "react";
+import { MouseEvent, useEffect, useRef } from "react";
 import usePopOver from "@/lib/hooks/usePopOver";
-import { useLogin } from "@/lib/utils/LoginContext";
-import { getUsers } from "@/lib/utils/api";
+import { useLogin } from "@/lib/utils/AuthContext";
 import { LogoutDropDownList } from "..";
 import * as Styled from "./LoginBtn.styled";
 
 const LoginButton = () => {
   const ImgBgRef = useRef<HTMLDivElement>(null);
-  const { isLogin, userEmail } = useLogin();
+  const { isLogin, userEmail, image_source } = useLogin();
   const { isOpen, openPopOver, closePopOver } = usePopOver();
-  const [userImage, setUserImage] = useState("");
-
-  const BtnClickHandler = async () => {
-    try {
-      const userProfile = await getUsers();
-      const {
-        data: [{ image_source }],
-      } = userProfile;
-      setUserImage(image_source);
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   const handleLoginImgClick = (e: MouseEvent) => {
     e.preventDefault();
@@ -32,12 +18,6 @@ const LoginButton = () => {
       openPopOver();
     }
   };
-
-  useEffect(() => {
-    if (!isLogin) return;
-    BtnClickHandler();
-    // eslint-disable-next-line
-  }, [isLogin]);
 
   useEffect(() => {
     const handleOutsideClick = (e: Event): void => {
@@ -56,10 +36,10 @@ const LoginButton = () => {
   return (
     <>
       {isLogin ? (
-        <Styled.LoginBox>
-          <Styled.LoginImgBg ref={ImgBgRef}>
+        <Styled.LoginBox ref={ImgBgRef}>
+          <Styled.LoginImgBg>
             <Styled.LoginImg
-              src={userImage}
+              src={image_source}
               alt="프로필 사진"
               fill
               onClick={handleLoginImgClick}

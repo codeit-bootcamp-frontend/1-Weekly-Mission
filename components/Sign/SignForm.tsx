@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
 import { requestSignIn, requestSignUp } from "@/lib/utils/api";
-import { useLogin } from "@/lib/utils/LoginContext";
+import { useLogin } from "@/lib/utils/AuthContext";
 import SignInput from "./SignInput";
 import * as Styled from "./Sign.styled";
 import { setLocalStorage } from "@/lib/utils/localStorage";
@@ -12,12 +12,12 @@ import {
 } from "@/lib/utils/checkSign";
 
 interface Props {
-  signUp: boolean;
+  signUpPage: boolean;
   btnText: string;
 }
 
-const SignForm = ({ signUp, btnText }: Props) => {
-  const { setIsLogin, setUserEmail } = useLogin();
+const SignForm = ({ signUpPage, btnText }: Props) => {
+  const { login, signUp } = useLogin();
   const router = useRouter();
 
   const [emailValue, setEmailValue] = useState({
@@ -78,7 +78,7 @@ const SignForm = ({ signUp, btnText }: Props) => {
 
   const HandleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (signUp) {
+    if (signUpPage) {
       // signUp Page일 경우
       if (isOverlap) {
         // 이메일 중복검사하지 않았거나 검사 후 중복인 경우
@@ -97,35 +97,16 @@ const SignForm = ({ signUp, btnText }: Props) => {
         )
       ) {
         // 검사에 이상이 없는 경우
-        try {
-          const result = await requestSignUp(
-            emailValue.value,
-            passwordValue.value
-          );
-          const {
-            data: { accessToken },
-          } = result;
-          setUserEmail(emailValue.value);
-          setLocalStorage(accessToken);
-          setIsLogin(true);
-          router.push("/folder");
-        } catch (err) {
-          // 잘못된 이메일과 패스워드로 로그인 시도 시
-          const typedError = err as Error;
-          setEmailValue((prev) => ({
-            ...prev,
-            errMsg: typedError.message,
-          }));
-          setPasswordValue((prev) => ({
-            ...prev,
-            errMsg: typedError.message,
-          }));
-          setIsOverlap(true);
-          setIsLogin(false);
-        }
+        signUp(
+          emailValue.value,
+          passwordValue.value,
+          setEmailValue,
+          setPasswordValue,
+          setIsOverlap
+        );
       }
     } else {
-      // signIp Page일 경우
+      // signIn Page일 경우
       checkOutSignIn();
       if (
         !validateEmailInput(emailValue.value) &&
@@ -140,30 +121,12 @@ const SignForm = ({ signUp, btnText }: Props) => {
           ...prev,
           errMsg: "",
         }));
-        try {
-          const result = await requestSignIn(
-            emailValue.value,
-            passwordValue.value
-          );
-          const {
-            data: { accessToken },
-          } = result;
-          setUserEmail(emailValue.value);
-          setLocalStorage(accessToken);
-          setIsLogin(true);
-          router.push("/folder");
-        } catch {
-          // 잘못된 이메일과 패스워드로 로그인 시도 시
-          setEmailValue((prev) => ({
-            ...prev,
-            errMsg: "이메일을 확인해주세요.",
-          }));
-          setPasswordValue((prev) => ({
-            ...prev,
-            errMsg: "비밀번호를 확인해주세요.",
-          }));
-          setIsLogin(false);
-        }
+        login(
+          emailValue.value,
+          passwordValue.value,
+          setEmailValue,
+          setPasswordValue
+        );
       }
     }
   };
@@ -195,7 +158,7 @@ const SignForm = ({ signUp, btnText }: Props) => {
           emailValue={emailValue.value}
           passwordValue={passwordValue.value}
         />
-        {signUp && (
+        {signUpPage && (
           <SignInput
             placeholder={"비밀번호를 입력해주세요."}
             type="password"

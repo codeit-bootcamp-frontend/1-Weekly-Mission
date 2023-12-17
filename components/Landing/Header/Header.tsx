@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useLogin } from "@/lib/utils/LoginContext";
+import { useLogin } from "@/lib/utils/AuthContext";
 import heroImg from "@/public/hero.png";
 import * as Styled from "./Header.styled";
 

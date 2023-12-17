@@ -27,7 +27,7 @@ export const BackGround = styled.div<Props>`
   animation: ${({ $isFixed }: Props) =>
     $isFixed === "fixed" &&
     css`
-      ${fadeInUp} 1s
+      ${fadeInUp} 0.3s
     `};
 
   ${({ $isFixed }: Props) =>

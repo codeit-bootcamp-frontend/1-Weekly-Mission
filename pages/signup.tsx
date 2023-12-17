@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { SignForm, SignHeader, SignSns } from "@/components";
-import { useLogin } from "@/lib/utils/LoginContext";
+import { useLogin } from "@/lib/utils/AuthContext";
 import { checkLocalStorage } from "@/lib/utils/localStorage";
 import * as Styled from "@/style/SignPage.styled";
 
@@ -18,7 +18,7 @@ const SignUp = () => {
     <Styled.SignContainer>
       <SignHeader msgText="이미 회원이신가요?" linkText="로그인 하기" />
       <Styled.SignBox>
-        <SignForm signUp={true} btnText="회원가입" />
+        <SignForm signUpPage={true} btnText="회원가입" />
         <Styled.SnsBox>
           <SignSns snsText="다른 방식으로 가입하기" />
         </Styled.SnsBox>
