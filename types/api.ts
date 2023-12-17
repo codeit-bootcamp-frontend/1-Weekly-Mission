@@ -1,28 +1,3 @@
-export interface SampleFolderItem {
-  id: number;
-  name: string;
-  owner: {
-    id: number;
-    name: string;
-    profileImageSource: string;
-  };
-  links: {
-    id: number;
-    createdAt: string;
-    url: string;
-    title: string;
-    description: string;
-    imageSource: string;
-  }[];
-}
-
-export interface UserProfileSampleItem {
-  id: number;
-  name: string;
-  email: string;
-  profileImageSource: string;
-}
-
 export interface FolderItem {
   id: number;
   created_at: string;
@@ -56,8 +31,10 @@ export interface UserLinksItem {
 }
 
 export interface SigninItem {
-  accessToken: string;
-  refreshToken: string;
+  data: {
+    accessToken: string;
+    refreshToken: string;
+  };
 }
 
 export interface SignupItem {
@@ -67,4 +44,13 @@ export interface SignupItem {
 
 export interface CheckEmailItem {
   isUsableNickname: boolean;
+}
+
+export interface UserInfo {
+  id: number;
+  created_at: string;
+  name: string;
+  image_source: string;
+  email: string;
+  auth_id: string;
 }
