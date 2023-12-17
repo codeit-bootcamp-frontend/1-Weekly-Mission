@@ -1,26 +1,6 @@
 import useAsync from "@/hooks/useAsync";
 import { fetchGet } from "./api";
-import {
-  FolderItem,
-  UserProfileItem,
-  UserLinksItem,
-  SampleFolderItem,
-  UserProfileSampleItem,
-} from "../types/api";
-
-const useFetchSampleFolder = () => {
-  return useAsync(() => fetchSampleFolder(), []);
-};
-
-const fetchSampleFolder = () =>
-  fetchGet("/api/sample/folder") as Promise<{ folder: SampleFolderItem }>;
-
-const useFetchUserProfileSample = () => {
-  return useAsync(() => fetchUserProfileSample(), []);
-};
-
-const fetchUserProfileSample = () =>
-  fetchGet("/api/sample/user") as Promise<UserProfileSampleItem>;
+import { FolderItem, UserProfileItem, UserLinksItem } from "../types/api";
 
 const useFetchUserProfile = (userId: number) => {
   return useAsync(() => fetchUserProfile(userId), [userId]);
@@ -52,10 +32,4 @@ const useFetchUserLinks = (
 const fetchUserLinks = (query: string) =>
   fetchGet(query) as Promise<{ data: UserLinksItem[] }>;
 
-export {
-  useFetchSampleFolder,
-  useFetchUserProfileSample,
-  useFetchUserProfile,
-  useFetchUserFolders,
-  useFetchUserLinks,
-};
+export { useFetchUserProfile, useFetchUserFolders, useFetchUserLinks };
