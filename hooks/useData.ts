@@ -1,31 +1,32 @@
 import { useCallback, useEffect, useState } from "react";
 import { getData } from "@/utils/getData";
-import { Action, Rgeneric, URLS, UrlType } from "@/utils/getData.type";
+import { Action, Rgeneric, UrlType } from "@/utils/getData.type";
+import { PATHS } from "@/constants/path";
 
 export const reduceData = <T>(action: Action) => {
   switch (action.path) {
-    case URLS.SHARED_USER:
+    case PATHS.SHARED_USER:
       const { id, name, email, profileImageSource: profileImg } = action;
       return { path: action.path, id, name, email, profileImg } as Rgeneric<T>;
-    case URLS.SHARED_FOLDER:
+    case PATHS.SHARED_FOLDER:
       const {
         folder: { links },
       } = action;
       return { path: action.path, links } as Rgeneric<T>;
-    case URLS.SHARED_FOLDERNAME:
+    case PATHS.SHARED_FOLDERNAME:
       const {
         folder: { name: folderName, owner },
       } = action;
       return { path: action.path, folderName, owner } as Rgeneric<T>;
-    case URLS.FOLDER_USER: {
+    case PATHS.FOLDER_USER: {
       const {
         data: [{ id, name, email, image_source: profileImg }],
       } = action;
       return { path: action.path, id, name, email, profileImg } as Rgeneric<T>;
     }
-    case URLS.FOLDER_CATEGORY:
+    case PATHS.FOLDER_CATEGORY:
       return action as Rgeneric<T>;
-    case URLS.FOLDER_LINKS: {
+    case PATHS.FOLDER_LINKS: {
       const { data: links } = action;
       return { path: action.path, links } as Rgeneric<T>;
     }

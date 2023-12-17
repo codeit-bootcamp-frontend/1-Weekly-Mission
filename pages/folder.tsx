@@ -3,43 +3,23 @@ import HeaderSearch from "@/components/Header/HeaderInput";
 import LinkSection from "@/components/Main/LinkSection";
 import Main from "@/components/Main/Main";
 import Navigation from "@/components/Nav/Navigation";
-import useObserver, { Dom } from "@/hooks/useObserver";
-import axios from "@/lib/axios";
-import { GetServerSideProps } from "next";
-import { useRef } from "react";
+import { useGetUserId } from "@/hooks/useGetUserId";
+import useObserver from "@/hooks/useObserver";
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const token = context.query["a"];
-  if (!token) {
-    return {
-      props: {},
-      redirect: { destination: "/signin" },
-    };
-  }
+export default function FolderPage() {
+  const { setRefForObserver } = useObserver();
+  const id = useGetUserId();
 
-  const res = await axios.get("/api/users", { headers: { Authorization: token } });
-  const { id } = res.data.data[0];
-  return {
-    props: {
-      id,
-    },
-  };
-};
-
-const initialRef = { headerForm: null, headerInput: null, floatDiv: null, floatInput: null, footer: null };
-
-export default function FolderPage({ id }: { id: number }) {
-  const DOM = useRef<Dom>(initialRef);
-  useObserver(DOM.current);
+  if (!id) return null;
 
   return (
     <>
       <Navigation id={id} $page="folder" />
-      <HeaderSearch id={id} dom={DOM} />
+      <HeaderSearch id={id} setRefForObserver={setRefForObserver} />
       <Main>
         <LinkSection id={id} />
       </Main>
-      <Footer dom={DOM} />
+      <Footer setRefForObserver={setRefForObserver} />
     </>
   );
 }

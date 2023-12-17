@@ -1,23 +1,24 @@
-import { Action, MakeURL, URLS, UrlType } from "@/utils/getData.type";
+import { PATHS } from "@/constants/path";
+import { Action, MakeURL, UrlType } from "@/utils/getData.type";
 
 const BASE_URL = "https://bootcamp-api.codeit.kr/api";
 
 const makeURL: MakeURL = (path, id) => {
   switch (path) {
-    case URLS.SHARED_USER:
+    case PATHS.SHARED_USER:
       return BASE_URL + "/sample/user";
-    case URLS.SHARED_FOLDER:
+    case PATHS.SHARED_FOLDER:
       return BASE_URL + "/sample/folder";
-    case URLS.SHARED_FOLDERNAME:
+    case PATHS.SHARED_FOLDERNAME:
       return BASE_URL + "/sample/folder";
-    case URLS.FOLDER_USER:
+    case PATHS.FOLDER_USER:
       return BASE_URL + `/users/${id}`;
-    case URLS.FOLDER_CATEGORY:
+    case PATHS.FOLDER_CATEGORY:
       return BASE_URL + `/users/${id}/folders`;
-    case URLS.FOLDER_LINKS:
+    case PATHS.FOLDER_LINKS:
       return BASE_URL + `/users/${id}/links`;
     default:
-      return URLS.DEFAULT;
+      return PATHS.DEFAULT;
   }
 };
 

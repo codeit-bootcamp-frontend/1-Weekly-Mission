@@ -1,8 +1,11 @@
-import { Signin } from "@/components/Main/sign/Sign.type";
 import { Container, StyledImage, StyledLink, Text } from "@/components/Main/sign/SignLogo.styled";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
-export default function SignLogo({ signin }: Signin) {
+export default function SignLogo() {
+  const router = useRouter();
+  const signin = router.asPath === "/signin";
+
   return (
     <Container>
       <Link href="/">

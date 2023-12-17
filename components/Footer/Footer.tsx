@@ -1,19 +1,16 @@
 import { Container, Copy, Info, Sns } from "@/components/Footer/Footer.styled";
-import { Dom } from "@/hooks/useObserver";
+import { SetRefForObserver } from "@/hooks/useObserver";
 import Image from "next/image";
 import Link from "next/link";
+import { memo } from "react";
 
 interface Props {
-  dom?: React.MutableRefObject<Dom>;
+  setRefForObserver?: SetRefForObserver;
 }
 
-export default function Footer({ dom }: Props) {
+export default memo(function Footer({ setRefForObserver }: Props) {
   return (
-    <Container
-      ref={(el) => {
-        dom && (dom.current.footer = el);
-      }}
-    >
+    <Container ref={setRefForObserver}>
       <Copy>©codeit - 2023</Copy>
       <Info>
         <Link href="/privacy">Privacy Policy</Link>
@@ -35,4 +32,4 @@ export default function Footer({ dom }: Props) {
       </Sns>
     </Container>
   );
-}
+});

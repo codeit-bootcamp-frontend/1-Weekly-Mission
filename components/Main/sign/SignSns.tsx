@@ -1,9 +1,12 @@
-import { Signin } from "@/components/Main/sign/Sign.type";
 import { Container } from "@/components/Main/sign/SignSns.styled";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
-export default function SignSns({ signin }: Signin) {
+export default function SignSns() {
+  const router = useRouter();
+  const signin = router.asPath === "/signin";
+
   return (
     <Container>
       <p>{signin ? "소셜 로그인" : "소셜 계정으로 가입하기"}</p>
