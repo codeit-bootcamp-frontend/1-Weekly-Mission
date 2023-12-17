@@ -27,7 +27,7 @@ function Signin() {
     })();
   }, [router]);
 
-  const signInputConfig = [
+  const INPUT_CONFIG = [
     {
       id: "signinEmail",
       name: "email",
@@ -76,7 +76,7 @@ function Signin() {
               onSubmit={auth.handleSubmit({ email, password, signType: "up", router })}
               noValidate
             >
-              {signInputConfig.map((SignInputs) => {
+              {INPUT_CONFIG.map((SignInputs) => {
                 return <Input {...SignInputs} key={SignInputs.name} />;
               })}
 

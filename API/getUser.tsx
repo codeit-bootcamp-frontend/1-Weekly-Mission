@@ -14,8 +14,8 @@ export type SpecificUserDataResult = {
 };
 
 const getSpecificUserData = async (userID: number) => {
-  const BASE_URL: string = apiConfig.baseUrl;
-  const endpoints: string = apiConfig.endpoints.user.specificUserData(userID);
+  const BASE_URL = apiConfig.baseUrl;
+  const endpoints = apiConfig.endpoints.user.specificUserData(userID);
 
   const response = await fetch(`${BASE_URL}${endpoints}`);
   const result: SpecificUserDataResult = await response.json();

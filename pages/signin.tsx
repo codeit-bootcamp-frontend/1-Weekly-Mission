@@ -12,8 +12,6 @@ import Head from "next/head";
 import useAuth from "@/hooks/useAuth";
 
 function Signin() {
-  const [value, setValue] = useState("");
-
   const email = useInputController({ func: signinEmail });
   const password = useInputController({ func: signinPassword });
 
@@ -21,17 +19,14 @@ function Signin() {
   const auth = useAuth();
 
   useEffect(() => {
-    const accessToken = localStorage.getItem("accessToken") as string;
-    setValue(accessToken);
-  }, []);
+    (() => {
+      if (localStorage.getItem("accessToken")) {
+        return router.push("/folder");
+      }
+    })();
+  }, [router]);
 
-  (() => {
-    if (value) {
-      return router.push("/folder");
-    }
-  })(); // useEffect 이후로 다시 랜더링될 때
-
-  const signInputConfig = [
+  const INPUT_CONFIG = [
     {
       id: "signinEmail",
       name: "email",
@@ -72,7 +67,7 @@ function Signin() {
               onSubmit={auth.handleSubmit({ email, password, signType: "in", router })}
               noValidate
             >
-              {signInputConfig.map((SignInputs) => {
+              {INPUT_CONFIG.map((SignInputs) => {
                 return <Input {...SignInputs} key={SignInputs.name} />;
               })}
 

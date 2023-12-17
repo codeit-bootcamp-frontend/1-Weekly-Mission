@@ -13,8 +13,8 @@ export type postSignResult = {
 };
 
 async function postSign(signType: string, signData: SignData) {
-  const BASE_URL: string = apiConfig.baseUrl;
-  const endpoints: string = apiConfig.endpoints.auth.sign(signType);
+  const BASE_URL = apiConfig.baseUrl;
+  const endpoints = apiConfig.endpoints.auth.sign(signType);
 
   const data = {
     method: "POST",

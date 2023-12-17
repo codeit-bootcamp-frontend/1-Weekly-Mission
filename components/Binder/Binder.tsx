@@ -12,6 +12,16 @@ interface Props {
   value: string;
 }
 
+const filterLinks = (searchValue: string, setLinks: Dispatch<SetStateAction<Linkinfo[]>>, cards: Linkinfo[]) => {
+  const filteredLinks = cards.filter(
+    (link) =>
+      link.url?.toLowerCase().includes(searchValue.toLowerCase()) ||
+      link.title?.toLowerCase().includes(searchValue.toLowerCase()) ||
+      link.description?.toLowerCase().includes(searchValue.toLowerCase())
+  );
+  setLinks(filteredLinks);
+};
+
 function Binder({ cards, shared = false, value: searchValue, handleClick, setTarget, setTargetURL }: Props) {
   const [links, setLinks] = useState(cards);
 
@@ -22,22 +32,9 @@ function Binder({ cards, shared = false, value: searchValue, handleClick, setTar
     }
   };
 
-  const filterLinks = useCallback(
-    (searchValue: string) => {
-      const filteredLinks = cards.filter(
-        (link) =>
-          link.url?.toLowerCase().includes(searchValue.toLowerCase()) ||
-          link.title?.toLowerCase().includes(searchValue.toLowerCase()) ||
-          link.description?.toLowerCase().includes(searchValue.toLowerCase())
-      );
-      setLinks(filteredLinks);
-    },
-    [cards]
-  );
-
   useEffect(() => {
-    filterLinks(searchValue);
-  }, [searchValue, filterLinks]);
+    filterLinks(searchValue, setLinks, cards);
+  }, [searchValue, cards]);
 
   return (
     <article className={styles.root}>
