@@ -4,11 +4,10 @@ import { axiosInstance } from "@/utils/axiosInstance";
 import { useCallback, useEffect } from "react";
 
 export const useGetFolders = () => {
-  const getFolders = useCallback(() => axiosInstance.get<Folders>("users/1/folders"), []);
+  const getFolders = useCallback(() => axiosInstance.get<Folders>("folders"), []);
   const { execute, loading, error, data } = useAsync<Folders>(getFolders);
 
-  const folders = data?.data;
-
+  const folders = data?.data?.folder;
   const sortedFolders = folders ? [...folders].sort((a, b) => a.id - b.id) : [];
 
   useEffect(() => {
