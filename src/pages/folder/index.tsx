@@ -12,6 +12,7 @@ import ModalCreator from "@/components/modals/ModalCreator";
 import { useOpenModal } from "@/hooks";
 import { CardInterface, FolderInterface } from "@/types";
 import styles from "./FolderPage.module.scss";
+import { useAuth } from "@/contexts/AuthProvider";
 
 const INITIAL_FOLDER: FolderInterface = {
   id: "",
@@ -26,14 +27,16 @@ export default function FolderPage() {
   const [currentFolder, setCurrentFolder] = useState(INITIAL_FOLDER);
   const { modal, handleOpenModal, handleCloseModal } = useOpenModal();
   const [keyword, setKeyword] = useState("");
+  const { user } = useAuth(true);
 
   const getFolderTagList = useCallback(async () => {
-    const { data } = await getFolderList();
-    setFolderList(() => [INITIAL_FOLDER, ...data]);
+    const { data } = await getFolderList(user?.id);
+    setFolderList(() => [INITIAL_FOLDER, ...data?.folder]);
   }, []);
 
   const getCards = useCallback(async (currentFolder: FolderInterface) => {
-    const data = await getAllCards(currentFolder.id);
+    const data = await getAllCards(user?.id, currentFolder.id);
+    console.log(data);
     if (data) {
       const nextFolder = {
         id: currentFolder.id,
