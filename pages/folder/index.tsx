@@ -95,7 +95,6 @@ export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
   const { query } = context;
-
   const userId = typeCheckParam("string", query.user);
   const folderId = typeCheckParam("string", query.folder);
   try {
