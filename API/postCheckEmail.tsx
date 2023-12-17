@@ -1,7 +1,7 @@
 import { apiConfig } from "./apiConfig";
 
-const BASE_URL: string = apiConfig.baseUrl;
-const endpoints: string = apiConfig.endpoints.user.checkEmail;
+const BASE_URL = apiConfig.baseUrl;
+const endpoints = apiConfig.endpoints.user.checkEmail;
 
 export type checkEmailData = {
   isUsableNickname: Boolean;

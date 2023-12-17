@@ -15,8 +15,8 @@ type FolderInfoResult = {
 };
 
 const getCurrentUsersFolderData = async (userID: number) => {
-  const BASE_URL: string = apiConfig.baseUrl;
-  const endpoints: string = apiConfig.endpoints.folder.specificUserFolderData(userID);
+  const BASE_URL = apiConfig.baseUrl;
+  const endpoints = apiConfig.endpoints.folder.specificUserFolderData(userID);
 
   const response = await fetch(`${BASE_URL}${endpoints}`);
   const result: FolderInfoResult = await response.json();

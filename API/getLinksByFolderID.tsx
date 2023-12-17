@@ -16,8 +16,8 @@ type FolderInfoResult = {
 };
 
 const getLinksByFolderID = async (userID: number, folderID: string | string[] | undefined) => {
-  const BASE_URL: string = apiConfig.baseUrl;
-  const endpoints: string = apiConfig.endpoints.link.getLinksByFolderID(userID, folderID);
+  const BASE_URL = apiConfig.baseUrl;
+  const endpoints = apiConfig.endpoints.link.getLinksByFolderID(userID, folderID);
 
   const response = await fetch(`${BASE_URL}${endpoints}`);
   const result: FolderInfoResult = await response.json();

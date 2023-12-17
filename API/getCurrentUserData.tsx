@@ -1,7 +1,7 @@
 import { apiConfig } from "./apiConfig";
 
-const BASE_URL: string = apiConfig.baseUrl;
-const endpoints: string = apiConfig.endpoints.user.currentUserData;
+const BASE_URL = apiConfig.baseUrl;
+const endpoints = apiConfig.endpoints.user.currentUserData;
 
 export type CurrentUserData = {
   id: number;
