@@ -7,6 +7,12 @@ import * as Styled from "./Header.styled";
 const Header = () => {
   const { isLogin } = useLogin();
 
+  const LinkButtonClick = () => {
+    if (!isLogin) {
+      alert("로그인을 해주세요.");
+    }
+  };
+
   return (
     <Styled.Header>
       <Styled.HeroHeader>
@@ -16,9 +22,16 @@ const Header = () => {
           <br />
           쉽게 저장하고 관리해 보세요
         </Styled.Slogan>
-        <Link href={isLogin ? "/folder" : "/"}>
-          <Styled.LinkButton>링크 추가하기</Styled.LinkButton>
-        </Link>
+        <Styled.LinkButtonBox>
+          <Link href={"/share"}>
+            <Styled.LinkButton>운영자 링크 구경가기</Styled.LinkButton>
+          </Link>
+          <Link href={isLogin ? "/folder" : "/"}>
+            <Styled.LinkButton onClick={LinkButtonClick}>
+              링크 관리 페이지
+            </Styled.LinkButton>
+          </Link>
+        </Styled.LinkButtonBox>
         <Styled.HeroImageBox>
           <Image
             src={heroImg}

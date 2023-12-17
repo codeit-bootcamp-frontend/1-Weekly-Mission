@@ -6,22 +6,43 @@ import { Folders, Links } from "../types/data";
 
 const BASE_URL = "https://bootcamp-api.codeit.kr/api";
 
-export async function getUsers() {
-  const response = await fetch(`${BASE_URL}/users/1`);
-  if (!response.ok) {
-    throw new Error("프로필을 불러오는데 실패했습니다");
-  }
-  const body = await response.json();
-  return body;
-}
+export function useFetchShareData(folderId: string, userId: number) {
+  const [folderInfo, setFolderInfo] = useState<Folders>({
+    data: [],
+  });
+  const [linkInfo, setLinkInfo] = useState<Links>({
+    data: [],
+  });
+  const router = useRouter();
 
-export async function getFolder() {
-  const response = await fetch(`${BASE_URL}/sample/folder`);
-  if (!response.ok) {
-    throw new Error("폴더 정보를 불러오는데 실패했습니다");
-  }
-  const body = await response.json();
-  return body;
+  const execute = async () => {
+    try {
+      const requestFolderInfo = axios.get(`/folders/${folderId}`);
+      const requestLinkInfo = axios.get(
+        `/users/${userId}/links?folderId=${folderId}`
+      );
+      const [folderInfo, linkInfo] = await Promise.all([
+        requestFolderInfo,
+        requestLinkInfo,
+      ]);
+      const { data: FolderData } = folderInfo.data;
+      const { data: LinkData } = linkInfo.data;
+      setFolderInfo((prev) => ({
+        ...prev,
+        data: FolderData,
+      }));
+      setLinkInfo((prev) => ({
+        ...prev,
+        data: LinkData,
+      }));
+    } catch {
+      router.push("/404");
+    }
+  };
+
+  useEffectOnce(execute);
+
+  return { folderInfo, linkInfo };
 }
 
 export function useFetchFolderData(folderId: string) {

@@ -51,6 +51,17 @@ export const SloganGradient = styled.span`
   color: transparent;
 `;
 
+export const LinkButtonBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
+`;
+
 export const LinkButton = styled.div`
   width: 35rem;
   display: flex;
