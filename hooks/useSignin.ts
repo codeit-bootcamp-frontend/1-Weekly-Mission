@@ -1,10 +1,14 @@
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 
-import { fetchSignin } from "@/api/signin.api";
+import { postSignin } from "@/apis/postSignin.api";
 import { ERROR_MESSAGE } from "@/constants/validation";
 import { folderPage } from "@/constants/router";
-import { localStorageAccessToken } from "@/constants/localStorage";
+import {
+  localStorageAccessToken,
+  localStorageRefreshToken,
+} from "@/constants/localStorage";
+import LocalStorage from "@/utils/localStorage";
 
 const useSignin = () => {
   const {
@@ -20,8 +24,9 @@ const useSignin = () => {
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const { email, password } = data;
     try {
-      const { data } = await fetchSignin({ email, password });
-      localStorage.setItem(localStorageAccessToken, data.accessToken);
+      const { data } = await postSignin({ email, password });
+      LocalStorage.setItem(localStorageAccessToken, data.data.accessToken);
+      LocalStorage.setItem(localStorageRefreshToken, data.data.refreshToken);
       router.push(folderPage);
     } catch {
       setError("email", { message: ERROR_MESSAGE.email.fail });

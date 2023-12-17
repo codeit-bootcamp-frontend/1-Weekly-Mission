@@ -1,14 +1,17 @@
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 
-import { fetchCheckEmail } from "@/api/checkEmail.api";
-import { fetchSignup } from "@/api/signup.api";
+import { fetchCheckEmail } from "@/apis/checkEmail.api";
+import { fetchSignup } from "@/apis/signup.api";
 import {
   ERROR_MESSAGE,
   ERROR_MESSAGE_PASSWORD_PASSWORD_CONFIRM,
 } from "@/constants/validation";
 import { folderPage } from "@/constants/router";
-import { localStorageAccessToken } from "@/constants/localStorage";
+import {
+  localStorageAccessToken,
+  localStorageRefreshToken,
+} from "@/constants/localStorage";
 
 const useSignup = () => {
   const {
@@ -39,6 +42,7 @@ const useSignup = () => {
       // 회원가입
       const { data } = await fetchSignup({ email, password });
       localStorage.setItem(localStorageAccessToken, data.accessToken);
+      localStorage.setItem(localStorageRefreshToken, data.refreshToken);
       router.push(folderPage);
     } catch (e) {
       let message;
