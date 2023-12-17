@@ -1,11 +1,14 @@
 import API_ENDPOINTS from "./endpoints";
 
-interface Props {
+interface getUserLinksProps {
   userId: number;
   folderId: number | null;
 }
 
-async function getUserLinks({ userId, folderId }: Props): Promise<LinksData> {
+async function getUserLinks({
+  userId,
+  folderId,
+}: getUserLinksProps): Promise<LinksData> {
   const baseUrl = API_ENDPOINTS.baseUrl;
   const endpoint = API_ENDPOINTS.user.links.getUserLinks({ userId });
   const query = folderId ? `?folderId=${folderId}` : "";

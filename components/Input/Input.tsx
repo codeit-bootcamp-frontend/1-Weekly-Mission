@@ -49,7 +49,14 @@ function Input({
   return (
     <>
       <div className={styles.container}>
-        {label && <label className={styles.label}>{label}</label>}
+        {label && (
+          <label
+            htmlFor={isPassword ? "password" : "off"}
+            className={styles.label}
+          >
+            {label}
+          </label>
+        )}
         <div className={styles.inputWrapper}>
           <div className={styles.inputContainer}>
             <input
@@ -63,6 +70,7 @@ function Input({
               value={value}
               placeholder="내용 입력"
               onChange={handleChange}
+              autoComplete={isPassword ? "password" : "off"}
             />
             {isPassword && (
               <Image

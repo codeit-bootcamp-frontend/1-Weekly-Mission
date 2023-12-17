@@ -1,0 +1,37 @@
+.mainContainer {
+  display: flex;
+  gap: 3.2rem;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 23.8rem;
+}
+
+.form {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.inputContainer {
+  display: flex;
+  gap: 2.4rem;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Tablet 화면 크기 (768px 이상 ~ 1199px 이하) */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .mainContainer {
+    padding-top: 20rem;
+  }
+}
+
+/* Mobile 화면 크기 (375px 이상 ~ 767px 이하) */
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .mainContainer {
+    padding: 12rem 3.2rem;
+  }
+}

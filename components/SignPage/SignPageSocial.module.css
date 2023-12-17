@@ -1,0 +1,22 @@
+.socialContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 2.4rem;
+  border: 0.1rem solid var(--linkbrary-gray-20, #ccd5e3);
+  width: 100%;
+  max-width: 40rem;
+  background-color: var(--linkbrary-gray-10, #e7effb);
+  border-radius: 0.8rem;
+}
+
+.socialDescription {
+  font-size: 1.4rem;
+  color: var(--linkbrary-gray-100, #373740);
+}
+
+.socialButtons {
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+}

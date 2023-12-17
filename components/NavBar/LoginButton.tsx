@@ -19,9 +19,11 @@ function LoginButton() {
     const userResponseData = await getUserAsync({ userId: 1 });
     const userId = userResponseData?.data?.[0]?.id;
     const folderId = router.query.folder;
+
     setUserData(userResponseData);
     setUserId(userId);
-    router.push(`?user=${userId}&folder=${folderId || 0}`);
+
+    router.push(`?user=${userId}&folder=${folderId || "all"}`);
   };
 
   return (

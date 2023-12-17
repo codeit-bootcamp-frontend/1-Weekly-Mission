@@ -1,5 +1,5 @@
 import { GetServerSidePropsContext } from "next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Head from "next/head";
 
 import AddLink from "@/components/AddLink/AddLink";
@@ -19,23 +19,52 @@ import FolderEdit from "@/components/FolderUtils/FolderEdit";
 import Footer from "@/components/Footer/Footer";
 import NavBar from "@/components/NavBar/NavBar";
 
-import { typeCheckParam } from "@/utils/utils";
-
 import styles from "@/assets/styles/folderPage.module.css";
 import fetcher from "@/lib/axios";
 import CardList from "@/components/Card/CardList";
+import { useRouter } from "next/router";
 
 interface Props {
   folderListData: UserFolderData;
   linksListData: LinksData;
 }
 
-const FolderPage = ({ folderListData, linksListData }: Props) => {
+const FolderPage = () => {
+  const router = useRouter();
+  const [folderListData, setFolderListData] = useState("");
+  const [linksListData, setLinksListData] = useState("");
   const [currentFolderName, setCurrentFolderName] = useState("전체");
   const [inputValue, setInputValue] = useState("");
   const [searchData, setSearchData] = useState<LinksData | undefined>(
     linksListData
   );
+
+  const folderId = router.query.folderId;
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+      router.push("/signin");
+    }
+    const fetchData = async () => {
+      const userId = localStorage.getItem("userId");
+      const [folderListResponseData, linksListResponseData] = await Promise.all(
+        [
+          fetcher<UserFolderData>({ url: `/users/${userId}/folders` }),
+          fetcher<LinksData>({
+            url: `/users/${userId}/links${
+              folderId ? `?folderId=${folderId}` : ""
+            }`,
+          }),
+        ]
+      );
+      const folderList = folderListResponseData.data;
+      const linksList = linksListResponseData.data;
+      setFolderListData(folderList);
+      setLinksListData(linksList);
+    };
+    fetchData();
+  }, [folderId, router]);
 
   return (
     <>
@@ -94,32 +123,34 @@ export default FolderPage;
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
-  const { query } = context;
+  const { params } = context;
+  if (typeof window !== "undefined") {
+    const userId = JSON.parse(sessionStorage.getItem("userId") || "");
+    console.log(userId);
+    const folderId = params?.folderId === "all" ? "" : params?.folderId;
 
-  const userId = typeCheckParam("string", query.user);
-  const folderId = typeCheckParam("string", query.folder);
-  try {
-    if (userId !== undefined && folderId !== undefined) {
-      const [folderListResponseData, linksListResponseData] = await Promise.all(
-        [
-          fetcher<UserFolderData>({ url: `/users/${userId}/folders` }),
-          fetcher<LinksData>({
-            url: `/users/${userId}/links${
-              folderId ? `?folderId=${folderId}` : ""
-            }`,
-          }),
-        ]
-      );
+    try {
+      if (userId !== undefined && folderId !== undefined) {
+        const [folderListResponseData, linksListResponseData] =
+          await Promise.all([
+            fetcher<UserFolderData>({ url: `/users/${userId}/folders` }),
+            fetcher<LinksData>({
+              url: `/users/${userId}/links${
+                folderId ? `?folderId=${folderId}` : ""
+              }`,
+            }),
+          ]);
 
-      return {
-        props: {
-          folderListData: folderListResponseData.data,
-          linksListData: linksListResponseData.data,
-        },
-      };
+        return {
+          props: {
+            folderListData: folderListResponseData.data,
+            linksListData: linksListResponseData.data,
+          },
+        };
+      }
+    } catch (e) {
+      console.error(e);
     }
-  } catch (e) {
-    console.error(e);
   }
 
   return {

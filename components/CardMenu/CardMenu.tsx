@@ -33,22 +33,6 @@ function CardMenu({ folderListData, url }: Props) {
 
   const handleToggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  const handleOpenDeleteLinkModal = () => {
-    openDeleteLinkModal();
-  };
-
-  const handleCloseDeleteLinkModal = () => {
-    closeDeleteLinkModal();
-  };
-
-  const handleOpenAddFolderModal = () => {
-    openAddFolderModal();
-  };
-
-  const handleCloseAddFolderModal = () => {
-    closeAddFolderModal();
-  };
-
   const handleClickOutsideMenu = (event: MouseEvent) => {
     const isMenuClicked =
       menuRef.current && menuRef.current.contains(event.target as Node);
@@ -73,17 +57,17 @@ function CardMenu({ folderListData, url }: Props) {
       </button>
       {isMenuOpen && (
         <div ref={menuRef} className={styles.menu}>
-          <button onClick={handleOpenDeleteLinkModal}>삭제하기</button>
-          <button onClick={handleOpenAddFolderModal}>폴더에 추가</button>
+          <button onClick={openDeleteLinkModal}>삭제하기</button>
+          <button onClick={openAddFolderModal}>폴더에 추가</button>
         </div>
       )}
       {isOpenDeleteLinkModal && (
-        <ModalContainer onClose={handleCloseDeleteLinkModal}>
+        <ModalContainer onClose={closeDeleteLinkModal}>
           <DeleteLinkModalContent>{url}</DeleteLinkModalContent>
         </ModalContainer>
       )}
       {isOpenAddFolderModal && (
-        <ModalContainer onClose={handleCloseAddFolderModal}>
+        <ModalContainer onClose={closeAddFolderModal}>
           <AddLinkModalContent
             inputValue={url}
             folderListData={folderListData}

@@ -1,13 +1,15 @@
+import Head from "next/head";
 import type { AppProps } from "next/app";
 
 import { ObserverProvider } from "@/contexts/ObserverContext";
 import { UserProvider } from "@/contexts/UserContext";
+
 import useLoading from "@/hooks/useLoading";
 
 import "@/assets/styles/colors.css";
 import "@/assets/styles/reset.css";
 import "@/assets/styles/loadingSpinner.css";
-import Head from "next/head";
+import { AuthProvider } from "@/contexts/AuthContext";
 
 declare global {
   interface Window {
@@ -47,16 +49,18 @@ export default function App({ Component, pageProps }: AppProps) {
           content="https://visitbusan.net/uploadImgs/files/cntnts/20211130150754165_wufrotr"
         />
       </Head>
-      <UserProvider>
-        <ObserverProvider>
-          {isLoading ? (
-            <div className="loading">
-              <div className="spinner"></div>
-            </div>
-          ) : null}
-          <Component {...pageProps} />
-        </ObserverProvider>
-      </UserProvider>
+      <AuthProvider>
+        <UserProvider>
+          <ObserverProvider>
+            {isLoading && (
+              <div className="loading">
+                <div className="spinner"></div>
+              </div>
+            )}
+            <Component {...pageProps} />
+          </ObserverProvider>
+        </UserProvider>
+      </AuthProvider>
     </>
   );
 }

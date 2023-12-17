@@ -1,5 +1,5 @@
 import { AxiosError, AxiosResponse, isAxiosError } from "axios";
-import axios from "@/api/axios";
+import axios from "@/lib/axios";
 
 interface Token {
   accessToken: string;

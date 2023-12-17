@@ -15,8 +15,8 @@ import { useRouter } from "next/router";
 
 const navBarOptions = {
   root: null,
-  rootMargin: "0px",
-  threshold: 0.5,
+  rootMargin: "80px",
+  threshold: 1,
 };
 
 function NavBar() {

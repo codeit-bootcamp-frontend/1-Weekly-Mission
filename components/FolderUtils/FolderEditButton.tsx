@@ -9,26 +9,23 @@ import ShareFolderModal from "@/components/Modal/ShareFolderModalContent/ShareFo
 
 import styles from "./FolderEdit.module.css";
 
-interface Props {
+interface FolderEditButtonProps {
   currentFolderName: string;
   src: string;
   text: string;
 }
 
-function FolderEditButton({ currentFolderName, src, text }: Props) {
+function FolderEditButton({
+  currentFolderName,
+  src,
+  text,
+}: FolderEditButtonProps) {
   const { isOpenModal, openModal, closeModal } = useModal(false);
 
-  const handleOpenModal = () => {
-    openModal();
-  };
-
-  const handleCloseModal = () => {
-    closeModal();
-  };
   return (
     <>
       {isOpenModal && (
-        <ModalContainer onClose={handleCloseModal}>
+        <ModalContainer onClose={closeModal}>
           {text === "공유" ? (
             <ShareFolderModal>{currentFolderName}</ShareFolderModal>
           ) : text === "이름 변경" ? (
@@ -40,7 +37,7 @@ function FolderEditButton({ currentFolderName, src, text }: Props) {
           )}
         </ModalContainer>
       )}
-      <button className={styles.button} onClick={handleOpenModal}>
+      <button className={styles.button} onClick={openModal}>
         <Image src={src} alt={`${text} 이미지`} />
         <p>{text}</p>
       </button>

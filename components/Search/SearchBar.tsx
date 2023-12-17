@@ -25,10 +25,11 @@ function SearchBar({ inputValue, onSubmit, onChange, onClick }: Props) {
           />
           <input
             className={styles.input}
-            name="search"
+            id="search"
             placeholder="링크를 검색해 보세요."
             value={inputValue}
             onChange={onChange}
+            autoComplete="search"
           />
           {inputValue && (
             <button className={styles.resetButton} onClick={onClick}>
