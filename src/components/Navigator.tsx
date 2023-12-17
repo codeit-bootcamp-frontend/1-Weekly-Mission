@@ -36,7 +36,7 @@ function Navigator({ isLoggedIn, userId, navRef }: Props) {
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken');
     fetch({ headers: { Authorization: `Bearer ${accessToken}` } });
-  });
+  }, []);
 
   const userInfo = data?.data?.[0];
 

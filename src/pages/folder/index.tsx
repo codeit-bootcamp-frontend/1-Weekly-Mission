@@ -1,9 +1,11 @@
+import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import useRequest from '@/hooks/useRequest';
 import { Folder as IFolder, Link } from '@/types/Folder.types';
 import Folder from '@/containers/Folder';
 
 function FolderPage() {
+  const router = useRouter();
   const { data: folders, fetch: getFolders } = useRequest<{
     data: { folder: IFolder[] };
   }>({
@@ -25,6 +27,9 @@ function FolderPage() {
 
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken');
+    if (!accessToken) {
+      router.push('/signin');
+    }
     getFolders({ headers: { Authorization: `Bearer ${accessToken}` } });
     getLinks({ headers: { Authorization: `Bearer ${accessToken}` } });
   }, []);

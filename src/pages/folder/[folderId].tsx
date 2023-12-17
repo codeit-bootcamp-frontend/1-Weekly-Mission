@@ -32,6 +32,9 @@ function FolderPage() {
 
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken');
+    if (!accessToken) {
+      router.push('/signin');
+    }
     getFolders({ headers: { Authorization: `Bearer ${accessToken}` } });
     getLinks({ headers: { Authorization: `Bearer ${accessToken}` } });
   }, [folderId]);
