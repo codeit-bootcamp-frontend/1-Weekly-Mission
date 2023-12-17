@@ -79,6 +79,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       user: null,
       isPending: false,
     }));
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
   }
 
   // TODO - 나중에 setting 페이지도 만들 수 있음 만들어보자.
@@ -106,9 +108,9 @@ export function useAuth(required = false) {
   useEffect(() => {
     if (
       router.route !== "/signup" &&
+      context.user === null &&
       required &&
-      !context.isPending &&
-      !context.user
+      !context.isPending
     ) {
       router.push("/signin");
     }
