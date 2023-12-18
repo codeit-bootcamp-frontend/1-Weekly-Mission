@@ -96,10 +96,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 }
 
 // 유저 인증이 필요한 페이지에선 required true 값을 주고,
-// required가 false인데 context.user 값이 없고 로딩 중이 아니라면 로그인 페이지로 이동시킨다.
+// required가 true인데 context.user 값이 없고 로딩 중이 아니라면 로그인 페이지로 이동시킨다.
 export function useAuth(required = false) {
   const context = useContext(AuthContext);
-  console.log(context);
   const router = useRouter();
   if (!context) {
     throw new Error("반드시 AuthProvider 안에서 사용해야 합니다.");
@@ -108,11 +107,12 @@ export function useAuth(required = false) {
   useEffect(() => {
     if (
       router.route !== "/signup" &&
-      context.user === null &&
+      !context.user &&
       required &&
       !context.isPending
     ) {
       router.push("/signin");
+      return;
     }
   }, [context.user, context.isPending, required]);
 

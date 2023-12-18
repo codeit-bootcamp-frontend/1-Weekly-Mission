@@ -53,7 +53,12 @@ export default function FolderPage() {
   }, []);
 
   //TODO - currentFolder을 의존성에 넣으면 무한렌더링 발생. 왜?? 나중에 SSR로 고치기
+  const router = useRouter();
   useEffect(() => {
+    if (!user) {
+      router.push("/signin");
+      return;
+    }
     getFolderTagList();
     getCards(currentFolder);
   }, [getFolderTagList, getCards]);
