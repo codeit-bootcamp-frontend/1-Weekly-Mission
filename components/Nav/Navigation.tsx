@@ -1,6 +1,7 @@
 import Avatar from "@/components/Nav/Avatar/Avatar";
 import Logo from "@/components/Nav/Avatar/Logo";
 import { Background, Nav } from "@/components/Nav/Navigation.styled";
+import { getCookie } from "@/utils/getCookie";
 import Link from "next/link";
 import { memo, useRef } from "react";
 
@@ -11,7 +12,7 @@ interface Props {
 
 export default memo(function Navigation({ id, $page = "" }: Props) {
   const locate = useRef("/signin");
-  const accessToken = typeof window !== "undefined" ? sessionStorage.getItem("accessToken") : null;
+  const accessToken = getCookie("accessToken");
   if (accessToken) {
     locate.current = `/folder`;
   }

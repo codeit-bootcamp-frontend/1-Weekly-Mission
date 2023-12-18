@@ -40,8 +40,8 @@ const postSignData = async (obj: EventTarget, signin: boolean, router: NextRoute
     const url = signin ? "/api/sign-in" : "/api/sign-up";
     const res = await axios.post(url, { email, password });
     const { accessToken, refreshToken } = res.data.data;
-    sessionStorage.setItem("accessToken", accessToken);
-    sessionStorage.setItem("refreshToken", refreshToken);
+    document.cookie = `accessToken=${accessToken}`;
+    document.cookie = `refreshToken=${refreshToken}`;
 
     router.push(`/folder`);
   } catch {

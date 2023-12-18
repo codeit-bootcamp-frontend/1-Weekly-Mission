@@ -1,10 +1,11 @@
 import { CutLine, StyledHeader, StyledImage, Title, WrapperLink } from "@/components/Header/index/HomeHeader.styled";
+import { getCookie } from "@/utils/getCookie";
 import Link from "next/link";
 import { useRef } from "react";
 
 export default function HomeHeader() {
   const locate = useRef("/signin");
-  const accessToken = typeof window !== "undefined" ? sessionStorage.getItem("accessToken") : null;
+  const accessToken = getCookie("accessToken");
   if (accessToken) {
     locate.current = `/folder`;
   }
