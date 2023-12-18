@@ -13,6 +13,8 @@ interface FolderAddBarProps {
   isHidden: boolean;
 }
 
+// [ ]: 링크 개수 받아오기
+
 const FolderAddBar = ({ folders, isSticky, isHidden }: FolderAddBarProps) => {
   const [addLinkValue, setAddLinkValue] = useState("");
   const [modalComponent, setModalComponent] = useState("");
@@ -39,7 +41,7 @@ const FolderAddBar = ({ folders, isSticky, isHidden }: FolderAddBarProps) => {
           <Modal.SelectButtonWrap>
             {folders?.map((folder) => (
               <li key={folder.id}>
-                <ModalSelectButton folderName={folder.name} linkCount={folder.link.count} />
+                <ModalSelectButton folderName={folder.name} linkCount={1} />
               </li>
             ))}
           </Modal.SelectButtonWrap>

@@ -17,6 +17,9 @@ interface KebabProps {
   iconTitle: string;
   modalId: string;
 }
+
+// [ ]: 링크 개수 받아오기
+
 const KebabMenu = ({ linkUrl, isKebabOpen, setIsKebabOpen, folderId, folders }: KebabMenusProps) => {
   const [modalComponent, setModalComponent] = useState("");
 
@@ -50,7 +53,7 @@ const KebabMenu = ({ linkUrl, isKebabOpen, setIsKebabOpen, folderId, folders }: 
           <Modal.SelectButtonWrap>
             {folders?.map((folder) => (
               <li key={folder.id}>
-                <ModalSelectButton folderName={folder.name} linkCount={folder?.link.count} />
+                <ModalSelectButton folderName={folder.name} linkCount={1} />
               </li>
             ))}
           </Modal.SelectButtonWrap>

@@ -4,11 +4,15 @@ export interface UserInfoProps {
   image_source: string;
 }
 
-export interface SampleUser {
-  id: number;
-  name: string;
-  email: string;
-  profileImageSource: string;
+export interface User {
+  data: {
+    id: number;
+    created_at: string;
+    name: string;
+    email: string;
+    image_source: string;
+    auth_id: string;
+  }[];
 }
 
 export interface SampleLink {
@@ -47,32 +51,20 @@ export interface Link {
 }
 
 export interface Links {
-  data: Link[];
+  folder: Link[];
 }
 
 export interface Folder {
   id: number;
+  created_at: string;
   name: string;
-  owner: {
-    id: number;
-    name: string;
-    profileImageSource: string;
-  };
-  link: {
-    count: number;
-  };
-  links: {
-    id: number;
-    createdAt: string;
-    url: string;
-    title: string;
-    description: string;
-    imageSource: string;
-  }[];
+  user_id: number;
 }
 
 export interface Folders {
-  data: Folder[];
+  data: {
+    folder: Folder[];
+  };
 }
 
 export interface MappedFolder {

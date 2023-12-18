@@ -17,6 +17,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["custom.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx", "utils/UserContext.tsx", "components/authInput"],
+  "include": ["custom.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx", "utils/AuthProvider.tsx", "components/authInput"],
   "exclude": ["node_modules"]
 }

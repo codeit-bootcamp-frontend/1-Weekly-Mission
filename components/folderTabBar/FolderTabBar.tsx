@@ -21,10 +21,7 @@ const FolderTabBar = ({ folders, selectedFolderId }: FolderTabBarProps) => {
       <S.TabBarWrap>
         <S.TabLinkWrap>
           <li>
-            <S.FolderTabLink
-              href={`/folder/${ALL_LINKS_ID}`}
-              className={selectedFolderId === ALL_LINKS_ID ? "active" : ""}
-            >
+            <S.FolderTabLink href={`/folder/`} className={selectedFolderId === ALL_LINKS_ID ? "active" : ""}>
               전체
             </S.FolderTabLink>
           </li>

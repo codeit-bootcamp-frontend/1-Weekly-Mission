@@ -1,6 +1,7 @@
 import AuthInputs from "@/components/authInput/AuthInput";
 import { VALIDATE } from "@/constants/constants";
 import AuthLayout from "@/layouts/authLayout/AuthLayout";
+import { useUser } from "@/utils/AuthProvider";
 import { axiosInstance } from "@/utils/axiosInstance";
 import axios from "axios";
 import Head from "next/head";
@@ -17,6 +18,8 @@ interface SignUpProps {
 const SignUp = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+
+  const { login } = useUser();
 
   const {
     register,
@@ -84,11 +87,9 @@ const SignUp = () => {
       return;
     }
     try {
-      const res = await axiosInstance.post("/sign-up", values);
-      const { accessToken, refreshToken } = res.data.data;
-      window.localStorage.setItem("accessToken", accessToken);
-      window.localStorage.setItem("refreshToken", refreshToken);
-      router.push("/folder/all");
+      await axiosInstance.post("/sign-up", values);
+      await login(values);
+      router.push("/folder");
     } catch (error) {
       setError("email", {
         message: "알 수 없는 에러가 발생했습니다.",
@@ -100,7 +101,7 @@ const SignUp = () => {
 
   useEffect(() => {
     const accessToken = window.localStorage.getItem("accessToken");
-    if (accessToken) router.push("/folder/all");
+    if (accessToken) router.push("/folder");
   }, [router]);
 
   return (

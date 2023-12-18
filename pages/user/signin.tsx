@@ -1,10 +1,10 @@
 import AuthInputs from "@/components/authInput/AuthInput";
 import { VALIDATE } from "@/constants/constants";
 import AuthLayout from "@/layouts/authLayout/AuthLayout";
-import { axiosInstance } from "@/utils/axiosInstance";
+import { useUser } from "@/utils/AuthProvider";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 interface SignInProps {
@@ -15,6 +15,7 @@ interface SignInProps {
 const SignIn = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+  const { login } = useUser();
 
   const {
     register,
@@ -50,11 +51,8 @@ const SignIn = () => {
     setIsLoading(true);
     const values = getValues();
     try {
-      const res = await axiosInstance.post("/sign-in", values);
-      const { accessToken, refreshToken } = res.data.data;
-      window.localStorage.setItem("accessToken", accessToken);
-      window.localStorage.setItem("refreshToken", refreshToken);
-      router.push("/folder/all");
+      await login(values);
+      router.push("/folder");
     } catch (error) {
       setError("email", {
         message: "이메일을 확인해 주세요.",
@@ -66,11 +64,6 @@ const SignIn = () => {
       setIsLoading(false);
     }
   };
-
-  useEffect(() => {
-    const accessToken = window.localStorage.getItem("accessToken");
-    if (accessToken) router.push("/folder/all");
-  }, [router]);
 
   return (
     <>

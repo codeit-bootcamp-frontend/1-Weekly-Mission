@@ -62,7 +62,7 @@ export const KAKAO_SHARE_DATA = {
   description: "링크를 저장하고 공유하는 가장 쉬운 방법",
   imageUrl: "https://codeit-frontend.codeit.com/static/images/brand/og_tag.png",
 };
-
+// [ ] : 키를 의미있는 값으로 변경
 export const FeatureItemGradients: { [key: string]: string } = {
   "1": "linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%)",
   "2": "linear-gradient(277deg, #6fbaff -7.78%, #ffd88b 93.66%)",

@@ -15,11 +15,19 @@ import { useEffect, useRef, useState } from "react";
 const FolderLayout = () => {
   const { data: folders } = useGetFolders();
   const router = useRouter();
-  const selectedFolderId = (router.query.folderId as string) || ALL_LINKS_ID;
+  const [selectedFolderId, setSelectedFolderId] = useState("");
+
+  useEffect(() => {
+    if (router.isReady) {
+      const folderIdFromQuery = router.query.folderId as string;
+      setSelectedFolderId(folderIdFromQuery || ALL_LINKS_ID);
+    }
+  }, [router.isReady, router.query.folderId]);
+
   const { data: links, loading } = useGetLinks(selectedFolderId);
   const [searchQuery, setSearchQuery] = useState("");
   const filteredLinks = searchQuery
-    ? links.filter(
+    ? (links ?? []).filter(
         (link) =>
           link?.url?.toLowerCase().includes(searchQuery.toLowerCase()) ||
           link?.description?.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -71,7 +79,7 @@ const FolderLayout = () => {
       <S.FolderPageWrap>
         <div ref={topRef} style={{ height: "1px", position: "absolute", top: "0" }}></div>
         <S.FolderPage>
-          {loading ? (
+          {loading || !filteredLinks ? (
             <LoadingSpinner />
           ) : (
             <>
