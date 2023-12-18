@@ -30,7 +30,7 @@ export default function KebabMenu({ link }: KebabMenuProps) {
 
   return (
     <>
-      <img src="assets/kebab.svg" onClick={handleMenuToggle} alt="memu" />
+      <img src="/assets/kebab.svg" onClick={handleMenuToggle} alt="memu" />
       {isOpenMenu && <PopoverMenu onClickModal={handleModalOpen} />}
 
       {isOpenModal && (

@@ -1,28 +1,36 @@
 import { ChangeEvent, useContext, useEffect, useState } from "react";
-import useSWR from "swr";
+import { useRouter } from "next/router";
 
 import { FolderContext } from "@/context/FolderContext";
 import FolderUI from "./FolderPresenter";
-import { FolderData, LinkData } from "@/types/folder";
+import { FolderData, FolderNameData, LinkData, SharedFolderData } from "@/types/folder";
+import { useFolder } from "@/hooks/useFolder";
 
 export const DEFAULT = "전체";
-const USER_ID = 1;
+// const USER_ID = 1;
+
+/**
+ * @TODO
+ * /folders, /links api로 변경
+ * 토큰을 가져와서 hearder에 함께 보내기
+ * 다른 폴더를 선택한 경우 folder/folderId 페이지로 이동
+ */
 
 export default function Folder() {
+  const router = useRouter();
+
   const [links, setLinks] = useState<LinkData[]>([]);
   const [filteredLinks, setFilteredLinks] = useState<LinkData[]>([]);
-  const [folders, setFolders] = useState<FolderData[]>([]);
+  const [folders, setFolders] = useState<SharedFolderData[]>([]);
   const [selected, setSelected] = useState(DEFAULT);
   const [selectedFolderId, setSelectedFolderId] = useState("");
   const [addLinkValue, setAddLinkValue] = useState("");
   const [keyword, setKeyword] = useState("");
 
-  const {
-    data: linkData,
-    isLoading,
-    error: linkError,
-  } = useSWR(`/api/users/${USER_ID}/links?folderId=${selectedFolderId ?? ""}`);
-  const { data: folderData, error: folderError } = useSWR(`/api/users/${USER_ID}/folders`);
+  const { data: foldersData, isLoading } = useFolder("/api/folders");
+  const { data: linksData } = useFolder("/api/links");
+  console.log(foldersData); // 삭제예정
+  console.log(linksData); // 삭제예정
 
   const { handleFolderUpdate } = useContext(FolderContext);
 
@@ -54,7 +62,8 @@ export default function Folder() {
   };
 
   const changeFolderId = (category: string) => {
-    const selectedFolder = folders.find((folder: FolderData) => folder.name === category)?.id ?? "";
+    const selectedFolder =
+      folders.find((folder: SharedFolderData) => folder.name === category)?.id ?? "";
     setSelectedFolderId(selectedFolder as string);
   };
 
@@ -69,17 +78,24 @@ export default function Folder() {
   };
 
   useEffect(() => {
-    if (linkData && folderData) {
-      setLinks(linkData.data);
-      setFilteredLinks(linkData.data);
-      setFolders(folderData.data);
-      updateFolderList(folderData.data);
+    if (!localStorage.getItem("accessToken")) {
+      alert("로그인 후 이용가능합니다.");
+      router.push("/signin");
     }
-  }, [linkData, folderData, selectedFolderId]);
+  }, [router]);
 
-  if (linkError || folderError) {
-    console.log(linkError || folderError);
-  }
+  useEffect(() => {
+    if (linksData && foldersData) {
+      setLinks(linksData.data.folder);
+      setFilteredLinks(linksData.data.folder);
+      setFolders(foldersData.data.folder);
+      // updateFolderList(foldersData.data.folder);
+    }
+  }, [linksData, foldersData, selectedFolderId]);
+
+  // if (linkError || folderError) {
+  //   console.log(linkError || folderError);
+  // }
 
   return (
     <FolderUI

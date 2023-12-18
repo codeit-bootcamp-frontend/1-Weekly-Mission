@@ -39,4 +39,11 @@ export interface SampleFolderData {
   };
 }
 
+export interface SharedFolderData {
+  id: number;
+  name: string;
+  user_id: number;
+  created_at: string;
+}
+
 export type FolderNameData = Omit<FolderData, "created_at">;
