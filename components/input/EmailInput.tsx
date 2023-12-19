@@ -26,9 +26,7 @@ const EmailInput = ({ name, control }: EmailInputProps) => {
       <label htmlFor="email">이메일</label>
       <div className="inputBox">
         <Input
-          aria-invalid={
-            error ? "1px solid var(--red)" : "1px solid var(--gray20)"
-          }
+          $isError={error !== undefined}
           type="text"
           id="email"
           placeholder="이메일을 입력해주세요."
@@ -38,13 +36,7 @@ const EmailInput = ({ name, control }: EmailInputProps) => {
           name={field.name}
         />
       </div>
-      {error?.type === "required" && (
-        <div className="errorMsg">{error.message}</div>
-      )}
-      {error?.type === "pattern" && (
-        <div className="errorMsg">{error.message}</div>
-      )}
-      {error?.type === "validate" && (
+      {error && ["required", "pattern", "validate"].includes(error?.type) && (
         <div className="errorMsg">{error.message}</div>
       )}
     </InputContainer>

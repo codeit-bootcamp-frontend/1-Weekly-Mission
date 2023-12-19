@@ -17,7 +17,7 @@ import DeleteIcon from "@/public/assets/folder/img_deleteIcon.png";
 
 import { ContentContainer, CardContainer } from "@/styles/sharedStyled";
 import AddFloatingButton from "@/components/button/AddFloatingButton";
-import { modalState } from "../recoil/modal";
+import { modalState } from "../../recoil/modal";
 import { useRecoilState } from "recoil";
 import AddToFolderModal from "@/components/modal/addToFolderModal/AddToFolderModal";
 import ModalLayout from "@/components/modal/ModalLayout";
@@ -31,6 +31,8 @@ import { ApiMapper } from "@/lib/apiMapper";
 import DeleteModal from "@/components/modal/DeleteModal";
 import EnterModal from "@/components/modal/EnterModal";
 import GradientButton from "@/components/button/GradientButton";
+import { useRouter } from "next/router";
+import { GetLinkResponse } from "@/lib/api/folder";
 
 const LinkToolArr = [
   {
@@ -80,13 +82,15 @@ const StateObj: StateObj = {
   linkDelete: "링크 삭제",
 };
 
-const Folder = () => {
-  const [cardData, setCardData] = useState([]);
+interface FolderLayoutProps {
+  cardData: GetLinkResponse[];
+  selectedFolderData: number;
+}
+
+const FolderLayout = ({ cardData, selectedFolderData }: FolderLayoutProps) => {
+  const router = useRouter();
   const [folderData, setFolderData] = useState<FolderData[]>([]);
-  const [selectedFolder, setSelectedFolder] = useState<SelectedFolder>({
-    id: 1,
-    title: "전체",
-  });
+  const [selectedFolder, setSelectedFolder] = useState(selectedFolderData);
 
   const [link, setLink] = useState("");
   const [searchLinkValue, setSearchLinkValue] = useState("");
@@ -102,10 +106,11 @@ const Folder = () => {
     id: 0,
   });
   const [addToFolderItem, setAddToFolderItem] = useState("");
+  const [selectedFolderName, setSelectedFolderName] = useState("전체");
 
   const handleFolder = useCallback(async () => {
     try {
-      const result = await request.get(ApiMapper.folder.get.GET_FOLDER, {
+      const result = await request.get(ApiMapper.folder.get.GET_FOLDERS, {
         path: { userId: 1 },
       });
 
@@ -124,34 +129,6 @@ const Folder = () => {
   useEffect(() => {
     handleFolder();
   }, [handleFolder]);
-
-  const handleLinks = useCallback(async () => {
-    try {
-      const folderId = selectedFolder.id;
-      const query = folderId !== 1 ? { folderId: folderId } : "";
-
-      const result = await request.get(ApiMapper.link.get.GET_LINK, {
-        path: {
-          userId: 1,
-        },
-        query: query,
-      });
-
-      if (result.status === 200) {
-        const { data } = result;
-        setCardData(data.data);
-        return;
-      }
-
-      throw new Error();
-    } catch (e) {
-      alert("문제가 발생했습니다. 잠시후 다시 시도해주세요.");
-    }
-  }, [selectedFolder]);
-
-  useEffect(() => {
-    handleLinks();
-  }, [handleLinks]);
 
   const handleAddToFolderModal = (content: string) => {
     setAddToFolderItem(content);
@@ -208,6 +185,12 @@ const Folder = () => {
     }
   }, [modalOpened]);
 
+  useEffect(() => {
+    const folderName = folderData.filter((e) => e.id === selectedFolder)[0]
+      ?.name;
+    setSelectedFolderName(folderName);
+  }, [folderData, selectedFolder]);
+
   return (
     <>
       <Wrapper>
@@ -256,13 +239,11 @@ const Folder = () => {
             <FolderContainer>
               <div className="folderBtnContainer">
                 <FolderBtnItemContainer
-                  $isSelected={selectedFolder.id === 1}
-                  onClick={() =>
-                    setSelectedFolder({
-                      id: 1,
-                      title: "전체",
-                    })
-                  }
+                  $isSelected={selectedFolder === 1}
+                  onClick={() => {
+                    router.push("/folder");
+                    setSelectedFolder(1);
+                  }}
                 >
                   전체
                 </FolderBtnItemContainer>
@@ -271,13 +252,11 @@ const Folder = () => {
                   return (
                     <FolderBtnItemContainer
                       key={e.id}
-                      $isSelected={e.id === selectedFolder.id}
-                      onClick={() =>
-                        setSelectedFolder({
-                          id: e.id,
-                          title: e.name,
-                        })
-                      }
+                      $isSelected={e.id === selectedFolder}
+                      onClick={() => {
+                        router.push(`/folder/${e.id}`);
+                        setSelectedFolder(e.id);
+                      }}
                     >
                       {e.name}
                     </FolderBtnItemContainer>
@@ -302,12 +281,15 @@ const Folder = () => {
               </div>
             </FolderContainer>
 
-            {cardData.length > 0 ? (
+            {cardData?.length > 0 ? (
               <>
                 <LinkHeaderContainer>
-                  <div className="linkTitle">{selectedFolder.title}</div>
+                  <div className="linkTitle">
+                    {folderData.filter((e) => e.id === selectedFolder)[0]
+                      ?.name || "전체"}
+                  </div>
 
-                  <LinkToolContainer $display={selectedFolder.id === 1}>
+                  <LinkToolContainer $display={selectedFolder === 1}>
                     {LinkToolArr.map((e, index) => {
                       return (
                         <div
@@ -319,10 +301,16 @@ const Folder = () => {
                               return;
                             }
                             if (e.state === "folderDelete") {
-                              handleDeleteModal("folderDelete", selectedFolder);
+                              handleDeleteModal("folderDelete", {
+                                id: selectedFolder,
+                                title: selectedFolderName,
+                              });
                               return;
                             }
-                            handleEnterMoal(e.state, selectedFolder);
+                            handleEnterMoal(e.state, {
+                              id: selectedFolder,
+                              title: selectedFolderName,
+                            });
                           }}
                         >
                           <Image src={e.src} alt={e.title} />
@@ -361,7 +349,10 @@ const Folder = () => {
           <AddToFolderModal
             folderData={folderData}
             link={addToFolderItem}
-            selectedFolderItem={selectedFolder}
+            selectedFolderItem={{
+              id: selectedFolder,
+              title: selectedFolderName,
+            }}
           />
         </ModalLayout>
       )}
@@ -372,7 +363,9 @@ const Folder = () => {
       )}
       {modalOpened.shareFolderModal.display && (
         <ModalLayout>
-          <ShareFolderModal content={selectedFolder} />
+          <ShareFolderModal
+            content={{ id: selectedFolder, title: selectedFolderName }}
+          />
         </ModalLayout>
       )}
       {modalOpened.deleteModal.display && (
@@ -384,4 +377,4 @@ const Folder = () => {
   );
 };
 
-export default Folder;
+export default FolderLayout;

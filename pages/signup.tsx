@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { userData } from "./signin";
+import { signup } from "@/lib/api/auth.ts/auth";
 
 interface SignupData extends userData {
   passwordConfirm: string;
@@ -92,11 +93,9 @@ const Signup = () => {
     }
 
     try {
-      const result = await request.post(`${ApiMapper.auth.post.SIGN_UP}`, data);
+      const result = await signup(data);
 
-      if (result.status === 200) {
-        const { data } = result;
-        localStorage.setItem("accessToken", data.data.accessToken);
+      if (result) {
         router.push("/folder");
         return;
       }
@@ -143,7 +142,7 @@ const Signup = () => {
             control={control}
             name={"passwordConfirm"}
           />
-          <GradientButton type={"submit"}>회원가입</GradientButton>
+          <GradientButton type="submit">회원가입</GradientButton>
         </form>
       }
     />

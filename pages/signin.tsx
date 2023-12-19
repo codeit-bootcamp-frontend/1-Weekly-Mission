@@ -2,8 +2,7 @@ import GradientButton from "@/components/button/GradientButton";
 import EmailInput from "@/components/input/EmailInput";
 import PasswordInput from "@/components/input/PasswordInput";
 import UserLayout from "@/components/user/UserLayout";
-import { ApiMapper } from "@/lib/apiMapper";
-import request from "@/lib/axios";
+import { signin } from "@/lib/api/auth.ts/auth";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
@@ -31,13 +30,9 @@ const Signin = () => {
 
   const handleSignin = async (data: any) => {
     try {
-      const result = await request.post(`${ApiMapper.auth.post.SIGN_IN}`, data);
-
-      if (result.status === 200) {
-        const { data } = result;
-        localStorage.setItem("accessToken", data.data.accessToken);
+      const result = await signin(data);
+      if (result) {
         router.push("/folder");
-        return;
       }
       throw new Error();
     } catch (e) {

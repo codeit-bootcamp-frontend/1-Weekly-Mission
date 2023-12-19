@@ -1,15 +1,10 @@
 const URL_PATH = {
-  SAMPLE_CONTROLLER: "/api/sample",
   USER_CONTROLLER: "/api/users",
+  LINK_CONTROLLER: "/api/links",
+  FOLDER_CONTROLLER: "/api/folders",
 };
 
 export const ApiMapper = {
-  sample: {
-    get: {
-      GET_FOLDER: `${URL_PATH.SAMPLE_CONTROLLER}/folder`,
-      GET_USER: `${URL_PATH.SAMPLE_CONTROLLER}/user`,
-    },
-  },
   user: {
     get: {
       GET_USERS: `${URL_PATH.USER_CONTROLLER}`,
@@ -20,12 +15,14 @@ export const ApiMapper = {
   },
   folder: {
     get: {
-      GET_FOLDER: `${URL_PATH.USER_CONTROLLER}/:userId/folders`,
+      GET_FOLDERS: `${URL_PATH.USER_CONTROLLER}/:userId/folders`,
+      GET_FOLDER: `${URL_PATH.FOLDER_CONTROLLER}`,
     },
   },
   link: {
     get: {
-      GET_LINK: `${URL_PATH.USER_CONTROLLER}/:userId/links`,
+      GET_LINK: `${URL_PATH.LINK_CONTROLLER}`,
+      GET_LINKS: `${URL_PATH.USER_CONTROLLER}/:userId/links`,
     },
   },
   auth: {

@@ -51,6 +51,54 @@ const nextConfig = {
         protocol: "https",
         hostname: "codeit.kr",
       },
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+      },
+      {
+        protocol: "https",
+        hostname: "www.baskinrobbins.co.kr",
+      },
+      {
+        protocol: "https",
+        hostname: "akamai.pizzahut.co.kr",
+      },
+      {
+        protocol: "http",
+        hostname: "www.istarbucks.co.kr",
+      },
+      {
+        protocol: "http",
+        hostname: "www.coffeebeankorea.com",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.goob-ne.com",
+      },
+      {
+        protocol: "https",
+        hostname: "resources.jetbrains.com",
+      },
+      {
+        protocol: "https",
+        hostname: "react.dev",
+      },
+      {
+        protocol: "http",
+        hostname: "www.rust-lang.org",
+      },
+      {
+        protocol: "https",
+        hostname: "spring.io",
+      },
+      {
+        protocol: "https",
+        hostname: "www.rust-lang.org",
+      },
+      {
+        protocol: "https",
+        hostname: "spring.io",
+      },
     ],
   },
 };
