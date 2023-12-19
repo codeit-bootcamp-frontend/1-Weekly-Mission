@@ -1,31 +1,28 @@
-import { useRef } from 'react';
-import { Article, Header, Layout } from '@/components';
-import useIntersectionObserver from '@/public/useIntersectionObserver';
-import axios from '@/lib/axios';
+import { useState, createContext, useEffect } from 'react';
+import { Article, Header, Layout } from '@/src/components';
+import { useAuth } from '@/src/lib/auth/AuthProvider';
 
-export async function getServerSideProps() {
-  const response = await axios.get(`users/1/links`);
-  const links = response?.data?.data;
-  const response2 = await axios.get(`/users/1/folders`);
-  const folders = response2?.data?.data[0];
+export const FooterContext = createContext({
+  isFooterVisible: false,
+  setIsFooterVisible: (visible: boolean) => {},
+});
 
-  return {
-    props: {
-      links,
-      folders,
-    },
-  };
-}
+export default function FolderPage() {
+  const [isFooterVisible, setIsFooterVisible] = useState(false);
+  const { folders, links, getFolders, getLinks } = useAuth(true);
+  
+  useEffect (() => {
+    getFolders();
+    getLinks();
+  },[])
 
-export default function FolderPage({ links, folders }) {
-  // const linkAddBarRef = useRef<HTMLDivElement>(null);
-  // const footerRef = useRef<HTMLDivElement>(null);
-  // const isIntersecting = useIntersectionObserver([linkAddBarRef, footerRef]);
 
   return (
-    <Layout >
-      <Header />
-      <Article links={links} folders={folders} />
-    </Layout>
+    <FooterContext.Provider value={{ isFooterVisible, setIsFooterVisible }}>
+      <Layout>
+        <Header />
+        <Article links={links} folders={folders} />
+      </Layout>
+    </FooterContext.Provider>
   );
 }

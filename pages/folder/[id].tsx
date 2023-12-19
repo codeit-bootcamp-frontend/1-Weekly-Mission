@@ -1,33 +1,27 @@
-import { useRef } from 'react';
-import { Article, Header, Layout } from '@/components';
-import useIntersectionObserver from '@/public/useIntersectionObserver';
-import axios from '@/lib/axios';
+import { useEffect, useState } from 'react';
+import { Article, Header, Layout } from '@/src/components';
+import { FooterContext } from '@/pages/folder';
+import { useRouter } from 'next/router';
+import { useAuth } from '@/src/lib/auth/AuthProvider';
 
-export async function getServerSideProps(context) {
-  const {id} = context.query
+export default function FolderPage() {
+  const router = useRouter();
+  const { id } = router.query;
   const folderId = id ? `?folderId=${id}` : '';
-  const response = await axios.get(`users/1/links${folderId}`);
-  const links = response?.data?.data;
-  const response2 = await axios.get(`/users/1/folders`);
-  const folders = response2?.data?.data[0];
+  const [isFooterVisible, setIsFooterVisible] = useState(false);
+  const {folders, links, getFolders, getLinks } = useAuth(true)
 
-  return {
-    props: {
-      links,
-      folders,
-    },
-  };
-}
-
-export default function FolderPage({ links, folders }) {
-  // const linkAddBarRef = useRef<HTMLDivElement>(null);
-  // const footerRef = useRef<HTMLDivElement>(null);
-  // const isIntersecting = useIntersectionObserver([linkAddBarRef, footerRef]);
+  useEffect(() => {
+    getFolders();
+    getLinks(folderId);
+  }, [folderId]);
 
   return (
-    <Layout >
-      <Header />
-      <Article links={links} folders={folders} />
-    </Layout>
+    <FooterContext.Provider value={{ isFooterVisible, setIsFooterVisible }}>
+      <Layout>
+        <Header />
+        <Article links={links} folders={folders} />
+      </Layout>
+    </FooterContext.Provider>
   );
 }
