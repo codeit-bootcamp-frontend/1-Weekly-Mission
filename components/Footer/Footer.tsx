@@ -37,8 +37,8 @@ const snsLinks = [
 
 const footerOptions = {
   root: null,
-  rootMargin: "60px",
-  threshold: 1,
+  rootMargin: "0px",
+  threshold: 0,
 };
 
 function Footer() {

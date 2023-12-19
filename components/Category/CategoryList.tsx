@@ -5,7 +5,7 @@ import styles from "./CategoryList.module.css";
 import CategoryButton from "./CategoryButton";
 
 interface Props {
-  folderListData: UserFolderData;
+  folderListData?: UserFolderData;
   currentFolder: Dispatch<SetStateAction<string>>;
   children: ReactNode;
 }

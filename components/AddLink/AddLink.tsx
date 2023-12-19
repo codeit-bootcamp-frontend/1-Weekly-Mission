@@ -12,7 +12,7 @@ interface Props {
 
 const addLinkOptions = {
   root: null,
-  rootMargin: "60px",
+  rootMargin: "0px",
   threshold: 1,
 };
 
@@ -44,15 +44,22 @@ const AddLink = ({ children }: Props) => {
     const isNotNavBarAndNotFooter = !isNavBarVisible && !isFooterVisible;
     const isAllVisible = isNavBarVisible && isAddLinkVisible && isFooterVisible;
 
+    // console.log(isNavBarVisible);
+    // console.log(isAddLinkVisible);
+    // console.log(isFooterVisible);
+
     if (isNavBarAndNotFooter) {
       return styles.addLink;
     }
+
     if (isNotNavBarAndNotFooter) {
       return classNames(styles.addLink, styles.bottom);
     }
+
     if (isAllVisible) {
       return styles.addLink;
     }
+
     return "";
   };
   return (

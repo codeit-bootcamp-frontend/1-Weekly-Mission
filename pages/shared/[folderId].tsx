@@ -5,21 +5,12 @@ import { GetServerSidePropsContext } from "next";
 import FolderInfo from "@/components/FolderInfo/FolderInfo";
 import Card from "@/components/Card/Card";
 import Search from "@/components/Search/Search";
-import SharedPageCardItem from "@/components/Card/SharedPageCardItem";
 import Footer from "@/components/Footer/Footer";
 import NavBar from "@/components/NavBar/NavBar";
 
-import getUserLinks from "@/api/getUserLinks";
-import getUserFolder from "@/api/getUserFolder";
-import getUser from "@/api/getUser";
-import {
-  formatDate,
-  getTimeDiff,
-  prettyFormatTimeDiff,
-  typeCheckParam,
-} from "@/utils/utils";
-
 import styles from "@/assets/styles/sharedPage.module.css";
+import fetcher from "@/lib/axios";
+import CardList from "@/components/Card/CardList";
 
 interface Props {
   userData: UserData;
@@ -48,25 +39,7 @@ const SharedPage = ({ userData, folderData, linksListData }: Props) => {
         />
         <Search linksListData={linksListData} onChange={setSearchData} />
         <Card>
-          {searchData?.data &&
-            searchData.data.map((link: Link) => {
-              const { id, created_at, url, title, description, image_source } =
-                link;
-              const formattedCreatedAt = formatDate(created_at);
-              const timeDiff = getTimeDiff(created_at);
-              const formatTimeDiff = prettyFormatTimeDiff(timeDiff);
-              return (
-                <SharedPageCardItem
-                  key={id}
-                  formatTimeDiff={formatTimeDiff}
-                  formattedCreatedAt={formattedCreatedAt}
-                  url={url}
-                  title={title}
-                  description={description}
-                  imageSource={image_source}
-                />
-              );
-            })}
+          <CardList type="shared" LinksData={searchData} />
         </Card>
       </main>
       <footer>
@@ -82,23 +55,30 @@ export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
   const { query } = context;
-  const userId = typeCheckParam("string", query.user);
-  const folderId = typeCheckParam("string", query.folder);
+  const folderId = query.folderId;
 
   try {
-    if (userId !== undefined && folderId !== undefined) {
-      const [userDataResponseData, userFolderResponseData, linksResponseData] =
+    if (folderId !== undefined) {
+      const response = await fetcher<UserFolderData>({
+        url: `/folders/${folderId}`,
+      });
+      const userId = response.data.data[0].user_id;
+      const [userDataResponse, userFolderResponse, linksResponse] =
         await Promise.all([
-          getUser({ userId }),
-          getUserFolder({ userId, folderId }),
-          getUserLinks({ userId, folderId }),
+          fetcher<UserData>({ url: `/users/${userId}` }),
+          fetcher<UserFolderData>({
+            url: `/users/${userId}/folders/${folderId}`,
+          }),
+          fetcher<LinksData>({
+            url: `/users/${userId}/links?folderId=${folderId}`,
+          }),
         ]);
 
       return {
         props: {
-          userData: userDataResponseData,
-          folderData: userFolderResponseData,
-          linksListData: linksResponseData,
+          userData: userDataResponse.data,
+          folderData: userFolderResponse.data,
+          linksListData: linksResponse.data,
         },
       };
     }

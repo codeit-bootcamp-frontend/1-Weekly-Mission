@@ -10,7 +10,7 @@ import starImg from "@/assets/images/star.svg";
 
 import styles from "./CardItem.module.css";
 
-interface Props {
+interface FolderPageCardItemProps {
   folderListData: UserFolderData;
   formatTimeDiff: string;
   formattedCreatedAt: string;
@@ -28,7 +28,7 @@ function FolderPageCardItem({
   title,
   description,
   imageSource,
-}: Props) {
+}: FolderPageCardItemProps) {
   return (
     <li className={styles.cardItem}>
       <Link
@@ -40,8 +40,8 @@ function FolderPageCardItem({
         <Image
           fill
           className={styles.img}
-          src={imageSource ? imageSource : logoImg}
-          alt={title}
+          src={imageSource || logoImg}
+          alt={title || "카드 이미지"}
           placeholder="blur"
           blurDataURL={blurDataURL}
         />

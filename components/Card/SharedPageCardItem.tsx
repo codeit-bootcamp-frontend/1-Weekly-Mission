@@ -7,7 +7,7 @@ import logoImg from "@/assets/images/emptyImg.svg";
 
 import styles from "./CardItem.module.css";
 
-interface Props {
+interface SharedPageCardItemProps {
   formatTimeDiff: string;
   formattedCreatedAt: string;
   url: string;
@@ -23,7 +23,7 @@ function SharedPageCardItem({
   title,
   description,
   imageSource,
-}: Props) {
+}: SharedPageCardItemProps) {
   return (
     <div className={styles.cardItem}>
       <Link
@@ -35,8 +35,8 @@ function SharedPageCardItem({
         <Image
           fill
           className={styles.img}
-          src={imageSource ? imageSource : logoImg}
-          alt={title}
+          src={imageSource || logoImg}
+          alt={title || "카드 이미지"}
           placeholder="blur"
           blurDataURL={blurDataURL}
         />

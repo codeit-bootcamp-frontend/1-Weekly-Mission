@@ -1,0 +1,24 @@
+.headerContainer {
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+  flex-direction: column;
+}
+
+.descriptionContainer {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+}
+
+.description {
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+}
+
+.descriptionLink {
+  border-bottom: 0.1rem solid var(--primary);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--primary);
+}

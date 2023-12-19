@@ -10,7 +10,7 @@ import Image from "next/image";
 
 interface Props {
   inputValue: string;
-  folderListData: UserFolderData;
+  folderListData?: UserFolderData;
 }
 
 function AddLinkModalContent({ inputValue, folderListData }: Props) {

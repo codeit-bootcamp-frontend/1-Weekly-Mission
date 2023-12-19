@@ -10,8 +10,8 @@ import {
 type FolderId = number | "all";
 
 interface UserContextProps {
-  userId: number | null;
-  setUserId: Dispatch<SetStateAction<number | null>>;
+  userId: string | null;
+  setUserId: Dispatch<SetStateAction<string | null>>;
   folderId: FolderId;
   setFolderId: Dispatch<SetStateAction<FolderId>>;
 }
@@ -28,7 +28,7 @@ const UserContext = createContext<UserContextProps>({
 });
 
 const UserProvider = ({ children }: UserProviderProps) => {
-  const [userId, setUserId] = useState<number | null>(null);
+  const [userId, setUserId] = useState<string | null>(null);
   const [folderId, setFolderId] = useState<FolderId>("all");
 
   const contextValue: UserContextProps = {
@@ -51,9 +51,9 @@ const useUser = () => {
   return context;
 };
 
-const useUserId = (): number | null => useUser().userId;
+const useUserId = (): string | null => useUser().userId;
 
-const useSetUserId = (): Dispatch<SetStateAction<number | null>> =>
+const useSetUserId = (): Dispatch<SetStateAction<string | null>> =>
   useUser().setUserId;
 
 const useFolderId = (): FolderId => useUser().folderId;

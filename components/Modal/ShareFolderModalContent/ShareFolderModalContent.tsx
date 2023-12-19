@@ -30,12 +30,9 @@ const icons: Icon[] = [
 function ShareFolderModalContent({ children }: Props) {
   const folderId = useFolderId();
 
-  const handleButtonClick = async (
-    e: MouseEvent<HTMLButtonElement>,
-    userId = 1
-  ) => {
+  const handleButtonClick = async (e: MouseEvent<HTMLButtonElement>) => {
     const hostPath = window.location.origin;
-    const route = `${hostPath}/shared?user=${userId}&folder=${folderId}`;
+    const route = `${hostPath}/shared/${folderId}`;
 
     if (e.currentTarget.querySelector("img")?.alt === "카카오톡") {
       shareKakao(route);

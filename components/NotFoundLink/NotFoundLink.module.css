@@ -1,4 +1,6 @@
 .notFoundLink {
+  position: relative;
+  top: -70rem;
   padding-top: 4.1rem;
   padding-bottom: 7.5rem;
 }
@@ -7,4 +9,15 @@
   font-size: 1.6rem;
   line-height: 150%;
   text-align: center;
+}
+
+/* Tablet 화면 크기 (768px 이상 ~ 1199px 이하) */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+}
+
+/* Mobile 화면 크기 (375px 이상 ~ 767px 이하) */
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .notFoundLink {
+    top: -50rem;
+  }
 }
