@@ -38,8 +38,9 @@ const FolderPage = () => {
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");
+    const accessToken = localStorage.getItem("accessToken");
 
-    if (!userId) {
+    if (!accessToken) {
       removeTokens();
       router.push("/signin");
     }
