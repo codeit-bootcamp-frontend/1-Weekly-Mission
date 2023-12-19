@@ -1,7 +1,6 @@
 import { GetServerSideProps } from "next";
-import { useRouter } from "next/router";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   AddBar,
   SearchBar,
@@ -10,63 +9,38 @@ import {
   CardSection,
 } from "@/components";
 import useInfiniteScroll from "@/lib/hooks/useInfiniteScroll";
-import { getFolderLists, getLinks } from "@/lib/utils/api";
-import { FoldersData, LinksData } from "@/lib/types/data";
 import { useScroll } from "@/lib/hooks/useScroll";
-import { useLogin } from "@/lib/utils/LoginContext";
+import { useLogin } from "@/lib/utils/AuthContext";
+import { useFetchFolderData } from "@/lib/utils/api";
 import * as Styled from "@/style/FolderPage.styled";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id: folderId } = context.params as Params;
 
-  let folderData;
-  let linkData;
-
-  try {
-    const [folderLists, links] = await Promise.all([
-      getFolderLists(),
-      getLinks(folderId),
-    ]);
-    const { data: FolderData } = folderLists;
-    const { data: LinkData } = links;
-    folderData = FolderData;
-    linkData = LinkData;
-  } catch {
-    return {
-      notFound: true,
-    };
-  }
-
   return {
     props: {
-      folderData,
-      linkData,
       folderId,
     },
   };
 };
 
 interface Props {
-  folderData: FoldersData[];
-  linkData: LinksData[];
   folderId: string;
 }
 
-const FolderPage = ({ folderData, linkData, folderId }: Props) => {
+const FolderPage = ({ folderId }: Props) => {
   const q = "";
-  const [isDisplay, setIsDisplay] = useState(true);
 
-  const { isLogin } = useLogin();
-  const router = useRouter();
+  const [isDisplay, setIsDisplay] = useState(true);
   const target = useInfiniteScroll(setIsDisplay, isDisplay);
   const { scrollY } = useScroll();
+  const { folderData, linkData } = useFetchFolderData(folderId);
 
-  useEffect(() => {
-    if (!isLogin) {
-      router.push("/");
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  useLogin(true);
+
+  if (!folderData.data.length && !linkData.data.length) {
+    return null;
+  }
 
   return (
     <>
@@ -76,15 +50,15 @@ const FolderPage = ({ folderData, linkData, folderId }: Props) => {
       <Styled.Article>
         <SearchBar id={folderId} />
         <FolderLists
-          linksData={linkData}
-          folderData={folderData}
+          linksData={linkData.data}
+          folderData={folderData.data}
           id={folderId}
           q={q}
         />
-        {linkData.length === 0 ? (
+        {linkData.data.length === 0 ? (
           <NoFolderLink />
         ) : (
-          <CardSection data={linkData} folderData={folderData} />
+          <CardSection data={linkData.data} folderData={folderData.data} />
         )}
         <Styled.TargetDiv ref={target} />
       </Styled.Article>

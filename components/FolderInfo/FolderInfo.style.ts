@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styled from "styled-components";
 
 export const OwnerWrapper = styled.div`
@@ -10,6 +11,13 @@ export const OwnerWrapper = styled.div`
 export const OwnerImgBox = styled.div`
   width: 60px;
   height: 60px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 70%;
+`;
+
+export const OwnerImg = styled(Image)`
+  object-fit: cover;
 `;
 
 export const OwnerName = styled.p`

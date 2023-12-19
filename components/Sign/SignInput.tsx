@@ -69,7 +69,7 @@ const SignInput = ({
   const HandleInputFocusOut = () => {
     const targetValue = inputRef.current?.value ? inputRef.current.value : "";
 
-    if (type === "email") {
+    if (label === "이메일") {
       if (validateEmailInput(targetValue)) {
         const errorMsg = validateEmailInput(targetValue);
         setter((prev) => ({
@@ -82,7 +82,7 @@ const SignInput = ({
           errMsg: "",
         }));
       }
-    } else if (type === "password") {
+    } else if (label === "비밀번호") {
       if (validatePasswordInput(targetValue)) {
         const errorMsg = validatePasswordInput(targetValue);
         setter((prev) => ({
@@ -163,13 +163,13 @@ const SignInput = ({
 
   return (
     <Styled.InputTagContainer>
-      <Styled.InputLabel htmlFor={type}>{label}</Styled.InputLabel>
+      <Styled.InputLabel htmlFor={label}>{label}</Styled.InputLabel>
       <Styled.InputTagBox>
         <Styled.InputTag
           placeholder={placeholder}
           type={type}
           ref={inputRef}
-          id={type}
+          id={label}
           onBlur={HandleInputFocusOut}
           onChange={HandleInputChange}
           $err={errMsg}

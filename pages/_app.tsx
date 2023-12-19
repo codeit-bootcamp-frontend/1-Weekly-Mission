@@ -1,7 +1,7 @@
 import Head from "next/head";
 import type { AppProps } from "next/app";
 import { Layout } from "@/components";
-import { LoginProvider } from "@/lib/utils/LoginContext";
+import { AuthProvider } from "@/lib/utils/AuthContext";
 import { StyledGlobal } from "@/style/Global.styled";
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -11,12 +11,12 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>Linkbrary</title>
       </Head>
       <StyledGlobal />
-      <LoginProvider>
+      <AuthProvider>
         <Layout>
           <Component {...pageProps} />
         </Layout>
         <div id="modal"></div>
-      </LoginProvider>
+      </AuthProvider>
     </>
   );
 }

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { MouseEvent, useState } from "react";
 import { timeForToday } from "@/lib/utils/moment";
 import { DropDown } from "@/components";
@@ -21,6 +22,9 @@ const Card = ({ data, folderData }: Props) => {
   const URL = data.url as string;
   const DESCRIPTION = data.description;
   const TITLE = data.title;
+  const router = useRouter();
+  const isSharedPage = router.pathname.startsWith("/share");
+
   const [star, setStar] = useState(false);
 
   const formatDate = (value: string) => {
@@ -52,7 +56,9 @@ const Card = ({ data, folderData }: Props) => {
         <Styled.InfoContainer>
           <Styled.AdditionalInfo>
             <span>{timeForToday(CREATED_AT)}</span>
-            <DropDown url={URL} folderData={folderData} />
+            {isSharedPage ? null : (
+              <DropDown url={URL} folderData={folderData} />
+            )}
           </Styled.AdditionalInfo>
           <Styled.Title>{TITLE}</Styled.Title>
           <Styled.Description>{DESCRIPTION}</Styled.Description>

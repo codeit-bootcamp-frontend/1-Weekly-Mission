@@ -1,40 +1,93 @@
+import { useRouter } from "next/router";
+import { useCallback, useEffect, useState } from "react";
+import { useEffectOnce } from "@/lib/hooks/useEffectOnce";
+import axios from "@/lib/utils/axiosInstance";
+import { Folders, Links } from "../types/data";
+
 const BASE_URL = "https://bootcamp-api.codeit.kr/api";
 
-export async function getUsers() {
-  const response = await fetch(`${BASE_URL}/users/1`);
-  if (!response.ok) {
-    throw new Error("프로필을 불러오는데 실패했습니다");
-  }
-  const body = await response.json();
-  return body;
+export function useFetchShareData(folderId: string, userId: number) {
+  const [folderInfo, setFolderInfo] = useState<Folders>({
+    data: [],
+  });
+  const [linkInfo, setLinkInfo] = useState<Links>({
+    data: [],
+  });
+  const router = useRouter();
+
+  const execute = async () => {
+    try {
+      const requestFolderInfo = axios.get(`/folders/${folderId}`);
+      const requestLinkInfo = axios.get(
+        `/users/${userId}/links?folderId=${folderId}`
+      );
+      const [folderInfo, linkInfo] = await Promise.all([
+        requestFolderInfo,
+        requestLinkInfo,
+      ]);
+      const { data: FolderData } = folderInfo.data;
+      const { data: LinkData } = linkInfo.data;
+      setFolderInfo((prev) => ({
+        ...prev,
+        data: FolderData,
+      }));
+      setLinkInfo((prev) => ({
+        ...prev,
+        data: LinkData,
+      }));
+    } catch {
+      router.push("/404");
+    }
+  };
+
+  useEffectOnce(execute);
+
+  return { folderInfo, linkInfo };
 }
 
-export async function getFolder() {
-  const response = await fetch(`${BASE_URL}/sample/folder`);
-  if (!response.ok) {
-    throw new Error("폴더 정보를 불러오는데 실패했습니다");
-  }
-  const body = await response.json();
-  return body;
-}
+export function useFetchFolderData(folderId: string) {
+  const [folderData, setFolderData] = useState<Folders>({
+    data: [],
+  });
+  const [linkData, setLinkData] = useState<Links>({
+    data: [],
+  });
+  const router = useRouter();
 
-export async function getFolderLists() {
-  const response = await fetch(`${BASE_URL}/users/1/folders`);
-  if (!response.ok) {
-    throw new Error("폴더 목록을 불러오는데 실패했습니다");
-  }
-  const body = await response.json();
-  return body;
-}
+  const execute = useCallback(async () => {
+    try {
+      const requestFolderLists = axios.get("/folders");
+      const requestLinks = axios.get(
+        folderId ? `/links?folderId=${folderId}` : "/links"
+      );
+      const [folderLists, links] = await Promise.all([
+        requestFolderLists,
+        requestLinks,
+      ]);
+      const {
+        data: { folder: FolderData },
+      } = folderLists.data;
+      const {
+        data: { folder: LinkData },
+      } = links.data;
+      setFolderData((prev) => ({
+        ...prev,
+        data: FolderData,
+      }));
+      setLinkData((prev) => ({
+        ...prev,
+        data: LinkData,
+      }));
+    } catch {
+      router.push("/404");
+    }
+  }, [folderId, router]);
 
-export async function getLinks(folderId = "") {
-  const query = folderId ? `folderId=${folderId}` : `folderId=`;
-  const response = await fetch(`${BASE_URL}/users/1/links?${query}`);
-  if (!response.ok) {
-    throw new Error("링크 데이터를 불러오는데 실패했습니다");
-  }
-  const body = await response.json();
-  return body;
+  useEffect(() => {
+    execute();
+  }, [execute]);
+
+  return { folderData, linkData };
 }
 
 export async function handleCopyClipBoard(text: string) {
@@ -44,25 +97,6 @@ export async function handleCopyClipBoard(text: string) {
   } catch (err) {
     console.log(err);
   }
-}
-
-export async function requestSignIn(email = "", password = "") {
-  const formData = JSON.stringify({
-    email: email,
-    password: password,
-  });
-  const response = await fetch(`${BASE_URL}/sign-in`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: formData,
-  });
-  if (!response.ok) {
-    throw new Error("로그인에 실패했습니다");
-  }
-  const body = await response.json();
-  return body;
 }
 
 export async function validateOverlapEmail(email = "") {
@@ -78,29 +112,6 @@ export async function validateOverlapEmail(email = "") {
   });
   if (!response.ok) {
     throw new Error("이미 존재하는 이메일입니다.");
-  }
-  const body = await response.json();
-  return body;
-}
-
-export async function requestSignUp(email = "", password = "") {
-  const formData = JSON.stringify({
-    email: email,
-    password: password,
-  });
-  const response = await fetch(`${BASE_URL}/sign-up`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: formData,
-  });
-  if (!response.ok) {
-    const body = await response.json();
-    const {
-      error: { message },
-    } = body;
-    throw new Error(message);
   }
   const body = await response.json();
   return body;

@@ -3,6 +3,7 @@ import Image from "next/image";
 import styled from "styled-components";
 
 export const LoginBox = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -15,6 +16,8 @@ export const LoginImgBg = styled.div`
   width: 2.7rem;
   height: 2.7rem;
   cursor: pointer;
+  overflow: hidden;
+  border-radius: 70%;
 `;
 
 export const LoginImg = styled(Image)`
@@ -55,7 +58,8 @@ export const LoginBtn = styled(Link)`
 
 export const Ul = styled.ul`
   position: absolute;
-  top: 30px;
+  top: 35px;
+  left: -30px;
   width: 100px;
   border: 1px solid var(--gray30);
   background-color: var(--white);
