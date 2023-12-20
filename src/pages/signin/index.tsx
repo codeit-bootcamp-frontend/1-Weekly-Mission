@@ -1,9 +1,9 @@
 import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { getSignIn } from "@/api";
 import { Input, SignLayout } from "@/components/sign";
 import { useInputValid } from "@/hooks";
 import styles from "./SignInPage.module.scss";
+import { useAuth } from "@/contexts/AuthProvider";
 
 function SignInPage() {
   const router = useRouter();
@@ -15,28 +15,28 @@ function SignInPage() {
     passwordRepeat: passwordRepeatValue,
   } = inputValue;
 
-  useEffect(() => {
-    if (localStorage.getItem("accessToken")) {
-      router.push("/folder");
-      console.log("login by token");
-    }
-  });
-
+  const { user, login } = useAuth();
   const handleSubmitSignin = async (e: FormEvent) => {
     e.preventDefault();
     if (hasError.email.hasError) {
       return;
     }
-    const signinResponse = await getSignIn(emailValue, passwordValue);
-    if (!signinResponse) {
+    try {
+      await login(emailValue, passwordValue);
+      setWrongLogin(false);
+      router.push("/folder");
+      console.log("login");
+    } catch {
       setWrongLogin(true);
       return;
     }
-    setWrongLogin(false);
-    localStorage.setItem("accessToken", signinResponse.data.accessToken);
-    router.push("/folder");
-    console.log("login");
   };
+
+  useEffect(() => {
+    if (user) {
+      router.push("/folder");
+    }
+  }, [user]);
 
   return (
     <>

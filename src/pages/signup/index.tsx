@@ -1,9 +1,10 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { useRouter } from "next/router";
 import { getSignUp, getEmailCheck } from "@/api";
 import { Input, SignLayout } from "@/components/sign";
 import { useInputValid } from "@/hooks";
 import styles from "./SignUpPage.module.scss";
+import { useAuth } from "@/contexts/AuthProvider";
 
 function SignUpPage() {
   const router = useRouter();
@@ -14,35 +15,28 @@ function SignUpPage() {
     password: passwordValue,
     passwordRepeat: passwordRepeatValue,
   } = inputValue;
-
-  useEffect(() => {
-    if (localStorage.getItem("accessToken")) {
-      router.push("/folder");
-      console.log("signup by token");
-    }
-  });
+  const { user, login } = useAuth();
 
   const handleSubmitSignin = async (e: FormEvent) => {
     e.preventDefault();
-    const emailCheckResponse = await getEmailCheck(emailValue);
-    if (!emailCheckResponse) {
-      // TODO - 공백으로 두고 엔터를 치면 400 에러가 받아와져서 중복된 이메일입니다 메세지가 떠버림 400에러인지 409에러인지에 따라 다르게 처리하는 로직을 짤 것.
-      setIsDuplicated(true);
-      return;
-    }
+    // const emailCheckResponse = await getEmailCheck(emailValue);
+    // BUG - 이메일 체커 api 왜 안돼??? 고쳐야함..
+    // if (!emailCheckResponse) {
+    // TODO - 공백으로 두고 엔터를 치면 400 에러가 받아와져서 중복된 이메일입니다 메세지가 떠버림 400에러인지 409에러인지에 따라 다르게 처리하는 로직을 짤 것.
+    // setIsDuplicated(true);
+    // return;
+    // }
     setIsDuplicated(false);
     if (passwordValue !== passwordRepeatValue) {
       console.log("blocked");
       return;
     }
-    const signupResponse = await getSignUp(emailValue, passwordValue);
-    if (!signupResponse) {
-      return;
-    } else {
-      localStorage.setItem("accessToken", signupResponse.data.accessToken);
+    try {
+      const { data } = await getSignUp(emailValue, passwordValue);
+      await login(emailValue, passwordValue);
       router.push("/folder");
-      console.log("signup");
-      console.log(signupResponse);
+    } catch {
+      return;
     }
   };
 

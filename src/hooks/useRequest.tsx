@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
 import { AxiosResponse } from "axios";
 
-export default function useAsync(asyncFunction: () => AxiosResponse) {
+export default function useAsync(asyncFunction: () => Promise<AxiosResponse>) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<unknown>(null);
   const [data, setData] = useState({});
