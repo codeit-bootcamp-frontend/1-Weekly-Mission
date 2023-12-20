@@ -7,9 +7,8 @@ import Input from "@/components/input/Input";
 import { useForm, SubmitHandler } from "react-hook-form";
 import google from "@/public/images/google.png";
 import kakao from "@/public/images/kakao.png";
-
 import { useRouter } from "next/router";
-import { FormValues } from "@/components/types/hookFormTypes";
+import { FormValues } from "@/types/hookFormTypes";
 export default function SingInPage() {
   const {
     register,
@@ -53,8 +52,9 @@ export default function SingInPage() {
         router.push("/folder");
       } else {
         const jsonData = await response.json();
+
         const myToken = jsonData.data?.accessToken;
-        localStorage.setItem("myToken", JSON.stringify(myToken));
+        localStorage.setItem("myToken", myToken);
         router.push("/folder");
       }
     } else if (response.status === 400) {
@@ -109,9 +109,9 @@ export default function SingInPage() {
             <Link href="https://www.google.com">
               <Image src={google} alt="google" />
             </Link>
-            <Link href="https://www.kakaocorp.com/page">
-              <Image src="../../public/images/kakao.png" alt="kakao" />
-            </Link>
+            {/* <Link href="https://www.kakaocorp.com/page">
+              <Image src={kakao} alt="kakao" />
+            </Link> */}
           </div>
         </div>
       </form>

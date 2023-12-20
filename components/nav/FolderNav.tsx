@@ -10,14 +10,14 @@ import { UserProfile } from "@/api/folder";
 export default function FolderNav({
   userProfile,
 }: {
-  userProfile: { data: UserProfile[] };
+  userProfile: { data: UserProfile[] } | undefined;
 }) {
   return (
     <div className={styles.container}>
       <Logo />
       <div className={styles.profile__container}>
-        {userProfile.data ? <Person /> : <Login />}
-        {userProfile.data && <Profile data={userProfile.data} />}
+        {userProfile?.data ? <Person /> : <Login />}
+        {userProfile?.data && <Profile data={userProfile.data} />}
       </div>
     </div>
   );

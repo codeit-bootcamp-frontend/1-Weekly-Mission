@@ -1,27 +1,27 @@
 import React, { useContext } from "react";
 import Button from "../button/Button";
 import styles from "./FolderMenuList.module.css";
-import LocaleContext from "../../contexts/LocaleContext";
 import Plus from "@/public/images/plus.svg";
-
 import { useRouter } from "next/router";
+import { FolderMenuListProps } from "@/types/folderMenuListTypes";
 
-export default function FolderMenuList() {
-  const { LinkSDataArr, folderIdKey } = useContext(LocaleContext);
+export default function FolderMenuList({
+  folderMenu,
+  folderId,
+}: {
+  folderMenu: FolderMenuListProps[] | undefined;
+  folderId: string | undefined;
+}) {
   const router = useRouter();
-  // const { id } = router.query;
 
   return (
     <div className={styles.container}>
       <div className={styles.sub__container}>
-        {LinkSDataArr?.map((item) => {
-          const { folderId, folderName } = item;
+        {folderMenu?.map((item) => {
+          const { id, name } = item;
 
           let isActive = false;
-          if (String(folderId) === folderIdKey) {
-            isActive = true;
-          }
-          if (folderId === "" && !folderIdKey) {
+          if (id === Number(folderId)) {
             isActive = true;
           }
 
@@ -29,12 +29,15 @@ export default function FolderMenuList() {
             <Button
               isActive={isActive}
               onClick={() => {
-                router.push(`/folder/${folderId}`);
+                if (id === 0) {
+                  router.push("/folder");
+                  return;
+                }
+                router.push(`/folder/${id}`);
               }}
-              // key={item.folderId}
-              key={folderId}
+              key={id}
             >
-              {folderName}
+              {name}
             </Button>
           );
         })}

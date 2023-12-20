@@ -8,11 +8,7 @@ import { useForm, FormProvider } from "react-hook-form";
 import google from "@/public/images/google.png";
 import kakao from "@/public/images/kakao.png";
 import { useRouter } from "next/router";
-import {
-  FormValues,
-  PASSWORD,
-  FORMVALUEOBJECT,
-} from "@/components/types/hookFormTypes";
+import { FormValues, PASSWORD, FORMVALUEOBJECT } from "@/types/hookFormTypes";
 export default function SingUpPage() {
   const methods = useForm();
   const {
@@ -164,9 +160,9 @@ export default function SingUpPage() {
               <Link href="https://www.google.com">
                 <Image src={google} alt="google" />
               </Link>
-              <Link href="https://www.kakaocorp.com/page">
+              {/* <Link href="https://www.kakaocorp.com/page">
                 <Image src={kakao} alt="kakao" />
-              </Link>
+              </Link> */}
             </div>
           </div>
         </form>
