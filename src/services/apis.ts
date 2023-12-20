@@ -1,22 +1,36 @@
-import api from './utils/api';
+import { Folder, Link, User } from '@/types/Folder.types';
 import { DEFAULT_USER_ID } from './config/default';
-import { Folder, Link, SharedFolder } from '@/types/Folder.types';
+import api from './utils/api';
 
-export const getSharedFolderApi = () =>
-  api<SharedFolder>({
-    url: '/sample/folder',
+export const getSharedFolderInfoApi = (folderId: string) =>
+  api<{ data: Folder[] }>({
+    url: `/folders/${folderId}`,
     method: 'get',
   });
 
-export const getLinksApi = (folderId: string) =>
+export const getSharedLinksApi = (folderId: string) =>
   api<{ data: Link[] }>({
     url: `/users/${DEFAULT_USER_ID}/links`,
     method: 'get',
     params: { folderId },
   });
 
-export const getFoldersApi = () =>
-  api<{ data: Folder[] }>({
-    url: `/users/${DEFAULT_USER_ID}/folders`,
+export const getSharedUserApi = () =>
+  api<{ data: User[] }>({
+    url: `/users/${DEFAULT_USER_ID}`,
     method: 'get',
+  });
+
+export const getFoldersApi = (accessToken: string) =>
+  api<{ data: Folder[] }>({
+    url: `/folders`,
+    method: 'get',
+    headers: { Authorization: `Bearer ${accessToken}` },
+  });
+
+export const getLinksApi = (accessToken: string, folderId: string) =>
+  api<{ data: Link[] }>({
+    url: `/links`,
+    method: 'get',
+    params: { folderId },
   });

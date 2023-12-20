@@ -1,13 +1,17 @@
+import { AxiosBasicCredentials } from 'axios';
 import { defaultInstance } from '../config/default';
 
 export interface axiosOptions {
-  url: string;
-  method: string;
+  url?: string;
+  method?: string;
   params?: {
     [param: string]: string | number | boolean;
   };
   data?: {
     [data: string]: string | number | boolean;
+  };
+  headers?: {
+    Authorization?: string;
   };
 }
 

@@ -15,40 +15,7 @@ export const ERROR_MESSAGES = {
   },
 };
 
-const EMAIL_REGEX =
+export const EMAIL_REGEX =
   /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 
-const PASSWORD_REGEX = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
-
-const validateEmailPattern = (email: string) => {
-  return EMAIL_REGEX.test(email);
-};
-
-const validatePasswordPattern = (password: string) => {
-  return PASSWORD_REGEX.test(password);
-};
-
-export const validateEmail = (value: string) => {
-  if (!value) {
-    return ERROR_MESSAGES.email.emptyInput;
-  } else if (!validateEmailPattern(value)) {
-    return ERROR_MESSAGES.email.invalidInput;
-  }
-  return '';
-};
-
-export const validatePassword = (value: string, page: string) => {
-  if (!value) {
-    return ERROR_MESSAGES.password.emptyInput;
-  } else if (page === '/signup' && !validatePasswordPattern(value)) {
-    return ERROR_MESSAGES.password.invalidInput;
-  }
-  return '';
-};
-
-export const validatePasswordCheck = (value: string, password: string) => {
-  if (value !== password) {
-    return ERROR_MESSAGES.passwordCheck.invalidInput;
-  }
-  return '';
-};
+export const PASSWORD_REGEX = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;

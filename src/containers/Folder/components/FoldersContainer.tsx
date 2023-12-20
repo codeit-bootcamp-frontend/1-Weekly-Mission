@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
+import { DEFAULT_USER_ID } from '@/services/config/default';
+import { Folder } from '@/types/Folder.types';
 import FoldersView from './FoldersView';
 import InfoContainer from './InfoContainer';
-import { Folder } from '@/types/Folder.types';
-import { DEFAULT_USER_ID } from '@/services/config/default';
 
 const DEFAULT_FOLDER = {
   id: 0,
@@ -11,7 +11,7 @@ const DEFAULT_FOLDER = {
 
 interface Props {
   folders: Folder[];
-  initialFolderId: number;
+  initialFolderId?: number;
   setFolderLinks: (nextFolderId: number) => void;
 }
 

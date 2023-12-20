@@ -1,17 +1,17 @@
-import {
-  ChangeEvent,
-  FocusEvent,
-  SyntheticEvent,
-  useEffect,
-  useState,
-} from 'react';
+import { useEffect } from 'react';
+import { FieldErrors, useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import useRequest from '@/hooks/useRequest';
 import Button from '@/components/Button';
+import { InputContainer } from '@/components/Input';
 import Header from './components/Header';
-import InputContainer from './components/InputContainer';
 import Social from './components/Social';
-import { ERROR_MESSAGES, validateEmail, validatePassword } from './validation';
+import { EMAIL_REGEX, ERROR_MESSAGES } from './validation';
+
+interface FormValues {
+  email: string;
+  password: string;
+}
 
 interface Signin {
   data: {
@@ -22,46 +22,36 @@ interface Signin {
 
 function Signin() {
   const router = useRouter();
-  const [emailErrorMessage, setEmailErrorMessage] = useState('');
-  const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const onEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const nextValue = e.target.value;
-    setEmail(nextValue);
-  };
-
-  const onPasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const nextValue = e.target.value;
-    setPassword(nextValue);
-  };
+  const { handleSubmit, control, watch, setError } = useForm<FormValues>({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+    mode: 'onBlur',
+  });
 
   const { fetch: signin } = useRequest<Signin>({
     skip: true,
     options: {
       url: `/sign-in`,
       method: 'post',
-      data: { email, password },
+      data: { email: watch('email'), password: watch('password') },
     },
   });
 
-  const onSignin = async (e: SyntheticEvent) => {
-    e.preventDefault();
-    const newEmailErrorMessage = validateEmail(email);
-    const newPasswordErrorMessage = validatePassword(password, router.pathname);
-    if (newEmailErrorMessage || newPasswordErrorMessage) {
-      setEmailErrorMessage(newEmailErrorMessage);
-      setPasswordErrorMessage(newPasswordErrorMessage);
-      return;
-    }
-
+  const onSignin = async () => {
     const { data, error } = await signin();
 
     if (error) {
-      setEmailErrorMessage(ERROR_MESSAGES.email.invalidLogin);
-      setPasswordErrorMessage(ERROR_MESSAGES.password.invalidLogin);
+      setError('email', {
+        type: 'invalid',
+        message: ERROR_MESSAGES.email.invalidLogin,
+      });
+      setError('password', {
+        type: 'invalid',
+        message: ERROR_MESSAGES.password.invalidLogin,
+      });
       return;
     }
 
@@ -70,14 +60,8 @@ function Signin() {
     router.push('/folder');
   };
 
-  const onEmailBlur = (e: FocusEvent<HTMLInputElement>) => {
-    const errorMessage = validateEmail(e.target.value);
-    setEmailErrorMessage(errorMessage);
-  };
-
-  const onPasswordBlur = (e: FocusEvent<HTMLInputElement>) => {
-    const errorMessage = validatePassword(e.target.value, router.pathname);
-    setPasswordErrorMessage(errorMessage);
+  const onError = (error: FieldErrors) => {
+    console.error(error);
   };
 
   useEffect(() => {
@@ -91,30 +75,37 @@ function Signin() {
       <main className='flex w-[40rem] flex-col items-center justify-center gap-30pxr'>
         <Header />
         <form
-          onSubmit={onSignin}
+          onSubmit={handleSubmit(onSignin, onError)}
           noValidate
           className='flex w-full flex-col gap-18pxr'
         >
-          <InputContainer
-            id='email'
+          <InputContainer<FormValues>
+            control={control}
+            name='email'
             type='email'
             placeholder='codeit@codeit.com'
-            errorMessage={emailErrorMessage}
-            onChange={onEmailChange}
-            onBlur={onEmailBlur}
+            rules={{
+              required: ERROR_MESSAGES.email.emptyInput,
+              pattern: {
+                value: EMAIL_REGEX,
+                message: ERROR_MESSAGES.email.invalidInput,
+              },
+            }}
           >
             이메일
           </InputContainer>
-          <InputContainer
-            id='password'
+          <InputContainer<FormValues>
+            control={control}
+            name='password'
             type='password'
             placeholder='• • • • • • • •'
-            errorMessage={passwordErrorMessage}
-            onChange={onPasswordChange}
-            onBlur={onPasswordBlur}
+            rules={{
+              required: ERROR_MESSAGES.password.emptyInput,
+            }}
           >
             비밀번호
           </InputContainer>
+
           <Button size='lg' type='submit'>
             로그인
           </Button>

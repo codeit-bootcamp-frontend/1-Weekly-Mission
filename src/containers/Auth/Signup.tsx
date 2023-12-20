@@ -1,22 +1,18 @@
-import {
-  ChangeEvent,
-  FocusEvent,
-  SyntheticEvent,
-  useEffect,
-  useState,
-} from 'react';
+import { useEffect } from 'react';
+import { FieldErrors, useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import useRequest from '@/hooks/useRequest';
 import Button from '@/components/Button';
+import { InputContainer } from '@/components/Input';
 import Header from './components/Header';
-import InputContainer from './components/InputContainer';
 import Social from './components/Social';
-import {
-  ERROR_MESSAGES,
-  validateEmail,
-  validatePassword,
-  validatePasswordCheck,
-} from './validation';
+import { EMAIL_REGEX, ERROR_MESSAGES, PASSWORD_REGEX } from './validation';
+
+interface FormValues {
+  email: string;
+  password: string;
+  passwordCheck: string;
+}
 
 interface Signup {
   data: {
@@ -33,36 +29,22 @@ interface CheckEmail {
 
 function Signup() {
   const router = useRouter();
-  const [emailErrorMessage, setEmailErrorMessage] = useState('');
-  const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
-  const [passwordCheckErrorMessage, setPasswordCheckErrorMessage] =
-    useState('');
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordCheck, setPasswordCheck] = useState('');
-
-  const onEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const nextValue = e.target.value;
-    setEmail(nextValue);
-  };
-
-  const onPasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const nextValue = e.target.value;
-    setPassword(nextValue);
-  };
-
-  const onPasswordCheckChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const nextValue = e.target.value;
-    setPasswordCheck(nextValue);
-  };
+  const { handleSubmit, control, watch, setError } = useForm<FormValues>({
+    defaultValues: {
+      email: '',
+      password: '',
+      passwordCheck: '',
+    },
+    mode: 'onBlur',
+  });
 
   const { fetch: checkEmail } = useRequest<CheckEmail>({
     skip: true,
     options: {
       url: `/check-email`,
       method: 'post',
-      data: { email },
+      data: { email: watch('email') },
     },
   });
 
@@ -71,45 +53,28 @@ function Signup() {
     options: {
       url: `/sign-up`,
       method: 'post',
-      data: { email, password },
+      data: { email: watch('email'), password: watch('password') },
     },
   });
 
-  const onSignup = async (e: SyntheticEvent) => {
-    e.preventDefault();
-    const newEmailErrorMessage = validateEmail(email);
-    const newPasswordErrorMessage = validatePassword(password, router.pathname);
-    const newPasswordCheckErrorMessage = validatePasswordCheck(
-      passwordCheck,
-      password,
-    );
-    if (
-      newEmailErrorMessage ||
-      newPasswordErrorMessage ||
-      newPasswordCheckErrorMessage
-    ) {
-      setEmailErrorMessage(newEmailErrorMessage);
-      setPasswordErrorMessage(newPasswordErrorMessage);
-      setPasswordCheckErrorMessage(newPasswordCheckErrorMessage);
+  const checkPasswordMatch = (value: string) => {
+    if (value !== watch('password')) {
+      return ERROR_MESSAGES.passwordCheck.invalidInput;
     }
+    return true;
+  };
 
-    if (!newEmailErrorMessage) {
-      const { error: duplicateEmailError } = await checkEmail();
-      if (duplicateEmailError) {
-        setEmailErrorMessage(ERROR_MESSAGES.email.unavailableEmail);
-        return;
-      }
-    }
-
-    if (
-      newEmailErrorMessage ||
-      newPasswordErrorMessage ||
-      newPasswordCheckErrorMessage
-    )
+  const onSignup = async () => {
+    const { error: duplicateEmailError } = await checkEmail();
+    if (duplicateEmailError) {
+      setError('email', {
+        type: 'unavailable',
+        message: ERROR_MESSAGES.email.unavailableEmail,
+      });
       return;
+    }
 
     const { data, error: signupError } = await signup();
-
     if (signupError) {
       console.error('회원가입에 실패하였습니다.');
       return;
@@ -120,19 +85,8 @@ function Signup() {
     router.push('/folder');
   };
 
-  const onEmailBlur = (e: FocusEvent<HTMLInputElement>) => {
-    const errorMessage = validateEmail(e.target.value);
-    setEmailErrorMessage(errorMessage);
-  };
-
-  const onPasswordBlur = (e: FocusEvent<HTMLInputElement>) => {
-    const errorMessage = validatePassword(e.target.value, router.pathname);
-    setPasswordErrorMessage(errorMessage);
-  };
-
-  const onPasswordCheckBlur = (e: FocusEvent<HTMLInputElement>) => {
-    const errorMessage = validatePasswordCheck(e.target.value, password);
-    setPasswordCheckErrorMessage(errorMessage);
+  const onError = (error: FieldErrors) => {
+    console.error(error);
   };
 
   useEffect(() => {
@@ -146,40 +100,52 @@ function Signup() {
       <main className='flex w-[40rem] flex-col items-center justify-center gap-30pxr'>
         <Header />
         <form
-          onSubmit={onSignup}
+          onSubmit={handleSubmit(onSignup, onError)}
           noValidate
           className='flex w-full flex-col gap-18pxr'
         >
-          <InputContainer
-            id='email'
+          <InputContainer<FormValues>
+            control={control}
+            name='email'
             type='email'
             placeholder='codeit@codeit.com'
-            errorMessage={emailErrorMessage}
-            onChange={onEmailChange}
-            onBlur={onEmailBlur}
+            rules={{
+              required: ERROR_MESSAGES.email.emptyInput,
+              pattern: {
+                value: EMAIL_REGEX,
+                message: ERROR_MESSAGES.email.invalidInput,
+              },
+            }}
           >
             이메일
           </InputContainer>
-          <InputContainer
-            id='password'
+          <InputContainer<FormValues>
+            control={control}
+            name='password'
             type='password'
             placeholder='• • • • • • • •'
-            errorMessage={passwordErrorMessage}
-            onChange={onPasswordChange}
-            onBlur={onPasswordBlur}
+            rules={{
+              required: ERROR_MESSAGES.password.emptyInput,
+              pattern: {
+                value: PASSWORD_REGEX,
+                message: ERROR_MESSAGES.password.invalidInput,
+              },
+            }}
           >
             비밀번호
           </InputContainer>
-          <InputContainer
-            id='password-check'
+          <InputContainer<FormValues>
+            control={control}
+            name='passwordCheck'
             type='password'
             placeholder='• • • • • • • •'
-            errorMessage={passwordCheckErrorMessage}
-            onChange={onPasswordCheckChange}
-            onBlur={onPasswordCheckBlur}
+            rules={{
+              validate: checkPasswordMatch,
+            }}
           >
             비밀번호 확인
           </InputContainer>
+
           <Button size='lg' type='submit'>
             로그인
           </Button>

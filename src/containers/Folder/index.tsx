@@ -1,36 +1,28 @@
-import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/router';
-import { DEFAULT_USER_ID, DEFAULT_FOLDER_ID } from '@/services/config/default';
+import { useEffect, useRef, useState } from 'react';
 import filterLinks from '@/utils/filterLinks';
+import { DEFAULT_FOLDER_ID, DEFAULT_USER_ID } from '@/services/config/default';
+import { Folder as IFolder, Link } from '@/types/Folder.types';
 import Layout from '@/components/Layout';
 import SearchBar from '@/components/SearchBar';
 import CardsContainer from '@/components/cards/CardsContainer';
 import AddLinkContainer from './components/AddLinkContainer';
 import FoldersContainer from './components/FoldersContainer';
-import { Link, Folder } from '@/types/Folder.types';
 
 interface Props {
   links: Link[];
-  folders: Folder[];
+  folders: IFolder[];
+  folderId?: number;
 }
 
-function Folder({ links, folders }: Props) {
+function Folder({ links, folders, folderId }: Props) {
   const router = useRouter();
-  const initialFolderId = Array.isArray(router.query.folderId)
-    ? router.query.folderId[0]
-    : router.query.folderId;
 
   const setFolderLinks = (nextFolderId: number) => {
     if (nextFolderId === DEFAULT_FOLDER_ID) {
-      router.push({
-        pathname: router.pathname,
-        query: {},
-      });
+      router.push('/folder');
     } else {
-      router.push({
-        pathname: router.pathname,
-        query: { folderId: String(nextFolderId) },
-      });
+      router.push(`/folder/${nextFolderId}`);
     }
   };
 
@@ -95,7 +87,7 @@ function Folder({ links, folders }: Props) {
 
         <FoldersContainer
           folders={folders}
-          initialFolderId={Number(initialFolderId)}
+          initialFolderId={folderId}
           setFolderLinks={setFolderLinks}
         />
         <CardsContainer cards={filteredLinks} userId={DEFAULT_USER_ID} />

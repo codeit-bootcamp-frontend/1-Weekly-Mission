@@ -11,20 +11,6 @@ export interface Link {
   updated_at?: string | null;
 }
 
-export interface SharedFolder {
-  folder: {
-    id: number;
-    name: string;
-    count: number;
-    links: Link[];
-    owner: {
-      id: number;
-      name: string;
-      profileImageSource: string;
-    };
-  };
-}
-
 export interface Folder {
   id: number;
   name: string;
@@ -33,4 +19,13 @@ export interface Folder {
   link?: {
     count: number;
   };
+}
+
+export interface User {
+  auth_id: string;
+  created_at: string;
+  email: string;
+  id: number;
+  image_source: string;
+  name: string;
 }

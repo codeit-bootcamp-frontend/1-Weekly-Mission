@@ -14,7 +14,7 @@ function useRequest<T>({ deps = [], skip = false, options }: Props) {
   const [error, setError] = useState<unknown>(null);
 
   const refetch = useCallback(
-    async (...args: string[]) => {
+    async (args?: axiosOptions) => {
       setIsLoading(true);
       setError(null);
 
@@ -29,7 +29,7 @@ function useRequest<T>({ deps = [], skip = false, options }: Props) {
         setIsLoading(false);
       }
     },
-    [options]
+    [options],
   );
 
   useEffect(() => {

@@ -1,15 +1,14 @@
 import { useRouter } from 'next/router';
-import { DEFAULT_USER_ID } from '@/services/config/default';
 import filterLinks from '@/utils/filterLinks';
+import { DEFAULT_USER_ID } from '@/services/config/default';
+import { SharedPageProps } from '@/pages/shared/[folderId]';
 import SearchBar from '@/components/SearchBar';
 import CardList from '@/components/cards/CardsContainer';
 import Banner from './Banner';
-import { SharedFolder } from '@/types/Folder.types';
 
-function Folder({ folder }: SharedFolder) {
-  const name = folder?.name;
-  const owner = folder?.owner;
-  const links = folder?.links;
+function Folder({ links, folderInfo, userInfo }: SharedPageProps) {
+  const name = folderInfo[0].name;
+  const owner = userInfo[0];
 
   const router = useRouter();
   const initialKeyword = Array.isArray(router.query.keyword)
