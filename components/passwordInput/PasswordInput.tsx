@@ -16,8 +16,6 @@ function PasswordInput({
   placeholder,
   hasError = false,
   helperText,
-  onChange,
-  onBlur,
   hasEyeIcon = false,
   inputName,
   rules,
@@ -35,8 +33,6 @@ function PasswordInput({
         <Input
           placeholder={placeholder}
           value={value}
-          onChange={onChange}
-          onBlur={onBlur}
           type={inputType}
           inputName={inputName}
           rules={rules}

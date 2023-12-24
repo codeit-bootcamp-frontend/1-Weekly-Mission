@@ -1,36 +1,31 @@
 import styles from "./folderPage.module.css";
 import { KeyboardEvent, useEffect, useRef, useState } from "react";
-import { getUserLinks } from "../../api/folder";
-import { BASE_URL, USERS_ENDPOINT } from "../../api/services/config";
+import {
+  FOLDER_ENDPOINT,
+  LINKS_ENDPOINT,
+  instance,
+} from "../../../api/services/config";
 import { FolderName, LinkInfo } from "@/types/types";
-import { ALL_LINK_NAME, OPTION_ICONS } from "../../constants/folderConstant";
-import AddLinkInput from "../../components/addLinkInput/AddLinkInput";
+import { ALL_LINK_NAME, OPTION_ICONS } from "../../../constants/folderConstant";
+import AddLinkInput from "../../../components/addLinkInput/AddLinkInput";
 import SearchBar from "@/components/searchBar/SearchBar";
 import Card from "@/components/card/Card";
-import EmptyPage from "../../components/emptyPage/EmptyPage";
-import OptionButton from "../../components/optionButton/OptionButton";
+import EmptyPage from "../../../components/emptyPage/EmptyPage";
+import OptionButton from "../../../components/optionButton/OptionButton";
 import FloatingButton from "@/components/floatingButton/FloatingButton";
-import SortButton from "../../components/sortButton/SortButton";
+import SortButton from "../../../components/sortButton/SortButton";
 import addIcon from "@/public/icons/add.svg";
 import addPrimaryIcon from "@/public/icons/addPrimaryColor.svg";
 import useModal from "@/hooks/useModal";
 import Image from "next/image";
-import axios from "axios";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import { getAccessToken } from "@/utils/localStorage";
+import { useRouter } from "next/router";
+import useUserStore from "@/hooks/useStore";
 
-export async function getStaticProps() {
-  const res = await axios.get(`${BASE_URL}${USERS_ENDPOINT}/1/folders`);
-  const folders: FolderName[] = res.data.data;
-
-  return {
-    props: {
-      folders,
-    },
-  };
-}
-
-function FolderPage({ folders }: { folders: FolderName[] }) {
+function FolderPage() {
   const [links, setLinks] = useState<LinkInfo[]>([]);
+  const [folders, setFolders] = useState<FolderName[]>([]);
   const [folderId, setFolderId] = useState<string | number>(ALL_LINK_NAME);
   const [filteredLinks, setFilteredLinks] = useState<LinkInfo[]>([]);
   const [keyword, setKeyword] = useState("");
@@ -41,22 +36,58 @@ function FolderPage({ folders }: { folders: FolderName[] }) {
   const { ref: headerRef, isIntersecting: isHeaderIntersecting } =
     useIntersectionObserver<HTMLDivElement>();
   const showFixedAddLinkInput = !isIntersecting && !isHeaderIntersecting;
+  const router = useRouter();
+  const { user } = useUserStore();
+  console.log(user);
+
+  const getFolderNames = async () => {
+    const token = localStorage.getItem("accessToken");
+    try {
+      const res = await instance.get(`${FOLDER_ENDPOINT}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setFolders(res?.data.data.folder);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getFolderNames();
+  }, []);
+
+  useEffect(() => {
+    if (!getAccessToken()) {
+      router.push("/signin");
+    }
+  }, []);
 
   const folderName =
     folderId === ALL_LINK_NAME
       ? ALL_LINK_NAME
       : folders?.find(({ id }) => id === folderId)?.name;
 
-  const fetchUserLinks = async (id: string | number) => {
-    const result = await getUserLinks(id);
-    const { data } = result;
-    setLinks(data);
-    setFilteredLinks(data);
+  const getUserLinks = async (folderId: string | number) => {
+    const query = folderId === "전체" ? "" : `?folderId=${folderId}`;
+    try {
+      const res = await instance.get(`${LINKS_ENDPOINT}${query}`, {
+        headers: {
+          Authorization: `Bearer ${getAccessToken()}`,
+        },
+      });
+      const nextLinks = res?.data.data.folder;
+      setLinks(nextLinks);
+      setFilteredLinks(nextLinks);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
     if (!folderId) return;
-    fetchUserLinks(folderId);
+    getUserLinks(folderId);
   }, [folderId]);
 
   const handleCloseButtonClick = () => {
@@ -88,12 +119,11 @@ function FolderPage({ folders }: { folders: FolderName[] }) {
   };
   useEffect(() => {
     if (!keyword) {
-      fetchUserLinks(folderId);
+      getUserLinks(folderId);
       setIsResultEmpty(false);
       return;
     }
     filterByKeyword();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keyword]);
 
   return (

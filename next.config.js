@@ -47,6 +47,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "static.cdninstagram.com",
       },
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+      },
     ],
   },
 };

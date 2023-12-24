@@ -5,8 +5,8 @@ import styles from "./SignupForm.module.css";
 import Button from "../button/Button";
 import { SIGNUP_ENDPOINT, instance } from "@/api/services/config";
 import { useRouter } from "next/router";
-import { loadAccessToken } from "@/utils/localStorage";
-import { emailPattern, passwordPattern } from "@/constants/authConstant";
+import { setAccessToken } from "@/utils/localStorage";
+import { EMAIL_PATTERN, PASSWORD_PATTERN } from "@/constants/authConstant";
 
 export interface FormValues {
   email: string;
@@ -24,13 +24,17 @@ export function SignupForm() {
   } = useForm<FormValues>({ mode: "onBlur" });
 
   const onSubmit = handleSubmit(async (data: FormValues) => {
-    const res = await instance.post(`${SIGNUP_ENDPOINT}`, {
-      email: data.email,
-      password: data.password,
-    });
-    const accessToken = res.data.data.accessToken;
-    loadAccessToken(accessToken);
-    res.status === 200 && router.push("/folder");
+    try {
+      const res = await instance.post(`${SIGNUP_ENDPOINT}`, {
+        email: data.email,
+        password: data.password,
+      });
+      const accessToken = res?.data.data.accessToken;
+      setAccessToken(accessToken);
+      res.status === 200 && router.push("/folder");
+    } catch (error) {
+      console.error(error);
+    }
   });
 
   const { password } = getValues();
@@ -49,7 +53,7 @@ export function SignupForm() {
             inputName="email"
             rules={{
               required: "이메일을 입력해주세요.",
-              pattern: emailPattern,
+              pattern: EMAIL_PATTERN,
             }}
             hasError
             helperText={errors.email?.message}
@@ -67,7 +71,7 @@ export function SignupForm() {
             helperText={errors.password?.message}
             rules={{
               required: "비밀번호를 입력해주세요.",
-              pattern: passwordPattern,
+              pattern: PASSWORD_PATTERN,
             }}
             register={register}
           />
