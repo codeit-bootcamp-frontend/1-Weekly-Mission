@@ -1,5 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import useSWR from "swr";
+import { useRouter } from "next/router";
 import * as S from "./ShareContainerStyles";
 
 import Layout from "@/components/layout/Layout";
@@ -8,22 +9,30 @@ import Searchbar from "@/components/inputs/Searchbar";
 import Hero from "@/components/hero/Hero";
 import Loading from "@/components/Loading";
 
-import { Owner } from "@/types/user";
-import { SampleFolderData, SampleLinkData } from "@/types/folder";
+import { LinkData, SharedFolderData } from "@/types/folder";
 
 export default function Share() {
-  const [folder, setFolder] = useState("");
-  const [profile, setProfile] = useState<Owner>({ id: 0, name: "", profileImageSource: "" });
-  const [links, setLinks] = useState<SampleLinkData[]>([]);
-  const [filteredLinks, setFilteredLinks] = useState<SampleLinkData[]>([]);
+  const router = useRouter();
+  const folderId = router.query.id;
+
+  const [links, setLinks] = useState<LinkData[]>([]);
+  const [filteredLinks, setFilteredLinks] = useState<LinkData[]>([]);
   const [keyword, setKeyword] = useState("");
 
-  const { data, isLoading, error } = useSWR<SampleFolderData>("/api/sample/folder");
+  const { data, isLoading, error } = useSWR<{ data: SharedFolderData[] }>(
+    `/api/folders/${folderId}`,
+  );
+  const { data: linksData } = useSWR<{ data: LinkData[] }>(
+    `/api/users/${data?.data[0].user_id}/links?folderId=${folderId}`,
+  );
 
+  /** @TODO 검색바 관련 로직 분리해보기(folder에서도 사용하므로) */
   const handleOnChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
-    setKeyword(e.target.value);
-    const searchedLinks = checkMatchedAllLinks(e.target.value, links);
-    setFilteredLinks(searchedLinks.length !== 0 ? searchedLinks : []);
+    if (linksData?.data) {
+      setKeyword(e.target.value);
+      const searchedLinks = checkMatchedAllLinks(e.target.value, linksData?.data);
+      setFilteredLinks(searchedLinks.length !== 0 ? searchedLinks : []);
+    }
   };
 
   const handleDeletekeyword = () => {
@@ -31,7 +40,7 @@ export default function Share() {
     setFilteredLinks(links);
   };
 
-  const checkMatchedAllLinks = (keyword: string, links: SampleLinkData[]) => {
+  const checkMatchedAllLinks = (keyword: string, links: LinkData[]) => {
     const filteredLinks = links.filter((link) => {
       return (
         (link.title && link.title.includes(keyword)) ||
@@ -43,15 +52,11 @@ export default function Share() {
   };
 
   useEffect(() => {
-    if (data) {
-      const { name: folderName, owner, links } = data.folder;
-
-      setFolder(folderName);
-      setProfile(owner);
-      setLinks(links);
-      setFilteredLinks(links);
+    if (linksData) {
+      setLinks(linksData.data);
+      setFilteredLinks(linksData.data);
     }
-  }, [data]);
+  }, [linksData]);
 
   if (error) console.log(error);
 
@@ -61,9 +66,7 @@ export default function Share() {
         <Loading />
       ) : (
         <Layout>
-          <S.HeroContainer>
-            <Hero folder={folder} profile={profile} />
-          </S.HeroContainer>
+          <S.HeroContainer>{data && <Hero folder={data?.data[0]} />}</S.HeroContainer>
           <section>
             <S.Contents>
               <Searchbar

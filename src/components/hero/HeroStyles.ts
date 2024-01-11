@@ -2,8 +2,17 @@ import styled from "styled-components";
 import { breakPoints } from "@/common/media";
 import LinkIcon from "public/assets/link.svg";
 
+export const HeroContainer = styled.div`
+  margin-top: 4.2rem;
+  padding-bottom: 3.75rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const Profile = styled.div`
-  padding-top: 5.5rem;
   margin: 0;
   text-align: center;
 
@@ -33,7 +42,6 @@ export const Name = styled.p`
 `;
 
 export const Title = styled.h2`
-  padding-bottom: 3.75rem;
   font-size: 2.5rem;
   font-weight: var(--font-semibold);
   margin: 0 auto;

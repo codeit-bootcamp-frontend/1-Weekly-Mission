@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { breakPoints } from "@/common/media";
 
 export const HeroContainer = styled.section`
+  height: 15.25rem;
   text-align: center;
   background-color: var(--color-primary-varient);
 `;
