@@ -65,7 +65,6 @@ export interface User {
   name: string;
   image_source: string;
   email: string;
-  auth_id: string;
 }
 
 export interface Folder {

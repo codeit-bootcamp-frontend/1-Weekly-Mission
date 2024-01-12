@@ -7,21 +7,21 @@ import Image from "next/image";
 interface ShareCardProps {
   linkInfo: {
     id: number;
-    createdAt: string;
+    created_at: string;
     url: string;
     title: string;
     description: string;
-    imageSource: string;
+    image_source: string;
   };
 }
 
 function ShareCard({ linkInfo }: ShareCardProps) {
-  const createdAt = new Date(linkInfo?.createdAt);
-  const formattedTime = calcCreateTime(createdAt);
+  const created_at = new Date(linkInfo?.created_at);
+  const formattedTime = calcCreateTime(created_at);
 
-  const year = createdAt.getFullYear();
-  const month = createdAt.getMonth() + 1;
-  const date = createdAt.getDate();
+  const year = created_at.getFullYear();
+  const month = created_at.getMonth() + 1;
+  const date = created_at.getDate();
 
   return (
     <div className={styles.card}>
@@ -33,14 +33,14 @@ function ShareCard({ linkInfo }: ShareCardProps) {
       >
         <div
           className={
-            linkInfo?.imageSource
+            linkInfo?.image_source
               ? styles.cardImgSection
               : styles.cardImgSectionEmpty
           }
         >
-          {linkInfo?.imageSource ? (
+          {linkInfo?.image_source ? (
             <Image
-              src={linkInfo?.imageSource}
+              src={linkInfo?.image_source}
               className={styles.linkImg}
               alt="cat"
               fill

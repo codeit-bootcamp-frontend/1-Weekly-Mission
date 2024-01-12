@@ -30,7 +30,7 @@ export function SignupForm() {
       email: watch("email"),
       password: watch("password"),
     });
-    const accessToken = res?.data.data.accessToken;
+    const accessToken = res?.data.accessToken;
     setAccessToken(accessToken);
     res.status === 200 && router.push("/folder");
   };

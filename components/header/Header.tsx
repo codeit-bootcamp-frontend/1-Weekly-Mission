@@ -1,15 +1,14 @@
 import styles from "./header.module.css";
 import Image from "next/image";
-import useUserStore from "@/hooks/useStore";
+import { User } from "@/types/types";
 
 interface HeaderProps {
   folderName: string;
+  user: User[];
 }
 
-export default function Header({ folderName }: HeaderProps) {
-  const { user } = useUserStore();
-  const name = user[0]?.name;
-
+export default function Header({ folderName, user }: HeaderProps) {
+  const name = user?.length > 0 ? user[0].name : "";
   return (
     <header className={styles.header}>
       <div className={styles.userInfoBox}>
@@ -23,7 +22,6 @@ export default function Header({ folderName }: HeaderProps) {
             height={24}
           />
         ))}
-
         <span className={styles.userName}>{name}</span>
       </div>
       <span className={styles.folderName}>{folderName}</span>

@@ -22,7 +22,7 @@ import {
   setRefreshToken,
 } from "@/utils/localStorage";
 import useUserStore from "@/hooks/useStore";
-import { QueryClient, useMutation } from "@tanstack/react-query";
+import { QueryClient, useMutation, useQuery } from "@tanstack/react-query";
 
 export interface FormValues {
   email: string;
@@ -50,7 +50,7 @@ export function SigninForm() {
           Authorization: `Bearer ${getAccessToken()}`,
         },
       });
-      const nextUser = res?.data.data;
+      const nextUser = res?.data;
       setUser(nextUser);
     } catch (error) {
       console.error(error);
@@ -66,6 +66,7 @@ export function SigninForm() {
     const refreshToken = res?.data.refreshToken;
     setAccessToken(accessToken);
     setRefreshToken(refreshToken);
+    await getUser();
     if (res.status === 200) {
       router.push("/folder");
     }
@@ -78,8 +79,6 @@ export function SigninForm() {
   const onSubmit = handleSubmit(async (data: FormValues) => {
     try {
       signinMutation.mutate();
-      console.log("mutation test");
-      // await getUser();
     } catch (error) {
       if (axios.isAxiosError(error) && error.response?.status === 400) {
         setError("email", { message: CHECK_EMAIL_TEXT });
