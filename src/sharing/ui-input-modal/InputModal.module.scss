@@ -1,0 +1,23 @@
+@import "@/styles/global.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  row-gap: 1.5rem;
+}
+
+.button {
+  width: 28rem;
+  height: 5.1rem;
+  font-size: 1.6rem;
+  color: $color-gray-light;
+}

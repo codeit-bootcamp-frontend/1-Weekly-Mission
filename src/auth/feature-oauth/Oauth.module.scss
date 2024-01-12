@@ -1,0 +1,24 @@
+@import "@/styles/global.scss";
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 6.6rem;
+  margin-top: 0.2rem;
+  padding: 0 2.4rem;
+  border-radius: 0.8rem;
+  border: 0.1rem solid $color-gray20;
+  background-color: $color-gray10;
+}
+
+.description {
+  font-size: 1.4rem;
+  color: $color-gray100;
+}
+
+.links {
+  display: flex;
+  column-gap: 1.6rem;
+}
