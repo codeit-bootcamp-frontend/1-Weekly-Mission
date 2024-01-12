@@ -48,6 +48,25 @@ export default function OptionButton({
     }
   };
 
+  const deleteFolder = async (folderId: number | string) => {
+    try {
+      instance.delete(`/folders/${folderId}`, {
+        headers: {
+          Authorization: `Bearer ${getAccessToken()}`,
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const deleteFolderMutation = useMutation({
+    mutationFn: () => deleteFolder(folderId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.FOLDER_NAMES] });
+    },
+  });
+
   const putFolderNameMutation = useMutation({
     mutationFn: () => putFolderName(folderId),
     onSuccess: () => {
@@ -82,7 +101,12 @@ export default function OptionButton({
         <Dialog isModalOpen={isModalOpen} onClick={close}>
           <Dialog.Title>폴더 삭제</Dialog.Title>
           <Dialog.Link>{folderName}</Dialog.Link>
-          <Dialog.Button isAddButton={false}>삭제하기</Dialog.Button>
+          <Dialog.Button
+            isAddButton={false}
+            onClick={() => deleteFolderMutation.mutate()}
+          >
+            삭제하기
+          </Dialog.Button>
         </Dialog>
       ) : null}
       <Image src={iconSrc} alt={alt} role="none" width={18} height={18} />
