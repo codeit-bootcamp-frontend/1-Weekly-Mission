@@ -1,5 +1,5 @@
 import styles from "./folderPage.module.css";
-import { KeyboardEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import { instance } from "../../../api/services/config";
 import { FolderName, LinkInfo } from "@/types/types";
 import { ALL_LINK_NAME, OPTION_ICONS } from "../../../constants/folderConstant";
@@ -17,13 +17,14 @@ import Image from "next/image";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import { getAccessToken } from "@/utils/localStorage";
 import { useRouter } from "next/router";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { QUERY_KEYS } from "@/constants/queryKeys";
 
 function FolderPage() {
   const [folderId, setFolderId] = useState<string | number>(ALL_LINK_NAME);
   const [filteredLinks, setFilteredLinks] = useState<LinkInfo[]>([]);
   const [keyword, setKeyword] = useState("");
+  const [addFolderName, setAddFolderName] = useState("");
   const { open, close, isModalOpen, Dialog } = useModal();
   const inputRef = useRef<HTMLInputElement>(null);
   const [isResultEmpty, setIsResultEmpty] = useState(false);
@@ -32,6 +33,7 @@ function FolderPage() {
     useIntersectionObserver<HTMLDivElement>();
   const showFixedAddLinkInput = !isIntersecting && !isHeaderIntersecting;
   const router = useRouter();
+  const queryClient = useQueryClient();
 
   const getFolderNames = async () => {
     const token = localStorage.getItem("accessToken");
@@ -140,6 +142,30 @@ function FolderPage() {
     filterByKeyword();
   }, [keyword, folderId]);
 
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setAddFolderName(e.target.value);
+  };
+
+  const addFolder = async () => {
+    instance.post(
+      `/folders`,
+      {
+        name: addFolderName,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${getAccessToken()}`,
+        },
+      }
+    );
+  };
+
+  const addFolderMutation = useMutation({
+    mutationFn: () => addFolder(),
+    onSuccess: () =>
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.FOLDER_NAMES] }),
+  });
+
   return (
     <div className={styles.folderContainer}>
       <header className={styles.folderHeader}>
@@ -186,8 +212,13 @@ function FolderPage() {
             </button>
             <Dialog onClick={close} isModalOpen={isModalOpen}>
               <Dialog.Title>폴더 추가</Dialog.Title>
-              <Dialog.Input value="" />
-              <Dialog.Button isAddButton>추가하기</Dialog.Button>
+              <Dialog.Input value="" onChange={handleChange} />
+              <Dialog.Button
+                isAddButton
+                onClick={() => addFolderMutation.mutate()}
+              >
+                추가하기
+              </Dialog.Button>
             </Dialog>
           </div>
           <div className={styles.folderCategoryContainer}>

@@ -3,7 +3,7 @@ import styles from "./optionButton.module.css";
 import useModal from "@/hooks/useModal";
 import { instance } from "@/api/services/config";
 import { ChangeEvent, useState } from "react";
-import { QueryClient, useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { getAccessToken } from "@/utils/localStorage";
 import { QUERY_KEYS } from "@/constants/queryKeys";
 
@@ -24,7 +24,7 @@ export default function OptionButton({
 }: OptionButtonProps) {
   const { open, close, Dialog, isModalOpen } = useModal();
   const [newName, setNewName] = useState("");
-  const queryClient = new QueryClient();
+  const queryClient = useQueryClient();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setNewName(e.target.value);
