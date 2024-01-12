@@ -41,7 +41,7 @@ const AddLinkInput = forwardRef<HTMLDivElement, AddLinkInputProps>(
           <Dialog onClick={close} isModalOpen={isModalOpen}>
             <Dialog.Title>폴더에 추가</Dialog.Title>
             <Dialog.Link>{url}</Dialog.Link>
-            {folders.map((folder) => (
+            {folders?.map((folder) => (
               <Dialog.FolderList key={folder.id}>
                 <span className="dialog-folder-name">{folder.name}</span>
                 <span className="dialog-folder-count">개 링크</span>

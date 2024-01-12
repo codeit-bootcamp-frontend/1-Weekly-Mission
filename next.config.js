@@ -55,6 +55,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "legacy.reactjs.org",
       },
+      {
+        protocol: "https",
+        hostname: "www.youtube.com",
+      },
+      {
+        protocol: "https",
+        hostname: "i.ytimg.com",
+      },
     ],
   },
 };

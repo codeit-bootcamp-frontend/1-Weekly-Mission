@@ -6,6 +6,7 @@ import { USERS_ENDPOINT, instance } from "../../../api/services/config";
 import { useRouter } from "next/router";
 import { useQuery } from "@tanstack/react-query";
 import { getAccessToken } from "@/utils/localStorage";
+import { QUERY_KEYS } from "@/constants/queryKeys";
 
 export default function SharedPage() {
   const router = useRouter();
@@ -25,7 +26,7 @@ export default function SharedPage() {
     }
   };
   const currentUser = useQuery({
-    queryKey: ["currentUser"],
+    queryKey: [QUERY_KEYS.CURRENT_USER],
     queryFn: getCurrentUser,
   });
   const userId = currentUser.data?.length > 0 ? currentUser?.data[0]?.id : "";
@@ -37,7 +38,7 @@ export default function SharedPage() {
   };
 
   const folderData = useQuery({
-    queryKey: ["folders", folderId],
+    queryKey: [QUERY_KEYS.FOLDERS, folderId],
     queryFn: getFolders,
   });
   const folders = folderData.data;
@@ -50,7 +51,7 @@ export default function SharedPage() {
   };
 
   const linksData = useQuery({
-    queryKey: ["links", folderId],
+    queryKey: [QUERY_KEYS.LINKS, folderId],
     queryFn: () => getLinks(folderId),
   });
   const links = linksData.data;
@@ -62,7 +63,7 @@ export default function SharedPage() {
   };
 
   const user = useQuery({
-    queryKey: ["user", userId],
+    queryKey: [QUERY_KEYS.USER, userId],
     queryFn: getUser,
   });
 
