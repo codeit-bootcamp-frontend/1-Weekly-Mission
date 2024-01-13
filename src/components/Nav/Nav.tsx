@@ -8,13 +8,28 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./Nav.module.scss";
-
-const user = null;
+// import { useUserInfoStore } from "@/store/UserInfo";
+import getUser from "@/api/getUser";
+import { useQuery } from "@tanstack/react-query";
+import { getCookie } from "@/utils/manageCookie";
+import { UserType } from "@/types/UserType";
 
 function Nav({ isSticky }: { isSticky?: boolean }) {
   let navClassName = isSticky
     ? { className: `${styles["sticky"]} ${styles["nav"]}` }
     : { className: `${styles["nav"]}` };
+
+  const accessToken = getCookie("accessToken");
+
+  const { data: user } = useQuery<UserType>({
+    queryKey: ["user"],
+    queryFn: () => getUser(),
+    enabled: !!accessToken,
+  });
+  // BUG - 주스탄드로 전역 관리하려 했는데 무한렌더링이 발생합니다 왜일까요ㅠ???ㅠㅠ
+  // const { userInfo, addUser, deleteUser } = useUserInfoStore((state) => state);
+  // addUser(data?.data[0]);
+  // console.log(userInfo);
 
   return (
     <nav {...navClassName}>
@@ -37,7 +52,6 @@ function Nav({ isSticky }: { isSticky?: boolean }) {
               height={20}
             />
             <span>{user?.email}</span>
-            <button>로그아웃</button>
           </div>
         ) : (
           <button
