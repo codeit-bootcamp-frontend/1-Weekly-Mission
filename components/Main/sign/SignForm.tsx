@@ -37,9 +37,9 @@ const postSignData = async (obj: EventTarget, signin: boolean, router: NextRoute
     const email = postData.get("email");
     const password = postData.get("password");
 
-    const url = signin ? "/api/sign-in" : "/api/sign-up";
+    const url = signin ? "/auth/sign-in" : "/auth/sign-up";
     const res = await axios.post(url, { email, password });
-    const { accessToken, refreshToken } = res.data.data;
+    const { accessToken, refreshToken } = res.data;
     document.cookie = `accessToken=${accessToken}`;
     document.cookie = `refreshToken=${refreshToken}`;
 

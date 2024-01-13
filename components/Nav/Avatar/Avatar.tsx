@@ -1,17 +1,8 @@
 import Profile from "@/components/Nav/Avatar/Profile";
-import { PATHS } from "@/constants/path";
-import useData from "@/hooks/useData";
-import { useRouter } from "next/router";
+import axiosInstance from "@/lib/axios";
+import { getCookie } from "@/utils/getCookie";
+import { useQuery } from "@tanstack/react-query";
 
-interface AvatarProps {
-  id?: number;
-}
-
-export default function Avatar({ id }: AvatarProps) {
-  const router = useRouter();
-  const pathname = router.pathname;
-  const type = pathname === "/shared" ? PATHS.SHARED_USER : PATHS.FOLDER_USER;
-  const userData = useData(type, id);
-
-  return <Profile {...userData} />;
+export default function Avatar() {
+  return <Profile />;
 }

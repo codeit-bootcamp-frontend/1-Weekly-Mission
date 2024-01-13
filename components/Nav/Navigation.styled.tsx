@@ -10,7 +10,7 @@ export const Background = styled.div`
 `;
 
 interface Inav {
-  $page: string;
+  $page: boolean;
 }
 
 export const Nav = styled.nav<Inav>`
@@ -18,9 +18,9 @@ export const Nav = styled.nav<Inav>`
   grid-template-columns: 1fr 1fr;
   grid-template-areas: "logo sign";
   align-items: center;
-  position: ${({ $page }) => ($page === "folder" ? `relative` : `sticky`)};
+  position: ${({ $page }) => ($page ? `relative` : `sticky`)};
   top: 0;
-  z-index: ${({ $page }) => ($page === "folder" ? `0` : `2`)};
+  z-index: ${({ $page }) => ($page ? `0` : `2`)};
   background-color: var(--Gray1-80);
   padding: 1.6rem 3.2rem;
   height: 9rem;

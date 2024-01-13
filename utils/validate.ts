@@ -1,4 +1,5 @@
 import axios from "@/lib/axios";
+import { AxiosError } from "axios";
 
 interface Obj {
   type: "email" | "password" | "passwordCheck";
@@ -36,10 +37,13 @@ const isReg = (obj: Obj) => {
 const isSameEmail = async (obj: Obj) => {
   if (obj.type === "email") {
     try {
-      const res = await axios.post("/api/check-email", { email: obj.value });
+      const res = await axios.post("/users/check-email", { email: obj.value });
       return obj;
-    } catch {
-      return TEXT.repete;
+    } catch (e) {
+      console.log(e);
+      if (e instanceof AxiosError) {
+        return e.response?.data.message;
+      }
     }
   }
   return obj;

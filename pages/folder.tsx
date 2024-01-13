@@ -3,29 +3,40 @@ import HeaderSearch from "@/components/Header/HeaderInput";
 import LinkSection from "@/components/Main/LinkSection";
 import Main from "@/components/Main/Main";
 import Navigation from "@/components/Nav/Navigation";
-import { useGetUserId } from "@/hooks/useGetUserId";
 import useObserver from "@/hooks/useObserver";
+import axiosInstance from "@/lib/axios";
 import { getServerCookie } from "@/utils/getCookie";
+import { QueryClient, dehydrate } from "@tanstack/react-query";
 import { GetServerSideProps } from "next";
-import axios from "@/lib/axios";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const accessToken = getServerCookie(context, "accessToken");
-  const res = await axios.get("/api/users", { headers: { Authorization: accessToken } });
-  const { id } = res.data.data[0];
+
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery({
+    queryKey: ["userId"],
+    queryFn: async () => {
+      const res = await axiosInstance.get("/users", { headers: { Authorization: accessToken } });
+      return res.data[0];
+    },
+  });
+
   return {
-    props: { id },
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
   };
 };
 
-export default function FolderPage({ id }: { id: number }) {
+export default function FolderPage() {
   const { setRefForObserver } = useObserver();
   return (
     <>
-      <Navigation id={id} $page="folder" />
-      <HeaderSearch id={id} setRefForObserver={setRefForObserver} />
+      <Navigation />
+      <HeaderSearch setRefForObserver={setRefForObserver} />
       <Main>
-        <LinkSection id={id} />
+        <LinkSection />
       </Main>
       <Footer setRefForObserver={setRefForObserver} />
     </>
