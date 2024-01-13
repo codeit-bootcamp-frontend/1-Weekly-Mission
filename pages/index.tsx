@@ -8,8 +8,10 @@ export default function Home() {
     <>
       <header className={styles.header}>
         <div className={clsx(styles.starter, styles.flex_center)}>
-          <Link className={clsx(styles.logo, styles.flex_center)} href="/">
-            <img src="images/landing/logo.png" alt="Logo" />
+          <Link href="/">
+            <div className={clsx(styles.logo_wrapper, styles.logo)}>
+              <Image fill src="/images/landing/logo.png" alt="Logo" />
+            </div>
           </Link>
           <Link
             className={clsx(styles.login, styles.flex_center)}
@@ -40,11 +42,9 @@ export default function Home() {
           >
             링크 추가하기
           </Link>
-          <img
-            className={styles.intro_img}
-            src="images/landing/img1.png"
-            alt="Intro"
-          />
+          <div className={styles.intro_img}>
+            <Image src="/images/landing/img1.png" fill alt="Intro" />
+          </div>
         </div>
 
         <div
@@ -65,21 +65,17 @@ export default function Home() {
               싶은 모든 것을 한 공간에 저장하세요.
             </div>
 
-            <img
-              className={styles.content_img}
-              src="/images/landing/img2.png"
-              alt="Content"
-            />
+            <div className={styles.content_img}>
+              <Image fill src="/images/landing/img2.png" alt="Content" />
+            </div>
           </div>
         </div>
 
         <div className={clsx(styles.content, styles.flex_center)}>
           <div className={styles.frame}>
-            <img
-              className={clsx(styles.content_img, styles.reloc_img)}
-              src="images/landing/img3.png"
-              alt="Content"
-            />
+            <div className={clsx(styles.content_img, styles.reloc_img)}>
+              <Image src="/images/landing/img3.png" fill alt="Content" />
+            </div>
             <div
               className={clsx(
                 styles.texts,
@@ -108,21 +104,17 @@ export default function Home() {
               여러 링크를 폴더에 담고 공유할 수 있습니다. 가족, 친구, 동료들에게
               쉽고 빠르게 링크를 공유해 보세요.
             </div>
-            <img
-              className={clsx(styles.content_img)}
-              src="images/landing/img7.png"
-              alt="Content"
-            />
+            <div className={clsx(styles.content_img)}>
+              <Image fill src="/images/landing/img7.png" alt="Content" />
+            </div>
           </div>
         </div>
 
         <div className={clsx(styles.content, styles.flex_center)}>
           <div className={styles.frame}>
-            <img
-              className={clsx(styles.content_img, styles.reloc_img)}
-              src="images/landing/img6.png"
-              alt="Content"
-            />
+            <div className={clsx(styles.content_img, styles.reloc_img)}>
+              <Image src="/images/landing/img6.png" alt="Content" fill />
+            </div>
             <div
               className={clsx(
                 styles.texts,
@@ -154,16 +146,36 @@ export default function Home() {
               </div>
               <div className={styles.sns_icons}>
                 <Link href="https://www.facebook.com">
-                  <img src="images/landing/facebook.png" alt="Facebook" />
+                  <Image
+                    width={20}
+                    height={20}
+                    src="/images/landing/facebook.png"
+                    alt="Facebook"
+                  />
                 </Link>
                 <Link href="https://twitter.com">
-                  <img src="images/landing/twitter.png" alt="Twitter" />
+                  <Image
+                    width={20}
+                    height={20}
+                    src="/images/landing/twitter.png"
+                    alt="Twitter"
+                  />
                 </Link>
                 <Link href="https://www.youtube.com">
-                  <img src="images/landing/youtube.png" alt="YouTube" />
+                  <Image
+                    width={20}
+                    height={20}
+                    src="/images/landing/youtube.png"
+                    alt="YouTube"
+                  />
                 </Link>
                 <Link href="https://www.instagram.com">
-                  <img src="images/landing/instagram.png" alt="Instagram" />
+                  <Image
+                    width={20}
+                    height={20}
+                    src="/images/landing/instagram.png"
+                    alt="Instagram"
+                  />
                 </Link>
               </div>
             </div>
