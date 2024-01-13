@@ -90,6 +90,11 @@ export function Modal({ title, modalName, placeholder, buttonColor, buttonText, 
     return axiosInstance.put(`/folders/${folderId}`, { name: value }, { headers: { Authorization: accessToken } });
   };
 
+  const deleteFolder = () => {
+    const accessToken = getCookie("accessToken");
+    return axiosInstance.delete(`/folders/${folderId}`, { headers: { Authorization: accessToken } });
+  };
+
   const queryClient = useQueryClient();
 
   const linkMutation = useMutation({
@@ -103,11 +108,15 @@ export function Modal({ title, modalName, placeholder, buttonColor, buttonText, 
 
   const folderMutation = useMutation({
     mutationKey: ["folderData"],
-    mutationFn: (method: "post" | "put") => (method === "post" ? postFolder() : putFolder()),
+    mutationFn: (method: "post" | "put" | "delete") => (method === "post" ? postFolder() : method === "put" ? putFolder() : deleteFolder()),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["folderData"] });
       handleClose();
+      if (!data.data) {
+        router.push("/folder");
+        return;
+      }
       router.push(`/folder?folderId=${data.data[0].id}`);
+      queryClient.invalidateQueries({ queryKey: ["folderData"] });
     },
   });
 
@@ -123,6 +132,10 @@ export function Modal({ title, modalName, placeholder, buttonColor, buttonText, 
     }
     if (modalName === "폴더 이름 변경" && value) {
       folderMutation.mutate("put");
+      return;
+    }
+    if (modalName === "폴더 삭제") {
+      folderMutation.mutate("delete");
       return;
     }
   };

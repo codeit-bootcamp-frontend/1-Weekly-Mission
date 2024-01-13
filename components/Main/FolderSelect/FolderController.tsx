@@ -19,7 +19,7 @@ export default function FolderController({ handleModal }: ControllerProps) {
     },
   });
 
-  const title = folderId ? folderFetch.data.find((v: FolderData) => v.id === Number(folderId)).name : "전체";
+  const title = folderId ? folderFetch.data.find((v: FolderData) => v.id === Number(folderId))?.name : "전체";
 
   return (
     <Container>
