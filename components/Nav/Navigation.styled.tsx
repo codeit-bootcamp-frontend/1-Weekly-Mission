@@ -36,7 +36,7 @@ export const Nav = styled.nav<Inav>`
     grid-template-areas: ". logo sign .";
   }
 
-  a:nth-child(2) {
+  button:nth-child(2) {
     width: 8.5rem;
     grid-area: sign;
     justify-self: end;

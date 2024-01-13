@@ -1,10 +1,7 @@
 import Card from "@/components/Main/CardList/Card";
 import { CardLink, ContainerCardList, EmptyBox } from "@/components/Main/CardList/CardList.styled";
-import { CardListProps } from "@/components/Main/CardList/CardList.type";
-import { PATHS } from "@/constants/path";
-import useData from "@/hooks/useData";
 import axiosInstance from "@/lib/axios";
-import { filterFolder, filterLinks } from "@/utils/filterAndData";
+import { filterLinks } from "@/utils/filterAndData";
 import { getCookie } from "@/utils/getCookie";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";

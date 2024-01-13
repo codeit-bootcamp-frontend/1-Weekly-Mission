@@ -1,6 +1,6 @@
 import FolderAddFloat from "@/components/Main/FolderSelect/FolderAddFloat";
 import FolderController from "@/components/Main/FolderSelect/FolderController";
-import { IhandleModal, Props } from "@/components/Main/FolderSelect/FolderSelect.type";
+import { IhandleModal } from "@/components/Main/FolderSelect/FolderSelect.type";
 import FolderTabs from "@/components/Main/FolderSelect/FolderTabs";
 import useModal from "@/hooks/useModal";
 import { useState } from "react";

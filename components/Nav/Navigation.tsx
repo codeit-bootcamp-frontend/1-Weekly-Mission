@@ -10,18 +10,21 @@ export default memo(function Navigation() {
   const router = useRouter();
   const isFolderPage = router.pathname === "/folder";
 
-  const locate = useRef("/signin");
-  const accessToken = getCookie("accessToken");
-  if (accessToken) {
-    locate.current = `/folder`;
-  }
+  const handleRouting = () => {
+    const accessToken = getCookie("accessToken");
+    if (accessToken) {
+      router.push("/folder");
+      return;
+    }
+    router.push("/signin");
+  };
 
   return (
     <>
       <Background />
       <Nav $page={isFolderPage}>
         <Logo src="/logo.svg" alt="링크브러리 홈화면으로 이동" />
-        {isFolderPage ? <Profile /> : <Link href={locate.current}>로그인</Link>}
+        {isFolderPage ? <Profile /> : <button onClick={handleRouting}>로그인</button>}
       </Nav>
     </>
   );

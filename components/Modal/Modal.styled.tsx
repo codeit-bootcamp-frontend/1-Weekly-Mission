@@ -128,12 +128,13 @@ export const List = styled.ul`
   }
 
   button:hover,
-  button:focus {
+  button:focus,
+  .active {
     background-color: var(--Gray1);
     color: var(--Primary);
   }
 
-  button:focus img {
+  .active img {
     width: 1.4rem;
     margin-right: 1rem;
     display: flex;

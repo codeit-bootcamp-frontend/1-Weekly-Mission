@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import imgCheck from "@/public/check.svg";
 import imgClose from "@/public/close.svg";
 import imgKakao from "@/public/kakao.svg";
@@ -10,6 +10,9 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import { ButtonClose, ButtonSubmit, Contents, CopyText, InputSubmit, List, SnsWrapper, Text, WrapperCopy } from "@/components/Modal/Modal.styled";
 import ModalPortal from "@/components/Modal/ModalPortal";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import axiosInstance from "@/lib/axios";
+import { getCookie } from "@/utils/getCookie";
 
 interface MakeModalProps {
   title?: string;
@@ -58,24 +61,47 @@ interface ModalProps {
 }
 
 export function Modal({ title, modalName, placeholder, buttonColor, buttonText, share, add, data, setModal }: ModalProps) {
-  const handleClose = (event: React.SyntheticEvent) => {
+  const [selectedFolderId, setSelectedFolderId] = useState(0);
+
+  const handleClose = () => {
     setModal(null);
   };
 
-  const stop = (event: React.MouseEvent) => {
-    event.preventDefault();
-    event.stopPropagation();
+  const postLink = () => {
+    const accessToken = getCookie("accessToken");
+    return axiosInstance.post("/links", { url: title, folderId: selectedFolderId }, { headers: { Authorization: accessToken } });
+  };
+
+  const queryClient = useQueryClient();
+
+  const postMutation = useMutation({
+    mutationKey: ["linkData", selectedFolderId],
+    mutationFn: () => postLink(),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["linkData"] });
+      handleClose();
+    },
+  });
+
+  const handlePost = () => {
+    if (selectedFolderId) {
+      postMutation.mutate();
+    }
   };
 
   return (
     <ModalPortal>
       <ModalFrame onClick={handleClose}>
-        <Contents onClick={stop}>
+        <Contents>
           <ModalTitle modalName={modalName} title={title as string} />
           {share && <ModalShare />}
-          {add && <ModalAdd data={data as FolderData[]} />}
+          {add && <ModalAdd selectedFolderId={selectedFolderId} setSelectedFolderId={setSelectedFolderId} data={data as FolderData[]} />}
           {placeholder && <InputSubmit placeholder={placeholder} />}
-          {buttonText && <ButtonSubmit color={buttonColor}>{buttonText}</ButtonSubmit>}
+          {buttonText && (
+            <ButtonSubmit onClick={handlePost} color={buttonColor}>
+              {buttonText}
+            </ButtonSubmit>
+          )}
           <ModalCloseButton handleClick={handleClose} />
         </Contents>
       </ModalFrame>
@@ -210,17 +236,20 @@ function CopyResult({ forwardRef }: ICopyResult) {
   );
 }
 
-type TmodalAdd = { data: FolderData[] };
+type TmodalAdd = { data: FolderData[]; selectedFolderId: number; setSelectedFolderId: Dispatch<SetStateAction<number>> };
 
-function ModalAdd({ data }: TmodalAdd) {
+function ModalAdd({ data, selectedFolderId, setSelectedFolderId }: TmodalAdd) {
   return (
     <List>
       {data?.map((value) => (
         <li key={value.id}>
-          <button>
+          <button
+            className={selectedFolderId === value.id ? "active" : ""}
+            onClick={(e) => (e.currentTarget.blur(), setSelectedFolderId((prev) => (prev === value.id ? 0 : value.id)))}
+          >
             <h2>{value.name}</h2>
             <p>{value.link_count}개 링크</p>
-            <Image src={imgCheck} alt="이 폴더에 추가합니다." />
+            <Image src={imgCheck} alt={`${value.name} 폴더에 추가합니다.`} />
           </button>
         </li>
       ))}

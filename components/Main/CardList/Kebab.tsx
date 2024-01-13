@@ -1,12 +1,11 @@
-import { useRef } from "react";
-import kebabImg from "@/public/kebab.svg";
 import { Container, PopOver } from "@/components/Main/CardList/Kebab.styled";
 import useModal from "@/hooks/useModal";
-import { FolderData } from "@/utils/getData.type";
-import Image from "next/image";
-import { useQuery } from "@tanstack/react-query";
-import { getCookie } from "@/utils/getCookie";
 import axiosInstance from "@/lib/axios";
+import kebabImg from "@/public/kebab.svg";
+import { getCookie } from "@/utils/getCookie";
+import { useQuery } from "@tanstack/react-query";
+import Image from "next/image";
+import { useRef } from "react";
 
 interface Props {
   url: string;

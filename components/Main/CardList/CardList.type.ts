@@ -13,4 +13,5 @@ export interface CardProps {
   description: string;
   createdAt?: string;
   created_at?: string;
+  id: number;
 }

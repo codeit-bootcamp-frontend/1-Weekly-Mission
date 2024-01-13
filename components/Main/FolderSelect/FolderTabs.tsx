@@ -7,9 +7,13 @@ import { FolderData } from "@/utils/getData.type";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 export default function FolderTabs({ setTitle, handleModal }: TabsProps) {
+  const router = useRouter();
+  const folderId = router.query.folderId;
+
   const folderQuery = useQuery({
     queryKey: ["folderData"],
     queryFn: async () => {
@@ -20,16 +24,8 @@ export default function FolderTabs({ setTitle, handleModal }: TabsProps) {
   });
   const folderData = folderQuery.data ?? [];
 
-  const [prevSelect, setPrevSelect] = useState<HTMLElement>();
-
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
-    prevSelect?.classList.remove("active");
-
     const target = e.target as HTMLLIElement;
-
-    setPrevSelect(target);
-
-    target.classList.add("active");
 
     if (!target.textContent) return;
     setTitle(target.textContent);
@@ -39,11 +35,11 @@ export default function FolderTabs({ setTitle, handleModal }: TabsProps) {
     <Container>
       <Ul>
         <Link href="/folder" onClick={handleClick}>
-          <Li>전체</Li>
+          <Li className={folderId ? "" : "active"}>전체</Li>
         </Link>
         {folderData.map((tab: FolderData) => (
           <Link href={`?folderId=${tab.id}`} key={tab.id} onClick={handleClick}>
-            <Li>{tab.name}</Li>
+            <Li className={tab.id === Number(folderId) ? "active" : ""}>{tab.name}</Li>
           </Link>
         ))}
       </Ul>
