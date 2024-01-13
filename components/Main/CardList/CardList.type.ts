@@ -1,4 +1,3 @@
-import { FolderData } from "@/utils/getData.type";
 import { PATHS } from "@/constants/path";
 
 export interface CardListProps {
@@ -7,7 +6,6 @@ export interface CardListProps {
 }
 
 export interface CardProps {
-  folder?: FolderData[];
   url: string;
   imageSource?: string;
   image_source?: string;

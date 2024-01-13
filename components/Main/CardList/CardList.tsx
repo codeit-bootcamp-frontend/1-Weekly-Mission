@@ -3,23 +3,38 @@ import { CardLink, ContainerCardList, EmptyBox } from "@/components/Main/CardLis
 import { CardListProps } from "@/components/Main/CardList/CardList.type";
 import { PATHS } from "@/constants/path";
 import useData from "@/hooks/useData";
-import { filterFolder } from "@/utils/filterAndData";
+import axiosInstance from "@/lib/axios";
+import { filterFolder, filterLinks } from "@/utils/filterAndData";
+import { getCookie } from "@/utils/getCookie";
+import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 
-export default function CardList({ id, path }: CardListProps) {
-  const cardData = useData(path, id);
-  const folderData = useData(PATHS.FOLDER_CATEGORY, id);
-
+export default function CardList() {
   const router = useRouter();
   const searchKeyword = router.query["q"] as string;
   const folderId = router.query["folderId"] as string;
-  const links = filterFolder(cardData, searchKeyword, folderId);
+  const linkFetch = useQuery({
+    queryKey: ["linkData", folderId],
+    queryFn: async () => {
+      const accessToken = getCookie("accessToken");
+      if (folderId) {
+        const res = await axiosInstance.get(`/folders/${folderId}/links`, { headers: { Authorization: accessToken } });
+        return res.data;
+      }
+      const res = await axiosInstance.get(`/links`, { headers: { Authorization: accessToken } });
+      return res.data;
+    },
+  });
 
-  return links?.length ? (
+  const linkData = linkFetch.data ?? [];
+
+  const filteredLinks = filterLinks(linkData, searchKeyword);
+
+  return filteredLinks?.length ? (
     <ContainerCardList>
-      {links.map((link) => (
+      {filteredLinks.map((link) => (
         <CardLink key={link.id} className="card" href={link.url} target="_blank" rel="noreferrer">
-          <Card folder={folderData?.data} {...link} />
+          <Card {...link} />
         </CardLink>
       ))}
     </ContainerCardList>

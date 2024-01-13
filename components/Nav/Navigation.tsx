@@ -1,4 +1,3 @@
-import Avatar from "@/components/Nav/Avatar/Avatar";
 import Logo from "@/components/Nav/Avatar/Logo";
 import Profile from "@/components/Nav/Avatar/Profile";
 import { Background, Nav } from "@/components/Nav/Navigation.styled";
@@ -9,7 +8,7 @@ import { memo, useRef } from "react";
 
 export default memo(function Navigation() {
   const router = useRouter();
-  const isFolderPage = router.asPath === "/folder";
+  const isFolderPage = router.pathname === "/folder";
 
   const locate = useRef("/signin");
   const accessToken = getCookie("accessToken");

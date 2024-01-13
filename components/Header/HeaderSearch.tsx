@@ -23,7 +23,7 @@ export default memo(function HeaderSearch({ setRefForObserver }: Props) {
     },
   });
 
-  const folderData = folderQuery?.data;
+  const folderData = folderQuery.data;
 
   const handleModal = (e: FormEvent) => {
     e.preventDefault();

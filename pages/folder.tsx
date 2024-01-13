@@ -10,6 +10,7 @@ import { QueryClient, dehydrate } from "@tanstack/react-query";
 import { GetServerSideProps } from "next";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  const folderId = context.query.folderId;
   const accessToken = getServerCookie(context, "accessToken");
 
   const queryClient = new QueryClient();
@@ -21,6 +22,26 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       return res.data[0];
     },
   });
+
+  await queryClient.prefetchQuery({
+    queryKey: ["folderData"],
+    queryFn: async () => {
+      const res = await axiosInstance.get("/folders", { headers: { Authorization: accessToken } });
+      return res.data;
+    },
+  });
+
+  // await queryClient.prefetchQuery({
+  //   queryKey: ["linkData", folderId],
+  //   queryFn: async () => {
+  //     if (folderId) {
+  //       const res = await axiosInstance.get(`/folders/${folderId}/links`, { headers: { Authorization: accessToken } });
+  //       return res.data;
+  //     }
+  //     const res = await axiosInstance.get(`/links`, { headers: { Authorization: accessToken } });
+  //     return res.data;
+  //   },
+  // });
 
   return {
     props: {

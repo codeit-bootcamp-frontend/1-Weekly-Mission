@@ -9,7 +9,6 @@ export interface IhandleModal {
 }
 
 export interface TabsProps {
-  id: number;
   setTitle: Dispatch<SetStateAction<string>>;
   handleModal: IhandleModal;
 }

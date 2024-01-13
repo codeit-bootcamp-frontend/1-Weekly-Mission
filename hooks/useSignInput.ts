@@ -13,7 +13,7 @@ export default function useSignInput() {
   const handleBlur = async () => {
     if (!input.current || !p.current) return;
 
-    const validateFunc = router.asPath === "/signin" ? validate_signin : validate_signup;
+    const validateFunc = router.pathname === "/signin" ? validate_signin : validate_signup;
     const type = input.current.name as InputType["type"];
     const value = input.current.value;
 

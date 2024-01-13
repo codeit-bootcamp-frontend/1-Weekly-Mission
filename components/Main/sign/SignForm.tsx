@@ -9,7 +9,7 @@ import axios from "@/lib/axios";
 export default function SignForm() {
   const { inputRef, allBlur } = useInputAllBlur();
   const router = useRouter();
-  const signin = router.asPath === "/signin";
+  const signin = router.pathname === "/signin";
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

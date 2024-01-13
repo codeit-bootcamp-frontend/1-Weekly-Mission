@@ -1,14 +1,25 @@
-import { ButtonAdd, Li, Ul } from "@/components/Main/FolderSelect/FolderTabs.styled";
 import { Container } from "@/components/Main/FolderSelect/FolderSelect.styled";
-import useData from "@/hooks/useData";
+import { TabsProps } from "@/components/Main/FolderSelect/FolderSelect.type";
+import { ButtonAdd, Li, Ul } from "@/components/Main/FolderSelect/FolderTabs.styled";
+import axiosInstance from "@/lib/axios";
+import { getCookie } from "@/utils/getCookie";
+import { FolderData } from "@/utils/getData.type";
+import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { TabsProps } from "@/components/Main/FolderSelect/FolderSelect.type";
-import { PATHS } from "@/constants/path";
 
-export default function FolderTabs({ id, setTitle, handleModal }: TabsProps) {
-  const tabs = useData(PATHS.FOLDER_CATEGORY, id);
+export default function FolderTabs({ setTitle, handleModal }: TabsProps) {
+  const folderQuery = useQuery({
+    queryKey: ["folderData"],
+    queryFn: async () => {
+      const accessToken = getCookie("accessToken");
+      const res = await axiosInstance.get("/folders", { headers: { Authorization: accessToken } });
+      return res.data;
+    },
+  });
+  const folderData = folderQuery.data ?? [];
+
   const [prevSelect, setPrevSelect] = useState<HTMLElement>();
 
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
@@ -30,7 +41,7 @@ export default function FolderTabs({ id, setTitle, handleModal }: TabsProps) {
         <Link href="/folder" onClick={handleClick}>
           <Li>전체</Li>
         </Link>
-        {tabs?.data?.map((tab) => (
+        {folderData.map((tab: FolderData) => (
           <Link href={`?folderId=${tab.id}`} key={tab.id} onClick={handleClick}>
             <Li>{tab.name}</Li>
           </Link>

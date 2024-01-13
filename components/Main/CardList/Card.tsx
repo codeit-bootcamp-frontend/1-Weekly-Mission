@@ -2,11 +2,15 @@ import { ButtonStar, CardImg, CardText, H3, WrapperCardImg, WrapperTime } from "
 import { CardProps } from "@/components/Main/CardList/CardList.type";
 import Kebab from "@/components/Main/CardList/Kebab";
 import TimeFlow from "@/components/Main/CardList/TimeFlow";
+import starImg from "@/public/star.svg";
 import { formatDate } from "@/utils/filterAndData";
 import Image from "next/image";
-import starImg from "@/public/star.svg";
+import { useRouter } from "next/router";
 
-export default function Card({ folder, url, imageSource, image_source, title, description, createdAt, created_at }: CardProps) {
+export default function Card({ url, imageSource, image_source, title, description, createdAt, created_at }: CardProps) {
+  const router = useRouter();
+  const isFolderPage = router.pathname === "/folder";
+
   return (
     <>
       <WrapperCardImg>
@@ -15,7 +19,7 @@ export default function Card({ folder, url, imageSource, image_source, title, de
       <CardText>
         <WrapperTime>
           <TimeFlow createdAt={createdAt ?? (created_at as string)} />
-          {folder && <Kebab folder={folder} url={url} />}
+          {isFolderPage && <Kebab url={url} />}
         </WrapperTime>
         <H3>{title?.length > 40 ? title.slice(0, 40) + "..." : title}</H3>
         <p>{description?.length > 50 ? description.slice(0, 50) + "..." : description}</p>
