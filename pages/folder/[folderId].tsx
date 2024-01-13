@@ -83,29 +83,28 @@ const FolderPage = () => {
       <main className={styles.main}>
         <AddLink>
           <AddLinkInput inputValue={inputValue} onChange={setInputValue}>
-            <AddLinkButton inputValue={inputValue}>
-              <AddLinkModalContent
-                inputValue={inputValue}
-                folderListData={folderData}
-              />
-            </AddLinkButton>
+            <AddLinkButton
+              inputValue={inputValue}
+              folderListData={folderData}
+            />
           </AddLinkInput>
         </AddLink>
         <Search linksListData={linksListData} onChange={setSearchData} />
         <Category>
           <CategoryList
             folderListData={folderData}
-            currentFolder={setCurrentFolderName}
+            onClick={setCurrentFolderName}
           >
-            <AddFolderButton>
-              <AddFolderModalContent />
-            </AddFolderButton>
+            <AddFolderButton />
           </CategoryList>
         </Category>
         <FolderUtils>
           <CurrentFolder>{currentFolderName}</CurrentFolder>
           {currentFolderName !== "전체" && (
-            <FolderEdit currentFolderName={currentFolderName} />
+            <FolderEdit
+              currentFolderName={currentFolderName}
+              setCurrentFolderName={setCurrentFolderName}
+            />
           )}
         </FolderUtils>
         <Card>

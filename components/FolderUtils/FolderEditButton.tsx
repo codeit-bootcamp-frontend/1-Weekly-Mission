@@ -8,15 +8,18 @@ import EditFolderNameModalContent from "@/components/Modal/EditFolderNameModalCo
 import ShareFolderModal from "@/components/Modal/ShareFolderModalContent/ShareFolderModalContent";
 
 import styles from "./FolderEdit.module.css";
+import { Dispatch, SetStateAction } from "react";
 
 interface FolderEditButtonProps {
   currentFolderName: string;
+  setCurrentFolderName: Dispatch<SetStateAction<string>>;
   src: string;
   text: string;
 }
 
 function FolderEditButton({
   currentFolderName,
+  setCurrentFolderName,
   src,
   text,
 }: FolderEditButtonProps) {
@@ -29,9 +32,13 @@ function FolderEditButton({
           {text === "공유" ? (
             <ShareFolderModal>{currentFolderName}</ShareFolderModal>
           ) : text === "이름 변경" ? (
-            <EditFolderNameModalContent currentFolderName={currentFolderName} />
+            <EditFolderNameModalContent
+              currentFolderName={currentFolderName}
+              setCurrentFolderName={setCurrentFolderName}
+              onClose={closeModal}
+            />
           ) : (
-            <DeleteFolderModalContent>
+            <DeleteFolderModalContent onClose={closeModal}>
               {currentFolderName}
             </DeleteFolderModalContent>
           )}

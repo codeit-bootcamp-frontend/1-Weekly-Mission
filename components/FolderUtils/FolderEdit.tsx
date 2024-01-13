@@ -3,9 +3,11 @@ import shareImg from "../../assets/images/share.svg";
 import penImg from "../../assets/images/pen.svg";
 import deleteImg from "../../assets/images/delete.svg";
 import FolderEditButton from "./FolderEditButton";
+import { Dispatch, SetStateAction } from "react";
 
 interface Props {
   currentFolderName: string;
+  setCurrentFolderName: Dispatch<SetStateAction<string>>;
 }
 
 const buttonsData = [
@@ -14,7 +16,7 @@ const buttonsData = [
   { image: deleteImg, text: "삭제" },
 ];
 
-function FolderEdit({ currentFolderName }: Props) {
+function FolderEdit({ currentFolderName, setCurrentFolderName }: Props) {
   return (
     <div>
       <ul className={styles.folderEdit}>
@@ -23,6 +25,7 @@ function FolderEdit({ currentFolderName }: Props) {
             <li key={index}>
               <FolderEditButton
                 currentFolderName={currentFolderName}
+                setCurrentFolderName={setCurrentFolderName}
                 src={button.image}
                 text={button.text}
               />

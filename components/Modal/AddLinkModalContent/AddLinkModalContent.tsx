@@ -1,5 +1,7 @@
-import { useState } from "react";
 import classNames from "classnames";
+import { useState } from "react";
+import { useRouter } from "next/router";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import styles from "./AddLinkModalContent.module.css";
 
@@ -7,16 +9,19 @@ import checkImg from "../../../assets/images/check.svg";
 import ModalTitle from "../ModalTitle/ModalTitle";
 import ModalButton from "../ModalButton/ModalButton";
 import Image from "next/image";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import fetcher from "@/lib/axios";
+import { useSetFolderId } from "@/contexts/UserContext";
 
 interface Props {
   inputValue: string;
   folderListData?: UserFolders[];
+  onClose?: () => void;
 }
 
-function AddLinkModalContent({ inputValue, folderListData }: Props) {
+function AddLinkModalContent({ inputValue, folderListData, onClose }: Props) {
+  const router = useRouter();
   const queryClient = useQueryClient();
+  const setFolderId = useSetFolderId();
   const [selectedFolder, setSelectedFolder] = useState<UserFolders | null>(
     null
   );
@@ -31,7 +36,18 @@ function AddLinkModalContent({ inputValue, folderListData }: Props) {
       return response.data;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["links"] });
+      if (selectedFolder) {
+        const folderId = selectedFolder.id;
+        setFolderId(folderId);
+        router.push(`/folder/${folderId}`);
+
+        queryClient.invalidateQueries({ queryKey: ["links"] });
+        queryClient.invalidateQueries({ queryKey: ["folders"] });
+      }
+    },
+    onError: (error) => {
+      const errorResponse = (error as any).response;
+      window.alert(errorResponse?.data.message);
     },
   });
 
@@ -43,8 +59,11 @@ function AddLinkModalContent({ inputValue, folderListData }: Props) {
 
   const handleAddLink = () => {
     if (selectedFolder) {
-      // 선택된 폴더와 입력된 링크 정보를 이용해 새로운 링크를 추가합니다.
       addLinkMutation.mutate({ url: inputValue, folderId: selectedFolder.id });
+
+      if (onClose) {
+        onClose();
+      }
     }
   };
 
@@ -61,7 +80,7 @@ function AddLinkModalContent({ inputValue, folderListData }: Props) {
               styles.optionContainer,
               selectedFolder === folder && styles.selected
             )}
-            key={folder.name}
+            key={folder.id}
             id={folder.name}
             onClick={() => handleCheckClick(folder)}
           >

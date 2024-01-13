@@ -11,6 +11,7 @@ import starImg from "@/assets/images/star.svg";
 import styles from "./CardItem.module.css";
 
 interface FolderPageCardItemProps {
+  id: number;
   folderListData: UserFolders[];
   formatTimeDiff: string;
   formattedCreatedAt: string;
@@ -21,6 +22,7 @@ interface FolderPageCardItemProps {
 }
 
 function FolderPageCardItem({
+  id,
   folderListData,
   formatTimeDiff,
   formattedCreatedAt,
@@ -52,7 +54,7 @@ function FolderPageCardItem({
       <div className={styles.contentContainer}>
         <div className={styles.container}>
           <p className={styles.timeDiff}>{formatTimeDiff}</p>
-          <CardMenu folderListData={folderListData} url={url} />
+          <CardMenu linkId={id} folderListData={folderListData} url={url} />
         </div>
         <Link href={url} target="_blank" rel="noopener noreferrer">
           <p className={styles.description}>

@@ -27,6 +27,7 @@ function CardList({
         return (
           <FolderPageCardItem
             key={url}
+            id={id}
             folderListData={folderListData}
             formatTimeDiff={formatTimeDiff}
             formattedCreatedAt={formattedCreatedAt}

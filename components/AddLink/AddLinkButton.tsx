@@ -3,13 +3,14 @@ import classNames from "classnames";
 import styles from "./AddLinkButton.module.css";
 import ModalContainer from "../Modal/ModalContainer/ModalContainer";
 import useModal from "@/hooks/useModal";
+import AddLinkModalContent from "../Modal/AddLinkModalContent/AddLinkModalContent";
 
 interface Props {
   inputValue: string;
-  children?: ReactNode;
+  folderListData: UserFolders[] | undefined;
 }
 
-function AddLinkButton({ inputValue, children }: Props) {
+function AddLinkButton({ inputValue, folderListData }: Props) {
   const { isOpenModal, openModal, closeModal } = useModal(false);
 
   const handleOpenModal = () => {
@@ -24,7 +25,13 @@ function AddLinkButton({ inputValue, children }: Props) {
   return (
     <>
       {isOpenModal && (
-        <ModalContainer onClose={handleCloseModal}>{children}</ModalContainer>
+        <ModalContainer onClose={handleCloseModal}>
+          <AddLinkModalContent
+            inputValue={inputValue}
+            folderListData={folderListData}
+            onClose={handleCloseModal}
+          />
+        </ModalContainer>
       )}
       <button
         className={classNames(styles.cta, styles.ctaShort)}

@@ -12,11 +12,12 @@ import kebabImg from "@/assets/images/kebab.svg";
 import styles from "./CardMenu.module.css";
 
 interface Props {
+  linkId: number;
   folderListData: UserFolders[];
   url: string;
 }
 
-function CardMenu({ folderListData, url }: Props) {
+function CardMenu({ linkId, folderListData, url }: Props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const {
     isOpenModal: isOpenDeleteLinkModal,
@@ -63,7 +64,12 @@ function CardMenu({ folderListData, url }: Props) {
       )}
       {isOpenDeleteLinkModal && (
         <ModalContainer onClose={closeDeleteLinkModal}>
-          <DeleteLinkModalContent>{url}</DeleteLinkModalContent>
+          <DeleteLinkModalContent
+            linkId={linkId}
+            onClose={closeDeleteLinkModal}
+          >
+            {url}
+          </DeleteLinkModalContent>
         </ModalContainer>
       )}
       {isOpenAddFolderModal && (
@@ -71,6 +77,7 @@ function CardMenu({ folderListData, url }: Props) {
           <AddLinkModalContent
             inputValue={url}
             folderListData={folderListData}
+            onClose={closeAddFolderModal}
           />
         </ModalContainer>
       )}
