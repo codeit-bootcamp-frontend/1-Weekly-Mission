@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import { ChangeEvent, Dispatch, MouseEvent, SetStateAction, useEffect, useRef, useState } from "react";
 import imgCheck from "@/public/check.svg";
 import imgClose from "@/public/close.svg";
 import imgKakao from "@/public/kakao.svg";
@@ -61,6 +61,11 @@ interface ModalProps {
 }
 
 export function Modal({ title, modalName, placeholder, buttonColor, buttonText, share, add, data, setModal }: ModalProps) {
+  const [value, setValue] = useState("");
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  };
+
   const [selectedFolderId, setSelectedFolderId] = useState(0);
 
   const handleClose = () => {
@@ -72,9 +77,22 @@ export function Modal({ title, modalName, placeholder, buttonColor, buttonText, 
     return axiosInstance.post("/links", { url: title, folderId: selectedFolderId }, { headers: { Authorization: accessToken } });
   };
 
+  const postFolder = () => {
+    const accessToken = getCookie("accessToken");
+    return axiosInstance.post("/folders", { name: value }, { headers: { Authorization: accessToken } });
+  };
+
+  const router = useRouter();
+  const folderId = router.query.folderId ?? null;
+
+  const putFolder = () => {
+    const accessToken = getCookie("accessToken");
+    return axiosInstance.put(`/folders/${folderId}`, { name: value }, { headers: { Authorization: accessToken } });
+  };
+
   const queryClient = useQueryClient();
 
-  const postMutation = useMutation({
+  const linkMutation = useMutation({
     mutationKey: ["linkData", selectedFolderId],
     mutationFn: () => postLink(),
     onSuccess: () => {
@@ -83,9 +101,29 @@ export function Modal({ title, modalName, placeholder, buttonColor, buttonText, 
     },
   });
 
-  const handlePost = () => {
-    if (selectedFolderId) {
-      postMutation.mutate();
+  const folderMutation = useMutation({
+    mutationKey: ["folderData"],
+    mutationFn: (method: "post" | "put") => (method === "post" ? postFolder() : putFolder()),
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({ queryKey: ["folderData"] });
+      handleClose();
+      router.push(`/folder?folderId=${data.data[0].id}`);
+    },
+  });
+
+  const handleMutate = (e: MouseEvent) => {
+    e.preventDefault();
+    if (add && selectedFolderId) {
+      linkMutation.mutate();
+      return;
+    }
+    if (modalName === "폴더 추가" && value) {
+      folderMutation.mutate("post");
+      return;
+    }
+    if (modalName === "폴더 이름 변경" && value) {
+      folderMutation.mutate("put");
+      return;
     }
   };
 
@@ -96,9 +134,9 @@ export function Modal({ title, modalName, placeholder, buttonColor, buttonText, 
           <ModalTitle modalName={modalName} title={title as string} />
           {share && <ModalShare />}
           {add && <ModalAdd selectedFolderId={selectedFolderId} setSelectedFolderId={setSelectedFolderId} data={data as FolderData[]} />}
-          {placeholder && <InputSubmit placeholder={placeholder} />}
+          {placeholder && <InputSubmit value={value} onChange={handleChange} placeholder={placeholder} />}
           {buttonText && (
-            <ButtonSubmit onClick={handlePost} color={buttonColor}>
+            <ButtonSubmit onClick={handleMutate} color={buttonColor}>
               {buttonText}
             </ButtonSubmit>
           )}

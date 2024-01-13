@@ -42,7 +42,7 @@ export const CopyText = styled.div`
   animation: ${copyKeyframe} 300ms ease-out;
 `;
 
-export const Contents = styled.div`
+export const Contents = styled.form`
   position: relative;
   display: flex;
   flex-direction: column;

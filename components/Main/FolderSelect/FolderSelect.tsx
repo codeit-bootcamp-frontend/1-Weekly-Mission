@@ -6,7 +6,6 @@ import useModal from "@/hooks/useModal";
 import { useState } from "react";
 
 export default function FolderSelect() {
-  const [title, setTitle] = useState("전체");
   const { modal, dispatch } = useModal();
 
   const handleModal: IhandleModal = (e) => {
@@ -17,8 +16,8 @@ export default function FolderSelect() {
 
   return (
     <>
-      <FolderTabs setTitle={setTitle} handleModal={handleModal} />
-      <FolderController title={title} handleModal={handleModal} />
+      <FolderTabs handleModal={handleModal} />
+      <FolderController handleModal={handleModal} />
       <FolderAddFloat handleModal={handleModal} />
       {modal}
     </>

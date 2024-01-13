@@ -10,7 +10,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-export default function FolderTabs({ setTitle, handleModal }: TabsProps) {
+export default function FolderTabs({ handleModal }: TabsProps) {
   const router = useRouter();
   const folderId = router.query.folderId;
 
@@ -24,21 +24,14 @@ export default function FolderTabs({ setTitle, handleModal }: TabsProps) {
   });
   const folderData = folderQuery.data ?? [];
 
-  const handleClick = (e: React.MouseEvent<HTMLElement>) => {
-    const target = e.target as HTMLLIElement;
-
-    if (!target.textContent) return;
-    setTitle(target.textContent);
-  };
-
   return (
     <Container>
       <Ul>
-        <Link href="/folder" onClick={handleClick}>
+        <Link href="/folder">
           <Li className={folderId ? "" : "active"}>전체</Li>
         </Link>
         {folderData.map((tab: FolderData) => (
-          <Link href={`?folderId=${tab.id}`} key={tab.id} onClick={handleClick}>
+          <Link href={`?folderId=${tab.id}`} key={tab.id}>
             <Li className={tab.id === Number(folderId) ? "active" : ""}>{tab.name}</Li>
           </Link>
         ))}
