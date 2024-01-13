@@ -4,7 +4,6 @@ import LinkIcon from "public/assets/link.svg";
 
 export const HeroContainer = styled.div`
   margin-top: 4.2rem;
-  padding-bottom: 3.75rem;
   height: 100%;
   display: flex;
   flex-direction: column;

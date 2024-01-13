@@ -3,7 +3,6 @@ export interface User {
   name: string;
   email: string;
   image_source: string;
-  created_at: string;
 }
 
 export interface Owner {
