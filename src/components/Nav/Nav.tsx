@@ -8,14 +8,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./Nav.module.scss";
-import { useAuth } from "@/contexts/AuthProvider";
+
+const user = null;
 
 function Nav({ isSticky }: { isSticky?: boolean }) {
   let navClassName = isSticky
     ? { className: `${styles["sticky"]} ${styles["nav"]}` }
     : { className: `${styles["nav"]}` };
 
-  const { user, logout } = useAuth();
   return (
     <nav {...navClassName}>
       <div className={styles["gnb"]}>
@@ -28,23 +28,23 @@ function Nav({ isSticky }: { isSticky?: boolean }) {
             alt="로고 크기"
           />
         </Link>
-        {user === null ? (
+        {user ? (
+          <div className={styles["user-info"]}>
+            <Image
+              src={user?.image_source || "/public/images/no-profile.png"}
+              alt="profile"
+              width={20}
+              height={20}
+            />
+            <span>{user?.email}</span>
+            <button>로그아웃</button>
+          </div>
+        ) : (
           <button
             className={`${styles["link-button"]} ${styles["signin-button"]}`}
           >
             <Link href="/signin">로그인</Link>
           </button>
-        ) : (
-          <div className={styles["user-info"]}>
-            <Image
-              src={user.image_source || "/public/images/no-profile.png"}
-              alt="profile"
-              width={20}
-              height={20}
-            />
-            <span>{user.email}</span>
-            <button onClick={logout}>로그아웃</button>
-          </div>
         )}
       </div>
     </nav>

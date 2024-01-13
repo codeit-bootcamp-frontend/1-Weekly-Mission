@@ -6,8 +6,8 @@
 
 import Link from "next/link";
 import { PropsWithChildren } from "react";
+import SnsSign from "@/components/sign/SnsSign/SnsSign";
 import styles from "./SignLayout.module.scss";
-import { SnsSign } from "..";
 
 type PageType = "signin" | "signup";
 
