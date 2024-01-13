@@ -16,7 +16,7 @@
 
 .input {
   display: flex;
-  padding: 1.6rem 2rem 1.6rem 4.2rem;
+  padding: 1.6rem 11rem 1.6rem 4.2rem;
   border: none;
   border: 1px solid var(--linkbrary-primary-color, #6d6afe);
   width: 100%;
@@ -39,7 +39,7 @@
   }
 
   .input {
-    padding: 1rem 1rem 1rem 3.4rem;
+    padding: 1rem 10rem 1rem 3.4rem;
     font-size: 1.4rem;
     line-height: 3.1rem;
   }
