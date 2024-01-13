@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import useSWR from "swr";
 import { useRouter } from "next/router";
 import * as S from "./ShareContainerStyles";
@@ -9,22 +9,22 @@ import Searchbar from "@/components/inputs/Searchbar";
 import Hero from "@/components/hero/Hero";
 import Loading from "@/components/Loading";
 
-import { LinkData, SharedFolderData } from "@/types/folder";
+import { LinkData } from "@/types/folder";
 
+// 링크 공유페이지는 로그인이 필요 없는 페이지임!!!
 export default function Share() {
   const router = useRouter();
   const folderId = router.query.id;
 
-  const [links, setLinks] = useState<LinkData[]>([]);
-  const [filteredLinks, setFilteredLinks] = useState<LinkData[]>([]);
-  const [keyword, setKeyword] = useState("");
+  const { data, isLoading, error } = useSWR(`/folders/${folderId}`);
+  const { data: linksData } = useSWR(`/folders/${folderId}/links`);
 
-  const { data, isLoading, error } = useSWR<{ data: SharedFolderData[] }>(
-    `/api/folders/${folderId}`,
-  );
-  const { data: linksData } = useSWR<{ data: LinkData[] }>(
-    `/api/users/${data?.data[0].user_id}/links?folderId=${folderId}`,
-  );
+  const links: LinkData[] = linksData ?? [];
+
+  const [keyword, setKeyword] = useState("");
+  const [filteredLinks, setFilteredLinks] = useState<LinkData[]>(links);
+
+  // console.log(linksData); // 삭제예정
 
   /** @TODO 검색바 관련 로직 분리해보기(folder에서도 사용하므로) */
   const handleOnChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
@@ -51,22 +51,15 @@ export default function Share() {
     return filteredLinks;
   };
 
-  useEffect(() => {
-    if (linksData) {
-      setLinks(linksData.data);
-      setFilteredLinks(linksData.data);
-    }
-  }, [linksData]);
-
-  if (error) console.log(error);
-
   return (
     <main>
       {isLoading ? (
         <Loading />
       ) : (
         <Layout>
-          <S.HeroContainer>{data && <Hero folder={data?.data[0]} />}</S.HeroContainer>
+          <S.HeroContainer>
+            <Hero folder={data[0]} />
+          </S.HeroContainer>
           <section>
             <S.Contents>
               <Searchbar

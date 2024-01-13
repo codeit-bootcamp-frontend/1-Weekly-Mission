@@ -1,6 +1,5 @@
 export interface User {
   id: number;
-  auth_id?: string;
   name: string;
   email: string;
   image_source: string;
