@@ -13,7 +13,6 @@ import Loading from "@/components/Loading";
 import Options from "@/components/Options";
 
 import { FolderUIProps } from "./FolderTypes";
-import { DEFAULT } from "./FolderContainer";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 export default function FolderUI(props: FolderUIProps) {
@@ -51,7 +50,7 @@ export default function FolderUI(props: FolderUIProps) {
           )}
           <S.MenuContainer>
             <Categories
-              categories={[DEFAULT, ...props.folderNames]}
+              categories={["전체", ...props.folderNames]}
               selected={props.selected}
               onClick={props.handleSelectedFolder}
             />
@@ -67,9 +66,9 @@ export default function FolderUI(props: FolderUIProps) {
             <>
               <S.MenuContainer>
                 <S.SubTitle>{props.selected}</S.SubTitle>
-                {props.selected !== DEFAULT && <Options selected={props.selected} />}
+                {props.selected !== "전체" && <Options selected={props.selected} />}
               </S.MenuContainer>
-              <CardList links={props.filteredLinks} />
+              <CardList links={props.links} />
             </>
           )}
         </S.Contents>
