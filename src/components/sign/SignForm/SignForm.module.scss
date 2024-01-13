@@ -1,0 +1,61 @@
+@import "@/styles/global.scss";
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  .input-container {
+    width: 100%;
+    position: relative;
+  }
+  .password-img {
+    position: absolute;
+    bottom: 2rem;
+    right: 1.5rem;
+  }
+  & label {
+    font-size: 14px;
+    line-height: normal;
+  }
+  & .error-message {
+    color: var(--color-red);
+    height: 0;
+  }
+  & input {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--color-gray20, #ccd5e3);
+    background: #fff;
+    padding: 1.5rem;
+    margin: 0.8rem 0;
+
+    &:focus {
+      outline: 1px solid var(--color-primary);
+    }
+  }
+  [data-errorBorder="true"] {
+    & input {
+      outline: 1px solid var(--color-red);
+    }
+  }
+}
+
+.button {
+  width: 100%;
+  margin: 3rem 0 0 0;
+  display: flex;
+  padding: 16px 20px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: var(
+    --gra-purpleblue-to-skyblue,
+    linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)
+  );
+  color: white;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+}
