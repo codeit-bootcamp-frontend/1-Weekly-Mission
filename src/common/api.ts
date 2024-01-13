@@ -12,14 +12,14 @@ export async function getUser(userId: number) {
   return data;
 }
 
-export async function getFolder() {
-  const res = await fetch(`${DOMAIN_URL}/api/sample/folder`, {
-    headers,
-  });
+// export async function getFolder() {
+//   const res = await fetch(`${DOMAIN_URL}/api/sample/folder`, {
+//     headers,
+//   });
 
-  const data = await res.json();
-  return data;
-}
+//   const data = await res.json();
+//   return data;
+// }
 
 export async function getAllFolders(userId: number) {
   const res = await fetch(`${DOMAIN_URL}/api/users/${userId}/folders`, {
@@ -39,24 +39,6 @@ export async function getAllLinks(userId: number, folderId = "") {
 
   const data = await res.json();
   return data;
-}
-
-export async function signupUser(userData: SubmitFormData) {
-  const res = await fetch(`${DOMAIN_URL}/api/sign-up`, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(userData),
-  });
-  return await res.json();
-}
-
-export async function signinUser(userData: SubmitFormData) {
-  const res = await fetch(`${DOMAIN_URL}/api/sign-in`, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(userData),
-  });
-  return await res.json();
 }
 
 export async function isUsableEmail(email: EmailData) {

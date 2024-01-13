@@ -6,7 +6,7 @@ import * as S from "./SignFormStyles";
 import EmailInput from "../inputs/EmailInput";
 
 import { SignupForm } from "@/types/form";
-import { signinUser } from "@/common/api";
+import { signinUser } from "@/api/auth/signin";
 
 export default function SigninForm() {
   const router = useRouter();
@@ -28,7 +28,7 @@ export default function SigninForm() {
         email: data.email,
         password: data.password,
       });
-      localStorage.setItem("accessToken", result.data.accessToken);
+      localStorage.setItem("accessToken", result.accessToken);
       router.push("/folder");
     } catch (error) {
       setError("email", { message: "이메일을 확인해 주세요." });
