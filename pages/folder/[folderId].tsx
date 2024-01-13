@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
 import Head from "next/head";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { useQuery } from "@tanstack/react-query";
 
 import AddLink from "@/components/AddLink/AddLink";
 import FolderUtils from "@/components/FolderUtils/FolderUtils";
@@ -17,53 +19,59 @@ import CurrentFolder from "@/components/FolderUtils/CurrentFolder";
 import FolderEdit from "@/components/FolderUtils/FolderEdit";
 import Footer from "@/components/Footer/Footer";
 import NavBar from "@/components/NavBar/NavBar";
+import CardList from "@/components/Card/CardList";
 
 import styles from "@/assets/styles/folderPage.module.css";
 import fetcher from "@/lib/axios";
-import CardList from "@/components/Card/CardList";
-import { useRouter } from "next/router";
 import removeTokens from "@/utils/removeTokens";
 
 const FolderPage = () => {
   const router = useRouter();
-  const [folderData, setFolderData] = useState<UserFolderData | undefined>();
-  const [linksListData, setLinksListData] = useState<LinksData | undefined>();
   const [currentFolderName, setCurrentFolderName] = useState("전체");
   const [inputValue, setInputValue] = useState("");
-  const [searchData, setSearchData] = useState<LinksData | undefined>(
-    linksListData
-  );
+  const [searchData, setSearchData] = useState<FolderLink[] | undefined>([]);
+
+  const { data: folderData } = useQuery<UserFolders[]>({
+    queryKey: ["folders"],
+    queryFn: async () => {
+      const response = await fetcher<UserFolders[]>({ url: `/folders` });
+      return response.data;
+    },
+  });
 
   const folderId = router.query.folderId;
 
+  const { data: linksListData } = useQuery<FolderLink[]>({
+    queryKey: ["links", folderId],
+    queryFn: async () => {
+      const userId = localStorage.getItem("userId");
+
+      const response = await fetcher<FolderLink[]>({
+        url:
+          folderId === "all"
+            ? `/users/${userId}/links`
+            : `/folders/${folderId}/links`,
+      });
+
+      return response.data;
+    },
+
+    enabled: folderId !== undefined,
+  });
+
   useEffect(() => {
-    const userId = localStorage.getItem("userId");
     const accessToken = localStorage.getItem("accessToken");
 
     if (!accessToken) {
       removeTokens();
       router.push("/signin");
     }
+  }, [router]);
 
-    const fetchData = async () => {
-      const [folderListResponse, linksListResponse] = await Promise.all([
-        fetcher<UserFolderData>({ url: `/users/${userId}/folders` }),
-        fetcher<LinksData>({
-          url: `/users/${userId}/links${
-            folderId === "all" ? "" : `?folderId=${folderId}`
-          }`,
-        }),
-      ]);
-
-      const folderListData = folderListResponse.data;
-      const linksListData = linksListResponse.data;
-
-      setFolderData(folderListData);
-      setLinksListData(linksListData);
-    };
-
-    fetchData();
-  }, [folderId, router]);
+  // 검색 로직 추가
+  useEffect(() => {
+    setSearchData(linksListData);
+  }, [linksListData]);
   return (
     <>
       <Head>
@@ -107,7 +115,7 @@ const FolderPage = () => {
             folderListData={folderData}
           />
         </Card>
-        {searchData?.data?.length === 0 ? <NotFoundLink /> : undefined}
+        {searchData?.length === 0 ? <NotFoundLink /> : undefined}
       </main>
       <footer>
         <Footer />

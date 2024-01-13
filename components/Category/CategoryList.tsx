@@ -5,13 +5,13 @@ import styles from "./CategoryList.module.css";
 import CategoryButton from "./CategoryButton";
 
 interface Props {
-  folderListData?: UserFolderData;
+  folderListData?: UserFolders[];
   currentFolder: Dispatch<SetStateAction<string>>;
   children: ReactNode;
 }
 
 function CategoryList({ folderListData, currentFolder, children }: Props) {
-  const folderListDataArray = folderListData?.data?.sort((a, b) => a.id - b.id);
+  const folderListDataArray = folderListData?.sort((a, b) => a.id - b.id);
 
   return (
     <div className={styles.categoryList}>

@@ -10,8 +10,8 @@ import {
 import SearchBar from "./SearchBar";
 
 interface Props {
-  linksListData?: LinksData;
-  onChange: Dispatch<SetStateAction<LinksData | undefined>>;
+  linksListData?: FolderLink[];
+  onChange: Dispatch<SetStateAction<FolderLink[] | undefined>>;
 }
 
 function Search({ linksListData, onChange }: Props) {
@@ -21,23 +21,23 @@ function Search({ linksListData, onChange }: Props) {
     const { value } = e.target;
     setInputValue(value);
 
-    if (!linksListData || !linksListData.data) {
+    if (!linksListData) {
       onChange(undefined); // 빈 데이터 전달
       return;
     }
 
     const filteredData =
       value.trim() === ""
-        ? linksListData.data // 검색어가 없을 때 전체 리스트를 유지
-        : linksListData.data.filter((link) =>
+        ? linksListData // 검색어가 없을 때 전체 리스트를 유지
+        : linksListData.filter((link) =>
             Object.values(link).some((val) =>
               val && typeof val === "string"
                 ? val.toLowerCase().includes(value.toLowerCase())
                 : false
             )
           );
-    console.log(value, filteredData);
-    onChange(filteredData.length > 0 ? { data: filteredData } : undefined);
+
+    onChange(filteredData.length > 0 ? filteredData : undefined);
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {

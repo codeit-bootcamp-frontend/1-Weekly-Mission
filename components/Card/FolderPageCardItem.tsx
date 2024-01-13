@@ -11,7 +11,7 @@ import starImg from "@/assets/images/star.svg";
 import styles from "./CardItem.module.css";
 
 interface FolderPageCardItemProps {
-  folderListData: UserFolderData;
+  folderListData: UserFolders[];
   formatTimeDiff: string;
   formattedCreatedAt: string;
   url: string;

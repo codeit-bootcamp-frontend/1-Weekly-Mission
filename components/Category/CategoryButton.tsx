@@ -29,7 +29,11 @@ function CategoryButton({ id, currentFolder, children }: Props) {
   }`;
 
   return (
-    <button className={buttonClasses} onClick={handleLoadClick}>
+    <button
+      className={buttonClasses}
+      onClick={handleLoadClick}
+      disabled={folderID === id}
+    >
       {children}
     </button>
   );

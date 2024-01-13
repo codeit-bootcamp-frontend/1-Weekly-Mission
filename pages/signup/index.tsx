@@ -24,10 +24,6 @@ interface Token {
   refreshToken: string;
 }
 
-interface TokenData {
-  data: Token;
-}
-
 function SignUp() {
   const {
     handleSubmit,
@@ -75,8 +71,8 @@ function SignUp() {
     )
       return;
 
-    const response = await fetcher<TokenData>({
-      url: "/check-email",
+    const response = await fetcher<Token>({
+      url: "/auth/sign-up",
       method: "post",
       data: { email, password },
     });
@@ -91,7 +87,7 @@ function SignUp() {
       return;
     }
 
-    const { accessToken, refreshToken } = response.data.data;
+    const { accessToken, refreshToken } = response.data;
 
     saveTokens({ accessToken, refreshToken });
 

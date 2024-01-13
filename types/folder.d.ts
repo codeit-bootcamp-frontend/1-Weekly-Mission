@@ -31,12 +31,18 @@ interface UserFolderData {
   data: UserFolder[];
 }
 
+interface UserFolders {
+  created_at: string;
+  favorite: boolean;
+  id: number;
+  link_count: number;
+  name: string;
+}
+
 interface UserFolder {
   id: number;
   created_at: string;
+  favorite: boolean;
   name: string;
   user_id: number;
-  link?: {
-    count: number;
-  };
 }

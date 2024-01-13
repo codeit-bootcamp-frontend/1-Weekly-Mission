@@ -12,7 +12,7 @@ import kebabImg from "@/assets/images/kebab.svg";
 import styles from "./CardMenu.module.css";
 
 interface Props {
-  folderListData: UserFolderData;
+  folderListData: UserFolders[];
   url: string;
 }
 

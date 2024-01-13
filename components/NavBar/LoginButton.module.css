@@ -3,6 +3,7 @@
   justify-content: flex-end;
   width: 100%;
   max-width: auto;
+  gap: 1.2rem;
 }
 
 /* Tablet 화면 크기 (768px 이상 ~ 1199px 이하) */
