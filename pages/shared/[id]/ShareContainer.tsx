@@ -1,6 +1,6 @@
-import { ChangeEvent, useState } from "react";
-import useSWR from "swr";
 import { useRouter } from "next/router";
+import { ChangeEvent, useEffect, useState } from "react";
+import useSWR from "swr";
 import * as S from "./ShareContainerStyles";
 
 import Layout from "@/components/layout/Layout";
@@ -9,14 +9,14 @@ import Searchbar from "@/components/inputs/Searchbar";
 import Hero from "@/components/hero/Hero";
 import Loading from "@/components/Loading";
 
-import { LinkData } from "@/types/folder";
+import { LinkData } from "@/types/link";
+import { checkMatchedAllLinks } from "@/common/utils/matchedKeyword";
 
-// 링크 공유페이지는 로그인이 필요 없는 페이지임!!!
 export default function Share() {
   const router = useRouter();
   const folderId = router.query.id;
 
-  const { data, isLoading, error } = useSWR(`/folders/${folderId}`);
+  const { data, isLoading } = useSWR(`/folders/${folderId}`);
   const { data: linksData } = useSWR(`/folders/${folderId}/links`);
 
   const links: LinkData[] = linksData ?? [];
@@ -24,13 +24,14 @@ export default function Share() {
   const [keyword, setKeyword] = useState("");
   const [filteredLinks, setFilteredLinks] = useState<LinkData[]>(links);
 
-  // console.log(linksData); // 삭제예정
+  console.log(linksData); // 삭제예정
+  console.log(filteredLinks); // 삭제예정
 
   /** @TODO 검색바 관련 로직 분리해보기(folder에서도 사용하므로) */
   const handleOnChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
-    if (linksData?.data) {
+    if (linksData) {
       setKeyword(e.target.value);
-      const searchedLinks = checkMatchedAllLinks(e.target.value, linksData?.data);
+      const searchedLinks = checkMatchedAllLinks(e.target.value, linksData);
       setFilteredLinks(searchedLinks.length !== 0 ? searchedLinks : []);
     }
   };
@@ -40,16 +41,11 @@ export default function Share() {
     setFilteredLinks(links);
   };
 
-  const checkMatchedAllLinks = (keyword: string, links: LinkData[]) => {
-    const filteredLinks = links.filter((link) => {
-      return (
-        (link.title && link.title.includes(keyword)) ||
-        (link.description && link.description.includes(keyword)) ||
-        (link.url && link.url.includes(keyword))
-      );
-    });
-    return filteredLinks;
-  };
+  useEffect(() => {
+    if (linksData) {
+      setFilteredLinks(linksData);
+    }
+  }, [linksData]);
 
   return (
     <main>

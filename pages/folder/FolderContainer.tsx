@@ -3,9 +3,11 @@ import { ChangeEvent, useContext, useEffect, useState } from "react";
 
 import FolderUI from "./FolderPresenter";
 
-import { LinkData, SharedFolderData } from "@/types/folder";
+import { SharedFolderData } from "@/types/folder";
+import { LinkData } from "@/types/link";
 import { useFolder } from "@/hooks/useFolder";
 import { FolderContext } from "@/context/SelectedFolderContext";
+import { checkMatchedAllLinks } from "@/common/utils/matchedKeyword";
 
 /**
  * @TODO
@@ -26,34 +28,23 @@ export default function Folder() {
   const { data: linksData } = useFolder("/links");
 
   // console.log(selectedFolderName); // 삭제예정
-  // console.log(foldersData); // 삭제예정
-  // console.log(linksData); // 삭제예정
+  console.log(foldersData); // 삭제예정
+  console.log(linksData); // 삭제예정
 
   const folders: SharedFolderData[] = foldersData ?? [];
   const links: LinkData[] = linksData ?? [];
 
-  const [filteredLinks, setFilteredLinks] = useState<LinkData[]>(links);
+  const [filteredLinks, setFilteredLinks] = useState<LinkData[]>([]);
 
   const handleOnChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value);
-    const searchedLinks = checkMatchedAllLinks(e.target.value, links);
+    const searchedLinks = checkMatchedAllLinks(e.target.value, linksData);
     setFilteredLinks(searchedLinks.length !== 0 ? searchedLinks : []);
   };
 
   const handleDeletekeyword = () => {
     setKeyword("");
     setFilteredLinks(links);
-  };
-
-  const checkMatchedAllLinks = (keyword: string, links: LinkData[]) => {
-    const filteredLinks = links.filter((link) => {
-      return (
-        (link.title && link.title.includes(keyword)) ||
-        (link.description && link.description.includes(keyword)) ||
-        (link.url && link.url.includes(keyword))
-      );
-    });
-    return filteredLinks;
   };
 
   const handleSelectedFolder = (category: string) => {
@@ -76,6 +67,12 @@ export default function Folder() {
       router.push("/signin");
     }
   }, [router]);
+
+  useEffect(() => {
+    if (linksData) {
+      setFilteredLinks(linksData);
+    }
+  }, [linksData]);
 
   return (
     <FolderUI

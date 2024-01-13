@@ -68,7 +68,7 @@ export default function FolderUI(props: FolderUIProps) {
                 <S.SubTitle>{props.selected}</S.SubTitle>
                 {props.selected !== "전체" && <Options selected={props.selected} />}
               </S.MenuContainer>
-              <CardList links={props.links} />
+              <CardList links={props.filteredLinks} />
             </>
           )}
         </S.Contents>

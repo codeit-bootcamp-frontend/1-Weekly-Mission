@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { ChangeEvent, useContext, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 import useSWR from "swr";
 import * as S from "../FolderStyles";
 
@@ -16,8 +16,10 @@ import Loading from "@/components/Loading";
 
 import { useFolder } from "@/hooks/useFolder";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
-import { LinkData, SharedFolderData } from "@/types/folder";
+import { SharedFolderData } from "@/types/folder";
+import { LinkData } from "@/types/link";
 import { FolderContext } from "@/context/SelectedFolderContext";
+import { checkMatchedAllLinks } from "@/common/utils/matchedKeyword";
 
 export default function FolderPage() {
   const router = useRouter();
@@ -55,17 +57,6 @@ export default function FolderPage() {
     setFilteredLinks(links);
   };
 
-  const checkMatchedAllLinks = (keyword: string, links: LinkData[]) => {
-    const filteredLinks = links.filter((link) => {
-      return (
-        (link.title && link.title.includes(keyword)) ||
-        (link.description && link.description.includes(keyword)) ||
-        (link.url && link.url.includes(keyword))
-      );
-    });
-    return filteredLinks;
-  };
-
   const handleSelectedFolder = (category: string) => {
     setSelected(category);
     const selectedFolderId =
@@ -73,6 +64,12 @@ export default function FolderPage() {
     updateFolderName(category);
     router.push(`/folder/${selectedFolderId}`);
   };
+
+  useEffect(() => {
+    if (linksData) {
+      setFilteredLinks(linksData);
+    }
+  }, [linksData]);
 
   return (
     <>
