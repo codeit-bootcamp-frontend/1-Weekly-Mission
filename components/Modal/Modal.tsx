@@ -9,6 +9,7 @@ import { FolderData } from "@/utils/getData.type";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { ButtonClose, ButtonSubmit, Contents, CopyText, InputSubmit, List, SnsWrapper, Text, WrapperCopy } from "@/components/Modal/Modal.styled";
+import ModalPortal from "@/components/Modal/ModalPortal";
 
 interface MakeModalProps {
   title?: string;
@@ -18,31 +19,30 @@ interface MakeModalProps {
 }
 
 export const makeModal = ({ title, type, data, setModal }: MakeModalProps) => {
-  let modal;
   switch (type) {
     case "폴더 추가":
-      modal = <Modal modalName="폴더 추가" placeholder="폴더 이름을 입력해주세요." buttonText="추가하기" setModal={setModal} />;
-      break;
+      return <Modal modalName="폴더 추가" placeholder="폴더 이름을 입력해주세요." buttonText="추가하기" setModal={setModal} />;
+
     case "공유":
-      modal = <Modal modalName="폴더 공유" title={title} share setModal={setModal} />;
-      break;
+      return <Modal modalName="폴더 공유" title={title} share setModal={setModal} />;
+
     case "이름 변경":
-      modal = <Modal modalName="폴더 이름 변경" placeholder="변경할 이름을 입력해주세요." buttonText="변경하기" setModal={setModal} />;
-      break;
+      return <Modal modalName="폴더 이름 변경" placeholder="변경할 이름을 입력해주세요." buttonText="변경하기" setModal={setModal} />;
+
     case "삭제":
-      modal = <Modal modalName="폴더 삭제" title={title} buttonText="삭제하기" buttonColor="red" setModal={setModal} />;
-      break;
+      return <Modal modalName="폴더 삭제" title={title} buttonText="삭제하기" buttonColor="red" setModal={setModal} />;
+
     case "삭제하기":
-      modal = <Modal modalName="링크 삭제" title={title} buttonText="삭제하기" setModal={setModal} />;
-      break;
+      return <Modal modalName="링크 삭제" title={title} buttonText="삭제하기" setModal={setModal} />;
+
     case "추가하기":
-      modal = <Modal modalName="폴더에 추가" title={title} buttonText="추가하기" add data={data} setModal={setModal} />;
-      break;
+      return <Modal modalName="폴더에 추가" title={title} buttonText="추가하기" add data={data} setModal={setModal} />;
+
     case "폴더에 추가":
-      modal = <Modal modalName="폴더에 추가" title={title} buttonText="추가하기" add data={data} setModal={setModal} />;
-      break;
+      return <Modal modalName="폴더에 추가" title={title} buttonText="추가하기" add data={data} setModal={setModal} />;
+    default:
+      return <div>다시 시도해주십시오.</div>;
   }
-  return modal!;
 };
 
 interface ModalProps {
@@ -68,16 +68,18 @@ export function Modal({ title, modalName, placeholder, buttonColor, buttonText, 
   };
 
   return (
-    <ModalFrame onClick={handleClose}>
-      <Contents onClick={stop}>
-        <ModalTitle modalName={modalName} title={title as string} />
-        {share && <ModalShare />}
-        {add && <ModalAdd data={data as FolderData[]} />}
-        {placeholder && <InputSubmit placeholder={placeholder} />}
-        {buttonText && <ButtonSubmit color={buttonColor}>{buttonText}</ButtonSubmit>}
-        <ModalCloseButton handleClick={handleClose} />
-      </Contents>
-    </ModalFrame>
+    <ModalPortal>
+      <ModalFrame onClick={handleClose}>
+        <Contents onClick={stop}>
+          <ModalTitle modalName={modalName} title={title as string} />
+          {share && <ModalShare />}
+          {add && <ModalAdd data={data as FolderData[]} />}
+          {placeholder && <InputSubmit placeholder={placeholder} />}
+          {buttonText && <ButtonSubmit color={buttonColor}>{buttonText}</ButtonSubmit>}
+          <ModalCloseButton handleClick={handleClose} />
+        </Contents>
+      </ModalFrame>
+    </ModalPortal>
   );
 }
 
@@ -217,7 +219,7 @@ function ModalAdd({ data }: TmodalAdd) {
         <li key={value.id}>
           <button>
             <h2>{value.name}</h2>
-            <p>{value.link.count}개 링크</p>
+            <p>{value.link_count}개 링크</p>
             <Image src={imgCheck} alt="이 폴더에 추가합니다." />
           </button>
         </li>

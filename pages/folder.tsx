@@ -1,5 +1,5 @@
 import Footer from "@/components/Footer/Footer";
-import HeaderSearch from "@/components/Header/HeaderInput";
+import HeaderSearch from "@/components/Header/HeaderSearch";
 import LinkSection from "@/components/Main/LinkSection";
 import Main from "@/components/Main/Main";
 import Navigation from "@/components/Nav/Navigation";

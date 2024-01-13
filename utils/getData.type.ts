@@ -20,10 +20,8 @@ export type FolderData = {
   id: number;
   created_at: string;
   name: string;
-  user_id: number;
-  link: {
-    count: number;
-  };
+  favorite: true;
+  link_count: number;
 };
 
 interface Folder {
