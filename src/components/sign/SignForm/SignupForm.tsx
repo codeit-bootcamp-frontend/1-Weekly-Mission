@@ -1,20 +1,20 @@
 /*회원가입 폼 컴포넌트 */
 
-import { SubmitHandler, useForm } from "react-hook-form";
+import { AxiosError } from "axios";
 import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useMutation } from "@tanstack/react-query";
 
 import getEmailCheck from "@/api/getEmailCheck";
 import getSignUp from "@/api/getSignUp";
 import { SignupFormType } from "@/types/FormType";
 import { emailReg, passwordReg } from "@/utils/checkReg";
+import { setCookie } from "@/utils/manageCookie";
 
 import styles from "./SignForm.module.scss";
-import { useRouter } from "next/router";
-import toast from "react-hot-toast";
-import { AxiosError } from "axios";
-import { setCookie } from "@/utils/manageCookie";
 
 export default function SignupForm() {
   const {
