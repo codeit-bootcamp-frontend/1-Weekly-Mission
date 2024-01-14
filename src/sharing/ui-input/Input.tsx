@@ -1,4 +1,9 @@
-import { ChangeEventHandler, FocusEventHandler, HTMLInputTypeAttribute, forwardRef } from "react";
+import {
+  ChangeEventHandler,
+  FocusEventHandler,
+  HTMLInputTypeAttribute,
+  forwardRef,
+} from "react";
 import styles from "./Input.module.scss";
 import classNames from "classnames/bind";
 
@@ -15,7 +20,19 @@ export type InputProps = {
 };
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ value, placeholder, type = "text", hasError = false, helperText, onChange, onBlur }, ref) => {
+  (
+    {
+      value,
+      placeholder,
+      type = "text",
+      hasError = false,
+      helperText,
+      onChange,
+      onBlur,
+    },
+    ref
+  ) => {
+    Input.displayName = "Input";
     return (
       <div className={cx("container")}>
         <input
@@ -27,7 +44,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           placeholder={placeholder}
           className={cx("input", { error: hasError })}
         />
-        {helperText && <p className={cx("helper-text", { error: hasError })}>{helperText}</p>}
+        {helperText && (
+          <p className={cx("helper-text", { error: hasError })}>{helperText}</p>
+        )}
       </div>
     );
   }

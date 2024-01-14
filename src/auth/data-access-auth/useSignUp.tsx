@@ -7,13 +7,16 @@ type UseSignUpParams = { email: string; password: string };
 export const useSignUp = ({ email, password }: UseSignUpParams) => {
   const signUp = useCallback(
     () =>
-      axiosInstance.post<{ data: Token }>("sign-up", {
+      axiosInstance.post<{ data: Token }>("/auth/sign-up", {
         email,
         password,
       }),
     [email, password]
   );
-  const { execute, loading, error, data } = useAsync({ asyncFunction: signUp, lazyMode: true });
+  const { execute, loading, error, data } = useAsync({
+    asyncFunction: signUp,
+    lazyMode: true,
+  });
   const accessToken = data?.data.accessToken;
 
   useEffect(() => {

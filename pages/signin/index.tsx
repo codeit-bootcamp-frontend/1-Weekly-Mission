@@ -3,6 +3,9 @@ import { Oauth } from "@/src/auth/feature-oauth";
 import { SignHeader } from "@/src/auth/ui-sign-header";
 import { SignLayout } from "@/src/page-layout/SignLayout";
 import { ROUTE } from "@/src/sharing/util";
+import { getAccessTokenFromCookie } from "@/utils/getAccessToken";
+import { GetServerSideProps, GetServerSidePropsContext } from "next";
+import { redirect } from "next/dist/server/api-utils";
 
 const SignInPage = () => {
   return (

@@ -36,7 +36,12 @@ declare const window: Window & {
 };
 
 export const useKakaoSdk = () => {
-  const shareKakao = ({ url, title, description, imageUrl }: ShareKakaoParams) => {
+  const shareKakao = ({
+    url,
+    title,
+    description,
+    imageUrl,
+  }: ShareKakaoParams) => {
     if (window.Kakao) {
       const kakao = window.Kakao;
       if (!kakao.isInitialized()) {

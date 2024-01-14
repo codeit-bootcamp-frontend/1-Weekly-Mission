@@ -16,7 +16,9 @@ export const SignUpForm = () => {
     mode: "onBlur",
     reValidateMode: "onBlur",
   });
-  const { execute: checkEmailDuplicate } = useCheckEmailDuplicate(watch("email"));
+  const { execute: checkEmailDuplicate } = useCheckEmailDuplicate(
+    watch("email")
+  );
   const { execute: signUp, data } = useSignUp({
     email: watch("email"),
     password: watch("password"),
@@ -33,11 +35,15 @@ export const SignUpForm = () => {
           name="email"
           rules={{
             required: ERROR_MESSAGE.emailRequired,
-            pattern: { value: /\S+@\S+\.\S+/, message: ERROR_MESSAGE.emailInvalid },
+            pattern: {
+              value: /\S+@\S+\.\S+/,
+              message: ERROR_MESSAGE.emailInvalid,
+            },
             validate: {
               alreadyExist: async () => {
                 const response = await checkEmailDuplicate();
-                if (!response?.data?.data.isUsableNickname) {
+                console.log(response);
+                if (!response?.data?.isUsableNickname) {
                   return ERROR_MESSAGE.emailAlreadyExist;
                 }
                 return true;

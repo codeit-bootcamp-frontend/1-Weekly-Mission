@@ -11,7 +11,21 @@ import { useSearchLink } from "@/src/link/util-search-link";
 import { ROUTE, useIntersectionObserver } from "@/src/sharing/util";
 import { useRouter } from "next/router";
 import { useEffect, useMemo } from "react";
+import { getAccessTokenFromCookie } from "@/utils/getAccessToken";
+import { GetServerSidePropsContext } from "next";
 
+// export async function getServerSideProps(context: GetServerSidePropsContext) {
+//   const accessToken = getAccessTokenFromCookie(context);
+//   if (!accessToken) {
+//     return {
+//       redirect: {
+//         permanent: false,
+//         destination: "/signin",
+//       },
+//     };
+//   }
+//   return { props: accessToken };
+// }
 const FolderPage = () => {
   const router = useRouter();
   const { folderId } = router.query;
@@ -23,7 +37,8 @@ const FolderPage = () => {
   }, [router.isReady, folderId]);
   const { data: folders } = useGetFolders();
   const { data: links, loading } = useGetLinks(currentFolderId);
-  const { searchValue, handleChange, handleCloseClick, result } = useSearchLink(links);
+  const { searchValue, handleChange, handleCloseClick, result } =
+    useSearchLink(links);
   const { ref, isIntersecting } = useIntersectionObserver<HTMLDivElement>();
 
   useEffect(() => {
@@ -38,9 +53,15 @@ const FolderPage = () => {
       <FolderLayout
         linkForm={<LinkForm hideFixedLinkForm={isIntersecting} />}
         searchBar={
-          <SearchBar value={searchValue} onChange={handleChange} onCloseClick={handleCloseClick} />
+          <SearchBar
+            value={searchValue}
+            onChange={handleChange}
+            onCloseClick={handleCloseClick}
+          />
         }
-        folderToolBar={<FolderToolBar folders={folders} selectedFolderId={currentFolderId} />}
+        folderToolBar={
+          <FolderToolBar folders={folders} selectedFolderId={currentFolderId} />
+        }
         cardList={loading ? null : <CardList links={result} />}
       />
     </Layout>
