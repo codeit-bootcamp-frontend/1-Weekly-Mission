@@ -1,10 +1,9 @@
-import { ReactNode, useState } from "react";
 import classNames from "classnames";
 import styles from "./AddLinkButton.module.css";
 import ModalContainer from "../Modal/ModalContainer/ModalContainer";
 import useModal from "@/hooks/useModal";
 import AddLinkModalContent from "../Modal/AddLinkModalContent/AddLinkModalContent";
-import isValidURL from "@/utils/isValidUrl";
+import isValidURL from "@/utils/isValidURL";
 
 interface Props {
   inputValue: string;

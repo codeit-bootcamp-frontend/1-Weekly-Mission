@@ -5,7 +5,7 @@ import styles from "./AddLinkInput.module.css";
 import chainIcon from "../../assets/images/chain.svg";
 import Image from "next/image";
 import classNames from "classnames";
-import isValidURL from "@/utils/isValidUrl";
+import isValidURL from "@/utils/isValidURL";
 
 interface Props {
   inputValue: string;
