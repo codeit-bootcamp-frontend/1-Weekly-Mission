@@ -26,6 +26,18 @@
   border-radius: 1.5rem;
 }
 
+.input.red {
+  border: 1px solid var(--red);
+}
+
+.error {
+  position: absolute;
+  bottom: -2rem;
+  left: 1rem;
+  font-size: 1.4rem;
+  color: var(--red);
+}
+
 /* Tablet 화면 크기 (768px 이상 ~ 1199px 이하) */
 @media screen and (min-width: 768px) and (max-width: 1199px) {
 }

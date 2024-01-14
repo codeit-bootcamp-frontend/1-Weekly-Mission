@@ -1,9 +1,11 @@
-import { ChangeEvent, FormEvent, ReactNode } from "react";
+import { ChangeEvent, FormEvent, ReactNode, useState } from "react";
 
 import styles from "./AddLinkInput.module.css";
 
 import chainIcon from "../../assets/images/chain.svg";
 import Image from "next/image";
+import classNames from "classnames";
+import isValidURL from "@/utils/isValidUrl";
 
 interface Props {
   inputValue: string;
@@ -12,13 +14,21 @@ interface Props {
 }
 
 function AddLinkInput({ inputValue, onChange, children }: Props) {
+  const [error, setError] = useState(false);
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     onChange(value);
+    setError(false);
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!isValidURL(inputValue)) {
+      setError(true);
+      return;
+    }
   };
 
   return (
@@ -29,12 +39,15 @@ function AddLinkInput({ inputValue, onChange, children }: Props) {
         alt="돋보기 모양 아이콘"
       />
       <input
-        className={styles.input}
+        className={classNames(styles.input, error ? styles.red : "")}
         name="addLink"
         placeholder="링크를 추가해 보세요"
         value={inputValue}
         onChange={handleChange}
       />
+      {error && (
+        <div className={styles.error}>URL 형식에 맞게 입력해주세요.</div>
+      )}
       {children}
     </form>
   );

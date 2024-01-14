@@ -1,9 +1,10 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import classNames from "classnames";
 import styles from "./AddLinkButton.module.css";
 import ModalContainer from "../Modal/ModalContainer/ModalContainer";
 import useModal from "@/hooks/useModal";
 import AddLinkModalContent from "../Modal/AddLinkModalContent/AddLinkModalContent";
+import isValidURL from "@/utils/isValidUrl";
 
 interface Props {
   inputValue: string;
@@ -15,6 +16,7 @@ function AddLinkButton({ inputValue, folderListData }: Props) {
 
   const handleOpenModal = () => {
     if (!inputValue) return;
+    if (!isValidURL(inputValue)) return;
     openModal();
   };
 
