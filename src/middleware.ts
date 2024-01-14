@@ -2,7 +2,7 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
 const REQUIRED_AUTH = ["/folder", "/folder/*"];
-const NOT_REQUIRED_AUTH = ["/", "/signin", "/signup"];
+const NOT_REQUIRED_AUTH = ["/signin", "/signup"];
 
 export async function middleware(request: NextRequest) {
   const jwt = request.cookies.get("accessToken");

@@ -61,7 +61,7 @@ export default function SigninForm() {
     <form className={styles["form"]} onSubmit={handleSubmit(clickSubmitButton)}>
       <div
         className={styles["input-container"]}
-        data-errorBorder={errors.email ? true : false}
+        data-errorborder={errors.email ? true : false}
       >
         <label htmlFor="email">이메일</label>
         <input
@@ -83,7 +83,7 @@ export default function SigninForm() {
 
       <div
         className={styles["input-container"]}
-        data-errorBorder={errors.password ? true : false}
+        data-errorborder={errors.password ? true : false}
       >
         <button
           className={styles["password-img"]}

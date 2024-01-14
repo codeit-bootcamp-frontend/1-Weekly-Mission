@@ -1,4 +1,4 @@
-import { getCookie, setCookie } from "@/utils/manageCookie";
+import { getCookie } from "@/utils/manageCookie";
 import axios from "axios";
 
 export const axiosInstance = axios.create({
@@ -9,9 +9,13 @@ export const axiosInstance = axios.create({
   },
 });
 
-const accessToken = getCookie("accessToken");
-
-axiosInstance.interceptors.request.use(function (config) {
-  config.headers["Authorization"] = accessToken;
-  return config;
-});
+axiosInstance.interceptors.request.use(
+  (config) => {
+    const accessToken = getCookie("accessToken");
+    config.headers["Authorization"] = `Bearer ${accessToken}`;
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  },
+);

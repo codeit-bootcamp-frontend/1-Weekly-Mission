@@ -90,7 +90,7 @@ export default function SignupForm() {
     <form className={styles["form"]} onSubmit={handleSubmit(clickSubmitButton)}>
       <div
         className={styles["input-container"]}
-        data-errorBorder={errors.email ? true : false}
+        data-errorborder={errors.email ? true : false}
       >
         <label htmlFor="email">이메일</label>
         <input
@@ -112,7 +112,7 @@ export default function SignupForm() {
 
       <div
         className={styles["input-container"]}
-        data-errorBorder={errors.password ? true : false}
+        data-errorborder={errors.password ? true : false}
       >
         <button
           className={styles["password-img"]}
@@ -146,7 +146,7 @@ export default function SignupForm() {
 
       <div
         className={styles["input-container"]}
-        data-errorBorder={errors.passwordRepeat ? true : false}
+        data-errorborder={errors.passwordRepeat ? true : false}
       >
         <button
           className={styles["password-img"]}

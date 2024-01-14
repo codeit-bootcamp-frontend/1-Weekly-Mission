@@ -1,10 +1,11 @@
 import Link from "next/link";
 import ResponsiveImg from "@/components/ResponsiveImg/ResponsiveImg";
 import styles from "@/styles/Home.module.scss";
+import Layout from "@/components/Layout/Layout";
 
 export default function Home() {
   return (
-    <>
+    <Layout>
       <header className={styles["header"]}>
         <h1 className="title">
           <span className={styles["important"]}>세상의 모든 정보</span>를 <br />
@@ -76,6 +77,6 @@ export default function Home() {
           </article>
         </div>
       </section>
-    </>
+    </Layout>
   );
 }

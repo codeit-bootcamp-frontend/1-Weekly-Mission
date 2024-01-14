@@ -11,11 +11,9 @@
   justify-content: center;
   align-items: center;
 
-  &.sticky {
-    top: 0;
-    left: 0;
-    position: sticky;
-  }
+  top: 0;
+  left: 0;
+  position: sticky;
   @include desktop {
     padding: 2rem 10rem;
   }
@@ -38,6 +36,7 @@
   align-items: center;
   padding: 1.6rem 2rem;
   border: none;
+  color: white;
   border-radius: 8px;
   background: var(--gra-purpleblue-to-skyblue);
 }

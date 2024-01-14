@@ -1,0 +1,15 @@
+@import "@/styles/global.scss";
+
+.dropdown {
+  right: 5rem;
+  top: 7rem;
+  background-color: white;
+  position: absolute;
+  box-shadow: 5px 5px 5px gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.8rem;
+  border-radius: 8px;
+}
