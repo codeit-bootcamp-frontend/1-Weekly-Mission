@@ -47,18 +47,13 @@ const Folder = () => {
   });
 
   const { data: LinkData } = useQuery({
-    queryKey: folder_Id === 0 ? ["Links"] : ["LinksByFolderId", folder_Id],
-    queryFn: () => {
-      if (!folder_Id) {
-        return fetcher<Link[]>({ method: "get", url: `/links`, headers: { Authorization: accessToken } });
-      } else {
-        return fetcher<Link[]>({
-          method: "get",
-          url: `/folders/${folder_Id}/links`,
-          headers: { Authorization: accessToken },
-        });
-      }
-    },
+    queryKey: ["Links", folder_Id],
+    queryFn: () =>
+      fetcher<Link[]>({
+        method: "get",
+        url: folder_Id ? `/folders/${folder_Id}/links` : "/links",
+        headers: { Authorization: accessToken },
+      }),
   });
 
   const folders = folderData?.data ?? [];

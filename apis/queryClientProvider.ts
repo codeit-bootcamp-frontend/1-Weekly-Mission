@@ -47,7 +47,7 @@ export const queryClientProvider = async (context: GetServerSidePropsContext) =>
 
     if (folderData?.data) {
       await queryClient.prefetchQuery({
-        queryKey: ["Links"],
+        queryKey: ["Links", 0],
         queryFn: () => fetcher<Link[]>({ method: "get", url: `/links`, headers: { Authorization: accessToken } }),
       });
 
@@ -55,7 +55,7 @@ export const queryClientProvider = async (context: GetServerSidePropsContext) =>
         const folder_Id = data.id;
 
         await queryClient.prefetchQuery({
-          queryKey: ["LinksByFolderId", folder_Id],
+          queryKey: ["Links", folder_Id],
           queryFn: () =>
             fetcher<Link[]>({
               method: "get",

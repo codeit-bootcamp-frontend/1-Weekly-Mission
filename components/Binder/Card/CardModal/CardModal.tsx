@@ -32,7 +32,6 @@ const CardModal = ({
       if (data?.status === 204) {
         queryClient.invalidateQueries({ queryKey: ["Links"] });
         queryClient.invalidateQueries({ queryKey: ["Folders"] });
-        queryClient.invalidateQueries({ queryKey: ["LinksByFolderId"] });
       }
     },
   });

@@ -2,7 +2,7 @@ import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 
 const instance = axios.create({
   baseURL: "https://bootcamp-api.codeit.kr/api/linkbrary/v1",
-  timeout: 1000,
+  timeout: 10000,
 });
 
 export const request = (config: AxiosRequestConfig) => {
