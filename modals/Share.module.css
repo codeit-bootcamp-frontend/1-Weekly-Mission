@@ -1,0 +1,21 @@
+.body {
+  display: flex;
+  flex: 0;
+  gap: 3.2rem;
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  color: #373740;
+  text-align: center;
+  font-size: 1.3rem;
+  line-height: 1.5rem;
+}
+
+.link img {
+  width: 4.2rem;
+}

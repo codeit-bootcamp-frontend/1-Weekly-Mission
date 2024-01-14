@@ -1,0 +1,74 @@
+.body {
+  display: flex;
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  gap: 1.5rem;
+  flex: 1;
+  flex-direction: column;
+}
+
+.input {
+  appearance: none;
+}
+
+.label {
+  display: flex;
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.folderName {
+  display: inline;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  color: var(--gray5, #373740);
+}
+
+.linkLength {
+  font-size: 1.4rem;
+  color: var(--gray4, #9fa6b2);
+}
+
+.labelImg {
+  opacity: 0;
+}
+
+/* 저도 이 아래로 이어지는 CSS 선언들이 몹시 DOM 종속적이라는 사실을 잘 알고 있습니다.
+다만, 머리를 몹시 굴려보았는데 최종적으로는 이게 가장 '간단'하게 구현이 가능하겠다 싶어 이렇게 했습니다. */
+
+/* hover */
+.label:hover {
+  background-color: var(--gray1);
+}
+
+.label:hover .folderName {
+  color: var(--primary);
+}
+
+.label:hover .labelImg {
+  opacity: 0.3;
+}
+
+/* checked */
+.input:checked ~ .label {
+  background-color: var(--gray1);
+}
+
+.input:checked ~ .label .folderName {
+  color: var(--primary);
+}
+
+.input:checked ~ .label .labelImg {
+  opacity: 1;
+}
