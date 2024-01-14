@@ -46,8 +46,15 @@
 
 .avatar {
   position: relative;
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid var(--color-gray-20);
+}
+
+.photo {
+  padding: 2px;
   border-radius: 50%;
 }
 
