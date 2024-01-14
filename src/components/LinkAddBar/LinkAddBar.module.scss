@@ -1,6 +1,8 @@
 .add-form-container {
   background-color: var(--linkbrary-bg, #f0f6ff);
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
   & form {
     display: flex;
     justify-content: center;
