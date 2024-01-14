@@ -6,8 +6,8 @@ import * as S from "./SignFormStyles";
 import EmailInput from "../inputs/EmailInput";
 
 import { SignupForm } from "@/types/form";
-import { isUsableEmail } from "@/common/api";
 import { signupUser } from "@/api/auth/signup";
+import { checkEmail } from "@/api/user/checkEmail";
 
 export default function SignupForm() {
   const router = useRouter();
@@ -38,9 +38,10 @@ export default function SignupForm() {
 
   const validateUsableEmail = async () => {
     const email = getValues("email");
+
     try {
-      const result = await isUsableEmail({ email });
-      return result.data ? true : result.error.message;
+      const result = await checkEmail({ email });
+      return result.isUsableEmail ? true : result.message;
     } catch (error) {
       console.log(error);
     }

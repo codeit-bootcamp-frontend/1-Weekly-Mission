@@ -40,14 +40,3 @@ export async function getAllLinks(userId: number, folderId = "") {
   const data = await res.json();
   return data;
 }
-
-export async function isUsableEmail(email: EmailData) {
-  const res = await fetch(`${DOMAIN_URL}/api/check-email`, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(email),
-  });
-
-  const data = await res.json();
-  return data;
-}
