@@ -8,3 +8,7 @@ export interface SigninFormType {
   email: string;
   password: string;
 }
+
+export interface FolderAddFormType {
+  name: string;
+}

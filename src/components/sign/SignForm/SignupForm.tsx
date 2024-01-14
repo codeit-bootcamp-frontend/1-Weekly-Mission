@@ -48,7 +48,7 @@ export default function SignupForm() {
         path: "/",
         secure: "/",
       });
-      router.push("/folder");
+      router.push("/folders");
     },
   });
 

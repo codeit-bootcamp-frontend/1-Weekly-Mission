@@ -8,7 +8,7 @@ import Nav from "@/components/Nav/Nav";
 import { useUserInfoStore } from "@/store/UserInfo";
 
 export default function Layout({ children }: PropsWithChildren) {
-  const hasNav = ["/", "/folder", "/shared"];
+  const hasNav = ["/signin", "/signup", "/404"];
   const { route } = useRouter();
   const { data } = useQuery({
     queryKey: ["user"],
@@ -23,9 +23,9 @@ export default function Layout({ children }: PropsWithChildren) {
 
   return (
     <>
-      {hasNav.includes(route) && <Nav />}
+      {!hasNav.includes(route) && <Nav />}
       {children}
-      {hasNav.includes(route) && <Footer />}
+      {!hasNav.includes(route) && <Footer />}
     </>
   );
 }

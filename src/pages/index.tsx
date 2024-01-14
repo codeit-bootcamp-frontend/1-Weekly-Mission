@@ -12,7 +12,7 @@ export default function Home() {
           쉽게 저장하고 관리해 보세요
         </h1>
         <button className={styles["link-button"]}>
-          <Link href="/folder">링크 추가하기</Link>
+          <Link href="/folders">링크 추가하기</Link>
         </button>
         <div className={styles["sample-img"]}>
           <ResponsiveImg src="/images/home-img.png" alt="home" />

@@ -43,7 +43,7 @@ export default function SigninForm() {
         path: "/",
         secure: "/",
       });
-      router.push("/folder");
+      router.push("/folders");
     },
   });
 
