@@ -1,0 +1,10 @@
+.root {
+  border: 1px dashed var(--gray3);
+  border-radius: 0.8rem;
+  width: 100%;
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-align: center;
+  padding: 15rem;
+  line-height: 2.4rem;
+}

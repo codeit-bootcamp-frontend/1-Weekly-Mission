@@ -1,0 +1,21 @@
+.root {
+  display: flex;
+  gap: 4rem;
+  flex-direction: column;
+  margin: 4rem auto;
+  padding: 0rem 3.2rem;
+  width: 100%;
+  max-width: 112.4rem;
+}
+
+.searchWrapper {
+  gap: 1rem;
+  justify-content: space-between !important;
+  border: none !important;
+  background-color: #f5f5f5 !important;
+}
+
+.searchWrapper input {
+  flex: 1;
+  background-color: #f5f5f5;
+}

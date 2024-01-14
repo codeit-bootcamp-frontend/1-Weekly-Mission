@@ -1,0 +1,21 @@
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.profileImage {
+  border-radius: 3rem;
+  overflow: hidden;
+}
+.userProfile {
+  color: #373740;
+  font-size: 14px;
+}
+
+@media (max-width: 767px) {
+  .userProfile {
+    display: none;
+  }
+}

@@ -1,0 +1,25 @@
+.root {
+  position: relative;
+}
+
+.kebabButtonList {
+  width: 10rem;
+  right: 0;
+  position: absolute;
+}
+
+.kebabButton {
+  display: flex;
+  padding: 7px 12px;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  background-color: white;
+  align-self: center;
+  width: 100%;
+}
+
+.kebabButton:hover {
+  color: var(--primary);
+  background-color: var(--gray1);
+}
