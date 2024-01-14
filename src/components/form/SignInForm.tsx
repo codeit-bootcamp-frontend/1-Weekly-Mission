@@ -28,11 +28,16 @@ export default function SigninForm() {
         email: data.email,
         password: data.password,
       });
-      localStorage.setItem("accessToken", result.accessToken);
-      router.push("/folder");
+
+      if (result.accessToken) {
+        localStorage.setItem("accessToken", result.accessToken);
+        router.push("/folder");
+      } else {
+        setError("email", { message: "이메일을 확인해 주세요." });
+        setError("password", { message: "비밀번호를 확인해 주세요." });
+      }
     } catch (error) {
-      setError("email", { message: "이메일을 확인해 주세요." });
-      setError("password", { message: "비밀번호를 확인해 주세요." });
+      console.log(error);
     }
   };
 
