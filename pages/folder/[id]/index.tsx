@@ -69,9 +69,8 @@ export default function FolderPage() {
     if (linksData) {
       setFilteredLinks(linksData);
     }
-  }, [linksData]);
-
-  console.log(selected);
+    setSelected(selectedFolderName);
+  }, [linksData, selectedFolderName]);
 
   return (
     <>

@@ -29,7 +29,7 @@ export default function Folder() {
   const { data: linksData } = useFolder("/links");
 
   // console.log(selectedFolderName); // 삭제예정
-  // console.log(foldersData); // 삭제예정
+  console.log(foldersData); // 삭제예정
   // console.log(linksData); // 삭제예정
 
   const folders: SharedFolderData[] = foldersData ?? [];
@@ -72,8 +72,8 @@ export default function Folder() {
       setFilteredLinks(linksData);
     }
     if (foldersData) {
-      const aaa = foldersData.map((folder: SharedFolderData) => folder.name);
-      setFolderNames(aaa);
+      const folders = foldersData.map((folder: SharedFolderData) => folder.name);
+      setFolderNames(folders);
     }
   }, [linksData, foldersData]);
 
