@@ -8,9 +8,10 @@ export type Folder = {
 
 export type SelectedFolderId = number | "all";
 
-export type Return_post_folder = {
+export type Return_folder = {
   id: number;
   created_at: string;
   name: string;
+  user_id: number;
   favorite: boolean;
 };

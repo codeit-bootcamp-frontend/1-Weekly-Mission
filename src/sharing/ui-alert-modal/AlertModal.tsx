@@ -9,7 +9,7 @@ import { ModalContentTitle } from "@/src/sharing/ui-modal-content-title";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import fetcher from "../util/axiosInstance";
 import { LinkRawData } from "@/src/link/type";
-import { Folder } from "@/src/folder/type";
+import { Folder, SelectedFolderId } from "@/src/folder/type";
 
 const cx = classNames.bind(styles);
 
@@ -21,6 +21,7 @@ type AlertModalProps = {
   onClick: MouseEventHandler<HTMLButtonElement>;
   onCloseClick: MouseEventHandler<HTMLDivElement | HTMLButtonElement>;
   onKeyDown: KeyboardEventHandler<HTMLDivElement>;
+  selectedFolderId?: SelectedFolderId;
 };
 
 export const AlertModal = ({
@@ -31,16 +32,19 @@ export const AlertModal = ({
   onClick,
   onCloseClick,
   onKeyDown,
+  selectedFolderId,
 }: AlertModalProps) => {
   const queryClient = useQueryClient();
+
   const folderMutation = useMutation({
     mutationFn: () =>
       fetcher<Folder[]>({
-        method: "get",
-        url: "/folders",
+        method: "delete",
+        url: `/folders/${selectedFolderId}`,
       }),
     onSuccess: () => queryClient.invalidateQueries(),
   });
+
   return (
     <Modal isOpen={isOpen} onBackdropClick={onCloseClick} onKeyDown={onKeyDown}>
       <ModalContentBox

@@ -81,6 +81,8 @@ export const FolderToolBar = ({
           onKeyDown={handleKeyDown}
           value={inputValue}
           onChange={(event) => setInputValue(event.target.value)}
+          setInputValue={setInputValue}
+          selectedFolderId={selectedFolderId}
         />
       </div>
       <h2 className={cx("folder-name")}>{folderName}</h2>
@@ -96,7 +98,7 @@ export const FolderToolBar = ({
           ))}
           <ShareModal
             isOpen={currentModal === MODALS_ID.share}
-            folderName={folderName}
+            folderName={inputValue}
             onKakaoClick={handleKakaoClick}
             onFacebookClick={handleFacebookClick}
             onLinkCopyClick={handleLinkCopyClick}
@@ -112,6 +114,8 @@ export const FolderToolBar = ({
             onKeyDown={handleKeyDown}
             value={inputValue}
             onChange={(event) => setInputValue(event.target.value)}
+            setInputValue={setInputValue}
+            selectedFolderId={selectedFolderId}
           />
           <AlertModal
             isOpen={currentModal === MODALS_ID.delete}
@@ -120,7 +124,7 @@ export const FolderToolBar = ({
             buttonText="삭제하기"
             onCloseClick={closeModal}
             onKeyDown={handleKeyDown}
-            onClick={() => {}}
+            selectedFolderId={selectedFolderId}
           />
         </div>
       )}

@@ -1,8 +1,10 @@
 import {
+  ChangeEvent,
   ChangeEventHandler,
   FocusEventHandler,
   HTMLInputTypeAttribute,
   forwardRef,
+  useState,
 } from "react";
 import styles from "./Input.module.scss";
 import classNames from "classnames/bind";
@@ -17,6 +19,7 @@ export type InputProps = {
   helperText?: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
   onBlur?: FocusEventHandler<HTMLInputElement>;
+  initialValue?: string;
 };
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -29,6 +32,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       helperText,
       onChange,
       onBlur,
+      initialValue,
     },
     ref
   ) => {
