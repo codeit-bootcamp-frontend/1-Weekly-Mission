@@ -11,20 +11,24 @@ import { getAccessToken } from "@/utils/localStorage";
 export default function Nav() {
   const router = useRouter();
   const isFolderPage = router.pathname === "/folder";
-  const [userProfile, setUserProfile] = useState<User[]>([]);
+  const [user, setUser] = useState<User[]>();
 
-  const fetchUsers = async () => {
-    const res = await instance.get(USERS_ENDPOINT, {
-      headers: {
-        Authorization: `Bearer ${getAccessToken()}`,
-      },
-    });
-    const user = res?.data.data;
-    setUserProfile(user);
+  const getUser = async () => {
+    try {
+      const res = await instance.get(USERS_ENDPOINT, {
+        headers: {
+          Authorization: `Bearer ${getAccessToken()}`,
+        },
+      });
+      const nextUser = res?.data;
+      setUser(nextUser);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
-    fetchUsers();
+    getUser();
   }, []);
 
   return (
@@ -39,19 +43,19 @@ export default function Nav() {
             height={24}
           />
         </Link>
-        {userProfile ? (
+        {user ? (
           <div className={styles.userProfileBox}>
             <Image
-              src={userProfile[0]?.image_source}
+              src={user[0]?.image_source}
               alt="userProfile"
               className={styles.userProfileIcon}
               width={24}
               height={24}
             />
-            <span>{userProfile[0]?.email}</span>
+            <span>{user[0]?.email}</span>
           </div>
         ) : (
-          <Link href="/pages/signin/SigninPage.js">
+          <Link href="/signin">
             <button type="button" className={styles.loginButton}>
               로그인
             </button>

@@ -22,6 +22,7 @@ import {
   setRefreshToken,
 } from "@/utils/localStorage";
 import useUserStore from "@/hooks/useStore";
+import { QueryClient, useMutation, useQuery } from "@tanstack/react-query";
 
 export interface FormValues {
   email: string;
@@ -36,8 +37,10 @@ export function SigninForm() {
     formState: { errors },
     handleSubmit,
     setError,
+    watch,
   } = useForm<FormValues>({ mode: "onBlur" });
 
+  const queryClient = new QueryClient();
   const { setUser } = useUserStore();
 
   const getUser = async () => {
@@ -47,26 +50,35 @@ export function SigninForm() {
           Authorization: `Bearer ${getAccessToken()}`,
         },
       });
-      const nextUser = res?.data.data;
+      const nextUser = res?.data;
       setUser(nextUser);
     } catch (error) {
       console.error(error);
     }
   };
 
+  const postSignin = async () => {
+    const res = await instance.post(`/auth/sign-in`, {
+      email: watch("email"),
+      password: watch("password"),
+    });
+    const accessToken = res?.data.accessToken;
+    const refreshToken = res?.data.refreshToken;
+    setAccessToken(accessToken);
+    setRefreshToken(refreshToken);
+    await getUser();
+    if (res.status === 200) {
+      router.push("/folder");
+    }
+  };
+
+  const signinMutation = useMutation({
+    mutationFn: postSignin,
+  });
+
   const onSubmit = handleSubmit(async (data: FormValues) => {
-    let res;
     try {
-      res = await instance.post(`${SIGNIN_ENDPOINT}`, {
-        email: data.email,
-        password: data.password,
-      });
-      const accessToken = res?.data.data.accessToken;
-      const refreshToken = res?.data.data.refreshToken;
-      setAccessToken(accessToken);
-      setRefreshToken(refreshToken);
-      await getUser();
-      res?.status === 200 && router.push("/folder");
+      signinMutation.mutate();
     } catch (error) {
       if (axios.isAxiosError(error) && error.response?.status === 400) {
         setError("email", { message: CHECK_EMAIL_TEXT });
@@ -78,7 +90,7 @@ export function SigninForm() {
 
   return (
     <>
-      <form className={styles.form} onSubmit={onSubmit} noValidate>
+      <form className={styles.form} noValidate onSubmit={onSubmit}>
         <div className={styles.inputContainer}>
           <label htmlFor="email" className={styles.label}>
             이메일

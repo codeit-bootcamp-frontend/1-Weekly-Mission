@@ -1,10 +1,6 @@
 import styles from "./folderPage.module.css";
-import { KeyboardEvent, useEffect, useRef, useState } from "react";
-import {
-  FOLDER_ENDPOINT,
-  LINKS_ENDPOINT,
-  instance,
-} from "../../../api/services/config";
+import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
+import { instance } from "../../../api/services/config";
 import { FolderName, LinkInfo } from "@/types/types";
 import { ALL_LINK_NAME, OPTION_ICONS } from "../../../constants/folderConstant";
 import AddLinkInput from "../../../components/addLinkInput/AddLinkInput";
@@ -21,14 +17,14 @@ import Image from "next/image";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import { getAccessToken } from "@/utils/localStorage";
 import { useRouter } from "next/router";
-import useUserStore from "@/hooks/useStore";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { QUERY_KEYS } from "@/constants/queryKeys";
 
 function FolderPage() {
-  const [links, setLinks] = useState<LinkInfo[]>([]);
-  const [folders, setFolders] = useState<FolderName[]>([]);
   const [folderId, setFolderId] = useState<string | number>(ALL_LINK_NAME);
   const [filteredLinks, setFilteredLinks] = useState<LinkInfo[]>([]);
   const [keyword, setKeyword] = useState("");
+  const [addFolderName, setAddFolderName] = useState("");
   const { open, close, isModalOpen, Dialog } = useModal();
   const inputRef = useRef<HTMLInputElement>(null);
   const [isResultEmpty, setIsResultEmpty] = useState(false);
@@ -37,26 +33,28 @@ function FolderPage() {
     useIntersectionObserver<HTMLDivElement>();
   const showFixedAddLinkInput = !isIntersecting && !isHeaderIntersecting;
   const router = useRouter();
-  const { user } = useUserStore();
-  console.log(user);
+  const queryClient = useQueryClient();
 
   const getFolderNames = async () => {
     const token = localStorage.getItem("accessToken");
     try {
-      const res = await instance.get(`${FOLDER_ENDPOINT}`, {
+      const res = await instance.get(`/folders`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      setFolders(res?.data.data.folder);
+      const { data } = res;
+      return data;
     } catch (error) {
       console.error(error);
     }
   };
 
-  useEffect(() => {
-    getFolderNames();
-  }, []);
+  const folderNames = useQuery({
+    queryKey: [QUERY_KEYS.FOLDER_NAMES],
+    queryFn: getFolderNames,
+  });
+  const folders: FolderName[] = folderNames?.data;
 
   useEffect(() => {
     if (!getAccessToken()) {
@@ -70,25 +68,42 @@ function FolderPage() {
       : folders?.find(({ id }) => id === folderId)?.name;
 
   const getUserLinks = async (folderId: string | number) => {
-    const query = folderId === "전체" ? "" : `?folderId=${folderId}`;
-    try {
-      const res = await instance.get(`${LINKS_ENDPOINT}${query}`, {
-        headers: {
-          Authorization: `Bearer ${getAccessToken()}`,
-        },
-      });
-      const nextLinks = res?.data.data.folder;
-      setLinks(nextLinks);
-      setFilteredLinks(nextLinks);
-    } catch (error) {
-      console.error(error);
+    let links;
+    if (folderId === ALL_LINK_NAME) {
+      try {
+        const res = await instance.get(`/links`, {
+          headers: {
+            Authorization: `Bearer ${getAccessToken()}`,
+          },
+        });
+        const { data } = res;
+        links = data;
+        setFilteredLinks(links);
+      } catch (error) {
+        console.error(error);
+      }
+    } else if (typeof folderId === "number") {
+      try {
+        const res = await instance.get(`/folders/${folderId}/links`, {
+          headers: {
+            Authorization: `Bearer ${getAccessToken()}`,
+          },
+        });
+        const { data } = res;
+        links = data;
+        setFilteredLinks(links);
+      } catch (error) {
+        console.error(error);
+      }
     }
+    return links;
   };
 
-  useEffect(() => {
-    if (!folderId) return;
-    getUserLinks(folderId);
-  }, [folderId]);
+  const linkData = useQuery({
+    queryKey: [QUERY_KEYS.LINKS, folderId],
+    queryFn: () => getUserLinks(folderId),
+  });
+  const links: LinkInfo[] = linkData.data;
 
   const handleCloseButtonClick = () => {
     setKeyword("");
@@ -103,7 +118,7 @@ function FolderPage() {
   };
 
   const filterByKeyword = () => {
-    const filteredData = filteredLinks.filter((links) => {
+    const filteredData = links.filter((links) => {
       const { description, url, title } = links;
       const searchContent = `${description} ${url} ${title}`
         .toLowerCase()
@@ -117,6 +132,7 @@ function FolderPage() {
       setIsResultEmpty(true);
     }
   };
+
   useEffect(() => {
     if (!keyword) {
       getUserLinks(folderId);
@@ -124,7 +140,31 @@ function FolderPage() {
       return;
     }
     filterByKeyword();
-  }, [keyword]);
+  }, [keyword, folderId]);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setAddFolderName(e.target.value);
+  };
+
+  const addFolder = async () => {
+    instance.post(
+      `/folders`,
+      {
+        name: addFolderName,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${getAccessToken()}`,
+        },
+      }
+    );
+  };
+
+  const addFolderMutation = useMutation({
+    mutationFn: () => addFolder(),
+    onSuccess: () =>
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.FOLDER_NAMES] }),
+  });
 
   return (
     <div className={styles.folderContainer}>
@@ -172,8 +212,13 @@ function FolderPage() {
             </button>
             <Dialog onClick={close} isModalOpen={isModalOpen}>
               <Dialog.Title>폴더 추가</Dialog.Title>
-              <Dialog.Input value="" />
-              <Dialog.Button isAddButton>추가하기</Dialog.Button>
+              <Dialog.Input value="" onChange={handleChange} />
+              <Dialog.Button
+                isAddButton
+                onClick={() => addFolderMutation.mutate()}
+              >
+                추가하기
+              </Dialog.Button>
             </Dialog>
           </div>
           <div className={styles.folderCategoryContainer}>

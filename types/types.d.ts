@@ -18,9 +18,7 @@ export interface FolderName {
   created_at: string;
   name: string;
   user_id: number;
-  link: {
-    count: number;
-  };
+  link_count: number;
 }
 
 export interface ChildrenProps {
@@ -65,7 +63,6 @@ export interface User {
   name: string;
   image_source: string;
   email: string;
-  auth_id: string;
 }
 
 export interface Folder {

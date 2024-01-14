@@ -7,6 +7,7 @@ import { SIGNUP_ENDPOINT, instance } from "@/api/services/config";
 import { useRouter } from "next/router";
 import { setAccessToken } from "@/utils/localStorage";
 import { EMAIL_PATTERN, PASSWORD_PATTERN } from "@/constants/authConstant";
+import { useMutation } from "@tanstack/react-query";
 
 export interface FormValues {
   email: string;
@@ -21,20 +22,25 @@ export function SignupForm() {
     formState: { errors },
     handleSubmit,
     getValues,
+    watch,
   } = useForm<FormValues>({ mode: "onBlur" });
 
-  const onSubmit = handleSubmit(async (data: FormValues) => {
-    try {
-      const res = await instance.post(`${SIGNUP_ENDPOINT}`, {
-        email: data.email,
-        password: data.password,
-      });
-      const accessToken = res?.data.data.accessToken;
-      setAccessToken(accessToken);
-      res.status === 200 && router.push("/folder");
-    } catch (error) {
-      console.error(error);
-    }
+  const signup = async () => {
+    const res = await instance.post(`${SIGNUP_ENDPOINT}`, {
+      email: watch("email"),
+      password: watch("password"),
+    });
+    const accessToken = res?.data.accessToken;
+    setAccessToken(accessToken);
+    res.status === 200 && router.push("/folder");
+  };
+
+  const signupMutation = useMutation({
+    mutationFn: signup,
+  });
+
+  const onSubmit = handleSubmit(async () => {
+    signupMutation.mutate();
   });
 
   const { password } = getValues();
