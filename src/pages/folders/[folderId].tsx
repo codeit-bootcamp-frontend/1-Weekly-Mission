@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import getFolderInfo from "@/api/getFolderInfo";
+import CardList from "@/components/CardList/CardList";
 import FolderMaker from "@/components/folder/FolderMaker/FolderMaker";
 import FolderModifier from "@/components/folder/FolderModifier copy/FolderModifier";
 import FolderTagList from "@/components/folder/FolderTagList/FolderTagList";
@@ -41,6 +42,9 @@ export default function CustomFolderPage() {
           folderId={folderId}
           folderTitle={data ? data[0].name : ""}
         />
+        <div className={styles["card-list-section"]}>
+          <CardList folderId={folderId} keyword={keyword} />
+        </div>
       </div>
     </Layout>
   );

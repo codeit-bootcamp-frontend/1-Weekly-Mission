@@ -1,0 +1,29 @@
+@import "@/styles/global.scss";
+
+.no-card-list {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 24px;
+  padding: 12rem 0 20rem;
+}
+
+.card-section {
+  margin: 4rem auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+  justify-content: center;
+  @include tablet {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  @include desktop {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3rem;
+  }
+}

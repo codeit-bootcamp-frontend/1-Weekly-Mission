@@ -7,6 +7,7 @@ import LinkAddBar from "@/components/LinkAddBar/LinkAddBar";
 import SearchBar from "@/components/SearchBar/SearchBar";
 
 import styles from "./FolderPage.module.scss";
+import CardList from "@/components/CardList/CardList";
 
 export default function FolderPage() {
   const [keyword, setKeyword] = useState("");
@@ -26,7 +27,9 @@ export default function FolderPage() {
 
         <FolderTagList />
         <FolderMaker />
-        <div className={styles["card-list-section"]}></div>
+        <div className={styles["card-list-section"]}>
+          <CardList keyword={keyword} />
+        </div>
       </div>
     </Layout>
   );
