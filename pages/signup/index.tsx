@@ -10,7 +10,6 @@ import AuthForm from "@/components/SignPage/AuthForm";
 import validateField from "@/utils/validateField";
 import redirectIfAccessToken from "@/utils/redirectIfAccessToken";
 import createFieldErrorHandler from "@/utils/createFieldErrorHandler";
-import saveTokens from "@/utils/saveTokens";
 import isUsableEmail from "@/utils/isUsableEmail";
 
 import { EMAIL_FIELD_INFO, PW_FIELD_INFO } from "@/constants/constants";
@@ -85,11 +84,7 @@ function SignUp() {
         return;
       }
 
-      const { accessToken, refreshToken } = response.data;
-
-      saveTokens({ accessToken, refreshToken });
-
-      router.push("/folder");
+      router.push(`/signin`);
     }
   };
 
