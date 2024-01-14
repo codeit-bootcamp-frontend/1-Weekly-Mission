@@ -3,17 +3,43 @@
 */
 
 import Image from "next/image";
+import { useState } from "react";
+
+import FolderDeleteModal from "@/modals/FolderDeleteModal/FolderDeleteModal";
 
 import styles from "./FolderModifier.module.scss";
+
+interface FolderModifierProps {
+  folderId: string;
+  folderTitle: string;
+}
 
 function FolderTitle({ title }: { title: string }) {
   return <h1 className={styles["folder-title"]}>{title}</h1>;
 }
 
-function FolderModifier({ folderId = "", folderTitle = "" }) {
+function FolderModifier({ folderId, folderTitle }: FolderModifierProps) {
+  const [isOpenDelete, setIsOpenDelete] = useState(false);
+  const [isOpenEdit, setIsOpenEdit] = useState(false);
+
+  const closeDeleteModal = () => {
+    setTimeout(() => setIsOpenDelete(false), 200);
+  };
+  const closeEditModal = () => {
+    setTimeout(() => setIsOpenEdit(false), 200);
+  };
+
   return (
     <div className={styles["modifier-container"]}>
-      <FolderTitle title={folderTitle} />
+      {isOpenDelete && (
+        <FolderDeleteModal
+          folderId={folderId}
+          folderTitle={folderTitle ?? ""}
+          onBlur={closeDeleteModal}
+        />
+      )}
+
+      <FolderTitle title={folderTitle ?? ""} />
       <div>
         <div className={styles["button-modifier"]}>
           <button>
@@ -34,7 +60,7 @@ function FolderModifier({ folderId = "", folderTitle = "" }) {
             />
             이름 변경
           </button>
-          <button>
+          <button onClick={() => setIsOpenDelete(true)}>
             <Image
               src="/icons/delete-icon.svg"
               width={19}
