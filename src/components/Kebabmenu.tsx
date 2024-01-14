@@ -6,8 +6,10 @@ import ModalPortal from "./ModalPortal";
 import AddLink from "./modal/AddLink";
 import DeleteFolder from "./modal/DeleteFolder";
 
+import { LinkData } from "@/types/link";
+
 interface KebabMenuProps {
-  link: string;
+  link: LinkData;
 }
 
 export default function KebabMenu({ link }: KebabMenuProps) {
@@ -37,9 +39,14 @@ export default function KebabMenu({ link }: KebabMenuProps) {
         <ModalPortal>
           <ModalContainer onClose={handleCloseModal}>
             {selectedOption === "addLink" ? (
-              <AddLink link={link} />
+              <AddLink link={link.url} onClose={handleCloseModal} />
             ) : (
-              <DeleteFolder currentFolderName={link} label="링크" />
+              <DeleteFolder
+                selectedItem={link.url}
+                id={link.id}
+                onClose={handleCloseModal}
+                label="링크"
+              />
             )}
           </ModalContainer>
         </ModalPortal>
