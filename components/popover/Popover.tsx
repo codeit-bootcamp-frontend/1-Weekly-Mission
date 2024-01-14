@@ -60,7 +60,7 @@ export default function Popover({ url, folders }: PopoverProps) {
                 <Dialog.FolderList key={folder.id}>
                   <span className={styles.dialogFolderName}>{folder.name}</span>
                   <span className={styles.dialogFolderCount}>
-                    {folder.link.count}개 링크
+                    {folder.link_count}개 링크
                   </span>
                 </Dialog.FolderList>
               ))}

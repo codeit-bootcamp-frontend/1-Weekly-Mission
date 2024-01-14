@@ -67,7 +67,7 @@ function Card({ linkInfo, folders }: CardProps) {
         </div>
       </a>
       <div className={styles.cardTextSection}>
-        <p className={styles.timeStamp}>
+        <div className={styles.timeStamp}>
           {formattedTime}
           <KebabButton
             onClick={handleKebabClick}
@@ -75,7 +75,7 @@ function Card({ linkInfo, folders }: CardProps) {
             url={linkInfo.url}
             folders={folders}
           />
-        </p>
+        </div>
         <p className={styles.introduceText}>{linkInfo?.description}</p>
         <p className={styles.createdDate}>{`${year}. ${month}. ${date}`}</p>
       </div>
