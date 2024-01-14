@@ -9,13 +9,6 @@ import { useFolder } from "@/hooks/useFolder";
 import { FolderContext } from "@/context/SelectedFolderContext";
 import { checkMatchedAllLinks } from "@/common/utils/matchedKeyword";
 
-/**
- * @TODO
- * /folders, /links api로 변경
- * 토큰을 가져와서 hearder에 함께 보내기
- * 다른 폴더를 선택한 경우 folder/folderId 페이지로 이동
- */
-
 export default function Folder() {
   const router = useRouter();
   const { selectedFolderName, updateFolderName } = useContext(FolderContext);
@@ -27,10 +20,6 @@ export default function Folder() {
 
   const { data: foldersData, isLoading } = useFolder("/folders");
   const { data: linksData } = useFolder("/links");
-
-  // console.log(selectedFolderName); // 삭제예정
-  console.log(foldersData); // 삭제예정
-  // console.log(linksData); // 삭제예정
 
   const folders: Folder[] = foldersData ?? [];
   const links: LinkData[] = linksData ?? [];

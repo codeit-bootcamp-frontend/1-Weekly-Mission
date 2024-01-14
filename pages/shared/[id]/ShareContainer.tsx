@@ -24,9 +24,6 @@ export default function Share() {
   const [keyword, setKeyword] = useState("");
   const [filteredLinks, setFilteredLinks] = useState<LinkData[]>(links);
 
-  console.log(linksData); // 삭제예정
-  console.log(filteredLinks); // 삭제예정
-
   /** @TODO 검색바 관련 로직 분리해보기(folder에서도 사용하므로) */
   const handleOnChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     if (linksData) {

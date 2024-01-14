@@ -4,11 +4,8 @@ import styles from "./modalStyles/AddFolders.module.css";
 import ModalButton from "@/components/button/ModalButton";
 import ModalTitle from "./ModalTitle";
 
-import { createFolder } from "@/api/folder/createFolder";
-import { useFolder } from "@/hooks/useFolder";
-import useSWR, { mutate, useSWRConfig } from "swr";
+import { mutate } from "swr";
 import { DOMAIN_URL } from "@/common/constants";
-import useSWRMutation from "swr/mutation";
 
 interface AddFoldersProps {
   onClose: () => void;
@@ -30,8 +27,6 @@ export default function AddFolders({ onClose }: AddFoldersProps) {
       }).then((res) => res.json());
     }
   };
-
-  const { data } = useSWR("/folders", (url) => fetcher(url, folderName));
 
   const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     setFolderName(e.target.value);
