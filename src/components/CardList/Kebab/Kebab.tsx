@@ -2,31 +2,42 @@ import Image from "next/image";
 import { useState } from "react";
 
 import styles from "./Kebab.module.scss";
+import LinkDeleteModal from "@/modals/LinkDeleteModal/LinkDeleteModal";
 
 interface KebabProps {
-  cardId?: string;
+  cardId: string;
+  cardUrl: string;
 }
 
-function KebabMenu({ cardId }: KebabProps) {
+function KebabMenu({ cardId, cardUrl }: KebabProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const openModal = () => {
+    setIsOpen(true);
+  };
+  const closeModal = () => {
+    setTimeout(() => setIsOpen(false), 200);
+  };
   return (
     <>
+      {isOpen && (
+        <LinkDeleteModal
+          cardId={cardId}
+          cardUrl={cardUrl}
+          onBlur={closeModal}
+        />
+      )}
       <div className={styles["kebab-menu"]}>
-        <button>삭제하기</button>
+        <button onClick={openModal}>삭제하기</button>
         <button>폴더에 추가</button>
       </div>
     </>
   );
 }
 
-export default function Kebab({ cardId }: KebabProps) {
+export default function Kebab({ cardId, cardUrl }: KebabProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const handleMenuOpen = () => {
     setIsMenuOpen(!isMenuOpen);
-  };
-  const handleMenuClose = () => {
-    setTimeout(() => {
-      setIsMenuOpen(false);
-    }, 100);
   };
 
   return (
@@ -35,7 +46,6 @@ export default function Kebab({ cardId }: KebabProps) {
         <button
           className={styles["kebab-button"]}
           onClick={handleMenuOpen}
-          onBlur={handleMenuClose}
           type="button"
         >
           <Image
@@ -45,7 +55,7 @@ export default function Kebab({ cardId }: KebabProps) {
             alt="kebab button"
           />
         </button>
-        {isMenuOpen && <KebabMenu cardId={cardId} />}
+        {isMenuOpen && <KebabMenu cardId={cardId} cardUrl={cardUrl} />}
       </div>
     </>
   );

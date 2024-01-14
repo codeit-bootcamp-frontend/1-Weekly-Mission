@@ -7,7 +7,6 @@ import calcDate from "@/utils/calcDate";
 import { CardType } from "@/types/CardType";
 import Kebab from "../Kebab/Kebab";
 import styles from "./Card.module.scss";
-import { useState } from "react";
 
 interface CardProps {
   card: CardType;
@@ -15,12 +14,11 @@ interface CardProps {
 
 function Card({ card }: CardProps) {
   const str = calcDate(card?.created_at || card?.createdAt);
-  const [isView, setIsView] = useState(false);
 
   return (
     <>
       <div className={styles["card-container"]}>
-        <Kebab cardId={card?.id} />
+        <Kebab cardId={card?.id} cardUrl={card?.url} />
         <Link
           href={card?.url ?? ""}
           target="_blank"
