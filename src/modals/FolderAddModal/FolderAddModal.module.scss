@@ -12,6 +12,11 @@
   padding: 3.2rem 4rem;
   justify-content: center;
   align-items: center;
+  & form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
 }
 
 .modal-title {

@@ -38,7 +38,7 @@ function SignLayout({
         <header>
           <Link href="/">
             <div className={styles["logo-img"]}>
-              <img src="icons/logo.svg" alt="logo img" />
+              <img src="/icons/logo.svg" alt="logo img" />
             </div>
           </Link>
           <div className={styles["description"]}>

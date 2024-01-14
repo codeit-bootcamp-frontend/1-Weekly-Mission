@@ -17,7 +17,7 @@ function LinkAddBar() {
         <form>
           <div className={styles["add-link-form"]}>
             <Image
-              src="icons/link-icon.svg"
+              src="/icons/link-icon.svg"
               alt="link icon"
               width={20}
               height={21}

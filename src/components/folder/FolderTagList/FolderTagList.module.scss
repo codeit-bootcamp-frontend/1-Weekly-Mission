@@ -7,11 +7,12 @@
   align-items: center;
   & .folder-tag {
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
     justify-content: flex-start;
     align-items: center;
-    width: 60%;
-    max-width: 50rem;
+    width: 80%;
+    max-width: 90rem;
     min-width: 20rem;
   }
 }

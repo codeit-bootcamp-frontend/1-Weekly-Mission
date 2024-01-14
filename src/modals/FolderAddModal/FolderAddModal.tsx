@@ -7,7 +7,7 @@ import styles from "./FolderAddModal.module.scss";
 import createFolder from "@/api/createFolder";
 
 interface ModalProps {
-  onBlur?: () => void;
+  onBlur: () => void;
 }
 
 export default function FolderAddModal({ onBlur }: ModalProps) {
@@ -22,19 +22,23 @@ export default function FolderAddModal({ onBlur }: ModalProps) {
 
   const { mutate: createFolderMutation } = useMutation({
     mutationFn: (name: string) => createFolder(name),
-    onError: (error) => {
-      console.log(error);
+    onError: () => {
       toast.error("폴더 생성에 실패했습니다!");
     },
     onSuccess: () => {
       toast.success("폴더가 생성되었습니다!");
-      // BUG ㅅㅂ
+      onBlur();
+      // BUG 왜시발!
+      // BUG 배경 누르면 왜안꺼져!!
+      queryClient.invalidateQueries(["folder-list"]);
     },
   });
 
   const clickSubmitButton: SubmitHandler<FolderAddFormType> = () => {
     const nameValue = getValues("name");
-    // createFolderMutation(nameValue);
+    if (nameValue) {
+      createFolderMutation(nameValue);
+    } else return;
   };
 
   return (
@@ -45,16 +49,14 @@ export default function FolderAddModal({ onBlur }: ModalProps) {
         </button>
         <h2 className={styles["modal-title"]}>폴더 추가</h2>
         <form onSubmit={handleSubmit(clickSubmitButton)}>
-          {/* <input
+          <input
             id="name"
             className={styles["modal-input"]}
             type="text"
             placeholder="내용 입력"
-            {...register("name", {
-              required: "폴더 이름을 입력해주세요.",
-            })}
+            {...register("name")}
           />
-          <button className={styles["modal-button"]}>추가하기</button> */}
+          <button className={styles["modal-button"]}>추가하기</button>
         </form>
       </div>
     </ModalCreator>

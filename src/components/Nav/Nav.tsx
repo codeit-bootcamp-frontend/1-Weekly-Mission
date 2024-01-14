@@ -4,10 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-import styles from "./Nav.module.scss";
-import Dropdown from "./Dropdown/Dropdown";
+import Dropdown from "@/components/Nav/Dropdown/Dropdown";
 import { useUserInfoStore } from "@/store/UserInfo";
 import { UserType } from "@/types/UserType";
+
+import styles from "./Nav.module.scss";
 
 function Nav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,7 +30,7 @@ function Nav() {
       <div className={styles["gnb"]}>
         <Link href="/">
           <Image
-            src="icons/logo.svg"
+            src="/icons/logo.svg"
             priority={true}
             width={133}
             height={52}

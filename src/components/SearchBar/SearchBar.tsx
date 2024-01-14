@@ -37,7 +37,7 @@ function SearchBar({
     <div className={styles["search-form-container"]}>
       <form className={styles["search-form"]}>
         <Image
-          src="icons/search-icon.svg"
+          src="/icons/search-icon.svg"
           width={17}
           height={16}
           alt="search icon"
@@ -56,7 +56,7 @@ function SearchBar({
             onClick={handleResetSearchBar}
           >
             <Image
-              src="icons/reset-keywords.svg"
+              src="/icons/reset-keywords.svg"
               width={17}
               height={16}
               alt="reset button"

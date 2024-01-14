@@ -1,6 +1,8 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 
+import FolderMaker from "@/components/folder/FolderMaker/FolderMaker";
+import FolderModifier from "@/components/folder/FolderModifier copy/FolderModifier";
 import FolderTagList from "@/components/folder/FolderTagList/FolderTagList";
 import Layout from "@/components/Layout/Layout";
 import LinkAddBar from "@/components/LinkAddBar/LinkAddBar";
@@ -12,7 +14,6 @@ export default function CustomFolderPage() {
   const [keyword, setKeyword] = useState("");
   const router = useRouter();
   const { folderId } = router.query;
-  console.log(folderId);
 
   return (
     <Layout>
@@ -26,7 +27,15 @@ export default function CustomFolderPage() {
             </h1>
           </div>
         )}
-        <FolderTagList currentId={folderId} />
+        <FolderTagList
+          currentId={typeof folderId === "string" ? folderId : ""}
+        />
+        <FolderMaker />
+
+        <FolderModifier
+          folderId={typeof folderId === "string" ? folderId : ""}
+          folderTitle=""
+        />
       </div>
     </Layout>
   );

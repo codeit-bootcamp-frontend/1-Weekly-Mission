@@ -12,7 +12,7 @@ function Footer() {
       name: "facebook",
       comp: (
         <Image
-          src="icons/akar-icons_facebook-fill.svg"
+          src="/icons/akar-icons_facebook-fill.svg"
           width={20}
           height={20}
           alt="facebook icon"
@@ -23,7 +23,7 @@ function Footer() {
       name: "twitter",
       comp: (
         <Image
-          src="icons/akar-icons_twitter-fill.svg"
+          src="/icons/akar-icons_twitter-fill.svg"
           width={20}
           height={20}
           alt="facebook icon"
@@ -34,7 +34,7 @@ function Footer() {
       name: "youtube",
       comp: (
         <Image
-          src="icons/akar-icons_youtube-fill.svg"
+          src="/icons/akar-icons_youtube-fill.svg"
           width={20}
           height={20}
           alt="facebook icon"
@@ -45,7 +45,7 @@ function Footer() {
       name: "instagram",
       comp: (
         <Image
-          src="icons/akar-icons_instagram-fill.svg"
+          src="/icons/akar-icons_instagram-fill.svg"
           width={20}
           height={20}
           alt="facebook icon"

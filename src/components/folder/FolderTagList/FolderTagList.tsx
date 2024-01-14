@@ -18,6 +18,7 @@ export default function FolderTagList({ currentId }: FolderTagListProps) {
   const { data } = useQuery({
     queryKey: ["folder-list"],
     queryFn: () => getFolderList(),
+    staleTime: 1000 * 30,
   });
 
   const [folderList, setFolderList] = useState<[FolderType] | []>([]);

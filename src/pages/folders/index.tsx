@@ -1,12 +1,12 @@
 import { useState } from "react";
 
+import FolderMaker from "@/components/folder/FolderMaker/FolderMaker";
+import FolderTagList from "@/components/folder/FolderTagList/FolderTagList";
 import Layout from "@/components/Layout/Layout";
 import LinkAddBar from "@/components/LinkAddBar/LinkAddBar";
 import SearchBar from "@/components/SearchBar/SearchBar";
 
 import styles from "./FolderPage.module.scss";
-import FolderTagList from "@/components/folder/FolderTagList/FolderTagList";
-import FolderMaker from "@/components/folder/FolderMaker/FolderMaker";
 
 export default function FolderPage() {
   const [keyword, setKeyword] = useState("");

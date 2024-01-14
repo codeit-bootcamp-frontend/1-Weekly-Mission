@@ -13,6 +13,7 @@ export default function Layout({ children }: PropsWithChildren) {
   const { data } = useQuery({
     queryKey: ["user"],
     queryFn: () => getUser(),
+    staleTime: 1000,
   });
 
   const addUser = useUserInfoStore((state) => state.addUser);
