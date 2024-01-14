@@ -1,3 +1,33 @@
+// import { useCallback, useEffect } from "react";
+// import { axiosInstance } from "@/src/sharing/util";
+// import { mapLinksData } from "@/src/link/util-map/mapLinksData";
+// import { useAsync } from "@/src/sharing/util";
+// import { LinkRawData } from "@/src/link/type";
+// import { formatLinkRawData } from "../util-map";
+
+// export const useGetSharedLinks = (userId: number, folderId?: string) => {
+//   const getLinks = useCallback(
+//     () =>
+//       axiosInstance.get<LinkRawData[]>(
+//         `users/${userId}/links?folderId=${folderId}`
+//       ),
+//     [userId, folderId]
+//   );
+//   const { execute, loading, error, data } = useAsync({
+//     asyncFunction: getLinks,
+//     enabled: !!userId && !!folderId,
+//   });
+//   console.log(data);
+
+//   useEffect(() => {
+//     execute();
+//     // eslint-disable-next-line react-hooks/exhaustive-deps
+//   }, [userId, folderId]);
+
+//   const linksData = data?.map(formatLinkRawData).map(mapLinksData) ?? [];
+//   console.log(linksData);
+//   return { execute, loading, error, data: linksData };
+// };
 import { useCallback, useEffect } from "react";
 import { axiosInstance } from "@/src/sharing/util";
 import { mapLinksData } from "@/src/link/util-map/mapLinksData";
@@ -5,26 +35,22 @@ import { useAsync } from "@/src/sharing/util";
 import { LinkRawData } from "@/src/link/type";
 import { formatLinkRawData } from "../util-map";
 
-export const useGetSharedLinks = (userId: number, folderId?: string) => {
+export const useGetSharedLinks = (folderId?: string) => {
   const getLinks = useCallback(
-    () =>
-      axiosInstance.get<LinkRawData[]>(
-        `users/${userId}/links?folderId=${folderId}`
-      ),
-    [userId, folderId]
+    () => axiosInstance.get<LinkRawData[]>(`/folders/${folderId}/links`),
+    [folderId]
   );
   const { execute, loading, error, data } = useAsync({
     asyncFunction: getLinks,
-    enabled: !!userId && !!folderId,
+    enabled: !!folderId,
   });
-  console.log(data);
 
   useEffect(() => {
     execute();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userId, folderId]);
+  }, [folderId]);
 
-  const linksData = data?.map(formatLinkRawData).map(mapLinksData) ?? [];
-  console.log(linksData);
+  const linksData = data ? data.map(formatLinkRawData).map(mapLinksData) : [];
+
   return { execute, loading, error, data: linksData };
 };

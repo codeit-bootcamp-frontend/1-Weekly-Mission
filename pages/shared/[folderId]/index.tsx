@@ -18,7 +18,7 @@ const SharedPage = () => {
   const { folderId } = router.query;
   const { data: folder } = useGetFolder(folderId as string);
   const { data: owner } = useGetUser(folder.userId);
-  const { data: links } = useGetSharedLinks(folder.userId, folderId as string);
+  const { data: links } = useGetSharedLinks(folderId as string);
 
   const { searchValue, handleChange, handleCloseClick, result } =
     useSearchLink(links);
