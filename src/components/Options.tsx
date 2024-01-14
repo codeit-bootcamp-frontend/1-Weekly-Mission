@@ -33,7 +33,7 @@ export default function Options({ selected }: OptionsProps) {
       case "edit":
         return <EditFolder currentFolderName={selected} />;
       case "delete":
-        return <DeleteFolder currentFolderName={selected} label="폴더" />;
+        return <DeleteFolder selectedItem={selected} onClose={handleCloseModal} label="폴더" />;
       default:
         return null;
     }

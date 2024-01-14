@@ -19,7 +19,7 @@ export function FolderContextProvider({ children }: Props) {
   const [selectedFolderName, setSelectedFolderName] = useState(DEFAULT);
 
   const updateFolderName = (category: string) => {
-    setSelectedFolderName(category);
+    setSelectedFolderName(category ? category : DEFAULT);
   };
 
   return (

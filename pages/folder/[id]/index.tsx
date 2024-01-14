@@ -113,16 +113,14 @@ export default function FolderPage() {
             </S.AddFolderBtn>
           </S.MenuContainer>
           {isLoading && <Loading />}
+          <S.MenuContainer>
+            <S.SubTitle>{selected}</S.SubTitle>
+            {selected !== "전체" && <Options selected={selected} />}
+          </S.MenuContainer>
           {!isLoading && links.length === 0 ? (
             <S.Blank>저장된 링크가 없습니다</S.Blank>
           ) : (
-            <>
-              <S.MenuContainer>
-                <S.SubTitle>{selected}</S.SubTitle>
-                {selected !== "전체" && <Options selected={selected} />}
-              </S.MenuContainer>
-              <CardList links={filteredLinks} />
-            </>
+            <CardList links={filteredLinks} />
           )}
         </S.Contents>
       </Layout>
