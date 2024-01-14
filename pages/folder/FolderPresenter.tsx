@@ -25,7 +25,7 @@ export default function FolderUI(props: FolderUIProps) {
       {isOpenModal && (
         <ModalPortal>
           <ModalContainer onClose={handleCloseModal}>
-            <AddFolders />
+            <AddFolders onClose={handleCloseModal} />
           </ModalContainer>
         </ModalPortal>
       )}

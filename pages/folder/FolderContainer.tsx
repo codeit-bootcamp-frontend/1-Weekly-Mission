@@ -23,13 +23,14 @@ export default function Folder() {
   const [selected, setSelected] = useState(selectedFolderName);
   const [addLinkValue, setAddLinkValue] = useState("");
   const [keyword, setKeyword] = useState("");
+  const [folderNames, setFolderNames] = useState<string[]>([]);
 
   const { data: foldersData, isLoading } = useFolder("/folders");
   const { data: linksData } = useFolder("/links");
 
   // console.log(selectedFolderName); // 삭제예정
-  console.log(foldersData); // 삭제예정
-  console.log(linksData); // 삭제예정
+  // console.log(foldersData); // 삭제예정
+  // console.log(linksData); // 삭제예정
 
   const folders: SharedFolderData[] = foldersData ?? [];
   const links: LinkData[] = linksData ?? [];
@@ -55,8 +56,6 @@ export default function Folder() {
     router.push(`/folder/${selectedFolderId}`);
   };
 
-  const folderNames = folders.map((folder) => folder.name);
-
   const handleAddLink = (link: string) => {
     setAddLinkValue(link);
   };
@@ -72,7 +71,11 @@ export default function Folder() {
     if (linksData) {
       setFilteredLinks(linksData);
     }
-  }, [linksData]);
+    if (foldersData) {
+      const aaa = foldersData.map((folder: SharedFolderData) => folder.name);
+      setFolderNames(aaa);
+    }
+  }, [linksData, foldersData]);
 
   return (
     <FolderUI
