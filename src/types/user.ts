@@ -4,9 +4,3 @@ export interface User {
   email: string;
   image_source: string;
 }
-
-export interface Owner {
-  id: number;
-  name: string;
-  profileImageSource: string;
-}

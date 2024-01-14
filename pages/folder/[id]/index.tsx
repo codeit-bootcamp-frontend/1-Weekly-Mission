@@ -16,7 +16,7 @@ import Loading from "@/components/Loading";
 
 import { useFolder } from "@/hooks/useFolder";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
-import { SharedFolderData } from "@/types/folder";
+import { Folder } from "@/types/folder";
 import { LinkData } from "@/types/link";
 import { FolderContext } from "@/context/SelectedFolderContext";
 import { checkMatchedAllLinks } from "@/common/utils/matchedKeyword";
@@ -35,7 +35,7 @@ export default function FolderPage() {
   const { data: foldersData, isLoading } = useFolder("/folders");
   const { data: linksData } = useSWR(`/folders/${router.query.id}/links`);
 
-  const folders: SharedFolderData[] = foldersData ?? [];
+  const folders: Folder[] = foldersData ?? [];
   const links: LinkData[] = linksData ?? [];
 
   const folderNames = folders.map((folder) => folder.name);
@@ -59,8 +59,7 @@ export default function FolderPage() {
 
   const handleSelectedFolder = (category: string) => {
     setSelected(category);
-    const selectedFolderId =
-      folders.find((folder: SharedFolderData) => folder.name === category)?.id ?? "";
+    const selectedFolderId = folders.find((folder: Folder) => folder.name === category)?.id ?? "";
     updateFolderName(category);
     router.push(`/folder/${selectedFolderId}`);
   };

@@ -3,11 +3,11 @@ import * as S from "./HeroStyles";
 
 import Loading from "@/components/Loading";
 
-import { SharedFolderData } from "@/types/folder";
+import { FolderData } from "@/types/folder";
 import { User } from "@/types/user";
 
 interface HeroProps {
-  folder: SharedFolderData;
+  folder: FolderData;
 }
 
 export default function Hero({ folder }: HeroProps) {

@@ -1,5 +1,5 @@
+import { LinkData } from "@/types/link";
 import { ChangeEvent } from "react";
-import { LinkData } from "@/types/folder";
 
 export interface FolderUIProps {
   addLinkValue: string;

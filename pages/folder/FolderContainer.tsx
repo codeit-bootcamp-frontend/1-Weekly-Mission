@@ -3,7 +3,7 @@ import { ChangeEvent, useContext, useEffect, useState } from "react";
 
 import FolderUI from "./FolderPresenter";
 
-import { SharedFolderData } from "@/types/folder";
+import { Folder } from "@/types/folder";
 import { LinkData } from "@/types/link";
 import { useFolder } from "@/hooks/useFolder";
 import { FolderContext } from "@/context/SelectedFolderContext";
@@ -32,7 +32,7 @@ export default function Folder() {
   console.log(foldersData); // 삭제예정
   // console.log(linksData); // 삭제예정
 
-  const folders: SharedFolderData[] = foldersData ?? [];
+  const folders: Folder[] = foldersData ?? [];
   const links: LinkData[] = linksData ?? [];
 
   const [filteredLinks, setFilteredLinks] = useState<LinkData[]>([]);
@@ -50,8 +50,7 @@ export default function Folder() {
 
   const handleSelectedFolder = (category: string) => {
     setSelected(category);
-    const selectedFolderId =
-      folders.find((folder: SharedFolderData) => folder.name === category)?.id ?? "";
+    const selectedFolderId = folders.find((folder: Folder) => folder.name === category)?.id ?? "";
     updateFolderName(category);
     router.push(`/folder/${selectedFolderId}`);
   };
@@ -72,7 +71,7 @@ export default function Folder() {
       setFilteredLinks(linksData);
     }
     if (foldersData) {
-      const folders = foldersData.map((folder: SharedFolderData) => folder.name);
+      const folders = foldersData.map((folder: Folder) => folder.name);
       setFolderNames(folders);
     }
   }, [linksData, foldersData]);

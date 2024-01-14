@@ -43,7 +43,7 @@ export default function KebabMenu({ link }: KebabMenuProps) {
             ) : (
               <DeleteFolder
                 selectedItem={link.url}
-                id={link.id}
+                linkId={link.id}
                 onClose={handleCloseModal}
                 label="링크"
               />
