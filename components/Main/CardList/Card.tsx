@@ -3,8 +3,8 @@ import { CardProps } from "@/components/Main/CardList/CardList.type";
 import Kebab from "@/components/Main/CardList/Kebab";
 import TimeFlow from "@/components/Main/CardList/TimeFlow";
 import axiosInstance from "@/lib/axios";
-import starImg from "@/public/star.svg";
-import selectedStarImg from "@/public/star_selected.svg";
+import starDefaultImg from "@/public/star_default.svg";
+import starFavoriteImg from "@/public/star_favorite.svg";
 import { formatDate } from "@/utils/filterAndData";
 import { getCookie } from "@/utils/getCookie";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -49,7 +49,7 @@ export default function Card({ id, url, favorite, image_source, title, descripti
         <p>{formatDate(created_at)}</p>
       </CardText>
       <ButtonStar onClick={handleFavorite}>
-        <Image src={favorite ? selectedStarImg : starImg} alt="즐겨찾기에 추가하기" />
+        <Image src={favorite ? starFavoriteImg : starDefaultImg} alt="즐겨찾기에 추가하기" />
       </ButtonStar>
     </>
   );
