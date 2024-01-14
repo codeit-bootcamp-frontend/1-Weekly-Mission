@@ -8,6 +8,7 @@ import { useState } from "react";
 import FolderDeleteModal from "@/modals/FolderDeleteModal/FolderDeleteModal";
 
 import styles from "./FolderModifier.module.scss";
+import FolderEditModal from "@/modals/FolderEditModal/FolderEditModal";
 
 interface FolderModifierProps {
   folderId: string;
@@ -38,7 +39,13 @@ function FolderModifier({ folderId, folderTitle }: FolderModifierProps) {
           onBlur={closeDeleteModal}
         />
       )}
-
+      {isOpenEdit && (
+        <FolderEditModal
+          folderId={folderId}
+          folderTitle={folderTitle ?? ""}
+          onBlur={closeEditModal}
+        />
+      )}
       <FolderTitle title={folderTitle ?? ""} />
       <div>
         <div className={styles["button-modifier"]}>
@@ -51,7 +58,7 @@ function FolderModifier({ folderId, folderTitle }: FolderModifierProps) {
             />
             공유
           </button>
-          <button>
+          <button onClick={() => setIsOpenEdit(true)}>
             <Image
               src="/icons/rename-icon.svg"
               width={19}
