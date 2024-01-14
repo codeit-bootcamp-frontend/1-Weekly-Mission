@@ -5,7 +5,6 @@ import { useAsync } from "@/src/sharing/util";
 import { ALL_LINKS_ID } from "./constant";
 import { SelectedFolderId } from "@/src/folder/type";
 import { LinkRawData } from "@/src/link/type";
-import { formatLinkRawData } from "../util-map";
 
 export const useGetLinks = (folderId?: SelectedFolderId) => {
   const queryString =
@@ -26,7 +25,7 @@ export const useGetLinks = (folderId?: SelectedFolderId) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [folderId]);
 
-  const linksData = data?.map(formatLinkRawData).map(mapLinksData) ?? [];
+  const linksData = data?.map(mapLinksData) ?? [];
 
   return { execute, loading, error, data: linksData };
 };

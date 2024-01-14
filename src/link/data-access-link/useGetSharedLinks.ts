@@ -33,7 +33,6 @@ import { axiosInstance } from "@/src/sharing/util";
 import { mapLinksData } from "@/src/link/util-map/mapLinksData";
 import { useAsync } from "@/src/sharing/util";
 import { LinkRawData } from "@/src/link/type";
-import { formatLinkRawData } from "../util-map";
 
 export const useGetSharedLinks = (folderId?: string) => {
   const getLinks = useCallback(
@@ -50,7 +49,7 @@ export const useGetSharedLinks = (folderId?: string) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [folderId]);
 
-  const linksData = data ? data.map(formatLinkRawData).map(mapLinksData) : [];
+  const linksData = data ? data.map(mapLinksData) : [];
 
   return { execute, loading, error, data: linksData };
 };

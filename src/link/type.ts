@@ -1,12 +1,3 @@
-export type SampleLinkRawData = {
-  id: number;
-  createdAt: string;
-  url: string;
-  title: string;
-  description: string;
-  imageSource: string;
-};
-
 export type LinkRawData = {
   id: number;
   favorite: boolean;

@@ -1,10 +1,12 @@
 import { axiosInstance, useAsync } from "@/src/sharing/util";
 import { useCallback, useEffect } from "react";
 import { Token } from "../type";
+import { useRouter } from "next/router";
 
 type UseSignUpParams = { email: string; password: string };
 
 export const useSignUp = ({ email, password }: UseSignUpParams) => {
+  const router = useRouter();
   const signUp = useCallback(
     () =>
       axiosInstance.post<Token>("/auth/sign-up", {
@@ -22,6 +24,8 @@ export const useSignUp = ({ email, password }: UseSignUpParams) => {
   useEffect(() => {
     if (accessToken) {
       localStorage.setItem("accessToken", accessToken);
+      document.cookie = `accessToken=${accessToken}`;
+      router.push("/folder");
     }
   }, [accessToken]);
 
