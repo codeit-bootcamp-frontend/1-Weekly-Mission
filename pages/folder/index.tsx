@@ -1,32 +1,31 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import FolderLayout from "@/components/folder/FolderLayout";
-import { GetLinkResponse, handleGetLinks } from "@/lib/api/folder";
+import { handleGetLinks } from "@/lib/api/folder";
 import { useRouter } from "next/router";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import QUERY_KEYS from "@/constants/queryKey";
 
 const Folder = () => {
   const router = useRouter();
-  const [cardData, setCardData] = useState<GetLinkResponse[]>([]);
-  const [isAccessToken, setIsAccessToken] = useState(false);
+  const [isAuth, setIsAuth] = useState(false);
 
-  const handleLinks = useCallback(async () => {
-    const res = await handleGetLinks({ id: null });
-    setCardData(res);
-  }, []);
+  const { data: cardData, isSuccess } = useQuery({
+    queryKey: [QUERY_KEYS.links],
+    queryFn: () => handleGetLinks({ id: null }),
+    enabled: !!isAuth,
+  });
 
   useEffect(() => {
     if (!localStorage.getItem("accessToken")) {
       router.push("/signin");
       return;
     }
-    setIsAccessToken(true);
-    handleLinks();
-  }, [handleLinks, router]);
+    setIsAuth(true);
+  }, [router]);
 
   return (
     <>
-      {isAccessToken && (
-        <FolderLayout selectedFolderData={1} cardData={cardData} />
-      )}
+      {isSuccess && <FolderLayout selectedFolderData={1} cardData={cardData} />}
     </>
   );
 };

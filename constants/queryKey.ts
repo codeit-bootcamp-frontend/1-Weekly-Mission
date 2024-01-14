@@ -1,5 +1,6 @@
 const QUERY_KEYS = {
-  signin: "signin",
+  links: "links",
+  folders: "folders",
 } as const;
 
 export default QUERY_KEYS;

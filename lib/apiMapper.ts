@@ -1,7 +1,7 @@
 const URL_PATH = {
   AUTH_CONTROLLER: "/auth",
-  LINK_CONTROLLER: "/api/links",
-  FOLDER_CONTROLLER: "/api/folders",
+  LINK_CONTROLLER: "/links",
+  FOLDER_CONTROLLER: "/folders",
   USER_CONTROLLER: "/users",
 };
 

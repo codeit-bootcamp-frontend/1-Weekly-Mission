@@ -1,5 +1,5 @@
 import SearchImg from "@/public/assets/shared/img_search.png";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   AddLinkInputContainer,
   FolderBtnItemContainer,
@@ -26,13 +26,13 @@ import Input from "@/components/input/Input";
 import Image from "next/image";
 import Card from "@/components/card/Card";
 import { Section, Wrapper } from "@/components/common/commonStyled";
-import request from "@/lib/axios";
-import { ApiMapper } from "@/lib/apiMapper";
 import DeleteModal from "@/components/modal/DeleteModal";
 import EnterModal from "@/components/modal/EnterModal";
 import GradientButton from "@/components/button/GradientButton";
 import { useRouter } from "next/router";
-import { GetLinkResponse } from "@/lib/api/folder";
+import { GetLinkResponse, getFolders } from "@/lib/api/folder";
+import { useQuery } from "@tanstack/react-query";
+import QUERY_KEYS from "@/constants/queryKey";
 
 const LinkToolArr = [
   {
@@ -89,7 +89,7 @@ interface FolderLayoutProps {
 
 const FolderLayout = ({ cardData, selectedFolderData }: FolderLayoutProps) => {
   const router = useRouter();
-  const [folderData, setFolderData] = useState<FolderData[]>([]);
+
   const [selectedFolder, setSelectedFolder] = useState(selectedFolderData);
 
   const [link, setLink] = useState("");
@@ -108,27 +108,10 @@ const FolderLayout = ({ cardData, selectedFolderData }: FolderLayoutProps) => {
   const [addToFolderItem, setAddToFolderItem] = useState("");
   const [selectedFolderName, setSelectedFolderName] = useState("전체");
 
-  const handleFolder = useCallback(async () => {
-    try {
-      const result = await request.get(ApiMapper.folder.get.GET_FOLDERS, {
-        path: { userId: 1 },
-      });
-
-      if (result.status === 200) {
-        const { data } = result;
-        setFolderData(data.data);
-        return;
-      }
-
-      throw new Error();
-    } catch (e) {
-      alert("문제가 발생했습니다. 잠시후 다시 시도해주세요.");
-    }
-  }, []);
-
-  useEffect(() => {
-    handleFolder();
-  }, [handleFolder]);
+  const { data: folderData } = useQuery({
+    queryKey: [QUERY_KEYS.folders],
+    queryFn: () => getFolders(),
+  });
 
   const handleAddToFolderModal = (content: string) => {
     setAddToFolderItem(content);
@@ -186,8 +169,9 @@ const FolderLayout = ({ cardData, selectedFolderData }: FolderLayoutProps) => {
   }, [modalOpened]);
 
   useEffect(() => {
-    const folderName = folderData.filter((e) => e.id === selectedFolder)[0]
-      ?.name;
+    const folderName = folderData?.filter(
+      (e: FolderData) => e.id === selectedFolder
+    )[0]?.name;
     setSelectedFolderName(folderName);
   }, [folderData, selectedFolder]);
 
@@ -248,7 +232,7 @@ const FolderLayout = ({ cardData, selectedFolderData }: FolderLayoutProps) => {
                   전체
                 </FolderBtnItemContainer>
 
-                {folderData?.map((e) => {
+                {folderData?.map((e: FolderData) => {
                   return (
                     <FolderBtnItemContainer
                       key={e.id}
@@ -285,8 +269,9 @@ const FolderLayout = ({ cardData, selectedFolderData }: FolderLayoutProps) => {
               <>
                 <LinkHeaderContainer>
                   <div className="linkTitle">
-                    {folderData.filter((e) => e.id === selectedFolder)[0]
-                      ?.name || "전체"}
+                    {folderData.filter(
+                      (e: FolderData) => e.id === selectedFolder
+                    )[0]?.name || "전체"}
                   </div>
 
                   <LinkToolContainer $display={selectedFolder === 1}>
