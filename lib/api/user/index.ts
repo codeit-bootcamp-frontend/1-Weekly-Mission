@@ -8,3 +8,9 @@ export const getUsers = async () => {
 
   return response.data[0];
 };
+
+export const getUsersId = async (id: number) => {
+  const response = await request.get(`${ApiMapper.user.get.GET_USERS}/${id}`);
+
+  return response.data[0];
+};

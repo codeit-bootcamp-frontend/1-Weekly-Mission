@@ -31,6 +31,13 @@ export const getFolders = async () => {
   return response.data;
 };
 
+export const getFoldersId = async (id: number) => {
+  const response = await request.get(
+    `${ApiMapper.folder.get.GET_FOLDER}/${Number(id)}`
+  );
+  return response.data;
+};
+
 export const getLinksId = async (id: number) => {
   const response = await request.get(ApiMapper.link.get.GET_LINKS, {
     path: { folderId: id },

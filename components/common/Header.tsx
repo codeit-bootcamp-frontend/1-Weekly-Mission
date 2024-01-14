@@ -47,35 +47,33 @@ const Header = () => {
   }, []);
 
   return (
-    isSuccess && (
-      <HeaderContainer $isFixed={isFixed}>
-        <nav className="contentContainer">
-          <Image
-            priority
-            src={LogoImg}
-            id="logoImg"
-            alt="logoImg"
-            height="24"
-            width="133"
-            onClick={() => router.push("/")}
-          />
+    <HeaderContainer $isFixed={isFixed}>
+      <nav className="contentContainer">
+        <Image
+          priority
+          src={LogoImg}
+          id="logoImg"
+          alt="logoImg"
+          height="24"
+          width="133"
+          onClick={() => router.push("/")}
+        />
 
-          {userData.image_source ? (
-            <ProfileContainer>
-              <Image
-                src={userData.image_source}
-                alt="profileImg"
-                width="28"
-                height="28"
-              />
-              <div className="profileEmail">{userData.email}</div>
-            </ProfileContainer>
-          ) : (
-            <GradientButton onClick={handleLoginBtn}>로그인</GradientButton>
-          )}
-        </nav>
-      </HeaderContainer>
-    )
+        {isSuccess ? (
+          <ProfileContainer>
+            <Image
+              src={userData.image_source}
+              alt="profileImg"
+              width="28"
+              height="28"
+            />
+            <div className="profileEmail">{userData.email}</div>
+          </ProfileContainer>
+        ) : (
+          <GradientButton onClick={handleLoginBtn}>로그인</GradientButton>
+        )}
+      </nav>
+    </HeaderContainer>
   );
 };
 
