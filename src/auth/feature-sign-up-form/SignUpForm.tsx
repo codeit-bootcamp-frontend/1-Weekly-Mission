@@ -24,7 +24,7 @@ export const SignUpForm = () => {
     password: watch("password"),
   });
 
-  useTokenRedirect(data?.data.accessToken);
+  useTokenRedirect(data?.accessToken);
 
   return (
     <form className={cx("form")} onSubmit={handleSubmit(signUp)}>
@@ -42,8 +42,8 @@ export const SignUpForm = () => {
             validate: {
               alreadyExist: async () => {
                 const response = await checkEmailDuplicate();
-                console.log(response);
-                if (!response?.data?.isUsableNickname) {
+
+                if (!response?.data?.isUsableEmail) {
                   return ERROR_MESSAGE.emailAlreadyExist;
                 }
                 return true;

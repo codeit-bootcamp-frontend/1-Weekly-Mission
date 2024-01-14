@@ -22,7 +22,7 @@ export const SignInForm = () => {
     password: watch("password"),
   });
 
-  useTokenRedirect(data?.data.accessToken);
+  useTokenRedirect(data?.accessToken);
 
   useEffect(() => {
     if (error) {

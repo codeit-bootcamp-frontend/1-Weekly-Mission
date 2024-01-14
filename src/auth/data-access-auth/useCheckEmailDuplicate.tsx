@@ -4,7 +4,7 @@ import { useCallback } from "react";
 export const useCheckEmailDuplicate = (email: string) => {
   const checkEmailDuplicate = useCallback(
     () =>
-      axiosInstance.post<{ isUsableNickname: boolean }>("/users/check-email", {
+      axiosInstance.post<{ isUsableEmail: boolean }>("/users/check-email", {
         email,
       }),
     [email]

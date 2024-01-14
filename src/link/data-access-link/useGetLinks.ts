@@ -8,9 +8,10 @@ import { LinkRawData } from "@/src/link/type";
 import { formatLinkRawData } from "../util-map";
 
 export const useGetLinks = (folderId?: SelectedFolderId) => {
-  const queryString = folderId === ALL_LINKS_ID ? "" : `?folderId=${folderId}`;
+  const queryString =
+    folderId === ALL_LINKS_ID ? "/links" : `/folders/${folderId}/links`;
   const getLinks = useCallback(
-    () => axiosInstance.get<{ data: { folder: LinkRawData[] } }>(`links${queryString}`),
+    () => axiosInstance.get<LinkRawData[]>(`${queryString}`),
     [queryString]
   );
   const { execute, loading, error, data } = useAsync({
@@ -25,7 +26,7 @@ export const useGetLinks = (folderId?: SelectedFolderId) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [folderId]);
 
-  const linksData = data?.data?.folder?.map(formatLinkRawData).map(mapLinksData) ?? [];
+  const linksData = data?.map(formatLinkRawData).map(mapLinksData) ?? [];
 
   return { execute, loading, error, data: linksData };
 };

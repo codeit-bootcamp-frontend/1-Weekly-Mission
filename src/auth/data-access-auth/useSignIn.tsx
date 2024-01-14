@@ -7,7 +7,7 @@ type UseSignInParams = { email: string; password: string };
 export const useSignIn = ({ email, password }: UseSignInParams) => {
   const signIn = useCallback(
     () =>
-      axiosInstance.post<{ data: Token }>("/auth/sign-in", {
+      axiosInstance.post<Token>("/auth/sign-in", {
         email,
         password,
       }),
@@ -17,7 +17,7 @@ export const useSignIn = ({ email, password }: UseSignInParams) => {
     asyncFunction: signIn,
     lazyMode: true,
   });
-  const accessToken = data?.data.accessToken;
+  const accessToken = data?.accessToken;
 
   useEffect(() => {
     if (accessToken) {

@@ -9,14 +9,14 @@ export const useGetCurrentUser = () => {
     setAccessToken(localStorage.getItem("accessToken"));
   });
 
-  const getCurrentUser = () => axiosInstance.get<{ data: UserRawData[] }>("users");
+  const getCurrentUser = () => axiosInstance.get<UserRawData[]>("users");
 
   const { loading, error, data } = useAsync({
     asyncFunction: getCurrentUser,
     enabled: !!accessToken,
   });
 
-  const userDataResponse = data?.data?.[0];
+  const userDataResponse = data?.[0];
   const userData = userDataResponse
     ? {
         id: userDataResponse.id,

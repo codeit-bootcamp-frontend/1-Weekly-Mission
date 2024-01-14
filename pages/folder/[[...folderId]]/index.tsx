@@ -35,6 +35,7 @@ const FolderPage = () => {
     }
     return undefined;
   }, [router.isReady, folderId]);
+
   const { data: folders } = useGetFolders();
   const { data: links, loading } = useGetLinks(currentFolderId);
   const { searchValue, handleChange, handleCloseClick, result } =
