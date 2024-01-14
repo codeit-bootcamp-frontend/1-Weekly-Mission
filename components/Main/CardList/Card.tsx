@@ -7,7 +7,7 @@ import { formatDate } from "@/utils/filterAndData";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-export default function Card({ url, imageSource, image_source, title, description, createdAt, created_at }: CardProps) {
+export default function Card({ id, url, imageSource, image_source, title, description, createdAt, created_at }: CardProps) {
   const router = useRouter();
   const isFolderPage = router.pathname === "/folder";
 
@@ -19,7 +19,7 @@ export default function Card({ url, imageSource, image_source, title, descriptio
       <CardText>
         <WrapperTime>
           <TimeFlow createdAt={createdAt ?? (created_at as string)} />
-          {isFolderPage && <Kebab url={url} />}
+          {isFolderPage && <Kebab id={id} url={url} />}
         </WrapperTime>
         <H3>{title?.length > 40 ? title.slice(0, 40) + "..." : title}</H3>
         <p>{description?.length > 50 ? description.slice(0, 50) + "..." : description}</p>

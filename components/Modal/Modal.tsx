@@ -10,18 +10,19 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import { ButtonClose, ButtonSubmit, Contents, CopyText, InputSubmit, List, SnsWrapper, Text, WrapperCopy } from "@/components/Modal/Modal.styled";
 import ModalPortal from "@/components/Modal/ModalPortal";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axiosInstance from "@/lib/axios";
 import { getCookie } from "@/utils/getCookie";
 
 interface MakeModalProps {
   title?: string;
   type?: string;
+  id?: number;
   data?: {};
   setModal: React.Dispatch<React.SetStateAction<React.ReactElement | null>>;
 }
 
-export const makeModal = ({ title, type, data, setModal }: MakeModalProps) => {
+export const makeModal = ({ title, type, id, data, setModal }: MakeModalProps) => {
   switch (type) {
     case "폴더 추가":
       return <Modal modalName="폴더 추가" placeholder="폴더 이름을 입력해주세요." buttonText="추가하기" setModal={setModal} />;
@@ -36,7 +37,7 @@ export const makeModal = ({ title, type, data, setModal }: MakeModalProps) => {
       return <Modal modalName="폴더 삭제" title={title} buttonText="삭제하기" buttonColor="red" setModal={setModal} />;
 
     case "삭제하기":
-      return <Modal modalName="링크 삭제" title={title} buttonText="삭제하기" setModal={setModal} />;
+      return <Modal modalName="링크 삭제" title={title} id={id} buttonText="삭제하기" setModal={setModal} />;
 
     case "추가하기":
       return <Modal modalName="폴더에 추가" title={title} buttonText="추가하기" add data={data} setModal={setModal} />;
@@ -52,6 +53,7 @@ interface ModalProps {
   setModal: React.Dispatch<React.SetStateAction<React.ReactElement | null>>;
   modalName: string;
   title?: string;
+  id?: number;
   placeholder?: string;
   buttonColor?: string;
   buttonText?: string;
@@ -60,7 +62,7 @@ interface ModalProps {
   data?: {};
 }
 
-export function Modal({ title, modalName, placeholder, buttonColor, buttonText, share, add, data, setModal }: ModalProps) {
+export function Modal({ title, id, modalName, placeholder, buttonColor, buttonText, share, add, data, setModal }: ModalProps) {
   const [value, setValue] = useState("");
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
@@ -75,6 +77,11 @@ export function Modal({ title, modalName, placeholder, buttonColor, buttonText, 
   const postLink = () => {
     const accessToken = getCookie("accessToken");
     return axiosInstance.post("/links", { url: title, folderId: selectedFolderId }, { headers: { Authorization: accessToken } });
+  };
+
+  const deleteLink = () => {
+    const accessToken = getCookie("accessToken");
+    return axiosInstance.delete(`/links/${id}`, { headers: { Authorization: accessToken } });
   };
 
   const postFolder = () => {
@@ -99,7 +106,7 @@ export function Modal({ title, modalName, placeholder, buttonColor, buttonText, 
 
   const linkMutation = useMutation({
     mutationKey: ["linkData", selectedFolderId],
-    mutationFn: () => postLink(),
+    mutationFn: (method: "post" | "delete") => (method === "post" ? postLink() : deleteLink()),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["linkData"] });
       handleClose();
@@ -110,20 +117,24 @@ export function Modal({ title, modalName, placeholder, buttonColor, buttonText, 
     mutationKey: ["folderData"],
     mutationFn: (method: "post" | "put" | "delete") => (method === "post" ? postFolder() : method === "put" ? putFolder() : deleteFolder()),
     onSuccess: (data) => {
+      queryClient.invalidateQueries({ queryKey: ["folderData"] });
       handleClose();
       if (!data.data) {
         router.push("/folder");
         return;
       }
       router.push(`/folder?folderId=${data.data[0].id}`);
-      queryClient.invalidateQueries({ queryKey: ["folderData"] });
     },
   });
 
   const handleMutate = (e: MouseEvent) => {
     e.preventDefault();
-    if (add && selectedFolderId) {
-      linkMutation.mutate();
+    if (modalName === "폴더에 추가" && selectedFolderId) {
+      linkMutation.mutate("post");
+      return;
+    }
+    if (modalName === "링크 삭제" && id) {
+      linkMutation.mutate("delete");
       return;
     }
     if (modalName === "폴더 추가" && value) {
@@ -290,6 +301,13 @@ function CopyResult({ forwardRef }: ICopyResult) {
 type TmodalAdd = { data: FolderData[]; selectedFolderId: number; setSelectedFolderId: Dispatch<SetStateAction<number>> };
 
 function ModalAdd({ data, selectedFolderId, setSelectedFolderId }: TmodalAdd) {
+  const linkFetch = useQuery({
+    queryKey: ["linkData", null],
+    queryFn: async () => {
+      const res = await axiosInstance.get(`/links`, { headers: { Authorization: getCookie("accessToken") } });
+      return res.data;
+    },
+  });
   return (
     <List>
       {data?.map((value) => (

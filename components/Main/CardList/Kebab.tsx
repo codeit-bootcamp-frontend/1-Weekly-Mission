@@ -8,10 +8,11 @@ import Image from "next/image";
 import { useRef } from "react";
 
 interface Props {
+  id: number;
   url: string;
 }
 
-export default function Kebab({ url }: Props) {
+export default function Kebab({ id, url }: Props) {
   const folderQuery = useQuery({
     queryKey: ["folderData"],
     queryFn: async () => {
@@ -35,7 +36,7 @@ export default function Kebab({ url }: Props) {
 
   const handleModal = (e: React.MouseEvent<HTMLParagraphElement>) => {
     const type = e.currentTarget.textContent ?? "";
-    dispatch({ type, title: url, data: folderData });
+    dispatch({ type, title: url, id, data: folderData });
   };
 
   const stop = (e: React.MouseEvent<HTMLDivElement>) => {

@@ -3,7 +3,7 @@ import { FolderData } from "@/utils/getData.type";
 import { useState } from "react";
 
 interface Idispatch {
-  (action: { title?: string; type?: string; data?: FolderData[] }): void;
+  (action: { title?: string; type?: string; id?: number; data?: FolderData[] }): void;
 }
 
 function useModal() {
