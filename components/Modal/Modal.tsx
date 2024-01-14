@@ -313,6 +313,7 @@ function ModalAdd({ data, selectedFolderId, setSelectedFolderId }: TmodalAdd) {
       {data?.map((value) => (
         <li key={value.id}>
           <button
+            type="button"
             className={selectedFolderId === value.id ? "active" : ""}
             onClick={(e) => (e.currentTarget.blur(), setSelectedFolderId((prev) => (prev === value.id ? 0 : value.id)))}
           >

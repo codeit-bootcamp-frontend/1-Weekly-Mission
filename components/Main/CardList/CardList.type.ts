@@ -7,11 +7,10 @@ export interface CardListProps {
 
 export interface CardProps {
   url: string;
-  imageSource?: string;
-  image_source?: string;
+  image_source: string;
   title: string;
   description: string;
-  createdAt?: string;
-  created_at?: string;
+  created_at: string;
   id: number;
+  favorite: boolean;
 }

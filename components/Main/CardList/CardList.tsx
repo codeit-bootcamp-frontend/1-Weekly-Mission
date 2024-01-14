@@ -29,11 +29,16 @@ export default function CardList() {
 
   return filteredLinks?.length ? (
     <ContainerCardList>
-      {filteredLinks.map((link) => (
-        <CardLink key={link.id} className="card" href={link.url} target="_blank" rel="noreferrer">
-          <Card {...link} />
-        </CardLink>
-      ))}
+      {filteredLinks.map(
+        (link) => (
+          console.log(link),
+          (
+            <CardLink key={link.id} className="card" href={link.url} target="_blank" rel="noreferrer">
+              <Card {...link} />
+            </CardLink>
+          )
+        )
+      )}
     </ContainerCardList>
   ) : (
     <EmptyBox>저장된 링크가 없습니다.</EmptyBox>
