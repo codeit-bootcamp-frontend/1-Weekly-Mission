@@ -12,18 +12,8 @@ interface SaveTokenProps {
 }
 
 export const signin = async (data: UserData) => {
-  try {
-    const response = await request.post(`${ApiMapper.auth.post.SIGN_IN}`, data);
-
-    if (response.status === 200) {
-      const { data } = response;
-      saveToken(data.data);
-      return true;
-    }
-    throw new Error();
-  } catch (e) {
-    return false;
-  }
+  const response = await request.post(`${ApiMapper.auth.post.SIGN_IN}`, data);
+  return response.data;
 };
 
 export const signup = async (data: UserData) => {
@@ -41,7 +31,7 @@ export const signup = async (data: UserData) => {
   }
 };
 
-const saveToken = ({ accessToken, refreshToken }: SaveTokenProps) => {
+export const saveToken = ({ accessToken, refreshToken }: SaveTokenProps) => {
   localStorage.setItem("accessToken", accessToken);
   localStorage.setItem("refreshToken", refreshToken);
 };
