@@ -5,10 +5,13 @@ import { DEFAULT_USER } from "./constant";
 
 export const useGetUser = (userId?: number) => {
   const getUser = () =>
-    axiosInstance.get<{ data: UserRawData[] }>(`users${userId ? `/${userId}` : ""}`);
-  const { loading, error, data } = useAsync({ asyncFunction: getUser, enabled: !!userId });
+    axiosInstance.get<UserRawData[]>(`users${userId ? `/${userId}` : ""}`);
+  const { loading, error, data } = useAsync({
+    asyncFunction: getUser,
+    enabled: !!userId,
+  });
 
-  const userDataResponse = data?.data?.[0];
+  const userDataResponse = data?.[0];
   const userData = userDataResponse
     ? {
         id: userDataResponse.id,

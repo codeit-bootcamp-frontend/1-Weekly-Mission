@@ -9,13 +9,12 @@ export type SampleLinkRawData = {
 
 export type LinkRawData = {
   id: number;
+  favorite: boolean;
   created_at: string;
-  updated_at: string;
   url: string;
-  image_source: string;
   title: string;
+  image_source: string;
   description: string;
-  folder_id: number;
 };
 
 export type Link = {

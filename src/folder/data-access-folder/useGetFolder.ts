@@ -3,9 +3,14 @@ import { FolderRawData } from "../type";
 import { DEFAULT_FOLDER } from "./constant";
 
 export const useGetFolder = (folderId: string) => {
-  const getFolder = () => axiosInstance.get<{ data: FolderRawData[] }>(`folders/${folderId}`);
-  const { loading, error, data } = useAsync({ asyncFunction: getFolder, enabled: !!folderId });
-  const folderDataResponse = data?.data?.[0];
+  const getFolder = () =>
+    axiosInstance.get<FolderRawData[]>(`folders/${folderId}`);
+  const { loading, error, data } = useAsync({
+    asyncFunction: getFolder,
+    enabled: !!folderId,
+  });
+
+  const folderDataResponse = data?.[0];
 
   const folderData = folderDataResponse
     ? {

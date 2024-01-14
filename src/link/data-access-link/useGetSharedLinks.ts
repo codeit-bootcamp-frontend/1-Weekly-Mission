@@ -7,20 +7,24 @@ import { formatLinkRawData } from "../util-map";
 
 export const useGetSharedLinks = (userId: number, folderId?: string) => {
   const getLinks = useCallback(
-    () => axiosInstance.get<{ data: LinkRawData[] }>(`users/${userId}/links?folderId=${folderId}`),
+    () =>
+      axiosInstance.get<LinkRawData[]>(
+        `users/${userId}/links?folderId=${folderId}`
+      ),
     [userId, folderId]
   );
   const { execute, loading, error, data } = useAsync({
     asyncFunction: getLinks,
     enabled: !!userId && !!folderId,
   });
+  console.log(data);
 
   useEffect(() => {
     execute();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId, folderId]);
 
-  const linksData = data?.data?.map(formatLinkRawData).map(mapLinksData) ?? [];
-
+  const linksData = data?.map(formatLinkRawData).map(mapLinksData) ?? [];
+  console.log(linksData);
   return { execute, loading, error, data: linksData };
 };
