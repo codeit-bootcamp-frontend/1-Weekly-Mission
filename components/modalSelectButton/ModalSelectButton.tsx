@@ -6,12 +6,17 @@ import { useState } from "react";
 interface ModalSelectButtonProps {
   folderName: string;
   linkCount: number;
+  onClick: () => void;
 }
 
-const ModalSelectButton = ({ folderName, linkCount }: ModalSelectButtonProps) => {
+const ModalSelectButton = ({ folderName, linkCount, onClick }: ModalSelectButtonProps) => {
   const [isSelect, setIsSelect] = useState(false);
+  const handleClick = () => {
+    onClick();
+    setIsSelect((prev) => !prev);
+  };
   return (
-    <S.FolderSelectButton $isSelect={isSelect} onClick={() => setIsSelect((prev) => !prev)}>
+    <S.FolderSelectButton $isSelect={isSelect} onClick={handleClick}>
       <S.FolderName>{folderName}</S.FolderName>
       <S.LinkInfo>{linkCount}개 링크</S.LinkInfo>
       <Image src={checkIcon} alt={`${folderName}폴더 선택됨`} />

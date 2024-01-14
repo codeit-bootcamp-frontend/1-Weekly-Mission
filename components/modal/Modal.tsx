@@ -26,11 +26,19 @@ const Title = ({ children }: { children: ReactNode }) => {
   return <S.ModalTitle>{children}</S.ModalTitle>;
 };
 
-const BlueButton = ({ children }: { children: ReactNode }) => {
-  return <S.Button $isDelete={false}>{children}</S.Button>;
+const BlueButton = ({ children, handleClick }: { children: ReactNode; handleClick: () => void }) => {
+  return (
+    <S.Button $isDelete={false} onClick={handleClick}>
+      {children}
+    </S.Button>
+  );
 };
-const RedButton = ({ children }: { children: ReactNode }) => {
-  return <S.Button $isDelete={true}>{children}</S.Button>;
+const RedButton = ({ children, handleClick }: { children: ReactNode; handleClick: () => void }) => {
+  return (
+    <S.Button $isDelete={true} onClick={handleClick}>
+      {children}
+    </S.Button>
+  );
 };
 
 const TargetName = ({ children }: { children: ReactNode }) => {

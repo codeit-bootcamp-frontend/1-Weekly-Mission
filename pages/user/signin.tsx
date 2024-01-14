@@ -1,7 +1,7 @@
 import AuthInputs from "@/components/authInput/AuthInput";
 import { VALIDATE } from "@/constants/constants";
 import AuthLayout from "@/layouts/authLayout/AuthLayout";
-import { useUser } from "@/utils/AuthProvider";
+import { signIn, useSession } from "next-auth/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -14,8 +14,8 @@ interface SignInProps {
 
 const SignIn = () => {
   const router = useRouter();
+  const { data: session } = useSession();
   const [isLoading, setIsLoading] = useState(false);
-  const { login } = useUser();
 
   const {
     register,
@@ -24,6 +24,11 @@ const SignIn = () => {
     getValues,
     setError,
   } = useForm<SignInProps>({ mode: "onBlur", reValidateMode: "onBlur" });
+
+  if (session) {
+    router.replace("/folder");
+    return null;
+  }
 
   const emailRegister = register("email", {
     required: {
@@ -50,19 +55,16 @@ const SignIn = () => {
   const onSubmitHandler: SubmitHandler<SignInProps> = async () => {
     setIsLoading(true);
     const values = getValues();
-    try {
-      await login(values);
-      router.push("/folder");
-    } catch (error) {
+    const result = await signIn("credentials", { redirect: false, ...values });
+    if (!result?.ok) {
       setError("email", {
         message: "이메일을 확인해 주세요.",
       });
       setError("password", {
         message: "비밀번호를 확인해 주세요.",
       });
-    } finally {
-      setIsLoading(false);
     }
+    setIsLoading(false);
   };
 
   return (

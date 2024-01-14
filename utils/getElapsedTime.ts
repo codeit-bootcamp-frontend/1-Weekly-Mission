@@ -1,9 +1,9 @@
 import dayjs from "dayjs";
 
-import timezone from "dayjs/plugin/timezone";
 import relativeTime from "dayjs/plugin/relativeTime";
-import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
 import updateLocale from "dayjs/plugin/updateLocale";
+import utc from "dayjs/plugin/utc";
 const timeThresholds = [
   { l: "s", r: 1 },
   { l: "m", r: 1 },
@@ -45,8 +45,8 @@ const extendDayjs = () => {
 extendDayjs();
 
 const getElapsedTime = (createdAt: string) => {
-  const now = dayjs().utc(true);
-  const utcDate = dayjs.utc(createdAt);
+  const now = dayjs().tz("Asia/Seoul");
+  const utcDate = dayjs.utc(createdAt).tz("Asia/Seoul");
   const fromNow = utcDate.from(now);
   const formattedDate = dayjs(utcDate).format("YYYY. M. DD");
 

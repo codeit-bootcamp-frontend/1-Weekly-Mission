@@ -2,10 +2,10 @@ import LoadingSpinner from "@/components/LoadingSpinner/LoadingSpinner";
 import CardList from "@/components/cardList/CardList";
 import FolderSearchBar from "@/components/folderSearchBar/FolderSearchBar";
 import SharedFolderInfo from "@/components/folderUserInfo/SharedFolderInfo";
-import useGetSharedFolder from "@/hooks/useGetSharedFolder";
 import defaultProfileImage from "@/images/Avatar.png";
 import * as S from "@/layouts/shared/Shared.style";
-import { MappedLink } from "@/types/type";
+import { getSharedFolder } from "@/utils/api";
+import { useQuery } from "@tanstack/react-query";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -13,10 +13,20 @@ import { useState } from "react";
 const SharedPage = () => {
   const router = useRouter();
   const selectedFolderId = router.query.folderId as string;
-  const { data, loading, error } = useGetSharedFolder(selectedFolderId);
+  const { data: sharedFolder, isPending } = useQuery({
+    queryKey: ["shared", selectedFolderId],
+    queryFn: () => getSharedFolder(selectedFolderId),
+    enabled: !!selectedFolderId,
+    staleTime: 60 * 1000 * 3,
+    gcTime: 60 * 1000 * 3,
+  });
   const [searchQuery, setSearchQuery] = useState("");
-  const { folder, owner, links } = data;
-  const filteredLinks: MappedLink[] = searchQuery
+
+  const folder = sharedFolder?.folder;
+  const links = sharedFolder?.links;
+  const owner = sharedFolder?.user;
+
+  const filteredLinks = searchQuery
     ? (links ?? []).filter(
         (link) =>
           link?.url?.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -41,12 +51,12 @@ const SharedPage = () => {
       )}
       <S.SharedPageWrap>
         <S.SharedPage>
-          {loading ? (
+          {isPending ? (
             <LoadingSpinner />
           ) : (
             <>
               <FolderSearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-              <CardList links={filteredLinks} isShared={true} />
+              <CardList links={filteredLinks} isShared={true} folderId={selectedFolderId} />
             </>
           )}
         </S.SharedPage>

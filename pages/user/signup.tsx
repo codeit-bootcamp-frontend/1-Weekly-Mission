@@ -1,14 +1,12 @@
 import AuthInputs from "@/components/authInput/AuthInput";
 import { VALIDATE } from "@/constants/constants";
 import AuthLayout from "@/layouts/authLayout/AuthLayout";
-import { useUser } from "@/utils/AuthProvider";
-import { axiosInstance } from "@/utils/axiosInstance";
-import axios from "axios";
+import { checkEmailDuplicate, signUp } from "@/utils/api";
+import { signIn, useSession } from "next-auth/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-
 interface SignUpProps {
   email: string;
   password: string;
@@ -17,9 +15,8 @@ interface SignUpProps {
 
 const SignUp = () => {
   const router = useRouter();
+  const { data: session } = useSession();
   const [isLoading, setIsLoading] = useState(false);
-
-  const { login } = useUser();
 
   const {
     register,
@@ -28,6 +25,11 @@ const SignUp = () => {
     getValues,
     setError,
   } = useForm<SignUpProps>({ mode: "onBlur", reValidateMode: "onBlur" });
+
+  if (session) {
+    router.replace("/folder");
+    return null;
+  }
 
   const emailRegister = register("email", {
     required: {
@@ -62,12 +64,12 @@ const SignUp = () => {
 
   const checkEmail = async (email: string) => {
     try {
-      await axiosInstance.post("/check-email", { email: email });
+      await checkEmailDuplicate(email);
       return true;
     } catch (error) {
-      if (axios.isAxiosError(error) && error.response) {
+      if (error instanceof Error) {
         setError("email", {
-          message: error.response.data.error.message,
+          message: error.message || "알 수 없는 에러가 발생했습니다.",
         });
       } else {
         setError("email", {
@@ -86,23 +88,16 @@ const SignUp = () => {
       setIsLoading(false);
       return;
     }
-    try {
-      await axiosInstance.post("/sign-up", values);
-      await login(values);
-      router.push("/folder");
-    } catch (error) {
+    await signUp(values);
+
+    const result = await signIn("credentials", { redirect: false, ...values });
+    if (!result?.ok) {
       setError("email", {
         message: "알 수 없는 에러가 발생했습니다.",
       });
-    } finally {
-      setIsLoading(false);
     }
+    setIsLoading(false);
   };
-
-  useEffect(() => {
-    const accessToken = window.localStorage.getItem("accessToken");
-    if (accessToken) router.push("/folder");
-  }, [router]);
 
   return (
     <>

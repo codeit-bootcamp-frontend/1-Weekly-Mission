@@ -5,14 +5,12 @@ export interface UserInfoProps {
 }
 
 export interface User {
-  data: {
-    id: number;
-    created_at: string;
-    name: string;
-    email: string;
-    image_source: string;
-    auth_id: string;
-  }[];
+  id: number;
+  created_at: string;
+  name: string;
+  email: string;
+  profileImageSource: string;
+  auth_id: string;
 }
 
 export interface SampleLink {
@@ -48,6 +46,7 @@ export interface Link {
   title: string;
   description: string;
   image_source: string;
+  favorite: boolean;
 }
 
 export interface Links {
@@ -57,14 +56,10 @@ export interface Links {
 export interface Folder {
   id: number;
   created_at: string;
+  favorite: boolean;
   name: string;
   user_id: number;
-}
-
-export interface Folders {
-  data: {
-    folder: Folder[];
-  };
+  link_count: number;
 }
 
 export interface MappedFolder {
