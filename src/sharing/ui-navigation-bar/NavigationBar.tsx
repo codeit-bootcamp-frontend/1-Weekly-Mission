@@ -5,23 +5,38 @@ import { Cta } from "@/src/sharing/ui-cta";
 import { Profile } from "@/src/user/ui-profile";
 import { LOGO_IMAGE, TEXT } from "./constant";
 import Link from "next/link";
+import { useQuery } from "@tanstack/react-query";
+import fetcher from "../util/axiosInstance";
+import { UserRawData } from "@/src/user/type";
+import Image from "next/image";
 
 const cx = classNames.bind(styles);
 
 type NavigationBarProps = {
-  profile: {
-    imageSource: string;
-    email: string;
-  } | null;
   isSticky: boolean;
 };
 
-export const NavigationBar = ({ profile, isSticky }: NavigationBarProps) => {
+export const NavigationBar = ({ isSticky }: NavigationBarProps) => {
+  // 현재 유저 가져오는 쿼리
+  const currentUser = useQuery({
+    queryKey: ["user"],
+    queryFn: () => fetcher<UserRawData[]>({ url: "/users", method: "GET" }),
+  });
+
+  if (!currentUser.data) return;
+
+  const user = currentUser.data?.data[0];
+
+  const { email, image_source } = user;
+  const profile = user ? { email, image_source } : null;
+
   return (
     <nav className={cx("container", { sticky: isSticky })}>
       <div className={cx("items")}>
         <Link href={ROUTE.랜딩}>
-          <img className={cx("logo")} src={LOGO_IMAGE} alt="Linkbrary 서비스 로고" />
+          <div className={cx("logo")}>
+            <Image fill src={LOGO_IMAGE} alt="Linkbrary 서비스 로고" />
+          </div>
         </Link>
         {profile ? (
           <Profile profile={profile} />

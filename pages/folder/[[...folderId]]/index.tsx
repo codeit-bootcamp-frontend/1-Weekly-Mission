@@ -6,11 +6,7 @@ import { ALL_LINKS_ID } from "@/src/link/data-access-link/constant";
 import { LinkForm } from "@/src/link/feature-link-form";
 import { CardList } from "@/src/link/feature-card-list";
 import { useSearchLink } from "@/src/link/util-search-link";
-import {
-  ROUTE,
-  axiosInstance,
-  useIntersectionObserver,
-} from "@/src/sharing/util";
+import { ROUTE, useIntersectionObserver } from "@/src/sharing/util";
 import { useRouter } from "next/router";
 import { useMemo } from "react";
 import { getAccessTokenFromCookie } from "@/utils/getAccessToken";
@@ -19,6 +15,8 @@ import { QueryClient, dehydrate, useQuery } from "@tanstack/react-query";
 import { Folder } from "@/src/folder/type";
 import { LinkRawData } from "@/src/link/type";
 import { mapLinksData } from "@/src/link/util-map";
+import fetcher from "@/src/sharing/util/axiosInstance";
+import { UserRawData } from "@/src/user/type";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const accessToken = getAccessTokenFromCookie(context);
@@ -37,15 +35,19 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   await queryClient.prefetchQuery({
     queryKey: ["folders"],
     queryFn: () =>
-      axiosInstance.get<Folder[]>("folders", {
+      fetcher<Folder[]>({
+        method: "get",
+        url: "/folders",
         headers: {
-          Authorization: accessToken ? `${accessToken}` : undefined,
+          Authorization: accessToken,
         },
       }),
   });
 
-  const queryData = queryClient.getQueryData(["folders"]);
-  console.log(queryData);
+  await queryClient.prefetchQuery({
+    queryKey: ["user"],
+    queryFn: () => fetcher<UserRawData[]>({ url: "/users", method: "GET" }),
+  });
 
   return {
     props: {
@@ -54,6 +56,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     },
   };
 }
+
 function FolderPage() {
   const router = useRouter();
   const { folderId } = router.query;
@@ -67,7 +70,11 @@ function FolderPage() {
   // 폴더들 가져오는 쿼리
   const folderList = useQuery({
     queryKey: ["folders"],
-    queryFn: () => axiosInstance.get<Folder[]>("folders"),
+    queryFn: () =>
+      fetcher<Folder[]>({
+        method: "get",
+        url: "/folders",
+      }),
   });
 
   const folders = folderList?.data?.data ?? [];
@@ -80,7 +87,8 @@ function FolderPage() {
 
   const linksList = useQuery({
     queryKey: ["links", currentFolderId],
-    queryFn: () => axiosInstance.get<LinkRawData[]>(`${queryString}`),
+    queryFn: () =>
+      fetcher<LinkRawData[]>({ url: `${queryString}`, method: "GET" }),
   });
   const rawLinks = linksList?.data?.data ?? [];
 
@@ -88,6 +96,7 @@ function FolderPage() {
 
   const { searchValue, handleChange, handleCloseClick, result } =
     useSearchLink(links);
+
   const { ref, isIntersecting } = useIntersectionObserver<HTMLDivElement>();
 
   return (

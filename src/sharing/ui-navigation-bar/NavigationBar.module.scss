@@ -33,8 +33,9 @@
 }
 
 .logo {
+  position: relative;
   height: 1.6rem;
-
+  width: 13rem;
   @include tablet {
     height: 2.4rem;
   }

@@ -2,6 +2,7 @@ import { axiosInstance, useAsync, useEffectOnce } from "@/src/sharing/util";
 import { UserRawData } from "../type";
 import { useState } from "react";
 import { DEFAULT_USER } from "./constant";
+import fetcher from "@/src/sharing/util/axiosInstance";
 
 export const useGetCurrentUser = () => {
   const [accessToken, setAccessToken] = useState<string | null>(null);
@@ -9,7 +10,8 @@ export const useGetCurrentUser = () => {
     setAccessToken(localStorage.getItem("accessToken"));
   });
 
-  const getCurrentUser = () => axiosInstance.get<UserRawData[]>("users");
+  const getCurrentUser = () =>
+    fetcher<UserRawData[]>({ url: "/users", method: "GET" });
 
   const { loading, error, data } = useAsync({
     asyncFunction: getCurrentUser,
