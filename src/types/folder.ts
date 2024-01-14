@@ -47,3 +47,11 @@ export interface SharedFolderData {
 }
 
 export type FolderNameData = Omit<FolderData, "created_at">;
+
+export interface Folder {
+  id: number;
+  name: string;
+  link_count: number;
+  favorite: boolean;
+  created_at: string;
+}

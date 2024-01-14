@@ -71,12 +71,14 @@ export default function FolderPage() {
     }
   }, [linksData]);
 
+  console.log(selected);
+
   return (
     <>
       {isOpenModal && (
         <ModalPortal>
           <ModalContainer onClose={handleCloseModal}>
-            <AddFolders />
+            <AddFolders onClose={handleCloseModal} />
           </ModalContainer>
         </ModalPortal>
       )}

@@ -42,7 +42,7 @@ export default function FolderHero({
       {isOpenModal && (
         <ModalPortal>
           <ModalContainer onClose={handleCloseModal}>
-            <AddLink link={addLinkValue} />
+            <AddLink link={addLinkValue} onClose={handleCloseModal} />
           </ModalContainer>
         </ModalPortal>
       )}
