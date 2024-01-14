@@ -2,15 +2,17 @@ import Footer from "@/components/footer/Footer";
 import GlobalNav from "@/components/globalNav/GlobalNav";
 import GlobalStyle from "@/layouts/GlobalStyle";
 import * as S from "@/layouts/globalLayout/GlobalLayout.style";
-import { AuthProvider } from "@/utils/AuthProvider";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { SessionProvider } from "next-auth/react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { useRouter } from "next/router";
-
-export default function App({ Component, pageProps }: AppProps) {
+const queryClient = new QueryClient();
+export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const router = useRouter();
   const noLayoutPages = ["/user/signup", "/user/signin"];
   const useLayout = !noLayoutPages.includes(router.pathname);
+
   return (
     <>
       <Head>
@@ -37,20 +39,22 @@ export default function App({ Component, pageProps }: AppProps) {
           content="https://a1b2c3d4zzzzzznextts.vercel.app/images/image-for-meta-tag-test.jpg"
         />
       </Head>
-      <AuthProvider>
-        <GlobalStyle />
-        {useLayout ? (
-          <S.GlobalLayout>
-            <GlobalNav />
-            <S.MainContent>
-              <Component {...pageProps} />
-            </S.MainContent>
-            <Footer />
-          </S.GlobalLayout>
-        ) : (
-          <Component {...pageProps} />
-        )}
-      </AuthProvider>
+      <SessionProvider session={session}>
+        <QueryClientProvider client={queryClient}>
+          <GlobalStyle />
+          {useLayout ? (
+            <S.GlobalLayout>
+              <GlobalNav />
+              <S.MainContent>
+                <Component {...pageProps} />
+              </S.MainContent>
+              <Footer />
+            </S.GlobalLayout>
+          ) : (
+            <Component {...pageProps} />
+          )}
+        </QueryClientProvider>
+      </SessionProvider>
     </>
   );
 }

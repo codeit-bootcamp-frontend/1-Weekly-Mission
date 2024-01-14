@@ -1,9 +1,7 @@
 import googleIcon from "@/images/auth/google-login-icon.png";
 import kakaoIcon from "@/images/auth/kakao-login-icon.png";
 import * as S from "@/layouts/authLayout/AuthLayout.style";
-import { useUser } from "@/utils/AuthProvider";
-import { useRouter } from "next/router";
-import { ReactNode, useEffect } from "react";
+import { ReactNode } from "react";
 
 interface AuthLayoutProps {
   children: ReactNode;
@@ -12,11 +10,6 @@ interface AuthLayoutProps {
 }
 
 const AuthLayout = ({ children, mode, handleSubmit }: AuthLayoutProps) => {
-  const router = useRouter();
-  const { user } = useUser();
-  useEffect(() => {
-    if (user) router.push("/folder");
-  }, [user, router]);
   return (
     <S.AuthWrap>
       <S.Auth>

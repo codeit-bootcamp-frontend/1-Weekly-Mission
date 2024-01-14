@@ -3,6 +3,8 @@ import InputField from "@/components/inputField/InputField";
 import Modal from "@/components/modal/Modal";
 import { ALL_LINKS_ID, MODALS_ID } from "@/constants/constants";
 import { Folder } from "@/types/type";
+import { postFolder } from "@/utils/api";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 
 interface FolderTabBarProps {
@@ -12,9 +14,26 @@ interface FolderTabBarProps {
 
 const FolderTabBar = ({ folders, selectedFolderId }: FolderTabBarProps) => {
   const [modalComponent, setModalComponent] = useState("");
+  const [folderName, setFolderName] = useState("");
+  const queryClient = useQueryClient();
+
   const handleFolderAdd = () => {
     setModalComponent(MODALS_ID.addFolder);
   };
+  const createFolder = () => {
+    createFolderMutation.mutate(folderName);
+  };
+  const createFolderMutation = useMutation({
+    mutationFn: (folderName: string) => postFolder(folderName),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["folders"] });
+      setModalComponent("");
+      setFolderName("");
+    },
+    onError: (error) => {
+      console.error(error);
+    },
+  });
 
   return (
     <>
@@ -25,8 +44,8 @@ const FolderTabBar = ({ folders, selectedFolderId }: FolderTabBarProps) => {
               전체
             </S.FolderTabLink>
           </li>
-          {folders.map((folder, i) => (
-            <li key={folder.id + i}>
+          {folders?.map((folder) => (
+            <li key={folder.id}>
               <S.FolderTabLink
                 href={`/folder/${folder.id}`}
                 className={folder.id === +selectedFolderId ? "active" : ""}
@@ -44,8 +63,8 @@ const FolderTabBar = ({ folders, selectedFolderId }: FolderTabBarProps) => {
       {modalComponent === MODALS_ID.addFolder && (
         <Modal onClose={() => setModalComponent("")}>
           <Modal.Title>폴더 추가</Modal.Title>
-          <InputField modalTarget="" />
-          <Modal.BlueButton>추가하기</Modal.BlueButton>
+          <InputField value={folderName} onChange={setFolderName} />
+          <Modal.BlueButton handleClick={createFolder}>추가하기</Modal.BlueButton>
         </Modal>
       )}
     </>

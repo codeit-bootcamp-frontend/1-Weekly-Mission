@@ -1,19 +1,23 @@
 import * as S from "@/components/card/Card.style";
 import KebabMenu from "@/components/kebabMenu/KebabMenu";
 import kebabImageSrc from "@/images/kebab.png";
-import { Folder, MappedLink } from "@/types/type";
+import { Folder, Link as LinkProp } from "@/types/type";
+import getElapsedTime from "@/utils/getElapsedTime";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 interface CardProps {
-  link: MappedLink;
+  link: LinkProp;
   folders?: Folder[];
   isShared: boolean;
+  folderId: string;
 }
 
-const Card = ({ link, folders, isShared }: CardProps) => {
-  const { elapsedTime, createdAt, url, title, imageSource } = link;
+const Card = ({ link, folders, isShared, folderId }: CardProps) => {
+  const { created_at, url, title, image_source: imageSource } = link;
+
+  const { fromNow, formattedDate } = getElapsedTime(created_at);
 
   const [isKebabOpen, setIsKebabOpen] = useState(false);
   const kebabButtonRef = useRef<HTMLButtonElement>(null);
@@ -41,7 +45,7 @@ const Card = ({ link, folders, isShared }: CardProps) => {
         </S.StarIconButton>
       </S.CardImageWrap>
       <S.CardTextWrap>
-        <S.TimeDiff>{elapsedTime}</S.TimeDiff>
+        <S.TimeDiff>{fromNow}</S.TimeDiff>
         {!isShared && (
           <>
             <S.KebabButton onClick={() => setIsKebabOpen((prev) => !prev)} ref={kebabButtonRef}>
@@ -49,7 +53,8 @@ const Card = ({ link, folders, isShared }: CardProps) => {
             </S.KebabButton>
             <KebabMenu
               linkUrl={url}
-              folderId={link.id}
+              folderId={folderId}
+              linkId={link.id}
               isKebabOpen={isKebabOpen}
               setIsKebabOpen={setIsKebabOpen}
               folders={folders}
@@ -60,7 +65,7 @@ const Card = ({ link, folders, isShared }: CardProps) => {
         <S.CardTitle href={url} target="_blank">
           {title ?? "제목 없는 링크"}
         </S.CardTitle>
-        <S.CardCreatedDate>{createdAt}</S.CardCreatedDate>
+        <S.CardCreatedDate>{formattedDate}</S.CardCreatedDate>
       </S.CardTextWrap>
     </S.CardWrap>
   );

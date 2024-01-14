@@ -4,6 +4,8 @@ import ModalSelectButton from "@/components/modalSelectButton/ModalSelectButton"
 import { MODALS_ID } from "@/constants/constants";
 import linkIcon from "@/images/link.png";
 import { Folder } from "@/types/type";
+import { postLinks } from "@/utils/api";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Image from "next/image";
 import { ChangeEvent, FormEvent, useState } from "react";
 
@@ -13,9 +15,8 @@ interface FolderAddBarProps {
   isHidden: boolean;
 }
 
-// [ ]: 링크 개수 받아오기
-
 const FolderAddBar = ({ folders, isSticky, isHidden }: FolderAddBarProps) => {
+  const queryClient = useQueryClient();
   const [addLinkValue, setAddLinkValue] = useState("");
   const [modalComponent, setModalComponent] = useState("");
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => setAddLinkValue(e.target.value);
@@ -25,6 +26,38 @@ const FolderAddBar = ({ folders, isSticky, isHidden }: FolderAddBarProps) => {
     setModalComponent(MODALS_ID.addLinkToFolder);
   };
 
+  const [selectedFolders, setSelectedFolders] = useState<{ [key: number]: boolean }>({});
+
+  const handleSelectFolder = (folderId: number) => {
+    setSelectedFolders((prevSelectedFolders) => {
+      const newSelectedFolders = { ...prevSelectedFolders };
+      if (newSelectedFolders[folderId]) {
+        delete newSelectedFolders[folderId];
+      } else {
+        newSelectedFolders[folderId] = true;
+      }
+      return newSelectedFolders;
+    });
+  };
+  const addLink = () => {
+    createFolderMutation.mutate({ addLinkValue, selectedFolderIds: Object.keys(selectedFolders).map(String) });
+  };
+  const createFolderMutation = useMutation({
+    mutationFn: ({ addLinkValue, selectedFolderIds }: { addLinkValue: string; selectedFolderIds: string[] }) =>
+      postLinks(addLinkValue, selectedFolderIds),
+    onSuccess: () => {
+      Object.keys(selectedFolders)
+        .map(String)
+        .forEach((folderId) => {
+          queryClient.invalidateQueries({ queryKey: ["links", folderId] });
+          queryClient.invalidateQueries({ queryKey: ["folders"] });
+        });
+      setModalComponent("");
+    },
+    onError: (error) => {
+      console.error(error);
+    },
+  });
   return (
     <>
       <S.AddLinkBar $isSticky={isSticky} $isHidden={isHidden} aria-hidden={isHidden}>
@@ -41,11 +74,15 @@ const FolderAddBar = ({ folders, isSticky, isHidden }: FolderAddBarProps) => {
           <Modal.SelectButtonWrap>
             {folders?.map((folder) => (
               <li key={folder.id}>
-                <ModalSelectButton folderName={folder.name} linkCount={1} />
+                <ModalSelectButton
+                  folderName={folder.name}
+                  linkCount={folder.link_count}
+                  onClick={() => handleSelectFolder(folder.id)}
+                />
               </li>
             ))}
           </Modal.SelectButtonWrap>
-          <Modal.BlueButton>추가하기</Modal.BlueButton>
+          <Modal.BlueButton handleClick={addLink}>추가하기</Modal.BlueButton>
         </Modal>
       )}
     </>
