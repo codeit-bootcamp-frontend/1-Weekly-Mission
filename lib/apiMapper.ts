@@ -23,7 +23,7 @@ export const ApiMapper = {
   link: {
     get: {
       GET_LINK: `${URL_PATH.LINK_CONTROLLER}`,
-      GET_LINKS: `${URL_PATH.USER_CONTROLLER}/:userId/links`,
+      GET_LINKS: `${URL_PATH.FOLDER_CONTROLLER}/:folderId/links`,
     },
   },
   auth: {

@@ -108,7 +108,7 @@ const FolderLayout = ({ cardData, selectedFolderData }: FolderLayoutProps) => {
   const [addToFolderItem, setAddToFolderItem] = useState("");
   const [selectedFolderName, setSelectedFolderName] = useState("전체");
 
-  const { data: folderData } = useQuery({
+  const { data: folderData, isSuccess } = useQuery({
     queryKey: [QUERY_KEYS.folders],
     queryFn: () => getFolders(),
   });
@@ -176,189 +176,198 @@ const FolderLayout = ({ cardData, selectedFolderData }: FolderLayoutProps) => {
   }, [folderData, selectedFolder]);
 
   return (
-    <>
-      <Wrapper>
-        <Section $bg="var(--background)">
-          <ContentContainer $isFolder={true}>
-            <AddLinkInputContainer>
+    isSuccess && (
+      <>
+        <Wrapper>
+          <Section $bg="var(--background)">
+            <ContentContainer $isFolder={true}>
+              <AddLinkInputContainer>
+                <Input
+                  label={"linkAdd"}
+                  icon={
+                    <Image
+                      src={LinkAddIcon}
+                      alt="inputIcon"
+                      className="inputIcon"
+                    />
+                  }
+                  placeholder={"링크를 추가해 보세요"}
+                  value={link}
+                  setValue={setLink}
+                ></Input>
+                <GradientButton
+                  onClick={() => {
+                    if (link !== "") {
+                      handleAddToFolderModal(link);
+                      setLink("");
+                    }
+                  }}
+                >
+                  추가하기
+                </GradientButton>
+              </AddLinkInputContainer>
+            </ContentContainer>
+          </Section>
+
+          <FolderSection $bg="var(--white)">
+            <FolderContentContainer $isFolder={true}>
               <Input
-                label={"linkAdd"}
+                label="searchLink"
                 icon={
                   <Image
-                    src={LinkAddIcon}
+                    src={SearchImg}
                     alt="inputIcon"
                     className="inputIcon"
                   />
                 }
-                placeholder={"링크를 추가해 보세요"}
-                value={link}
-                setValue={setLink}
-              ></Input>
-              <GradientButton
-                onClick={() => {
-                  if (link !== "") {
-                    handleAddToFolderModal(link);
-                    setLink("");
-                  }
-                }}
-              >
-                추가하기
-              </GradientButton>
-            </AddLinkInputContainer>
-          </ContentContainer>
-        </Section>
+                placeholder="링크를 검색해보세요"
+                value={searchLinkValue}
+                setValue={setSearchLinkValue}
+              />
 
-        <FolderSection $bg="var(--white)">
-          <FolderContentContainer $isFolder={true}>
-            <Input
-              label="searchLink"
-              icon={
-                <Image src={SearchImg} alt="inputIcon" className="inputIcon" />
-              }
-              placeholder="링크를 검색해보세요"
-              value={searchLinkValue}
-              setValue={setSearchLinkValue}
-            />
+              <FolderContainer>
+                <div className="folderBtnContainer">
+                  <FolderBtnItemContainer
+                    $isSelected={selectedFolder === 1}
+                    onClick={() => {
+                      router.push("/folder");
+                      setSelectedFolder(1);
+                    }}
+                  >
+                    전체
+                  </FolderBtnItemContainer>
 
-            <FolderContainer>
-              <div className="folderBtnContainer">
-                <FolderBtnItemContainer
-                  $isSelected={selectedFolder === 1}
-                  onClick={() => {
-                    router.push("/folder");
-                    setSelectedFolder(1);
-                  }}
-                >
-                  전체
-                </FolderBtnItemContainer>
-
-                {folderData?.map((e: FolderData) => {
-                  return (
-                    <FolderBtnItemContainer
-                      key={e.id}
-                      $isSelected={e.id === selectedFolder}
-                      onClick={() => {
-                        router.push(`/folder/${e.id}`);
-                        setSelectedFolder(e.id);
-                      }}
-                    >
-                      {e.name}
-                    </FolderBtnItemContainer>
-                  );
-                })}
-              </div>
-
-              <div className="folderAddBtnContainer">
-                <div
-                  className="folderAddTitle"
-                  onClick={() => handleEnterMoal("folderAdd")}
-                >
-                  폴더 추가
+                  {folderData?.map((e: FolderData) => {
+                    return (
+                      <FolderBtnItemContainer
+                        key={e.id}
+                        $isSelected={e.id === selectedFolder}
+                        onClick={() => {
+                          router.push(`/folder/${e.id}`);
+                          setSelectedFolder(e.id);
+                        }}
+                      >
+                        {e.name}
+                      </FolderBtnItemContainer>
+                    );
+                  })}
                 </div>
-                <Image
-                  width="16"
-                  height="16"
-                  src={FolderAddIcon}
-                  className="folderAddIcon"
-                  alt="folderAddIcon"
-                />
-              </div>
-            </FolderContainer>
 
-            {cardData?.length > 0 ? (
-              <>
-                <LinkHeaderContainer>
-                  <div className="linkTitle">
-                    {folderData.filter(
-                      (e: FolderData) => e.id === selectedFolder
-                    )[0]?.name || "전체"}
+                <div className="folderAddBtnContainer">
+                  <div
+                    className="folderAddTitle"
+                    onClick={() => handleEnterMoal("folderAdd")}
+                  >
+                    폴더 추가
                   </div>
+                  <Image
+                    width="16"
+                    height="16"
+                    src={FolderAddIcon}
+                    className="folderAddIcon"
+                    alt="folderAddIcon"
+                  />
+                </div>
+              </FolderContainer>
 
-                  <LinkToolContainer $display={selectedFolder === 1}>
-                    {LinkToolArr.map((e, index) => {
-                      return (
-                        <div
-                          className="linkToolItemContainer"
-                          key={index}
-                          onClick={() => {
-                            if (e.state === "folderShare") {
-                              handleShareFolderModal();
-                              return;
-                            }
-                            if (e.state === "folderDelete") {
-                              handleDeleteModal("folderDelete", {
+              {cardData?.length > 0 ? (
+                <>
+                  <LinkHeaderContainer>
+                    <div className="linkTitle">
+                      {folderData.filter(
+                        (e: FolderData) => e.id === selectedFolder
+                      )[0]?.name || "전체"}
+                    </div>
+
+                    <LinkToolContainer $display={selectedFolder === 1}>
+                      {LinkToolArr.map((e, index) => {
+                        return (
+                          <div
+                            className="linkToolItemContainer"
+                            key={index}
+                            onClick={() => {
+                              if (e.state === "folderShare") {
+                                handleShareFolderModal();
+                                return;
+                              }
+                              if (e.state === "folderDelete") {
+                                handleDeleteModal("folderDelete", {
+                                  id: selectedFolder,
+                                  title: selectedFolderName,
+                                });
+                                return;
+                              }
+                              handleEnterMoal(e.state, {
                                 id: selectedFolder,
                                 title: selectedFolderName,
                               });
-                              return;
-                            }
-                            handleEnterMoal(e.state, {
-                              id: selectedFolder,
-                              title: selectedFolderName,
-                            });
-                          }}
-                        >
-                          <Image src={e.src} alt={e.title} />
-                          <div className="linkToolTitle">{e.title}</div>
-                        </div>
+                            }}
+                          >
+                            <Image src={e.src} alt={e.title} />
+                            <div className="linkToolTitle">{e.title}</div>
+                          </div>
+                        );
+                      })}
+                    </LinkToolContainer>
+                  </LinkHeaderContainer>
+
+                  <CardContainer>
+                    {cardData?.map((e: { id: number }) => {
+                      return (
+                        <Card
+                          key={e.id}
+                          cardData={e}
+                          onClickDelete={handleDeleteModal}
+                          onClickAdd={handleAddToFolderModal}
+                          isFolder={true}
+                        />
                       );
                     })}
-                  </LinkToolContainer>
-                </LinkHeaderContainer>
+                  </CardContainer>
+                </>
+              ) : (
+                <div className="noLinkContainer">저장된 링크가 없습니다</div>
+              )}
+            </FolderContentContainer>
 
-                <CardContainer>
-                  {cardData?.map((e: { id: number }) => {
-                    return (
-                      <Card
-                        key={e.id}
-                        cardData={e}
-                        onClickDelete={handleDeleteModal}
-                        onClickAdd={handleAddToFolderModal}
-                        isFolder={true}
-                      />
-                    );
-                  })}
-                </CardContainer>
-              </>
-            ) : (
-              <div className="noLinkContainer">저장된 링크가 없습니다</div>
-            )}
-          </FolderContentContainer>
+            <AddFloatingButton onClick={handleEnterMoal} />
+          </FolderSection>
+        </Wrapper>
 
-          <AddFloatingButton onClick={handleEnterMoal} />
-        </FolderSection>
-      </Wrapper>
-
-      {modalOpened.addToFolderModal.display && (
-        <ModalLayout>
-          <AddToFolderModal
-            folderData={folderData}
-            link={addToFolderItem}
-            selectedFolderItem={{
-              id: selectedFolder,
-              title: selectedFolderName,
-            }}
-          />
-        </ModalLayout>
-      )}
-      {modalOpened.enterModal.display && (
-        <ModalLayout>
-          <EnterModal title={StateObj[modalType]} content={enterModalItem} />
-        </ModalLayout>
-      )}
-      {modalOpened.shareFolderModal.display && (
-        <ModalLayout>
-          <ShareFolderModal
-            content={{ id: selectedFolder, title: selectedFolderName }}
-          />
-        </ModalLayout>
-      )}
-      {modalOpened.deleteModal.display && (
-        <ModalLayout>
-          <DeleteModal title={StateObj[modalType]} content={deleteModalItem} />
-        </ModalLayout>
-      )}
-    </>
+        {modalOpened.addToFolderModal.display && (
+          <ModalLayout>
+            <AddToFolderModal
+              folderData={folderData}
+              link={addToFolderItem}
+              selectedFolderItem={{
+                id: selectedFolder,
+                title: selectedFolderName,
+              }}
+            />
+          </ModalLayout>
+        )}
+        {modalOpened.enterModal.display && (
+          <ModalLayout>
+            <EnterModal title={StateObj[modalType]} content={enterModalItem} />
+          </ModalLayout>
+        )}
+        {modalOpened.shareFolderModal.display && (
+          <ModalLayout>
+            <ShareFolderModal
+              content={{ id: selectedFolder, title: selectedFolderName }}
+            />
+          </ModalLayout>
+        )}
+        {modalOpened.deleteModal.display && (
+          <ModalLayout>
+            <DeleteModal
+              title={StateObj[modalType]}
+              content={deleteModalItem}
+            />
+          </ModalLayout>
+        )}
+      </>
+    )
   );
 };
 

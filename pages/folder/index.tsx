@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import FolderLayout from "@/components/folder/FolderLayout";
-import { handleGetLinks } from "@/lib/api/folder";
+import { getLinks } from "@/lib/api/folder";
 import { useRouter } from "next/router";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import QUERY_KEYS from "@/constants/queryKey";
 
 const Folder = () => {
@@ -11,7 +11,7 @@ const Folder = () => {
 
   const { data: cardData, isSuccess } = useQuery({
     queryKey: [QUERY_KEYS.links],
-    queryFn: () => handleGetLinks({ id: null }),
+    queryFn: () => getLinks(),
     enabled: !!isAuth,
   });
 

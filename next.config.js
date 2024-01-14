@@ -99,6 +99,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "spring.io",
       },
+      {
+        protocol: "https",
+        hostname: "www.youtube.com",
+      },
     ],
   },
 };
