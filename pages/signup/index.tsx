@@ -62,36 +62,35 @@ function SignUp() {
     }
 
     if (
-      !isUsableEmail({
+      await isUsableEmail({
         email: data.email,
         cachedEmails,
         setCachedEmails,
         fieldErrorHandler,
       })
-    )
-      return;
+    ) {
+      const response = await fetcher<Token>({
+        url: "/auth/sign-up",
+        method: "post",
+        data: { email, password },
+      });
 
-    const response = await fetcher<Token>({
-      url: "/auth/sign-up",
-      method: "post",
-      data: { email, password },
-    });
+      if (!response) {
+        fieldErrorHandler.setFieldError("email", "이메일을 확인해주세요.");
+        fieldErrorHandler.setFieldError("password", "비밀번호를 확인해주세요.");
+        fieldErrorHandler.setFieldError(
+          "rePassword",
+          "비밀번호 확인을 확인해주세요."
+        );
+        return;
+      }
 
-    if (!response) {
-      fieldErrorHandler.setFieldError("email", "이메일을 확인해주세요.");
-      fieldErrorHandler.setFieldError("password", "비밀번호를 확인해주세요.");
-      fieldErrorHandler.setFieldError(
-        "rePassword",
-        "비밀번호 확인을 확인해주세요."
-      );
-      return;
+      const { accessToken, refreshToken } = response.data;
+
+      saveTokens({ accessToken, refreshToken });
+
+      router.push("/folder");
     }
-
-    const { accessToken, refreshToken } = response.data;
-
-    saveTokens({ accessToken, refreshToken });
-
-    router.push("/folder");
   };
 
   const validateEmail = async (email: string) => {
