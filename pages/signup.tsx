@@ -2,13 +2,13 @@ import GradientButton from "@/components/button/GradientButton";
 import EmailInput from "@/components/input/EmailInput";
 import PasswordInput from "@/components/input/PasswordInput";
 import UserLayout from "@/components/user/UserLayout";
-import { ApiMapper } from "@/lib/apiMapper";
-import request from "@/lib/axios";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { userData } from "./signin";
-import { signup } from "@/lib/api/auth.ts/auth";
+import { checkEmail, saveToken, signup } from "@/lib/api/auth.ts/auth";
+import { useMutation } from "@tanstack/react-query";
+import { AxiosError } from "axios";
 
 interface SignupData extends userData {
   passwordConfirm: string;
@@ -18,6 +18,24 @@ const regexPw = /^(?=.*[a-zA-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/;
 
 const Signup = () => {
   const router = useRouter();
+
+  const signupMutation = useMutation({
+    mutationFn: (data: userData) => signup(data),
+    onError: () => {
+      setError("email", {
+        type: "validate",
+        message: "이메일을 확인해주세요",
+      });
+      setError("password", {
+        type: "validate",
+        message: "비빌번호를 확인해주세요",
+      });
+    },
+    onSuccess: (data) => {
+      saveToken(data);
+      router.push("/folder");
+    },
+  });
 
   const methods = useForm<SignupData>({
     mode: "onBlur",
@@ -37,34 +55,19 @@ const Signup = () => {
     },
   });
 
-  const handleCheckEmail = async () => {
-    const email = getValues("email");
-
-    const data = {
-      email: email,
-    };
-
-    try {
-      const result = await request.post(
-        `${ApiMapper.user.post.CHECK_EMAIL}`,
-        data
-      );
-
-      if (result.status === 200) return true;
-
-      throw new Error();
-    } catch (e: any) {
-      if (e.response.status === 409) {
+  const checkEmailMutation = useMutation({
+    mutationFn: () => checkEmail(getValues("email")),
+    onError: (error: AxiosError) => {
+      if (error.response?.status === 409) {
         setError("email", {
           type: "validate",
           message: "이미 가입된 이메일입니다. ",
         });
-        return false;
+        return;
       }
       alert("문제가 발생했습니다. 잠시후 다시 시도해주세요");
-      return false;
-    }
-  };
+    },
+  });
 
   const handleIsValidPassword = () => {
     const password = getValues("password");
@@ -87,29 +90,12 @@ const Signup = () => {
       return;
     }
 
-    const isValidEmail: boolean = await handleCheckEmail();
-    if (!isValidEmail) {
+    checkEmailMutation.mutate();
+    if (!checkEmailMutation.isSuccess) {
       return;
     }
 
-    try {
-      const result = await signup(data);
-
-      if (result) {
-        router.push("/folder");
-        return;
-      }
-      throw new Error();
-    } catch (e) {
-      setError("email", {
-        type: "validate",
-        message: "이메일을 확인해주세요",
-      });
-      setError("password", {
-        type: "validate",
-        message: "비빌번호를 확인해주세요",
-      });
-    }
+    signupMutation.mutate(data);
   };
 
   useEffect(() => {

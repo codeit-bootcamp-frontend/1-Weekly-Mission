@@ -1,7 +1,8 @@
 const URL_PATH = {
-  USER_CONTROLLER: "/auth",
+  AUTH_CONTROLLER: "/auth",
   LINK_CONTROLLER: "/api/links",
   FOLDER_CONTROLLER: "/api/folders",
+  USER_CONTROLLER: "/users",
 };
 
 export const ApiMapper = {
@@ -10,7 +11,7 @@ export const ApiMapper = {
       GET_USERS: `${URL_PATH.USER_CONTROLLER}`,
     },
     post: {
-      CHECK_EMAIL: `/api/check-email`,
+      CHECK_EMAIL: `${URL_PATH.USER_CONTROLLER}/check-email`,
     },
   },
   folder: {
@@ -27,8 +28,8 @@ export const ApiMapper = {
   },
   auth: {
     post: {
-      SIGN_IN: `${URL_PATH.USER_CONTROLLER}/sign-in`,
-      SIGN_UP: `/sign-up`,
+      SIGN_IN: `${URL_PATH.AUTH_CONTROLLER}/sign-in`,
+      SIGN_UP: `${URL_PATH.AUTH_CONTROLLER}/sign-up`,
     },
   },
 };
