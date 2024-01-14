@@ -21,8 +21,8 @@ export const ApiMapper = {
     },
   },
   link: {
+    LINK: `${URL_PATH.LINK_CONTROLLER}`,
     get: {
-      GET_LINK: `${URL_PATH.LINK_CONTROLLER}`,
       GET_LINKS: `${URL_PATH.FOLDER_CONTROLLER}/:folderId/links`,
     },
   },

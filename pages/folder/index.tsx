@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import FolderLayout from "@/components/folder/FolderLayout";
+import FolderLayout from "@/components/folder/folderLayout";
 import { getLinks } from "@/lib/api/folder";
 import { useRouter } from "next/router";
 import { useQuery } from "@tanstack/react-query";

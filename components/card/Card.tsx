@@ -13,7 +13,7 @@ import Image from "next/image";
 import { calculateTimeElapse } from "@/utils/utility";
 import Link from "next/link";
 import CardOptionMenu from "./CardOptionMenu";
-import { DeleteModalItem } from "../folder/FolderLayout";
+import { DeleteModalItem } from "../folder/folderLayout";
 
 interface CardProps {
   cardData: any;

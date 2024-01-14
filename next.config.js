@@ -103,6 +103,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "www.youtube.com",
       },
+      {
+        protocol: "https",
+        hostname: "images.velog.io",
+      },
     ],
   },
 };

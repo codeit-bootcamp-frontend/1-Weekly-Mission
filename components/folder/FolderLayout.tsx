@@ -55,9 +55,7 @@ const LinkToolArr = [
 export interface FolderData {
   id: number;
   name: string;
-  link: {
-    count: number;
-  };
+  link_count: number;
 }
 
 export interface SelectedFolder {
@@ -194,7 +192,7 @@ const FolderLayout = ({ cardData, selectedFolderData }: FolderLayoutProps) => {
                   placeholder={"링크를 추가해 보세요"}
                   value={link}
                   setValue={setLink}
-                ></Input>
+                />
                 <GradientButton
                   onClick={() => {
                     if (link !== "") {

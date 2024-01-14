@@ -1,4 +1,4 @@
-import { DeleteModalItem } from "../folder/FolderLayout";
+import { DeleteModalItem } from "../folder/folderLayout";
 import { OptionMenuContainer } from "./cardStyled";
 
 interface CardOptionMenuProps {

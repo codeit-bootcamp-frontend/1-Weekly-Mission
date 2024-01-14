@@ -17,7 +17,7 @@ export interface GetLinkResponse {
 }
 
 export const getLinks = async () => {
-  const response = await request.get(ApiMapper.link.get.GET_LINK, {
+  const response = await request.get(ApiMapper.link.LINK, {
     type: "auth",
   });
 
@@ -41,6 +41,14 @@ export const getFoldersId = async (id: number) => {
 export const getLinksId = async (id: number) => {
   const response = await request.get(ApiMapper.link.get.GET_LINKS, {
     path: { folderId: id },
+  });
+
+  return response.data;
+};
+
+export const postLinks = async (data: { url: string; folderId: number }) => {
+  const response = await request.post(ApiMapper.link.LINK, data, {
+    type: "auth",
   });
 
   return response.data;
