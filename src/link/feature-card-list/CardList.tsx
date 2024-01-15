@@ -1,5 +1,3 @@
-import { useGetFolders } from "@/src/folder/data-access-folder";
-import { AddLinkModal } from "@/src/link/ui-add-link-modal";
 import { EditableCard } from "@/src/link/ui-editable-card";
 import { NoLink } from "@/src/link/ui-no-link";
 import { KeyboardEventHandler, useCallback, useRef, useState } from "react";
