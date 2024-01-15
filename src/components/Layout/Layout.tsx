@@ -6,14 +6,17 @@ import getUser from "@/api/getUser";
 import Footer from "@/components/Footer/Footer";
 import Nav from "@/components/Nav/Nav";
 import { useUserInfoStore } from "@/store/UserInfo";
+import { getCookie } from "@/utils/manageCookie";
 
 export default function Layout({ children }: PropsWithChildren) {
-  const hasNav = ["/signin", "/signup", "/404"];
+  const noNavPage = ["/signin", "/signup", "/404"];
+  const accessToken = getCookie("accessToken");
   const { route } = useRouter();
   const { data } = useQuery({
     queryKey: ["user"],
     queryFn: () => getUser(),
     staleTime: 1000,
+    enabled: !!accessToken,
   });
 
   const addUser = useUserInfoStore((state) => state.addUser);
@@ -24,9 +27,9 @@ export default function Layout({ children }: PropsWithChildren) {
 
   return (
     <>
-      {!hasNav.includes(route) && <Nav />}
+      {!noNavPage.includes(route) && <Nav />}
       {children}
-      {!hasNav.includes(route) && <Footer />}
+      {!noNavPage.includes(route) && <Footer />}
     </>
   );
 }
