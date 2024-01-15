@@ -48,6 +48,10 @@ export default function SignupForm() {
         path: "/",
         secure: "/",
       });
+      setCookie("refreshToken", response.data.refreshToken, {
+        path: "/",
+        secure: "/",
+      });
       router.push("/folders");
     },
   });

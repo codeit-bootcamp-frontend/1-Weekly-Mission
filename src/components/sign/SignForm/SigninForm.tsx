@@ -43,6 +43,10 @@ export default function SigninForm() {
         path: "/",
         secure: "/",
       });
+      setCookie("refreshToken", response.data.refreshToken, {
+        path: "/",
+        secure: "/",
+      });
       router.push("/folders");
     },
   });
