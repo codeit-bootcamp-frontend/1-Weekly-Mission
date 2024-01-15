@@ -28,7 +28,6 @@ type InputModalProps = {
   onChange: ChangeEventHandler<HTMLInputElement>;
   setInputValue: Dispatch<SetStateAction<string>>;
   selectedFolderId?: SelectedFolderId;
-  onClick: MouseEventHandler<HTMLButtonElement>;
 };
 
 export const InputModal = ({
@@ -42,8 +41,34 @@ export const InputModal = ({
   onChange,
   setInputValue,
   selectedFolderId,
-  onClick,
 }: InputModalProps) => {
+  const queryClient = useQueryClient();
+
+  const folderMutation = useMutation({
+    mutationFn: (type: "add" | "edit") => {
+      const url = type === "add" ? "/folders" : `/folders/${selectedFolderId}`;
+      return fetcher<Return_folder>({
+        url,
+        method: type === "add" ? "POST" : "PUT",
+        data: { name: value },
+      });
+    },
+    onSuccess: (data) => {
+      if (data.status === 201) {
+        queryClient.invalidateQueries({ queryKey: ["folders"] });
+      }
+      setInputValue("");
+    },
+  });
+
+  const handleClick: MouseEventHandler<HTMLDivElement | HTMLButtonElement> = (
+    e
+  ) => {
+    onCloseClick(e);
+    const mutationType = title.includes("폴더 추가") ? "add" : "edit";
+    folderMutation.mutate(mutationType);
+  };
+
   return (
     <Modal isOpen={isOpen} onBackdropClick={onCloseClick} onKeyDown={onKeyDown}>
       <ModalContentBox
@@ -55,7 +80,7 @@ export const InputModal = ({
               onChange={onChange}
               placeholder={placeholder}
             />
-            <ModalContentButton onClick={onClick}>
+            <ModalContentButton onClick={handleClick}>
               {buttonText}
             </ModalContentButton>
           </div>

@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { AxiosResponse } from "axios";
 
 type UseAsyncParams<T> = {
-  asyncFunction: () => Promise<AxiosResponse<T>>;
+  asyncFunction: () => Promise<{ data: T; status: number }>;
   enabled?: boolean;
   lazyMode?: boolean;
 };

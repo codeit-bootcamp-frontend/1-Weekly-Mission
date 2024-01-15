@@ -1,20 +1,25 @@
-import { axiosInstance, useAsync } from "@/src/sharing/util";
+import { useAsync } from "@/src/sharing/util";
 import { useCallback, useEffect } from "react";
 import { Token } from "../type";
 import { useRouter } from "next/router";
+import fetcher from "@/src/sharing/util/axiosInstance";
+import { useQuery } from "@tanstack/react-query";
 
 type UseSignInParams = { email: string; password: string };
 
 export const useSignIn = ({ email, password }: UseSignInParams) => {
   const router = useRouter();
+
   const signIn = useCallback(
     () =>
-      axiosInstance.post<Token>("/auth/sign-in", {
-        email,
-        password,
+      fetcher<Token>({
+        url: "/auth/sign-in",
+        data: { email, password },
+        method: "POST",
       }),
     [email, password]
   );
+
   const { execute, loading, error, data } = useAsync({
     asyncFunction: signIn,
     lazyMode: true,

@@ -1,6 +1,6 @@
 import styles from "./AlertModal.module.scss";
 import classNames from "classnames/bind";
-import { KeyboardEventHandler, MouseEventHandler } from "react";
+import { KeyboardEventHandler, MouseEvent, MouseEventHandler } from "react";
 import { Modal } from "@/src/sharing/ui-modal";
 import { ModalContentBox } from "@/src/sharing/ui-modal-content-box";
 import { ModalContentButton } from "@/src/sharing/ui-modal-content-button";
@@ -18,7 +18,7 @@ type AlertModalProps = {
   title: string;
   description: string;
   buttonText: string;
-  onClick: MouseEventHandler<HTMLButtonElement>;
+
   onCloseClick: MouseEventHandler<HTMLDivElement | HTMLButtonElement>;
   onKeyDown: KeyboardEventHandler<HTMLDivElement>;
   selectedFolderId?: SelectedFolderId;
@@ -29,7 +29,7 @@ export const AlertModal = ({
   title,
   description,
   buttonText,
-  onClick,
+
   onCloseClick,
   onKeyDown,
   selectedFolderId,
@@ -42,9 +42,13 @@ export const AlertModal = ({
         method: "delete",
         url: `/folders/${selectedFolderId}`,
       }),
-    onSuccess: () => queryClient.invalidateQueries(),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["folders"] }),
   });
 
+  const onClick = (e: MouseEvent<HTMLButtonElement>) => {
+    onCloseClick(e);
+    folderMutation.mutate();
+  };
   return (
     <Modal isOpen={isOpen} onBackdropClick={onCloseClick} onKeyDown={onKeyDown}>
       <ModalContentBox

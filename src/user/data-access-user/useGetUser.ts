@@ -1,11 +1,14 @@
 import { useAsync } from "@/src/sharing/util";
-import { axiosInstance } from "@/src/sharing/util";
 import { UserRawData } from "@/src/user/type";
 import { DEFAULT_USER } from "./constant";
+import fetcher from "@/src/sharing/util/axiosInstance";
 
 export const useGetUser = (userId?: number) => {
   const getUser = () =>
-    axiosInstance.get<UserRawData[]>(`users${userId ? `/${userId}` : ""}`);
+    fetcher<UserRawData[]>({
+      url: `users${userId ? `/${userId}` : ""}`,
+      method: "GET",
+    });
   const { loading, error, data } = useAsync({
     asyncFunction: getUser,
     enabled: !!userId,
