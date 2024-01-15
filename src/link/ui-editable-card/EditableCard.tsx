@@ -90,14 +90,14 @@ export const EditableCard = ({
         method: "POST",
         data: {
           url,
-          folderId,
+          folderId: selectedFolderId,
         },
       });
     },
     onSuccess: (data) => {
       if (data.status === 201) {
         queryClient.invalidateQueries({
-          queryKey: ["links", 480],
+          queryKey: ["links", selectedFolderId],
         });
       }
     },

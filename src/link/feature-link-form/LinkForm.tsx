@@ -50,13 +50,13 @@ export const LinkForm = ({ hideFixedLinkForm = false }: LinkFormProps) => {
   const queryClient = useQueryClient();
 
   const linksAddMutation = useMutation({
-    mutationFn: () => {
+    mutationFn: ({ folderId }: { folderId: number }) => {
       return fetcher({
         url: "/links",
         method: "POST",
         data: {
           url: linkUrl,
-          folderId: selectedFolderId,
+          folderId,
         },
       });
     },
@@ -69,8 +69,8 @@ export const LinkForm = ({ hideFixedLinkForm = false }: LinkFormProps) => {
     },
   });
 
-  const handleAddButtonClick = () => {
-    linksAddMutation.mutate();
+  const handleAddButtonClick = (folderId: number) => {
+    linksAddMutation.mutate({ folderId });
     closeModal();
   };
   return (

@@ -50,7 +50,6 @@ export const AddLinkModal = ({
                   folderName={name}
                   linkCount={link_count}
                   onClick={() => {
-                    console.log(selectedFolderId);
                     setSelectedFolderId(id);
                   }}
                 />

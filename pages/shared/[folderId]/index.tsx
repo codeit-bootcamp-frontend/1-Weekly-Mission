@@ -35,8 +35,9 @@ const SharedPage = () => {
   const userId = folder?.user_id;
 
   const fetchedOwner = useQuery({
-    queryKey: ["user"],
-    queryFn: () => fetcher<UserRawData[]>({ url: `users/${userId}` }),
+    queryKey: ["currentUser", userId],
+    queryFn: () =>
+      fetcher<UserRawData[]>({ method: "get", url: `users/${userId}` }),
   });
 
   const owner = fetchedOwner.data?.data?.[0];

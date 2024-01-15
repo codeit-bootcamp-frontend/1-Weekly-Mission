@@ -1,7 +1,8 @@
-import { axiosInstance, useAsync } from "@/src/sharing/util";
+import { useAsync } from "@/src/sharing/util";
 import { useCallback, useEffect } from "react";
 import { Token } from "../type";
 import { useRouter } from "next/router";
+import fetcher from "@/src/sharing/util/axiosInstance";
 
 type UseSignUpParams = { email: string; password: string };
 
@@ -9,9 +10,13 @@ export const useSignUp = ({ email, password }: UseSignUpParams) => {
   const router = useRouter();
   const signUp = useCallback(
     () =>
-      axiosInstance.post<Token>("/auth/sign-up", {
-        email,
-        password,
+      fetcher<Token>({
+        url: "/auth/sign-up",
+        method: "POST",
+        data: {
+          email,
+          password,
+        },
       }),
     [email, password]
   );

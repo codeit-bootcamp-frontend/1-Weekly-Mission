@@ -1,11 +1,16 @@
-import { axiosInstance, useAsync } from "@/src/sharing/util";
+import { useAsync } from "@/src/sharing/util";
+import fetcher from "@/src/sharing/util/axiosInstance";
 import { useCallback } from "react";
 
 export const useCheckEmailDuplicate = (email: string) => {
   const checkEmailDuplicate = useCallback(
     () =>
-      axiosInstance.post<{ isUsableEmail: boolean }>("/users/check-email", {
-        email,
+      fetcher<{ isUsableEmail: boolean }>({
+        url: "/users/check-email",
+        method: "POST",
+        data: {
+          email,
+        },
       }),
     [email]
   );

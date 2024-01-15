@@ -4,12 +4,7 @@ import { EditableCard } from "@/src/link/ui-editable-card";
 import { NoLink } from "@/src/link/ui-no-link";
 import { KeyboardEventHandler, useCallback, useRef, useState } from "react";
 import { CardList as UiCardList } from "@/src/link/ui-card-list";
-import { AlertModal } from "@/src/sharing/ui-alert-modal";
-import { MODALS_ID } from "./constant";
 import { Link } from "@/src/link/type";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import fetcher from "@/src/sharing/util/axiosInstance";
-import { Folder } from "@/src/folder/type";
 
 type CardListProps = {
   links: Link[];
