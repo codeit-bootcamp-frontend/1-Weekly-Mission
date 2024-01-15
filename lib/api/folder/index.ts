@@ -1,10 +1,6 @@
 import { ApiMapper } from "@/lib/apiMapper";
 import request from "@/lib/axios";
 
-interface GetLinksProps {
-  id: number | null;
-}
-
 export interface GetLinkResponse {
   created_at: string;
   description: string;
