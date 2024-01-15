@@ -7,7 +7,7 @@ import Image from "next/image";
 import { ModalMainContainer } from "@/components/modal/ModalStyledComponents";
 import { FolderContainer } from "./addToFolderModalStyled";
 import GradientButton from "@/components/button/GradientButton";
-import { FolderData, SelectedFolder } from "@/components/folder/folderLayout";
+import { FolderData, SelectedFolder } from "@/components/folder/FolderLayout";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { postLinks } from "@/lib/api/folder";
 
