@@ -1,4 +1,4 @@
-import { modalState } from "../../../recoil/modal";
+import { modalState } from "@/recoil/modal";
 import { useResetRecoilState } from "recoil";
 import KakaoIcon from "@/public/assets/modal/img_kakao.png";
 import FacebookIcon from "@/public/assets/modal/img_facebook.png";

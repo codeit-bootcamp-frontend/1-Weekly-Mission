@@ -5,6 +5,8 @@ import Footer from "@/components/common/Footer";
 import { RecoilRoot } from "recoil";
 import styled from "styled-components";
 import { useRouter } from "next/router";
+import { QueryClient } from "@tanstack/react-query";
+import ReactQueryProviders from "@/lib/reactQueryProvider";
 
 declare global {
   interface Window {
@@ -18,14 +20,16 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <RecoilRoot>
-      <GlobalStyle />
-      <Root>
-        {pathname !== "/signin" && pathname !== "/signup" && <Header />}
+      <ReactQueryProviders>
+        <GlobalStyle />
+        <Root>
+          {pathname !== "/signin" && pathname !== "/signup" && <Header />}
 
-        <Component {...pageProps} />
+          <Component {...pageProps} />
 
-        {pathname !== "/signin" && pathname !== "/signup" && <Footer />}
-      </Root>
+          {pathname !== "/signin" && pathname !== "/signup" && <Footer />}
+        </Root>
+      </ReactQueryProviders>
     </RecoilRoot>
   );
 }

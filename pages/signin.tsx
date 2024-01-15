@@ -2,7 +2,8 @@ import GradientButton from "@/components/button/GradientButton";
 import EmailInput from "@/components/input/EmailInput";
 import PasswordInput from "@/components/input/PasswordInput";
 import UserLayout from "@/components/user/UserLayout";
-import { signin } from "@/lib/api/auth.ts/auth";
+import { saveToken, signin } from "@/lib/api/auth.ts/auth";
+import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
@@ -28,14 +29,9 @@ const Signin = () => {
 
   const { handleSubmit, control, setError } = methods;
 
-  const handleSignin = async (data: any) => {
-    try {
-      const result = await signin(data);
-      if (result) {
-        router.push("/folder");
-      }
-      throw new Error();
-    } catch (e) {
+  const signinMutation = useMutation({
+    mutationFn: (data: userData) => signin(data),
+    onError: () => {
       setError("email", {
         type: "validate",
         message: "이메일을 확인해주세요",
@@ -44,7 +40,15 @@ const Signin = () => {
         type: "validate",
         message: "비빌번호를 확인해주세요",
       });
-    }
+    },
+    onSuccess: (data) => {
+      saveToken(data);
+      router.push("/folder");
+    },
+  });
+
+  const handleSignin = async (data: userData) => {
+    signinMutation.mutate(data);
   };
 
   useEffect(() => {

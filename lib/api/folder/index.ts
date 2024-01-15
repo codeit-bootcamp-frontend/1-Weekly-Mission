@@ -1,10 +1,6 @@
 import { ApiMapper } from "@/lib/apiMapper";
 import request from "@/lib/axios";
 
-interface GetLinksProps {
-  id: number | null;
-}
-
 export interface GetLinkResponse {
   created_at: string;
   description: string;
@@ -16,23 +12,79 @@ export interface GetLinkResponse {
   updated_at: string;
 }
 
-export const handleGetLinks = async ({ id }: GetLinksProps) => {
-  try {
-    const query = id ? { folderId: id } : "";
+export const getLinks = async () => {
+  const response = await request.get(ApiMapper.link.LINK, {
+    type: "auth",
+  });
 
-    const result = await request.get(ApiMapper.link.get.GET_LINK, {
-      query: query,
+  return response.data;
+};
+
+export const getFolders = async () => {
+  const response = await request.get(ApiMapper.folder.FOLDER, {
+    type: "auth",
+  });
+  return response.data;
+};
+
+export const getFoldersId = async (id: number) => {
+  const response = await request.get(
+    `${ApiMapper.folder.FOLDER}/${Number(id)}`
+  );
+  return response.data;
+};
+
+export const getLinksId = async (id: number) => {
+  const response = await request.get(ApiMapper.link.get.GET_LINKS, {
+    path: { folderId: id },
+  });
+
+  return response.data;
+};
+
+export const postLinks = async (data: { url: string; folderId: number }) => {
+  const response = await request.post(ApiMapper.link.LINK, data, {
+    type: "auth",
+  });
+
+  return response.data;
+};
+
+export const postFolders = async (data: { name: string }) => {
+  const response = await request.post(ApiMapper.folder.FOLDER, data, {
+    type: "auth",
+  });
+
+  return response.data;
+};
+
+export const putFolders = async (folderId: number, data: { name: string }) => {
+  const response = await request.put(
+    `${ApiMapper.folder.FOLDER}/${folderId}`,
+    data,
+    {
       type: "auth",
-    });
-
-    if (result.status === 200) {
-      const res: GetLinkResponse[] = result.data.data.folder;
-      return res;
     }
+  );
 
-    throw new Error();
-  } catch (e) {
-    alert("문제가 발생했습니다. 잠시후 다시 시도해주세요.");
-    return [];
-  }
+  return response.data;
+};
+
+export const deleteLinks = async (linkId: number) => {
+  const response = await request.delete(`${ApiMapper.link.LINK}/${linkId}`, {
+    type: "auth",
+  });
+
+  return response.data;
+};
+
+export const deleteFolder = async (folderId: number) => {
+  const response = await request.delete(
+    `${ApiMapper.folder.FOLDER}/${folderId}`,
+    {
+      type: "auth",
+    }
+  );
+
+  return response.data;
 };

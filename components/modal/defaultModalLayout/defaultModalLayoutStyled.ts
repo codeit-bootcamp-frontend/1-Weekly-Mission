@@ -1,4 +1,4 @@
-import { ModalMainContainer } from "../ModalStyledComponents";
+import { ModalMainContainer } from "@/components/modal/ModalStyledComponents";
 import styled from "styled-components";
 import { ButtonContainer } from "@/components/button/buttonStyled";
 import { InputContainer } from "@/components/input/inputStyled";

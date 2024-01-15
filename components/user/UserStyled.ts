@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Wrapper } from "../common/commonStyled";
+import { Wrapper } from "@/components/common/commonStyled";
 import { ButtonContainer } from "@/components/button/buttonStyled";
 
 export const UserWrapper = styled(Wrapper)`

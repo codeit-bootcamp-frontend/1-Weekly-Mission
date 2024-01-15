@@ -1,7 +1,11 @@
 import { useState } from "react";
-import Input from "../input/Input";
+import Input from "@/components/input/Input";
 import DefaultModalLayout from "./defaultModalLayout/DefaultModalLayout";
-import GradientButton from "../button/GradientButton";
+import GradientButton from "@/components/button/GradientButton";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { postFolders, putFolders } from "@/lib/api/folder";
+import { useResetRecoilState } from "recoil";
+import { modalState } from "@/recoil/modal";
 
 interface DeleteModalProp {
   title: string;
@@ -13,13 +17,26 @@ interface DeleteModalProp {
 
 const EnterModal = ({ title, content }: DeleteModalProp) => {
   const [folderName, setFolderName] = useState(content.title);
+  const resetModalState = useResetRecoilState(modalState);
+  const queryClient = useQueryClient();
+
+  const addMutation = useMutation({
+    mutationFn: () =>
+      content.title
+        ? putFolders(content.id, { name: folderName })
+        : postFolders({ name: folderName }),
+    onSuccess: () => {
+      resetModalState();
+      queryClient.invalidateQueries({ queryKey: ["folders"] });
+    },
+  });
 
   return (
     <DefaultModalLayout
       title={title}
       buttonItem={
-        <GradientButton>
-          {folderName !== "" ? "변경하기" : "추가하기"}
+        <GradientButton onClick={() => addMutation.mutate()}>
+          {content.title ? "변경하기" : "추가하기"}
         </GradientButton>
       }
       inputItem={
