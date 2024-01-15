@@ -14,7 +14,8 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "codeit-images.codeit.com",
+        // hostname: "codeit-images.codeit.com",
+        hostname: "avatars.githubusercontent.com",
         port: "",
         pathname: "/**",
       },

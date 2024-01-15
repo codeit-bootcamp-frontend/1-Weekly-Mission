@@ -45,7 +45,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   });
 
   await queryClient.prefetchQuery({
-    queryKey: ["user"],
+    queryKey: ["me"],
     queryFn: () => fetcher<UserRawData[]>({ url: "/users", method: "GET" }),
   });
 

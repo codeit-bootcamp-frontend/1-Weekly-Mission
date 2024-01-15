@@ -19,17 +19,15 @@ type NavigationBarProps = {
 export const NavigationBar = ({ isSticky }: NavigationBarProps) => {
   // 현재 유저 가져오는 쿼리
   const currentUser = useQuery({
-    queryKey: ["user"],
+    queryKey: ["me"],
     queryFn: () => fetcher<UserRawData[]>({ url: "/users", method: "GET" }),
   });
 
-  if (!currentUser.data) return;
+  const user = currentUser.data?.data?.[0];
 
-  const user = currentUser.data?.data[0];
-
-  const { email, image_source } = user;
-  const profile = user ? { email, image_source } : null;
-
+  const profile = user
+    ? { email: user.email, image_source: user.image_source }
+    : null;
   return (
     <nav className={cx("container", { sticky: isSticky })}>
       <div className={cx("items")}>
