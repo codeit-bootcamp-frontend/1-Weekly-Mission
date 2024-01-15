@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import Button from "../button/Button";
+import Button from "@/components/button/Button";
 import DefaultModalLayout from "./defaultModalLayout/DefaultModalLayout";
 import { deleteFolder, deleteLinks } from "@/lib/api/folder";
 import { useResetRecoilState } from "recoil";

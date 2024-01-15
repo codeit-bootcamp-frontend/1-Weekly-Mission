@@ -1,7 +1,7 @@
-import { useMemo, useState } from "react";
-import Input from "../input/Input";
+import { useState } from "react";
+import Input from "@/components/input/Input";
 import DefaultModalLayout from "./defaultModalLayout/DefaultModalLayout";
-import GradientButton from "../button/GradientButton";
+import GradientButton from "@/components/button/GradientButton";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { postFolders, putFolders } from "@/lib/api/folder";
 import { useResetRecoilState } from "recoil";

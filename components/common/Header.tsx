@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { HeaderContainer, ProfileContainer } from "./headerStyled";
-import GradientButton from "../button/GradientButton";
+import GradientButton from "@/components/button/GradientButton";
 import { useQuery } from "@tanstack/react-query";
 import QUERY_KEYS from "@/constants/queryKey";
 import { getUsers } from "@/lib/api/user";

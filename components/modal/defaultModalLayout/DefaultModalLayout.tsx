@@ -1,5 +1,5 @@
 import { useResetRecoilState } from "recoil";
-import { modalState } from "../../../recoil/modal";
+import { modalState } from "@/recoil/modal";
 import CloseIcon from "@/public/assets/modal/img_closeIcon.png";
 import { ReactNode } from "react";
 import Image from "next/image";

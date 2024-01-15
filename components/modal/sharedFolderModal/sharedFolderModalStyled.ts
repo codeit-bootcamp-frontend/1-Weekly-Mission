@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ModalMainContainer } from "../ModalStyledComponents";
+import { ModalMainContainer } from "@/components/modal/ModalStyledComponents";
 
 export const ModalMain = styled(ModalMainContainer)`
   .modalContentContainer {

@@ -1,4 +1,4 @@
-import { modalState } from "../../recoil/modal";
+import { modalState } from "@/recoil/modal";
 import { OuterModalContainer, Overlay } from "./ModalStyledComponents";
 import { useResetRecoilState } from "recoil";
 import React, { ReactNode } from "react";

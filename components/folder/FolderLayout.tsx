@@ -14,10 +14,9 @@ import LinkAddIcon from "@/public/assets/folder/img_linkAdd.png";
 import ShareIcon from "@/public/assets/folder/img_shareIcon.png";
 import EditIcon from "@/public/assets/folder/img_editIcon.png";
 import DeleteIcon from "@/public/assets/folder/img_deleteIcon.png";
-
 import { ContentContainer, CardContainer } from "@/styles/sharedStyled";
 import AddFloatingButton from "@/components/button/AddFloatingButton";
-import { modalState } from "../../recoil/modal";
+import { modalState } from "@/recoil/modal";
 import { useRecoilState } from "recoil";
 import AddToFolderModal from "@/components/modal/addToFolderModal/AddToFolderModal";
 import ModalLayout from "@/components/modal/ModalLayout";
@@ -63,12 +62,6 @@ export interface SelectedFolder {
   title: string;
 }
 
-export interface DeleteModalItem {
-  id: number;
-  title?: string;
-  url?: string;
-}
-
 interface StateObj {
   [index: string]: string;
 }
@@ -83,6 +76,12 @@ const StateObj: StateObj = {
 interface FolderLayoutProps {
   cardData: GetLinkResponse[];
   selectedFolderData: number;
+}
+
+export interface DeleteModalItem {
+  id: number;
+  title?: string;
+  url?: string;
 }
 
 const FolderLayout = ({ cardData, selectedFolderData }: FolderLayoutProps) => {
@@ -149,7 +148,6 @@ const FolderLayout = ({ cardData, selectedFolderData }: FolderLayoutProps) => {
   const handleDeleteModal = (modalType: string, content: DeleteModalItem) => {
     setModalType(modalType);
     setDeleteModalItem(content);
-
     setModalOpened((prev: any) => ({
       ...prev,
       deleteModal: {
