@@ -8,7 +8,6 @@ import { ModalContentBox } from "@/src/sharing/ui-modal-content-box";
 import { ModalContentButton } from "@/src/sharing/ui-modal-content-button";
 import { ModalContentDescription } from "@/src/sharing/ui-modal-content-description";
 import { ModalContentTitle } from "@/src/sharing/ui-modal-content-title";
-
 const cx = classNames.bind(styles);
 
 type AddLinkModalProps = {
@@ -44,17 +43,22 @@ export const AddLinkModal = ({
         content={
           <div className={cx("modal-content")}>
             <div className={cx("folder-list")}>
-              {folders?.map(({ id, name, linkCount }) => (
+              {folders?.map(({ id, name, link_count }) => (
                 <FolderItem
                   key={id}
                   isSelected={id === selectedFolderId}
                   folderName={name}
-                  linkCount={linkCount}
-                  onClick={() => setSelectedFolderId(id)}
+                  linkCount={link_count}
+                  onClick={() => {
+                    console.log(selectedFolderId);
+                    setSelectedFolderId(id);
+                  }}
                 />
               ))}
             </div>
-            <ModalContentButton onClick={onAddClick}>추가하기</ModalContentButton>
+            <ModalContentButton onClick={onAddClick}>
+              추가하기
+            </ModalContentButton>
           </div>
         }
         onCloseClick={onCloseClick}

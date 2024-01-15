@@ -24,7 +24,9 @@ export default function App({ Component, pageProps }: AppProps) {
       <HydrationBoundary state={pageProps.dehydratedState}>
         <Component {...pageProps} />
       </HydrationBoundary>
-      <ReactQueryDevtools initialIsOpen={false} />
+      <div style={{ fontSize: "16px" }}>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </div>
     </QueryClientProvider>
   );
 }

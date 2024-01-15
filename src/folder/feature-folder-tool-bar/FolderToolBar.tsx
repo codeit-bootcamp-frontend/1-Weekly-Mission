@@ -16,6 +16,8 @@ import { InputModal } from "@/src/sharing/ui-input-modal";
 import { AlertModal } from "@/src/sharing/ui-alert-modal";
 import { Folder, SelectedFolderId } from "@/src/folder/type";
 import { ROUTE, copyToClipboard, useKakaoSdk } from "@/src/sharing/util";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import fetcher from "@/src/sharing/util/axiosInstance";
 
 const cx = classNames.bind(styles);
 
@@ -51,6 +53,22 @@ export const FolderToolBar = ({
   const handleFacebookClick = () =>
     window?.open(`http://www.facebook.com/sharer.php?u=${getShareLink()}`);
   const handleLinkCopyClick = () => copyToClipboard(getShareLink());
+
+  const queryClient = useQueryClient();
+
+  const folderMutation = useMutation({
+    mutationFn: () =>
+      fetcher<Folder[]>({
+        method: "delete",
+        url: `/folders/${selectedFolderId}`,
+      }),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["folders"] }),
+  });
+
+  const handleDeleteButtonClick = () => {
+    closeModal();
+    folderMutation.mutate();
+  };
 
   return (
     <div className={cx("container")}>
@@ -124,7 +142,7 @@ export const FolderToolBar = ({
             buttonText="삭제하기"
             onCloseClick={closeModal}
             onKeyDown={handleKeyDown}
-            selectedFolderId={selectedFolderId}
+            handleButtonClick={handleDeleteButtonClick}
           />
         </div>
       )}

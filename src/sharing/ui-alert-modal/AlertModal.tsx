@@ -1,6 +1,12 @@
 import styles from "./AlertModal.module.scss";
 import classNames from "classnames/bind";
-import { KeyboardEventHandler, MouseEvent, MouseEventHandler } from "react";
+import {
+  Dispatch,
+  KeyboardEventHandler,
+  MouseEvent,
+  MouseEventHandler,
+  SetStateAction,
+} from "react";
 import { Modal } from "@/src/sharing/ui-modal";
 import { ModalContentBox } from "@/src/sharing/ui-modal-content-box";
 import { ModalContentButton } from "@/src/sharing/ui-modal-content-button";
@@ -18,10 +24,10 @@ type AlertModalProps = {
   title: string;
   description: string;
   buttonText: string;
-
+  setLinkId?: Dispatch<SetStateAction<number>>;
   onCloseClick: MouseEventHandler<HTMLDivElement | HTMLButtonElement>;
   onKeyDown: KeyboardEventHandler<HTMLDivElement>;
-  selectedFolderId?: SelectedFolderId;
+  handleButtonClick: MouseEventHandler<HTMLButtonElement>;
 };
 
 export const AlertModal = ({
@@ -29,26 +35,11 @@ export const AlertModal = ({
   title,
   description,
   buttonText,
-
+  setLinkId,
   onCloseClick,
   onKeyDown,
-  selectedFolderId,
+  handleButtonClick,
 }: AlertModalProps) => {
-  const queryClient = useQueryClient();
-
-  const folderMutation = useMutation({
-    mutationFn: () =>
-      fetcher<Folder[]>({
-        method: "delete",
-        url: `/folders/${selectedFolderId}`,
-      }),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["folders"] }),
-  });
-
-  const onClick = (e: MouseEvent<HTMLButtonElement>) => {
-    onCloseClick(e);
-    folderMutation.mutate();
-  };
   return (
     <Modal isOpen={isOpen} onBackdropClick={onCloseClick} onKeyDown={onKeyDown}>
       <ModalContentBox
@@ -59,7 +50,7 @@ export const AlertModal = ({
           </div>
         }
         content={
-          <ModalContentButton onClick={onClick} themeColor="red">
+          <ModalContentButton onClick={handleButtonClick} themeColor="red">
             {buttonText}
           </ModalContentButton>
         }

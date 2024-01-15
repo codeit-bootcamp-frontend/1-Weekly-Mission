@@ -7,25 +7,16 @@ import { CardList as UiCardList } from "@/src/link/ui-card-list";
 import { AlertModal } from "@/src/sharing/ui-alert-modal";
 import { MODALS_ID } from "./constant";
 import { Link } from "@/src/link/type";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import fetcher from "@/src/sharing/util/axiosInstance";
+import { Folder } from "@/src/folder/type";
 
 type CardListProps = {
   links: Link[];
 };
 
 export const CardList = ({ links }: CardListProps) => {
-  const { data: folders } = useGetFolders();
   const cardListRef = useRef(null);
-  const [selectedFolderId, setSelectedFolderId] = useState<number | null>(null);
-  const [currentModal, setCurrentModal] = useState<string | null>(null);
-  const [selectedLinkUrl, setSelectedLinkUrl] = useState<string>("");
-
-  const closeModal = () => setCurrentModal(null);
-  const handleKeyDown: KeyboardEventHandler<HTMLDivElement> = (event) => {
-    if (event.key === "Escape") {
-      closeModal();
-    }
-  };
-
   const getPopoverPosition = useCallback(
     (cardIndex: number) => {
       const count =
@@ -44,6 +35,7 @@ export const CardList = ({ links }: CardListProps) => {
   );
 
   if (links.length === 0) return <NoLink />;
+
   return (
     <UiCardList ref={cardListRef}>
       {links.map((link, index) => (
@@ -51,38 +43,8 @@ export const CardList = ({ links }: CardListProps) => {
           key={link?.id}
           {...link}
           popoverPosition={getPopoverPosition(index)}
-          onDeleteClick={() => {
-            setSelectedLinkUrl(link?.url ?? "");
-            setCurrentModal(MODALS_ID.deleteLink);
-          }}
-          onAddToFolderClick={() => {
-            setSelectedLinkUrl(link?.url ?? "");
-            setCurrentModal(MODALS_ID.addToFolder);
-          }}
         />
       ))}
-      <AlertModal
-        isOpen={currentModal === MODALS_ID.deleteLink}
-        title="링크 삭제"
-        description={selectedLinkUrl}
-        buttonText="삭제하기"
-        onClick={() => {}}
-        onCloseClick={closeModal}
-        onKeyDown={handleKeyDown}
-      />
-      <AddLinkModal
-        isOpen={currentModal === MODALS_ID.addToFolder}
-        folders={folders}
-        description={selectedLinkUrl}
-        selectedFolderId={selectedFolderId}
-        setSelectedFolderId={setSelectedFolderId}
-        onAddClick={() => {}}
-        onCloseClick={() => {
-          setSelectedFolderId(null);
-          closeModal();
-        }}
-        onKeyDown={handleKeyDown}
-      />
     </UiCardList>
   );
 };

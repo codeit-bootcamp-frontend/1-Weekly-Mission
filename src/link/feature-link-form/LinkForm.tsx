@@ -5,6 +5,9 @@ import { AddLinkModal } from "@/src/link/ui-add-link-modal";
 import { LinkForm as UiLinkForm } from "@/src/link/ui-link-form";
 import { ChangeEvent, KeyboardEventHandler, useState } from "react";
 import { useIntersectionObserver } from "@/src/sharing/util/useIntersectionObserver";
+import fetcher from "@/src/sharing/util/axiosInstance";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { Folder } from "@/src/folder/type";
 
 const cx = classNames.bind(styles);
 
@@ -14,7 +17,17 @@ type LinkFormProps = {
 
 export const LinkForm = ({ hideFixedLinkForm = false }: LinkFormProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { data: folders } = useGetFolders();
+
+  const fetchedFolders = useQuery({
+    queryKey: ["folders"],
+    queryFn: () =>
+      fetcher<Folder[]>({
+        method: "get",
+        url: "/folders",
+      }),
+  });
+  const folders = fetchedFolders.data?.data ?? [];
+
   const [selectedFolderId, setSelectedFolderId] = useState<number | null>(null);
   const [linkUrl, setLinkUrl] = useState<string>("");
   const { ref, isIntersecting } = useIntersectionObserver<HTMLFormElement>();
@@ -34,11 +47,39 @@ export const LinkForm = ({ hideFixedLinkForm = false }: LinkFormProps) => {
     }
   };
 
+  const queryClient = useQueryClient();
+
+  const linksAddMutation = useMutation({
+    mutationFn: () => {
+      return fetcher({
+        url: "/links",
+        method: "POST",
+        data: {
+          url: linkUrl,
+          folderId: selectedFolderId,
+        },
+      });
+    },
+    onSuccess: (data) => {
+      if (data.status === 201) {
+        queryClient.invalidateQueries({
+          queryKey: ["links", selectedFolderId],
+        });
+      }
+    },
+  });
+
+  const handleAddButtonClick = () => {
+    linksAddMutation.mutate();
+    closeModal();
+  };
   return (
     <div className={cx("container")}>
       <UiLinkForm
         ref={ref}
-        onSubmit={() => setIsModalOpen(true)}
+        onSubmit={() => {
+          setIsModalOpen(true);
+        }}
         value={linkUrl}
         onChange={handleChange}
       />
@@ -48,9 +89,9 @@ export const LinkForm = ({ hideFixedLinkForm = false }: LinkFormProps) => {
         description={linkUrl}
         selectedFolderId={selectedFolderId}
         setSelectedFolderId={setSelectedFolderId}
-        onAddClick={() => {}}
         onCloseClick={closeModal}
         onKeyDown={handleKeyDown}
+        onAddClick={handleAddButtonClick}
       />
 
       {showFixedLinkForm && (
