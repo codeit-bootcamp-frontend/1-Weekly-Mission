@@ -361,6 +361,7 @@ const FolderLayout = ({ cardData, selectedFolderData }: FolderLayoutProps) => {
             <DeleteModal
               title={StateObj[modalType]}
               content={deleteModalItem}
+              type={modalType}
             />
           </ModalLayout>
         )}

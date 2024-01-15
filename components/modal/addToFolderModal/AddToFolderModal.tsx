@@ -31,7 +31,7 @@ const AddToFolderModal = ({
     mutationFn: () => postLinks({ url: link, folderId: selectedFolder }),
     onSuccess: () => {
       resetModalState();
-      queryClient.invalidateQueries({ queryKey: ["links"] });
+      queryClient.invalidateQueries({ queryKey: ["linksId"] });
     },
   });
 

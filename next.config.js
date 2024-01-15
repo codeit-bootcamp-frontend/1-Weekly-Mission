@@ -107,6 +107,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "images.velog.io",
       },
+      {
+        protocol: "https",
+        hostname: "cloudflare-ipfs.com",
+      },
     ],
   },
 };

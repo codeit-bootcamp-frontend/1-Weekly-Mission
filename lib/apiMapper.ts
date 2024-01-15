@@ -15,9 +15,9 @@ export const ApiMapper = {
     },
   },
   folder: {
+    FOLDER: `${URL_PATH.FOLDER_CONTROLLER}`,
     get: {
       GET_FOLDERS: `${URL_PATH.USER_CONTROLLER}/:userId/folders`,
-      GET_FOLDER: `${URL_PATH.FOLDER_CONTROLLER}`,
     },
   },
   link: {
