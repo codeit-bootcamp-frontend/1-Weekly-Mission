@@ -32,6 +32,7 @@ import { useRouter } from "next/router";
 import { GetLinkResponse, getFolders } from "@/lib/api/folder";
 import { useQuery } from "@tanstack/react-query";
 import QUERY_KEYS from "@/constants/queryKey";
+import { DeleteModalItem } from "@/types/modal";
 
 const LinkToolArr = [
   {
@@ -76,12 +77,6 @@ const StateObj: StateObj = {
 interface FolderLayoutProps {
   cardData: GetLinkResponse[];
   selectedFolderData: number;
-}
-
-export interface DeleteModalItem {
-  id: number;
-  title?: string;
-  url?: string;
 }
 
 const FolderLayout = ({ cardData, selectedFolderData }: FolderLayoutProps) => {
