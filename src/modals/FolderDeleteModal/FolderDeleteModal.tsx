@@ -6,20 +6,20 @@ import useToast from "@/hooks/useToast";
 import ModalCreator from "@/modals/ModalCreator";
 
 import styles from "./FolderDeleteModal.module.scss";
+import { useModalStore } from "@/store/useModalStore";
 
 interface FolderDeleteModalProps {
   folderId: string;
   folderTitle: string;
-  onBlur: () => void;
 }
 
 export default function FolderDeleteModal({
   folderId,
   folderTitle,
-  onBlur,
 }: FolderDeleteModalProps) {
   const queryClient = useQueryClient();
   const router = useRouter();
+  const hideModal = useModalStore((state) => state.hideModal);
 
   const { mutate: deleteFolderMutation } = useMutation({
     mutationFn: (folderId: string) => deleteFolder(folderId),
@@ -29,7 +29,7 @@ export default function FolderDeleteModal({
     onSuccess: () => {
       useToast(true, "폴더가 삭제되었어요!");
       queryClient.invalidateQueries(["folder-list"]);
-      onBlur();
+      hideModal();
       router.push("/folders");
     },
   });
@@ -41,19 +41,14 @@ export default function FolderDeleteModal({
 
   return (
     <ModalCreator>
-      <div className={styles["modal-content"]}>
-        <button className={styles["close-button"]} onClick={onBlur}>
-          x
-        </button>
-        <h2 className={styles["modal-title"]}>폴더 삭제</h2>
-        <p className={styles["modal-desc"]}>{folderTitle}</p>
-        <button
-          onClick={clickDeletefolderModal}
-          className={styles["modal-button"]}
-        >
-          삭제하기
-        </button>
-      </div>
+      <h2 className={styles["modal-title"]}>폴더 삭제</h2>
+      <p className={styles["modal-desc"]}>{folderTitle}</p>
+      <button
+        onClick={clickDeletefolderModal}
+        className={styles["modal-button"]}
+      >
+        삭제하기
+      </button>
     </ModalCreator>
   );
 }

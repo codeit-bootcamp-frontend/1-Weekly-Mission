@@ -2,23 +2,22 @@
   AddFolderModal 모달을 띄우는 버튼 컴포넌트.
   만약 화면의 크기가 tablet 미만이 되면 floating button 형태로 렌더링됨.
 */
-import { useState } from "react";
+import FolderAddModal from "@/modals/FolderAddModal/FolderAddModal";
+import { useModalStore } from "@/store/useModalStore";
 
 import styles from "./FolderMaker.module.scss";
-import FolderAddModal from "@/modals/FolderAddModal/FolderAddModal";
 
 function FolderMaker() {
-  const [isOpen, setIsOpen] = useState(false);
-  const closeModal = () => {
-    setTimeout(() => setIsOpen(false), 200);
-  };
+  const isModalOpen = useModalStore((state) => state.isModalOpen);
+  const modalName = useModalStore((state) => state.modalName);
+  const showModal = useModalStore((state) => state.showModal);
 
   return (
     <div className={styles["container"]}>
-      {isOpen && <FolderAddModal onBlur={closeModal} />}
+      {isModalOpen && modalName === "FolderAddButton" && <FolderAddModal />}
       <button
         id="folderCreateButton"
-        onClick={() => setIsOpen(true)}
+        onClick={() => showModal("FolderAddButton")}
         className={styles["folder-maker-button"]}
       >
         폴더 추가 +

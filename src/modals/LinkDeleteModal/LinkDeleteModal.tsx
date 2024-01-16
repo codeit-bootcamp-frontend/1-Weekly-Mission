@@ -6,21 +6,22 @@ import ModalCreator from "@/modals/ModalCreator";
 import useToast from "@/hooks/useToast";
 
 import styles from "./LinkDeleteModal.module.scss";
+import { useModalStore } from "@/store/useModalStore";
 
 interface LinkDeleteModalProps {
   cardId: string;
   cardUrl: string;
-  onBlur: () => void;
 }
 
 export default function LinkDeleteModal({
   cardId,
   cardUrl,
-  onBlur,
 }: LinkDeleteModalProps) {
   const router = useRouter();
   const { folderId } = router.query;
   const queryClient = useQueryClient();
+  const hideModal = useModalStore((state) => state.hideModal);
+
   const { mutate } = useMutation({
     mutationFn: () => deleteCard(cardId),
     onError: () => {
@@ -28,7 +29,7 @@ export default function LinkDeleteModal({
     },
     onSuccess: () => {
       useToast(true, "링크를 삭제했어요!");
-      onBlur();
+      hideModal();
     },
     onSettled: () => {
       queryClient.invalidateQueries(["card-list"], folderId);
@@ -41,16 +42,11 @@ export default function LinkDeleteModal({
 
   return (
     <ModalCreator>
-      <div className={styles["modal-content"]}>
-        <button className={styles["close-button"]} onClick={onBlur}>
-          x
-        </button>
-        <h2 className={styles["modal-title"]}>링크 삭제</h2>
-        <p className={styles["modal-desc"]}>{cardUrl}</p>
-        <button onClick={handleDeleteCard} className={styles["modal-button"]}>
-          삭제하기
-        </button>
-      </div>
+      <h2 className={styles["modal-title"]}>링크 삭제</h2>
+      <p className={styles["modal-desc"]}>{cardUrl}</p>
+      <button onClick={handleDeleteCard} className={styles["modal-button"]}>
+        삭제하기
+      </button>
     </ModalCreator>
   );
 }

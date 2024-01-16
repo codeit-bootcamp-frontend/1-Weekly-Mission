@@ -4,19 +4,13 @@ import { useState, ChangeEvent } from "react";
 import Image from "next/image";
 import styles from "./LinkAddBar.module.scss";
 import LinkAddModal from "@/modals/LinkAddModal/LinkAddModal";
+import { useModalStore } from "@/store/useModalStore";
 
 function LinkAddBar() {
   const [keyword, setKeyword] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
-
-  const openModal = () => {
-    if (keyword) {
-      setIsOpen(true);
-    }
-  };
-  const closeModal = () => {
-    setTimeout(() => setIsOpen(false), 200);
-  };
+  const isModalOpen = useModalStore((state) => state.isModalOpen);
+  const modalName = useModalStore((state) => state.modalName);
+  const showModal = useModalStore((state) => state.showModal);
 
   const handleKeywordChange = (e: ChangeEvent<HTMLInputElement>) =>
     setKeyword(e.target.value);
@@ -24,7 +18,9 @@ function LinkAddBar() {
   return (
     <>
       <div id="LinkAddBar" className={styles["add-form-container"]}>
-        {isOpen && <LinkAddModal link={keyword} onBlur={closeModal} />}
+        {isModalOpen && modalName === "LinkAddModal" && (
+          <LinkAddModal link={keyword} />
+        )}
 
         <div className={styles["add-link-form"]}>
           <Image
@@ -41,7 +37,10 @@ function LinkAddBar() {
             placeholder="링크를 추가해보세요"
             className={styles["add-link-input"]}
           ></input>
-          <button onClick={openModal} className={styles["add-link-button"]}>
+          <button
+            onClick={() => showModal("LinkAddModal")}
+            className={styles["add-link-button"]}
+          >
             추가하기
           </button>
         </div>

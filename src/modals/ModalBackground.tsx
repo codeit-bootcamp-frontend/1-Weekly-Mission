@@ -1,12 +1,28 @@
 import { PropsWithChildren } from "react";
 import styles from "./ModalBackground.module.scss";
+import { useModalStore } from "@/store/useModalStore";
 
 function ModalBackground() {
-  return <div className={styles["background"]}></div>;
+  const hideModal = useModalStore((state) => state.hideModal);
+
+  return (
+    <div onClick={() => hideModal()} className={styles["background"]}></div>
+  );
 }
 
 function ModalContainer({ children }: PropsWithChildren) {
-  return <div className={styles["container"]}>{children}</div>;
+  const hideModal = useModalStore((state) => state.hideModal);
+
+  return (
+    <div className={styles["container"]}>
+      <div className={styles["modal-content"]}>
+        <button className={styles["close-button"]} onClick={() => hideModal()}>
+          x
+        </button>
+        {children}
+      </div>
+    </div>
+  );
 }
 
 export { ModalBackground, ModalContainer };

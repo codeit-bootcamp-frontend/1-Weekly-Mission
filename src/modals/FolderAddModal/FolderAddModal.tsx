@@ -4,21 +4,19 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createFolder } from "@/api/getFolderCRUDApi";
 import useToast from "@/hooks/useToast";
 import ModalCreator from "@/modals/ModalCreator";
+import { useModalStore } from "@/store/useModalStore";
 import { FolderAddFormType } from "@/types/FormType";
 
 import styles from "./FolderAddModal.module.scss";
 
-interface ModalProps {
-  onBlur: () => void;
-}
-
-export default function FolderAddModal({ onBlur }: ModalProps) {
+export default function FolderAddModal() {
   const { register, handleSubmit, getValues } = useForm<FolderAddFormType>({
     mode: "onBlur",
     defaultValues: {
       name: "",
     },
   });
+  const hideModal = useModalStore((state) => state.hideModal);
 
   const queryClient = useQueryClient();
 
@@ -29,8 +27,8 @@ export default function FolderAddModal({ onBlur }: ModalProps) {
     },
     onSuccess: () => {
       useToast(true, "폴더 생성에 성공했어요!");
-      onBlur();
-      queryClient.invalidateQueries(["folder-list"]);
+      hideModal();
+      queryClient.invalidateQueries("folder-list");
     },
   });
 
@@ -43,22 +41,17 @@ export default function FolderAddModal({ onBlur }: ModalProps) {
 
   return (
     <ModalCreator>
-      <div className={styles["modal-content"]}>
-        <button className={styles["close-button"]} onClick={onBlur}>
-          x
-        </button>
-        <h2 className={styles["modal-title"]}>폴더 추가</h2>
-        <form onSubmit={handleSubmit(clickSubmitButton)}>
-          <input
-            id="name"
-            className={styles["modal-input"]}
-            type="text"
-            placeholder="내용 입력"
-            {...register("name")}
-          />
-          <button className={styles["modal-button"]}>추가하기</button>
-        </form>
-      </div>
+      <h2 className={styles["modal-title"]}>폴더 추가</h2>
+      <form onSubmit={handleSubmit(clickSubmitButton)}>
+        <input
+          id="name"
+          className={styles["modal-input"]}
+          type="text"
+          placeholder="내용 입력"
+          {...register("name")}
+        />
+        <button className={styles["modal-button"]}>추가하기</button>
+      </form>
     </ModalCreator>
   );
 }

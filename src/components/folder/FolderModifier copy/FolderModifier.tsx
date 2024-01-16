@@ -3,12 +3,12 @@
 */
 
 import Image from "next/image";
-import { useState } from "react";
 
 import FolderDeleteModal from "@/modals/FolderDeleteModal/FolderDeleteModal";
+import FolderEditModal from "@/modals/FolderEditModal/FolderEditModal";
+import { useModalStore } from "@/store/useModalStore";
 
 import styles from "./FolderModifier.module.scss";
-import FolderEditModal from "@/modals/FolderEditModal/FolderEditModal";
 
 interface FolderModifierProps {
   folderId: string;
@@ -20,31 +20,25 @@ function FolderTitle({ title }: { title: string }) {
 }
 
 function FolderModifier({ folderId, folderTitle }: FolderModifierProps) {
-  const [isOpenDelete, setIsOpenDelete] = useState(false);
-  const [isOpenEdit, setIsOpenEdit] = useState(false);
+  const modalName = useModalStore((state) => state.modalName);
+  const isModalOpen = useModalStore((state) => state.isModalOpen);
+  const showModal = useModalStore((state) => state.showModal);
 
-  const closeDeleteModal = () => {
-    setTimeout(() => setIsOpenDelete(false), 200);
-  };
-  const closeEditModal = () => {
-    setTimeout(() => setIsOpenEdit(false), 200);
+  const handleClickModalButton = (e: any) => {
+    const id = e.target?.id;
+    showModal(id);
   };
 
   return (
     <div className={styles["modifier-container"]}>
-      {isOpenDelete && (
+      {isModalOpen && modalName === "FolderDeleteModal" && (
         <FolderDeleteModal
           folderId={folderId}
           folderTitle={folderTitle ?? ""}
-          onBlur={closeDeleteModal}
         />
       )}
-      {isOpenEdit && (
-        <FolderEditModal
-          folderId={folderId}
-          folderTitle={folderTitle ?? ""}
-          onBlur={closeEditModal}
-        />
+      {isModalOpen && modalName === "FolderEditModal" && (
+        <FolderEditModal folderId={folderId} folderTitle={folderTitle ?? ""} />
       )}
       <FolderTitle title={folderTitle ?? ""} />
       <div>
@@ -58,7 +52,7 @@ function FolderModifier({ folderId, folderTitle }: FolderModifierProps) {
             />
             공유
           </button>
-          <button onClick={() => setIsOpenEdit(true)}>
+          <button id="FolderEditModal" onClick={handleClickModalButton}>
             <Image
               src="/icons/rename-icon.svg"
               width={19}
@@ -67,7 +61,7 @@ function FolderModifier({ folderId, folderTitle }: FolderModifierProps) {
             />
             이름 변경
           </button>
-          <button onClick={() => setIsOpenDelete(true)}>
+          <button id="FolderDeleteModal" onClick={handleClickModalButton}>
             <Image
               src="/icons/delete-icon.svg"
               width={19}

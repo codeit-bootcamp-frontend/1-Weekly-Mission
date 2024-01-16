@@ -20,3 +20,24 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  font-size: 2rem;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  padding: 3.2rem 4rem;
+  justify-content: center;
+  align-items: center;
+  & form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+}

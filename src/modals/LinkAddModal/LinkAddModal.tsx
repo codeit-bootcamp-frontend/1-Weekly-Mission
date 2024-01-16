@@ -8,13 +8,13 @@ import useToast from "@/hooks/useToast";
 import ModalCreator from "@/modals/ModalCreator";
 
 import styles from "./LinkAddModal.module.scss";
+import { useModalStore } from "@/store/useModalStore";
 
 interface ModalProps {
   link: string;
-  onBlur: () => void;
 }
 
-export default function LinkAddModal({ link, onBlur }: ModalProps) {
+export default function LinkAddModal({ link }: ModalProps) {
   const { register, getValues, handleSubmit, formState } = useForm({
     mode: "onBlur",
   });
@@ -24,6 +24,7 @@ export default function LinkAddModal({ link, onBlur }: ModalProps) {
     queryFn: () => getFolderList(),
     staleTime: 1000 * 30,
   });
+  const hideModal = useModalStore((state) => state.hideModal);
   const queryClient = useQueryClient();
 
   const { mutate } = useMutation({
@@ -43,43 +44,35 @@ export default function LinkAddModal({ link, onBlur }: ModalProps) {
           mutate({ url: link, folderId: String(folder.id) });
       });
     }
-    onBlur();
+    hideModal();
     router.push("/folders");
   };
 
   return (
     <ModalCreator>
-      <div className={styles["modal-content"]}>
-        <button className={styles["close-button"]} onClick={onBlur}>
-          x
-        </button>
-        <h2 className={styles["modal-title"]}>폴더에 추가</h2>
-        <p className={styles["modal-desc"]}>{link}</p>
-        {folderList && (
-          <div>
-            {folderList.map((folder) => {
-              if (folder) {
-                return (
-                  <div
-                    className={styles["folder-checkbox"]}
-                    key={folder.id ?? 0}
-                  >
-                    <input
-                      type="checkbox"
-                      {...register(`id.${folder.id}`)}
-                      key={folder.id}
-                    />
-                    {folder.name} {folder.link_count} 개 링크
-                  </div>
-                );
-              }
-            })}
-          </div>
-        )}
-        <button onClick={handleSubmitButton} className={styles["modal-button"]}>
-          추가하기
-        </button>
-      </div>
+      <h2 className={styles["modal-title"]}>폴더에 추가</h2>
+      <p className={styles["modal-desc"]}>{link}</p>
+      {folderList && (
+        <div>
+          {folderList.map((folder) => {
+            if (folder) {
+              return (
+                <div className={styles["folder-checkbox"]} key={folder.id ?? 0}>
+                  <input
+                    type="checkbox"
+                    {...register(`id.${folder.id}`)}
+                    key={folder.id}
+                  />
+                  {folder.name} {folder.link_count} 개 링크
+                </div>
+              );
+            }
+          })}
+        </div>
+      )}
+      <button onClick={handleSubmitButton} className={styles["modal-button"]}>
+        추가하기
+      </button>
     </ModalCreator>
   );
 }
