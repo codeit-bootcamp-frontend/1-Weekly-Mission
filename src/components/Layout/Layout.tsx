@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { PropsWithChildren, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 
-import getUser from "@/api/getUser";
+import { getUser } from "@/api/getUser";
 import Footer from "@/components/Footer/Footer";
 import Nav from "@/components/Nav/Nav";
 import { useUserInfoStore } from "@/store/UserInfo";

@@ -7,11 +7,11 @@ onClick: Card 컴포넌트에게 내려줌
 folderList: Card 컴포넌트에게 내려줌
 */
 import Card from "@/components/CardList/Card/Card";
+import { useQuery } from "@tanstack/react-query";
+
+import { getAllCards, getCards } from "@/api/getCardCRUDApi";
 
 import styles from "./CardList.module.scss";
-import { useQuery } from "@tanstack/react-query";
-import getAllCards from "@/api/getAllCards";
-import getCards from "@/api/getCards";
 
 interface CardListProps {
   folderId?: string;

@@ -1,9 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
-import styles from "./FolderTagList.module.scss";
-import getFolderList from "@/api/getFolderList";
-import { useEffect, useState } from "react";
-import { FolderType } from "@/types/FolderType";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+
+import { getFolderList } from "@/api/getFolderCRUDApi";
+import { FolderType } from "@/types/FolderType";
+
+import styles from "./FolderTagList.module.scss";
 
 const INITIAL_FOLDER: FolderType = {
   id: null,

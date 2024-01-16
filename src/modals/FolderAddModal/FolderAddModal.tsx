@@ -1,10 +1,12 @@
-import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+
+import { createFolder } from "@/api/getFolderCRUDApi";
 import ModalCreator from "@/modals/ModalCreator";
 import { FolderAddFormType } from "@/types/FormType";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+
 import styles from "./FolderAddModal.module.scss";
-import createFolder from "@/api/createFolder";
 
 interface ModalProps {
   onBlur: () => void;
@@ -28,8 +30,6 @@ export default function FolderAddModal({ onBlur }: ModalProps) {
     onSuccess: () => {
       toast.success("폴더가 생성되었습니다!");
       onBlur();
-      // BUG 왜시발!
-      // BUG 배경 누르면 왜안꺼져!!
       queryClient.invalidateQueries(["folder-list"]);
     },
   });

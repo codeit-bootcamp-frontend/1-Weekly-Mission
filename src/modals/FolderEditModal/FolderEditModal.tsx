@@ -1,12 +1,12 @@
 import toast from "react-hot-toast";
-
-import ModalCreator from "@/modals/ModalCreator";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { FolderAddFormType } from "@/types/FormType";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 
+import { editFolder } from "@/api/getFolderCRUDApi";
+import ModalCreator from "@/modals/ModalCreator";
+import { FolderAddFormType } from "@/types/FormType";
+
 import styles from "./FolderEditModal.module.scss";
-import editFolder from "@/api/editFolder";
 
 interface FolderEditModalProps {
   folderId: string;
@@ -28,7 +28,7 @@ function FolderEditModal({
 
   const queryClient = useQueryClient();
 
-  const { mutate: createFolderMutation } = useMutation({
+  const { mutate: editFolderMutation } = useMutation({
     mutationFn: (data: { folderId: string; name: string }) =>
       editFolder(data.folderId, data.name),
     onError: () => {
@@ -44,7 +44,7 @@ function FolderEditModal({
   const clickSubmitButton: SubmitHandler<FolderAddFormType> = () => {
     const nameValue = getValues("name");
     if (nameValue) {
-      createFolderMutation({ folderId: folderId, name: nameValue });
+      editFolderMutation({ folderId: folderId, name: nameValue });
     } else return;
   };
 

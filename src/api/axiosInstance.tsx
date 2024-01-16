@@ -1,6 +1,6 @@
+import axios from "axios";
 import { getCookie, setCookie } from "@/utils/manageCookie";
-import axios, { AxiosError } from "axios";
-import getNewToken from "./getNewToken";
+import { getNewToken } from "./getAuthApi";
 
 export const axiosInstance = axios.create({
   baseURL: "https://bootcamp-api.codeit.kr/api/linkbrary/v1/",

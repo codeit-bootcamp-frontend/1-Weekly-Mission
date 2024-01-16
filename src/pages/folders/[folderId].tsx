@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
-import getFolderInfo from "@/api/getFolderInfo";
+import { getFolderInfo } from "@/api/getFolderCRUDApi";
 import CardList from "@/components/CardList/CardList";
 import FolderMaker from "@/components/folder/FolderMaker/FolderMaker";
 import FolderModifier from "@/components/folder/FolderModifier copy/FolderModifier";

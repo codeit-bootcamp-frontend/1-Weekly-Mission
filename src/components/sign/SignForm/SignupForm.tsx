@@ -8,8 +8,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useMutation } from "@tanstack/react-query";
 
-import getEmailCheck from "@/api/getEmailCheck";
-import getSignUp from "@/api/getSignUp";
+import { getEmailCheck, getSignUp } from "@/api/getAuthApi";
 import { SignupFormType } from "@/types/FormType";
 import { emailReg, passwordReg } from "@/utils/checkReg";
 import { setCookie } from "@/utils/manageCookie";

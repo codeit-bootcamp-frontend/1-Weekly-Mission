@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useMutation } from "@tanstack/react-query";
 
-import getSignin from "@/api/getSignin";
+import { getSignIn } from "@/api/getAuthApi";
 import { SigninFormType } from "@/types/FormType";
 import { emailReg } from "@/utils/checkReg";
 import { setCookie } from "@/utils/manageCookie";
@@ -34,7 +34,7 @@ export default function SigninForm() {
   // 로그인 폼을 보내는 mutate 함수
   const { mutate: signinMutate } = useMutation({
     mutationFn: (data: { email: string; password: string }) =>
-      getSignin(data.email, data.password),
+      getSignIn(data.email, data.password),
     onError: () => {
       toast.error("로그인에 실패했습니다!");
     },
