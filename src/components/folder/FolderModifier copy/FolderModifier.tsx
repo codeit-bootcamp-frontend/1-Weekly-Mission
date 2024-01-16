@@ -6,6 +6,7 @@ import Image from "next/image";
 
 import FolderDeleteModal from "@/modals/FolderDeleteModal/FolderDeleteModal";
 import FolderEditModal from "@/modals/FolderEditModal/FolderEditModal";
+import FolderShareModal from "@/modals/FolderShareModal/FolderShareModal";
 import { useModalStore } from "@/store/useModalStore";
 
 import styles from "./FolderModifier.module.scss";
@@ -37,13 +38,16 @@ function FolderModifier({ folderId, folderTitle }: FolderModifierProps) {
           folderTitle={folderTitle ?? ""}
         />
       )}
+      {isModalOpen && modalName === "FolderShareModal" && (
+        <FolderShareModal folderId={folderId} folderTitle={folderTitle ?? ""} />
+      )}
       {isModalOpen && modalName === "FolderEditModal" && (
         <FolderEditModal folderId={folderId} folderTitle={folderTitle ?? ""} />
       )}
       <FolderTitle title={folderTitle ?? ""} />
       <div>
         <div className={styles["button-modifier"]}>
-          <button>
+          <button id="FolderShareModal" onClick={handleClickModalButton}>
             <Image
               src="/icons/share-icon.svg"
               width={19}
