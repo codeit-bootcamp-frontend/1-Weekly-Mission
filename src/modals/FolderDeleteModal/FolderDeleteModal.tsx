@@ -28,7 +28,7 @@ export default function FolderDeleteModal({
     },
     onSuccess: () => {
       useToast(true, "폴더가 삭제되었어요!");
-      queryClient.invalidateQueries(["folder-list"]);
+      queryClient.invalidateQueries({ queryKey: ["folder-list"] });
       hideModal();
       router.push("/folders");
     },

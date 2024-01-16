@@ -28,7 +28,7 @@ export default function FolderAddModal() {
     onSuccess: () => {
       useToast(true, "폴더 생성에 성공했어요!");
       hideModal();
-      queryClient.invalidateQueries("folder-list");
+      queryClient.invalidateQueries({ queryKey: ["folder-list"] });
     },
   });
 

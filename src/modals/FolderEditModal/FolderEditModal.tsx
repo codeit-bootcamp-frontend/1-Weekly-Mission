@@ -36,7 +36,7 @@ export default function FolderEditModal({
     onSuccess: () => {
       useToast(true, "폴더 이름이 변경되었어요!");
       hideModal();
-      queryClient.invalidateQueries(["folder-list"]);
+      queryClient.invalidateQueries({ queryKey: ["folder-list"] });
     },
   });
 

@@ -32,7 +32,7 @@ export default function LinkDeleteModal({
       hideModal();
     },
     onSettled: () => {
-      queryClient.invalidateQueries(["card-list"], folderId);
+      queryClient.invalidateQueries({ queryKey: ["card-list", folderId] });
     },
   });
 

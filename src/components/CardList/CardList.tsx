@@ -25,6 +25,7 @@ function CardList({ folderId, keyword = "" }: CardListProps) {
       if (!folderId) return getAllCards();
       else return getCards(folderId);
     },
+    staleTime: 1000 * 60,
   });
 
   if (!cardList || cardList.length === 0) {

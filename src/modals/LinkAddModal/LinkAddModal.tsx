@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 
@@ -33,9 +32,8 @@ export default function LinkAddModal({ link }: ModalProps) {
     onError: () => {
       useToast(false, "링크 추가에 실패했어요!");
     },
-    onSuccess: () => queryClient.invalidateQueries(["card-list"]),
+    onSettled: () => queryClient.invalidateQueries({ queryKey: ["card-list"] }),
   });
-  const router = useRouter();
 
   const handleSubmitButton = () => {
     if (folderList) {
@@ -45,7 +43,6 @@ export default function LinkAddModal({ link }: ModalProps) {
       });
     }
     hideModal();
-    router.push("/folders");
   };
 
   return (
