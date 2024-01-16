@@ -1,12 +1,11 @@
 import { useRouter } from "next/router";
-import toast from "react-hot-toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import ModalCreator from "../ModalCreator";
 import { deleteCard } from "@/api/getCardCRUDApi";
+import ModalCreator from "@/modals/ModalCreator";
+import useToast from "@/hooks/useToast";
 
 import styles from "./LinkDeleteModal.module.scss";
-import useToast from "@/hooks/useToast";
 
 interface LinkDeleteModalProps {
   cardId: string;

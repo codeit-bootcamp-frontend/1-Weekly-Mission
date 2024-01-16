@@ -1,12 +1,11 @@
 import { useRouter } from "next/router";
-import toast from "react-hot-toast";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 
-import ModalCreator from "@/modals/ModalCreator";
 import { deleteFolder } from "@/api/getFolderCRUDApi";
+import useToast from "@/hooks/useToast";
+import ModalCreator from "@/modals/ModalCreator";
 
 import styles from "./FolderDeleteModal.module.scss";
-import useToast from "@/hooks/useToast";
 
 interface FolderDeleteModalProps {
   folderId: string;

@@ -3,18 +3,17 @@
 import { AxiosError } from "axios";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import toast from "react-hot-toast";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useMutation } from "@tanstack/react-query";
 
 import { getEmailCheck, getSignUp } from "@/api/getAuthApi";
+import useToast from "@/hooks/useToast";
 import { SignupFormType } from "@/types/FormType";
 import { emailReg, passwordReg } from "@/utils/checkReg";
 import { setCookie } from "@/utils/manageCookie";
 
 import styles from "./SignForm.module.scss";
-import useToast from "@/hooks/useToast";
 
 export default function SignupForm() {
   const {

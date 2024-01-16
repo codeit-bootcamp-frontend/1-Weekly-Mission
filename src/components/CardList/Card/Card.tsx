@@ -5,7 +5,7 @@ import Link from "next/link";
 import formatDate from "@/utils/formatDate";
 import calcDate from "@/utils/calcDate";
 import { CardType } from "@/types/CardType";
-import Kebab from "../Kebab/Kebab";
+import Kebab from "@/components/CardList/Kebab/Kebab";
 
 import styles from "./Card.module.scss";
 

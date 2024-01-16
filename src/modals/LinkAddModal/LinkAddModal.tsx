@@ -1,14 +1,13 @@
 import { useRouter } from "next/router";
-import toast from "react-hot-toast";
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 
 import { getFolderList } from "@/api/getFolderCRUDApi";
 import { createCard } from "@/api/getCardCRUDApi";
+import useToast from "@/hooks/useToast";
 import ModalCreator from "@/modals/ModalCreator";
 
 import styles from "./LinkAddModal.module.scss";
-import useToast from "@/hooks/useToast";
 
 interface ModalProps {
   link: string;

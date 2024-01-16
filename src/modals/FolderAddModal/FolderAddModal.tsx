@@ -1,13 +1,12 @@
-import toast from "react-hot-toast";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { createFolder } from "@/api/getFolderCRUDApi";
+import useToast from "@/hooks/useToast";
 import ModalCreator from "@/modals/ModalCreator";
 import { FolderAddFormType } from "@/types/FormType";
 
 import styles from "./FolderAddModal.module.scss";
-import useToast from "@/hooks/useToast";
 
 interface ModalProps {
   onBlur: () => void;
