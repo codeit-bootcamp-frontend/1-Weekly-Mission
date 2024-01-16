@@ -15,7 +15,7 @@ export default function Layout({ children }: PropsWithChildren) {
   const { data } = useQuery({
     queryKey: ["user"],
     queryFn: () => getUser(),
-    staleTime: 1000,
+    staleTime: 1000 * 60,
     enabled: !!accessToken,
   });
 

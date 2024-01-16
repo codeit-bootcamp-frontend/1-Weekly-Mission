@@ -3,12 +3,11 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import { getFolderList } from "@/api/getFolderCRUDApi";
-import { FolderType } from "@/types/FolderType";
+import { FoldersArray, InitialFolderType } from "@/types/FolderType";
 
 import styles from "./FolderTagList.module.scss";
 
-const INITIAL_FOLDER: FolderType = {
-  id: null,
+const INITIAL_FOLDER: InitialFolderType = {
   name: "전체",
 };
 
@@ -23,7 +22,7 @@ export default function FolderTagList({ currentId }: FolderTagListProps) {
     staleTime: 1000 * 30,
   });
 
-  const [folderList, setFolderList] = useState<[FolderType] | []>([]);
+  const [folderList, setFolderList] = useState<FoldersArray>([]);
 
   useEffect(() => {
     if (data && data.length > 0) {
@@ -43,7 +42,7 @@ export default function FolderTagList({ currentId }: FolderTagListProps) {
           <Link href={`/folders`}>{INITIAL_FOLDER.name}</Link>
         </button>
         {folderList.map((folder) => {
-          if (folder) {
+          if ("id" in folder) {
             return (
               <button
                 className={styles["folder-button"]}

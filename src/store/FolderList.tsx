@@ -1,12 +1,8 @@
-import { FolderListStoreType, FolderType } from "@/types/FolderType";
+import { FolderListStoreType, FoldersArray } from "@/types/FolderType";
 import { create } from "zustand";
-
-const INITIAL_FOLDER = {
-  name: "전체",
-};
 
 export const useFolderListStore = create<FolderListStoreType>((set) => ({
   folderList: [],
-  setFolderList: (newFolderList: [FolderType] | []) =>
+  setFolderList: (newFolderList: FoldersArray) =>
     set((state) => ({ ...state, folderList: [...newFolderList] })),
 }));

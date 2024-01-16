@@ -1,6 +1,7 @@
 export interface UserType {
   id: number;
-  name: string;
+  created_at: string;
+  name: string | null;
   image_source: string | null;
   email: string;
 }

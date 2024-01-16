@@ -70,7 +70,7 @@ export default function LinkAddModal({ link, onBlur }: ModalProps) {
                       {...register(`id.${folder.id}`)}
                       key={folder.id}
                     />
-                    {folder.name}
+                    {folder.name} {folder.link_count} 개 링크
                   </div>
                 );
               }

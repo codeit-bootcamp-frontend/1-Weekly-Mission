@@ -1,13 +1,10 @@
 export interface CardType {
-  created_at?: string;
-  description?: string;
-  folder_id?: string;
-  id?: string;
-  image_source?: string;
-  title?: string;
-  updated_at?: string;
+  id: number;
+  favorite: boolean;
+  created_at: string;
   url: string;
 
-  createdAt?: string;
-  imageSource?: string;
+  title?: string;
+  image_source?: string;
+  description?: string;
 }
