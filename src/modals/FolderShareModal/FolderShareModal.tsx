@@ -6,12 +6,10 @@ import useToast from "@/hooks/useToast";
 import styles from "./FolderShareModal.module.scss";
 
 interface FolderShareModalProps {
-  folderId: string;
   folderTitle: string;
 }
 
 export default function FolderShareModal({
-  folderId,
   folderTitle: folderName,
 }: FolderShareModalProps) {
   const handleLinkCopyButton = () => {
@@ -20,7 +18,7 @@ export default function FolderShareModal({
         .writeText(window && window.location.href)
         .then(() => useToast(true, "링크가 복사되었습니다!"))
         .catch(() => {
-          alert("복사를 다시 시도해주세요.");
+          useToast(false, "다시 시도해주세요!");
         });
     }
   };

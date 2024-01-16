@@ -39,7 +39,7 @@ function FolderModifier({ folderId, folderTitle }: FolderModifierProps) {
         />
       )}
       {isModalOpen && modalName === "FolderShareModal" && (
-        <FolderShareModal folderId={folderId} folderTitle={folderTitle ?? ""} />
+        <FolderShareModal folderTitle={folderTitle ?? ""} />
       )}
       {isModalOpen && modalName === "FolderEditModal" && (
         <FolderEditModal folderId={folderId} folderTitle={folderTitle ?? ""} />
