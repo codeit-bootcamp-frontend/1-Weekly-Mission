@@ -8,6 +8,7 @@ import { CardType } from "@/types/CardType";
 import Kebab from "@/components/CardList/Kebab/Kebab";
 
 import styles from "./Card.module.scss";
+import Favorite from "../Favorite/Favorite";
 
 interface CardProps {
   card: CardType;
@@ -19,6 +20,7 @@ function Card({ card }: CardProps) {
   return (
     <>
       <div className={styles["card-container"]}>
+        <Favorite cardId={String(card?.id)} isFilled={card.favorite} />
         <Kebab cardId={String(card?.id)} cardUrl={card?.url} />
         <Link
           href={card?.url ?? ""}

@@ -29,6 +29,5 @@ export async function deleteCard(cardId: string) {
   return response;
 }
 
-// TODO - card update api
-
-// TODO - user에 대한 전체 카드 리스트 조회 api
+// TODO - card update ap
+// TODO - user에 대한 전체 카드 리스트 조회
