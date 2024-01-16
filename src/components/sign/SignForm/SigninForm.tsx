@@ -13,6 +13,7 @@ import { emailReg } from "@/utils/checkReg";
 import { setCookie } from "@/utils/manageCookie";
 
 import styles from "./SignForm.module.scss";
+import useToast from "@/hooks/useToast";
 
 export default function SigninForm() {
   const {
@@ -36,7 +37,7 @@ export default function SigninForm() {
     mutationFn: (data: { email: string; password: string }) =>
       getSignIn(data.email, data.password),
     onError: () => {
-      toast.error("로그인에 실패했습니다!");
+      useToast(false, "로그인에 실패했어요!");
     },
     onSuccess: (response) => {
       setCookie("accessToken", response.data.accessToken, {

@@ -6,6 +6,7 @@ import ModalCreator from "../ModalCreator";
 import { deleteCard } from "@/api/getCardCRUDApi";
 
 import styles from "./LinkDeleteModal.module.scss";
+import useToast from "@/hooks/useToast";
 
 interface LinkDeleteModalProps {
   cardId: string;
@@ -23,12 +24,11 @@ export default function LinkDeleteModal({
   const queryClient = useQueryClient();
   const { mutate } = useMutation({
     mutationFn: () => deleteCard(cardId),
-    onError: (error) => {
-      console.log(error);
-      toast.error("링크 삭제에 실패했습니다!");
+    onError: () => {
+      useToast(false, "링크 삭제에 실패했어요!");
     },
     onSuccess: () => {
-      toast.success("링크를 삭제했습니다!");
+      useToast(true, "링크를 삭제했어요!");
       onBlur();
     },
     onSettled: () => {

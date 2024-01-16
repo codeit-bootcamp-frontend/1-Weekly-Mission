@@ -7,6 +7,7 @@ import ModalCreator from "@/modals/ModalCreator";
 import { FolderAddFormType } from "@/types/FormType";
 
 import styles from "./FolderAddModal.module.scss";
+import useToast from "@/hooks/useToast";
 
 interface ModalProps {
   onBlur: () => void;
@@ -25,10 +26,10 @@ export default function FolderAddModal({ onBlur }: ModalProps) {
   const { mutate: createFolderMutation } = useMutation({
     mutationFn: (name: string) => createFolder(name),
     onError: () => {
-      toast.error("폴더 생성에 실패했습니다!");
+      useToast(false, "폴더 생성에 실패했어요!");
     },
     onSuccess: () => {
-      toast.success("폴더가 생성되었습니다!");
+      useToast(true, "폴더 생성에 성공했어요!");
       onBlur();
       queryClient.invalidateQueries(["folder-list"]);
     },

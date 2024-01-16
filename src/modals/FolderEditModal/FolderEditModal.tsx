@@ -7,6 +7,7 @@ import ModalCreator from "@/modals/ModalCreator";
 import { FolderAddFormType } from "@/types/FormType";
 
 import styles from "./FolderEditModal.module.scss";
+import useToast from "@/hooks/useToast";
 
 interface FolderEditModalProps {
   folderId: string;
@@ -32,10 +33,10 @@ function FolderEditModal({
     mutationFn: (data: { folderId: string; name: string }) =>
       editFolder(data.folderId, data.name),
     onError: () => {
-      toast.error("폴더 이름 변경에 실패했습니다!");
+      useToast(false, "폴더 이름 변경에 실패했어요!");
     },
     onSuccess: () => {
-      toast.success("폴더 이름이 변경되었습니다!");
+      useToast(true, "폴더 이름이 변경되었어요!");
       onBlur();
       queryClient.invalidateQueries(["folder-list"]);
     },

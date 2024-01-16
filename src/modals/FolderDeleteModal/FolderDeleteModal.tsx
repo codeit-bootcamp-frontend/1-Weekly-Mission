@@ -6,6 +6,7 @@ import ModalCreator from "@/modals/ModalCreator";
 import { deleteFolder } from "@/api/getFolderCRUDApi";
 
 import styles from "./FolderDeleteModal.module.scss";
+import useToast from "@/hooks/useToast";
 
 interface FolderDeleteModalProps {
   folderId: string;
@@ -24,10 +25,10 @@ export default function FolderDeleteModal({
   const { mutate: deleteFolderMutation } = useMutation({
     mutationFn: (folderId: string) => deleteFolder(folderId),
     onError: () => {
-      toast.error("폴더 삭제에 실패했습니다!");
+      useToast(false, "폴더 삭제에 실패했어요!");
     },
     onSuccess: () => {
-      toast.success("폴더가 삭제되었습니다!");
+      useToast(true, "폴더가 삭제되었어요!");
       queryClient.invalidateQueries(["folder-list"]);
       onBlur();
       router.push("/folders");

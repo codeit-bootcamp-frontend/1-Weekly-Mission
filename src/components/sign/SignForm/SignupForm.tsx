@@ -14,6 +14,7 @@ import { emailReg, passwordReg } from "@/utils/checkReg";
 import { setCookie } from "@/utils/manageCookie";
 
 import styles from "./SignForm.module.scss";
+import useToast from "@/hooks/useToast";
 
 export default function SignupForm() {
   const {
@@ -40,7 +41,7 @@ export default function SignupForm() {
     mutationFn: (data: { email: string; password: string }) =>
       getSignUp(data.email, data.password),
     onError: () => {
-      toast.error("회원가입에 실패했습니다!");
+      useToast(false, "회원가입에 실패했어요!");
     },
     onSuccess: (response) => {
       setCookie("accessToken", response.data.accessToken, {
@@ -66,7 +67,7 @@ export default function SignupForm() {
           { shouldFocus: true },
         );
       } else {
-        toast.error("회원가입에 실패했습니다!");
+        useToast(false, "회원가입에 실패했어요!");
       }
     },
     onSuccess: () => {

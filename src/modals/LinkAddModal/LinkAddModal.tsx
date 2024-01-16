@@ -8,6 +8,7 @@ import { createCard } from "@/api/getCardCRUDApi";
 import ModalCreator from "@/modals/ModalCreator";
 
 import styles from "./LinkAddModal.module.scss";
+import useToast from "@/hooks/useToast";
 
 interface ModalProps {
   link: string;
@@ -30,8 +31,7 @@ export default function LinkAddModal({ link, onBlur }: ModalProps) {
     mutationFn: (data: { url: string; folderId: string }) =>
       createCard(data.url, data.folderId),
     onError: () => {
-      // BUG - 왜 에러...?
-      toast.error("카드 추가에 실패했습니다!");
+      useToast(false, "링크 추가에 실패했어요!");
     },
     onSuccess: () => queryClient.invalidateQueries(["card-list"]),
   });
