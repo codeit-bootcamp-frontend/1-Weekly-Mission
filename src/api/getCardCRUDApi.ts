@@ -8,6 +8,12 @@ export async function getAllCards() {
   return response.data;
 }
 
+// 외부 유저의 전체 카드 리스트를 조회하는 api
+export async function getSharedAllCards(userId: string) {
+  const response = await axiosInstance.get(`/users/${userId}/links`);
+  return response.data;
+}
+
 // 한 폴더 내의 카드 리스트를 조회하는 api
 export async function getCards(folderId: string) {
   const response = await axiosInstance.get(`/folders/${folderId}/links`);

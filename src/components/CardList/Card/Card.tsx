@@ -12,16 +12,21 @@ import Favorite from "../Favorite/Favorite";
 
 interface CardProps {
   card: CardType;
+  isShared?: boolean;
 }
 
-function Card({ card }: CardProps) {
+export default function Card({ card, isShared }: CardProps) {
   const str = calcDate(card.created_at);
 
   return (
     <>
       <div className={styles["card-container"]}>
-        <Favorite cardId={String(card?.id)} isFilled={card.favorite} />
-        <Kebab cardId={String(card?.id)} cardUrl={card?.url} />
+        {!isShared && (
+          <>
+            <Favorite cardId={String(card?.id)} isFilled={card.favorite} />
+            <Kebab cardId={String(card?.id)} cardUrl={card?.url} />
+          </>
+        )}
         <Link
           href={card?.url ?? ""}
           target="_blank"
@@ -46,5 +51,3 @@ function Card({ card }: CardProps) {
     </>
   );
 }
-
-export default Card;

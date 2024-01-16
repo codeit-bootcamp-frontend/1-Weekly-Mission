@@ -9,14 +9,12 @@ import { useQueryClient } from "@tanstack/react-query";
 export default function Dropdown() {
   const router = useRouter();
   const deleteUser = useUserInfoStore((state) => state.deleteUser);
-  const userInfo = useUserInfoStore((state) => state.userInfo);
   const queryClient = useQueryClient();
 
   const handleLogout = () => {
     removeCookie("accessToken");
     deleteUser();
     queryClient.invalidateQueries({ queryKey: ["user"] });
-    console.log(userInfo);
     router.push("/");
   };
 
