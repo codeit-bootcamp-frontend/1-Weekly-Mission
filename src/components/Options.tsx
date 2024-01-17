@@ -31,9 +31,9 @@ export default function Options({ selected }: OptionsProps) {
       case "share":
         return <ShareFolder currentFolderName={selected} />;
       case "edit":
-        return <EditFolder currentFolderName={selected} />;
+        return <EditFolder currentFolderName={selected} onClose={handleCloseModal} />;
       case "delete":
-        return <DeleteFolder currentFolderName={selected} label="폴더" />;
+        return <DeleteFolder selectedItem={selected} onClose={handleCloseModal} label="폴더" />;
       default:
         return null;
     }

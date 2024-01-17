@@ -6,9 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.17.9",
+    "@tanstack/react-query-devtools": "^5.17.9",
     "classnames": "^2.3.2",
     "next": "13.5.6",
     "react": "^18",
@@ -20,12 +24,25 @@
     "swr": "^2.2.4"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^7.6.8",
+    "@storybook/addon-interactions": "^7.6.8",
+    "@storybook/addon-links": "^7.6.8",
+    "@storybook/addon-onboarding": "^1.0.10",
+    "@storybook/addon-themes": "^7.6.8",
+    "@storybook/blocks": "^7.6.8",
+    "@storybook/jest": "^0.2.3",
+    "@storybook/nextjs": "^7.6.8",
+    "@storybook/react": "^7.6.8",
+    "@storybook/test": "^7.6.8",
+    "@storybook/testing-library": "^0.2.2",
     "@svgr/webpack": "^8.1.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "13.5.6",
+    "eslint-plugin-storybook": "^0.6.15",
+    "storybook": "^7.6.8",
     "typescript": "^5"
   }
 }

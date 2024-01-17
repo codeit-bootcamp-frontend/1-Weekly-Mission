@@ -6,7 +6,8 @@ import * as S from "./SignFormStyles";
 import EmailInput from "../inputs/EmailInput";
 
 import { SignupForm } from "@/types/form";
-import { isUsableEmail, signupUser } from "@/common/api";
+import { signupUser } from "@/api/auth/signup";
+import { checkEmail } from "@/api/user/checkEmail";
 
 export default function SignupForm() {
   const router = useRouter();
@@ -22,18 +23,13 @@ export default function SignupForm() {
   const inputContentsType = isHiddenPassword ? "password" : "text";
   const IconPath = isHiddenPassword ? "off" : "on";
 
-  // SWR로 mutation 하는 방법들 => 적용전이어서 주석처리
-  // const { data, mutate } = useSWR("/api/sign-up");
-  // const { mutate } = useSWRConfig();
-  // const { trigger, isMutating } = useSWRMutation(url, sendRequest, /* options */)
-
   const onSubmitSignUp = async (data: SignupForm) => {
     try {
-      const user = await signupUser({
+      const result = await signupUser({
         email: data.email,
         password: data.password,
       });
-      localStorage.setItem("accessToken", user.data.accessToken);
+      localStorage.setItem("accessToken", result.accessToken);
       router.push("/folder");
     } catch (error) {
       console.log(error);
@@ -42,9 +38,10 @@ export default function SignupForm() {
 
   const validateUsableEmail = async () => {
     const email = getValues("email");
+
     try {
-      const result = await isUsableEmail({ email });
-      return result.data ? true : result.error.message;
+      const result = await checkEmail({ email });
+      return result.isUsableEmail ? true : result.message;
     } catch (error) {
       console.log(error);
     }

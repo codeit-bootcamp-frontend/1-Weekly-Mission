@@ -1,29 +1,42 @@
+import Image from "next/image";
+import { useState } from "react";
+import classNames from "classnames";
 import styles from "./Card.module.css";
 
 import Star from "public/assets/star.svg";
 import KebabMenu from "../Kebabmenu";
+
 import { getCreatedDate, getDiffTime } from "@/common/utils/dateUtils";
-import { LinkData, SampleLinkData } from "@/types/folder";
-import classNames from "classnames";
+import { LinkData } from "@/types/link";
 
 interface CardItemProps {
-  link: LinkData & SampleLinkData;
+  link: LinkData;
 }
 
 export default function CardItem({ link }: CardItemProps) {
-  // prettier-ignore
-  const { description, image_source, imageSource, created_at, createdAt, url } = link;
-  const linkCreatedAt = (created_at ?? createdAt) as string;
-  const { yyyy, mm, dd } = getCreatedDate(linkCreatedAt);
-  const imageSourceUrl = image_source ?? imageSource;
-  const imageUrl = imageSourceUrl ? imageSourceUrl : "/images/logo.svg";
-  const cardStyle = classNames(styles.default, { [styles["card-image"]]: imageSourceUrl });
+  const [imageUrl, setImageUrl] = useState(link.image_source);
+
+  const { description, image_source, created_at } = link;
+  const { yyyy, mm, dd } = getCreatedDate(created_at);
+
+  const cardStyle = classNames(styles.default, { [styles["card-image"]]: image_source });
+
+  const handleImageError = () => {
+    setImageUrl("/images/logo.svg");
+  };
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-        <div className={styles["card-image"]}>
-          <img src={imageUrl} alt="link" className={cardStyle} />
+        <div className={styles["card-container"]}>
+          <Image
+            src={imageUrl}
+            alt="link"
+            className={cardStyle}
+            fill
+            onError={handleImageError}
+            priority
+          />
         </div>
         <div className={styles.liked}>
           <Star />
@@ -31,8 +44,8 @@ export default function CardItem({ link }: CardItemProps) {
       </div>
       <div className={styles["card-info"]}>
         <div className={styles.info}>
-          {getDiffTime(linkCreatedAt)}
-          <KebabMenu link={url} />
+          {getDiffTime(created_at)}
+          <KebabMenu link={link} />
         </div>
         <p className={styles.description}>{description}</p>
         <p className={styles.createAt}>
