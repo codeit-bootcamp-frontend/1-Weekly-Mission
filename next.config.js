@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
-
-const path = require("path");
-
-module.exports = {
-  webpack(config) {
+const nextConfig = {
+  reactStrictMode: true,
+  webpack: (config) => {
     config.module.rules.push({
       test: /\.svg$/i,
       issuer: /\.[jt]sx?$/,
@@ -12,16 +10,16 @@ module.exports = {
 
     return config;
   },
-  sassOptions: {
-    includePaths: [path.join(__dirname, "components/")],
-    prependData: "@import 'components/sharing/styles/global.scss';",
-  },
   images: {
     remotePatterns: [
       {
         protocol: "https",
         hostname: "**",
+        port: "",
+        pathname: "/**",
       },
     ],
   },
 };
+
+module.exports = nextConfig;

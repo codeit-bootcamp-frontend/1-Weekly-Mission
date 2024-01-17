@@ -1,0 +1,19 @@
+@import "@/styles/global.scss";
+
+.modal-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  row-gap: 0.8rem;
+}
+
+.button {
+  width: 100%;
+  height: 5.1rem;
+  background-color: $color-red;
+  border-radius: 0.8rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: $color-gray-light;
+}

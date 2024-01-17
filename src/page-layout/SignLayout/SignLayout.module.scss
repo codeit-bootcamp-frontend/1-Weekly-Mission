@@ -1,0 +1,26 @@
+@import "@/styles/global.scss";
+
+.container {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: calc(120 / 844 * 100vh) 3.2rem 5rem;
+  background-color: $color-light-blue;
+
+  @include tablet {
+    padding-top: calc(200 / 982 * 100vh);
+  }
+
+  @include desktop {
+    padding-top: calc(238 / 982 * 100vh);
+  }
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 3rem;
+  width: 100%;
+  max-width: 40rem;
+}

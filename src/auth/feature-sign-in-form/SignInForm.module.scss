@@ -1,0 +1,23 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2.4rem;
+  width: 100%;
+}
+
+.label {
+  font-size: 1.4rem;
+}
+
+.input-box {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.2rem;
+}
+
+.button {
+  margin-top: 0.6rem;
+  height: 5.4rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+}

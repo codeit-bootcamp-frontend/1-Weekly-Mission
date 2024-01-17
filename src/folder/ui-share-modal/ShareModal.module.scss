@@ -1,0 +1,25 @@
+@import "@/styles/global.scss";
+
+.modal-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  row-gap: 0.8rem;
+}
+
+.modal-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 3.2rem;
+}
+
+.button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1rem;
+  font-size: 1.3rem;
+  line-height: 1.5rem;
+}

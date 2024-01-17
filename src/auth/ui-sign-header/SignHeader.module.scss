@@ -1,0 +1,30 @@
+@import "@/styles/global.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1.6rem;
+}
+
+.logo {
+  width: fit-content;
+  height: 3.8rem;
+}
+
+.message-box {
+  display: flex;
+  column-gap: 0.8rem;
+  font-size: 1.6rem;
+}
+
+.message {
+  line-height: 150%;
+}
+
+.link {
+  height: fit-content;
+  font-weight: 600;
+  color: $color-primary;
+  border-bottom: solid 0.1rem $color-primary;
+}
