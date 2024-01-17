@@ -1,0 +1,78 @@
+.root {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.title {
+  color: #000;
+  font-size: 1.4rem;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 1.4rem 1.6rem;
+  border: 1px solid var(--gray30, #d9d9d9);
+  position: relative;
+  width: 100%;
+  background: var(--white, #fff);
+  border-radius: 0.6rem;
+}
+
+.wrapper:focus-within {
+  border: 0.1rem solid var(--primary, #6d6afe);
+}
+
+.commentWrapper {
+  height: 11em;
+}
+
+.wrapper input {
+  flex: 1;
+  border: none;
+  width: 100%;
+  font-size: 1.6rem;
+  color: var(--black1, #333236);
+}
+
+.wrapper input:focus {
+  outline: none;
+}
+
+.wrapper input::placeholder {
+  color: var(--gray40, #9fa6b2);
+}
+
+.errorMessage {
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--red, #d6173a);
+}
+
+.errorBorder {
+  border: 0.1rem solid var(--red, #d6173a);
+}
+
+.eyes {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    padding: 1.25rem 1.6rem;
+  }
+
+  .wrapper input {
+    font-size: 1.4rem;
+  }
+
+  .commentWrapper {
+    height: 8em;
+  }
+}

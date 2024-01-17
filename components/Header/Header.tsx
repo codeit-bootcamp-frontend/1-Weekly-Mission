@@ -1,9 +1,13 @@
+import { useQuery } from "@tanstack/react-query";
+import { accessTokenAtom } from "@/jotai/atomStation";
+import { useAtomValue } from "jotai";
+import { User } from "@/types/server.type";
 import clsx from "clsx";
 import styles from "./Header.module.css";
-import LinkButton from "../Button/LinkButton";
-import Logo from "../Logo/Logo";
 import HeaderUserProfile from "./HeaderUserProfile";
-import { useEffect, useState } from "react";
+import Logo from "../Logo/Logo";
+import LinkButton from "../Button/LinkButton";
+import fetcher from "@/apis/instance";
 
 interface Props {
   className?: string;
@@ -11,24 +15,23 @@ interface Props {
 }
 
 function Header({ className, position }: Props) {
-  const [value, setValue] = useState<string | null>("");
+  const accessToken = useAtomValue(accessTokenAtom);
+
+  const userData = useQuery({
+    queryKey: ["currentUser"],
+    queryFn: async () => fetcher<User[]>({ method: "get", url: "/users", headers: { Authorization: accessToken } }),
+  });
+
+  const [user] = userData.data?.data ?? [];
 
   const headerClass = clsx(styles.root, position === "static" ? styles.static : styles.sticky, className);
-
-  useEffect(() => {
-    const accessToken = localStorage.getItem("accessToken");
-
-    if (accessToken) {
-      setValue(accessToken);
-    }
-  }, []);
 
   return (
     <header className={headerClass}>
       <div className={styles.container}>
         <Logo className={styles.logo} />
-        {value ? (
-          <HeaderUserProfile />
+        {user ? (
+          <HeaderUserProfile user={user} />
         ) : (
           <LinkButton className={styles.button} href="/signin" title="signin">
             로그인

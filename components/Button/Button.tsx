@@ -4,7 +4,7 @@ import clsx from "clsx";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
-function Button({ className, children, onClick }: Props) {
+function Button({ className, type = "submit", children, onClick }: Props) {
   const buttonClass = clsx(styles.root, className);
 
   return (

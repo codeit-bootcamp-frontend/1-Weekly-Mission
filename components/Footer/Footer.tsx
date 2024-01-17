@@ -15,10 +15,10 @@ class SocialMedia {
 }
 
 const socialMediaArray = [
-  new SocialMedia("https://ko-kr.facebook.com", "facebook", "/images/icon/social-icons/icon-facebook.svg"),
-  new SocialMedia("https://twitter.com", "twitter", "/images/icon/social-icons/icon-twitter.svg"),
-  new SocialMedia("https://www.instagram.com", "instagram", "/images/icon/social-icons/icon-instagram.svg"),
-  new SocialMedia("https://www.youtube.com", "youtube", "/images/icon/social-icons/icon-youtube.svg"),
+  new SocialMedia("https://ko-kr.facebook.com", "facebook", "/icons/icon-facebook.svg"),
+  new SocialMedia("https://twitter.com", "twitter", "/icons/icon-twitter.svg"),
+  new SocialMedia("https://www.instagram.com", "instagram", "/icons/icon-instagram.svg"),
+  new SocialMedia("https://www.youtube.com", "youtube", "/icons/icon-youtube.svg"),
 ];
 
 function Footer() {

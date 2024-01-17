@@ -10,7 +10,7 @@ function Logo({ className }: Props) {
   return (
     <Link href="/">
       <h1 className={className}>
-        <Image fill className={styles.image} src="/images/photo/logo.png" alt="Linkbrary의 로고" />
+        <Image width={133} height={24} className={styles.image} src="/images/logo.png" alt="Linkbrary의 로고" />
       </h1>
     </Link>
   );

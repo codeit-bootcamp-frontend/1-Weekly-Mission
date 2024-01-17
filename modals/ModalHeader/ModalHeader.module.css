@@ -17,4 +17,7 @@
   color: #9fa6b2;
   font-size: 1.4rem;
   line-height: 2.2rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
