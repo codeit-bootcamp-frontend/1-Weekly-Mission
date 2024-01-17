@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    font-size: 62.5%;
+  }
+
+  :root {
+    --primary: 0 206 123;
+    --primary-light: 230 255 245;
+    --red: 214 23 58;
+    --black: 23 23 23;
+    --white: 255 255 255;
+    --gray-10: 250 250 250;
+    --gray-20: 238 238 238;
+    --gray-60: 217 217 217;
+    --gray-100: 159 166 178;
+  }
+}
