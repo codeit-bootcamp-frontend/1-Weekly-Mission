@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { ChangeEvent, Dispatch, MouseEvent, SetStateAction, useEffect, useRef, useState } from "react";
 import imgCheck from "@/public/check.svg";
 import imgClose from "@/public/close.svg";
 import imgKakao from "@/public/kakao.svg";
@@ -9,46 +9,51 @@ import { FolderData } from "@/utils/getData.type";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { ButtonClose, ButtonSubmit, Contents, CopyText, InputSubmit, List, SnsWrapper, Text, WrapperCopy } from "@/components/Modal/Modal.styled";
+import ModalPortal from "@/components/Modal/ModalPortal";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import axiosInstance from "@/lib/axios";
+import { getCookie } from "@/utils/getCookie";
 
 interface MakeModalProps {
   title?: string;
   type?: string;
+  id?: number;
   data?: {};
   setModal: React.Dispatch<React.SetStateAction<React.ReactElement | null>>;
 }
 
-export const makeModal = ({ title, type, data, setModal }: MakeModalProps) => {
-  let modal;
+export const makeModal = ({ title, type, id, data, setModal }: MakeModalProps) => {
   switch (type) {
     case "폴더 추가":
-      modal = <Modal modalName="폴더 추가" placeholder="폴더 이름을 입력해주세요." buttonText="추가하기" setModal={setModal} />;
-      break;
+      return <Modal modalName="폴더 추가" placeholder="폴더 이름을 입력해주세요." buttonText="추가하기" setModal={setModal} />;
+
     case "공유":
-      modal = <Modal modalName="폴더 공유" title={title} share setModal={setModal} />;
-      break;
+      return <Modal modalName="폴더 공유" title={title} share setModal={setModal} />;
+
     case "이름 변경":
-      modal = <Modal modalName="폴더 이름 변경" placeholder="변경할 이름을 입력해주세요." buttonText="변경하기" setModal={setModal} />;
-      break;
+      return <Modal modalName="폴더 이름 변경" placeholder="변경할 이름을 입력해주세요." buttonText="변경하기" setModal={setModal} />;
+
     case "삭제":
-      modal = <Modal modalName="폴더 삭제" title={title} buttonText="삭제하기" buttonColor="red" setModal={setModal} />;
-      break;
+      return <Modal modalName="폴더 삭제" title={title} buttonText="삭제하기" buttonColor="red" setModal={setModal} />;
+
     case "삭제하기":
-      modal = <Modal modalName="링크 삭제" title={title} buttonText="삭제하기" setModal={setModal} />;
-      break;
+      return <Modal modalName="링크 삭제" title={title} id={id} buttonText="삭제하기" setModal={setModal} />;
+
     case "추가하기":
-      modal = <Modal modalName="폴더에 추가" title={title} buttonText="추가하기" add data={data} setModal={setModal} />;
-      break;
+      return <Modal modalName="폴더에 추가" title={title} buttonText="추가하기" add data={data} setModal={setModal} />;
+
     case "폴더에 추가":
-      modal = <Modal modalName="폴더에 추가" title={title} buttonText="추가하기" add data={data} setModal={setModal} />;
-      break;
+      return <Modal modalName="폴더에 추가" title={title} buttonText="추가하기" add data={data} setModal={setModal} />;
+    default:
+      return <div>다시 시도해주십시오.</div>;
   }
-  return modal!;
 };
 
 interface ModalProps {
   setModal: React.Dispatch<React.SetStateAction<React.ReactElement | null>>;
   modalName: string;
   title?: string;
+  id?: number;
   placeholder?: string;
   buttonColor?: string;
   buttonText?: string;
@@ -57,27 +62,112 @@ interface ModalProps {
   data?: {};
 }
 
-export function Modal({ title, modalName, placeholder, buttonColor, buttonText, share, add, data, setModal }: ModalProps) {
-  const handleClose = (event: React.SyntheticEvent) => {
+export function Modal({ title, id, modalName, placeholder, buttonColor, buttonText, share, add, data, setModal }: ModalProps) {
+  const [value, setValue] = useState("");
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  };
+
+  const [selectedFolderId, setSelectedFolderId] = useState(0);
+
+  const handleClose = () => {
     setModal(null);
   };
 
-  const stop = (event: React.MouseEvent) => {
-    event.preventDefault();
-    event.stopPropagation();
+  const postLink = () => {
+    const accessToken = getCookie("accessToken");
+    return axiosInstance.post("/links", { url: title, folderId: selectedFolderId }, { headers: { Authorization: accessToken } });
+  };
+
+  const deleteLink = () => {
+    const accessToken = getCookie("accessToken");
+    return axiosInstance.delete(`/links/${id}`, { headers: { Authorization: accessToken } });
+  };
+
+  const postFolder = () => {
+    const accessToken = getCookie("accessToken");
+    return axiosInstance.post("/folders", { name: value }, { headers: { Authorization: accessToken } });
+  };
+
+  const router = useRouter();
+  const folderId = router.query.folderId ?? null;
+
+  const putFolder = () => {
+    const accessToken = getCookie("accessToken");
+    return axiosInstance.put(`/folders/${folderId}`, { name: value }, { headers: { Authorization: accessToken } });
+  };
+
+  const deleteFolder = () => {
+    const accessToken = getCookie("accessToken");
+    return axiosInstance.delete(`/folders/${folderId}`, { headers: { Authorization: accessToken } });
+  };
+
+  const queryClient = useQueryClient();
+
+  const linkMutation = useMutation({
+    mutationKey: ["linkData", selectedFolderId],
+    mutationFn: (method: "post" | "delete") => (method === "post" ? postLink() : deleteLink()),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["linkData"] });
+      handleClose();
+    },
+  });
+
+  const folderMutation = useMutation({
+    mutationKey: ["folderData"],
+    mutationFn: (method: "post" | "put" | "delete") => (method === "post" ? postFolder() : method === "put" ? putFolder() : deleteFolder()),
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({ queryKey: ["folderData"] });
+      handleClose();
+      if (!data.data) {
+        router.push("/folder");
+        return;
+      }
+      router.push(`/folder?folderId=${data.data[0].id}`);
+    },
+  });
+
+  const handleMutate = (e: MouseEvent) => {
+    e.preventDefault();
+    if (modalName === "폴더에 추가" && selectedFolderId) {
+      linkMutation.mutate("post");
+      return;
+    }
+    if (modalName === "링크 삭제" && id) {
+      linkMutation.mutate("delete");
+      return;
+    }
+    if (modalName === "폴더 추가" && value) {
+      folderMutation.mutate("post");
+      return;
+    }
+    if (modalName === "폴더 이름 변경" && value) {
+      folderMutation.mutate("put");
+      return;
+    }
+    if (modalName === "폴더 삭제") {
+      folderMutation.mutate("delete");
+      return;
+    }
   };
 
   return (
-    <ModalFrame onClick={handleClose}>
-      <Contents onClick={stop}>
-        <ModalTitle modalName={modalName} title={title as string} />
-        {share && <ModalShare />}
-        {add && <ModalAdd data={data as FolderData[]} />}
-        {placeholder && <InputSubmit placeholder={placeholder} />}
-        {buttonText && <ButtonSubmit color={buttonColor}>{buttonText}</ButtonSubmit>}
-        <ModalCloseButton handleClick={handleClose} />
-      </Contents>
-    </ModalFrame>
+    <ModalPortal>
+      <ModalFrame onClick={handleClose}>
+        <Contents>
+          <ModalTitle modalName={modalName} title={title as string} />
+          {share && <ModalShare />}
+          {add && <ModalAdd selectedFolderId={selectedFolderId} setSelectedFolderId={setSelectedFolderId} data={data as FolderData[]} />}
+          {placeholder && <InputSubmit value={value} onChange={handleChange} placeholder={placeholder} />}
+          {buttonText && (
+            <ButtonSubmit onClick={handleMutate} color={buttonColor}>
+              {buttonText}
+            </ButtonSubmit>
+          )}
+          <ModalCloseButton handleClick={handleClose} />
+        </Contents>
+      </ModalFrame>
+    </ModalPortal>
   );
 }
 
@@ -208,17 +298,28 @@ function CopyResult({ forwardRef }: ICopyResult) {
   );
 }
 
-type TmodalAdd = { data: FolderData[] };
+type TmodalAdd = { data: FolderData[]; selectedFolderId: number; setSelectedFolderId: Dispatch<SetStateAction<number>> };
 
-function ModalAdd({ data }: TmodalAdd) {
+function ModalAdd({ data, selectedFolderId, setSelectedFolderId }: TmodalAdd) {
+  const linkFetch = useQuery({
+    queryKey: ["linkData", null],
+    queryFn: async () => {
+      const res = await axiosInstance.get(`/links`, { headers: { Authorization: getCookie("accessToken") } });
+      return res.data;
+    },
+  });
   return (
     <List>
       {data?.map((value) => (
         <li key={value.id}>
-          <button>
+          <button
+            type="button"
+            className={selectedFolderId === value.id ? "active" : ""}
+            onClick={(e) => (e.currentTarget.blur(), setSelectedFolderId((prev) => (prev === value.id ? 0 : value.id)))}
+          >
             <h2>{value.name}</h2>
-            <p>{value.link.count}개 링크</p>
-            <Image src={imgCheck} alt="이 폴더에 추가합니다." />
+            <p>{value.link_count}개 링크</p>
+            <Image src={imgCheck} alt={`${value.name} 폴더에 추가합니다.`} />
           </button>
         </li>
       ))}

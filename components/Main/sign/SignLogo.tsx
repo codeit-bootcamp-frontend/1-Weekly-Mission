@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 
 export default function SignLogo() {
   const router = useRouter();
-  const signin = router.asPath === "/signin";
+  const signin = router.pathname === "/signin";
 
   return (
     <Container>

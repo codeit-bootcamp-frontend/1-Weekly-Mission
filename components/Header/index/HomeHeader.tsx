@@ -1,13 +1,19 @@
 import { CutLine, StyledHeader, StyledImage, Title, WrapperLink } from "@/components/Header/index/HomeHeader.styled";
+import { getCookie } from "@/utils/getCookie";
 import Link from "next/link";
-import { useRef } from "react";
+import { useRouter } from "next/router";
 
 export default function HomeHeader() {
-  const locate = useRef("/signin");
-  const accessToken = typeof window !== "undefined" ? sessionStorage.getItem("accessToken") : null;
-  if (accessToken) {
-    locate.current = `/folder`;
-  }
+  const router = useRouter();
+
+  const handleRouting = () => {
+    const accessToken = getCookie("accessToken");
+    if (accessToken) {
+      router.push("/folder");
+      return;
+    }
+    router.push("/signin");
+  };
 
   return (
     <>
@@ -17,11 +23,11 @@ export default function HomeHeader() {
           쉽게 저장하고 <br />
           관리해 보세요
         </Title>
-        <WrapperLink>
+        <WrapperLink tabIndex={0}>
           <p>구경 해보기</p>
-          <Link href="/shared">폴더 공유하기</Link>
+          <button onClick={() => router.push("/shared")}>폴더 공유하기</button>
           <CutLine />
-          <Link href={locate.current}>링크 추가하기</Link>
+          <button onClick={handleRouting}>링크 추가하기</button>
         </WrapperLink>
         <StyledImage priority width={1} height={1} src="index/_img.svg" alt="링크검색기능 예시이미지" />
       </StyledHeader>

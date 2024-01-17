@@ -3,9 +3,10 @@ import styled from "styled-components";
 export const Form = styled.form`
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 4rem 3.2rem 4rem 3.2rem;
+  padding: 4rem 3.2rem;
   background-color: var(--Gray1);
 `;
 
@@ -81,5 +82,23 @@ export const Float = styled.div`
     ${Input} {
       box-shadow: 0 0 3rem 0.4rem #00000020;
     }
+  }
+`;
+
+export const ErrorMessage = styled.p`
+  width: 30rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 200%);
+  color: var(--Primary);
+  font-size: 1.4rem;
+  font-weight: 700;
+
+  @media screen and (min-width: 768px) {
+    width: 64rem;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 102rem;
   }
 `;

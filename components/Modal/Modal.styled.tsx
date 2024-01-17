@@ -42,10 +42,11 @@ export const CopyText = styled.div`
   animation: ${copyKeyframe} 300ms ease-out;
 `;
 
-export const Contents = styled.div`
+export const Contents = styled.form`
   position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 2.4rem;
   padding: 3.2rem 4rem;
   background-color: var(--White);
@@ -108,8 +109,6 @@ export const SnsWrapper = styled.div`
 `;
 
 export const List = styled.ul`
-  padding-left: 0;
-
   li {
     display: flex;
   }
@@ -117,7 +116,7 @@ export const List = styled.ul`
   button {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 2rem;
     align-items: center;
     padding: 0.8rem;
     border-radius: 0.8rem;
@@ -128,12 +127,13 @@ export const List = styled.ul`
   }
 
   button:hover,
-  button:focus {
+  button:focus,
+  .active {
     background-color: var(--Gray1);
     color: var(--Primary);
   }
 
-  button:focus img {
+  .active img {
     width: 1.4rem;
     margin-right: 1rem;
     display: flex;

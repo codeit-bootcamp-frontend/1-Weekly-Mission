@@ -9,13 +9,9 @@ export interface IhandleModal {
 }
 
 export interface TabsProps {
-  id: number;
-  setTitle: Dispatch<SetStateAction<string>>;
   handleModal: IhandleModal;
 }
 
-export interface ControllerProps extends Pick<TabsProps, "handleModal"> {
-  title: string;
-}
+export interface ControllerProps extends Pick<TabsProps, "handleModal"> {}
 
 export interface AddFloatProps extends Pick<TabsProps, "handleModal"> {}

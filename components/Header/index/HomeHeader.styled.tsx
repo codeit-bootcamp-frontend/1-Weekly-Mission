@@ -49,8 +49,9 @@ const fadein = keyframes`
   }
 `;
 
-export const WrapperLink = styled.button`
+export const WrapperLink = styled.div`
   grid-area: sign;
+  cursor: pointer;
 
   display: flex;
   justify-content: space-around;
@@ -67,7 +68,7 @@ export const WrapperLink = styled.button`
 
   transition: 0.5s;
 
-  a {
+  button {
     border-radius: 0.8rem;
     font-size: 2rem;
     font-weight: 600;
@@ -78,7 +79,7 @@ export const WrapperLink = styled.button`
     }
   }
 
-  a,
+  button,
   ${CutLine} {
     display: none;
   }
@@ -92,7 +93,7 @@ export const WrapperLink = styled.button`
     p {
       display: none;
     }
-    a,
+    button,
     ${CutLine} {
       display: block;
       animation: ${fadein} 1s;

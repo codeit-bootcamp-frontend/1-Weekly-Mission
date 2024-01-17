@@ -1,16 +1,28 @@
-import { useRef } from "react";
-import kebabImg from "@/public/kebab.svg";
 import { Container, PopOver } from "@/components/Main/CardList/Kebab.styled";
 import useModal from "@/hooks/useModal";
-import { FolderData } from "@/utils/getData.type";
+import axiosInstance from "@/lib/axios";
+import kebabImg from "@/public/kebab.svg";
+import { getCookie } from "@/utils/getCookie";
+import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
+import { useRef } from "react";
 
 interface Props {
-  folder: FolderData[];
+  id: number;
   url: string;
 }
 
-export default function Kebab({ folder, url }: Props) {
+export default function Kebab({ id, url }: Props) {
+  const folderQuery = useQuery({
+    queryKey: ["folderData"],
+    queryFn: async () => {
+      const accessToken = getCookie("accessToken");
+      const res = await axiosInstance.get("/folders", { headers: { Authorization: accessToken } });
+      return res.data;
+    },
+  });
+  const folderData = folderQuery.data ?? [];
+
   const { modal, dispatch } = useModal();
   const popOver = useRef<HTMLDivElement>(null);
 
@@ -24,7 +36,7 @@ export default function Kebab({ folder, url }: Props) {
 
   const handleModal = (e: React.MouseEvent<HTMLParagraphElement>) => {
     const type = e.currentTarget.textContent ?? "";
-    dispatch({ type, title: url, data: folder });
+    dispatch({ type, title: url, id, data: folderData });
   };
 
   const stop = (e: React.MouseEvent<HTMLDivElement>) => {

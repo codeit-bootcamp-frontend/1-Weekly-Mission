@@ -1,38 +1,38 @@
-import { ButtonAdd, Li, Ul } from "@/components/Main/FolderSelect/FolderTabs.styled";
 import { Container } from "@/components/Main/FolderSelect/FolderSelect.styled";
-import useData from "@/hooks/useData";
+import { TabsProps } from "@/components/Main/FolderSelect/FolderSelect.type";
+import { ButtonAdd, Li, Ul } from "@/components/Main/FolderSelect/FolderTabs.styled";
+import axiosInstance from "@/lib/axios";
+import { getCookie } from "@/utils/getCookie";
+import { FolderData } from "@/utils/getData.type";
+import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
-import { TabsProps } from "@/components/Main/FolderSelect/FolderSelect.type";
-import { PATHS } from "@/constants/path";
 
-export default function FolderTabs({ id, setTitle, handleModal }: TabsProps) {
-  const tabs = useData(PATHS.FOLDER_CATEGORY, id);
-  const [prevSelect, setPrevSelect] = useState<HTMLElement>();
+export default function FolderTabs({ handleModal }: TabsProps) {
+  const router = useRouter();
+  const folderId = router.query.folderId;
 
-  const handleClick = (e: React.MouseEvent<HTMLElement>) => {
-    prevSelect?.classList.remove("active");
-
-    const target = e.target as HTMLLIElement;
-
-    setPrevSelect(target);
-
-    target.classList.add("active");
-
-    if (!target.textContent) return;
-    setTitle(target.textContent);
-  };
+  const folderQuery = useQuery({
+    queryKey: ["folderData"],
+    queryFn: async () => {
+      const accessToken = getCookie("accessToken");
+      const res = await axiosInstance.get("/folders", { headers: { Authorization: accessToken } });
+      return res.data;
+    },
+  });
+  const folderData = folderQuery.data ?? [];
 
   return (
     <Container>
       <Ul>
-        <Link href="/folder" onClick={handleClick}>
-          <Li>전체</Li>
+        <Link href="/folder">
+          <Li className={folderId ? "" : "active"}>전체</Li>
         </Link>
-        {tabs?.data?.map((tab) => (
-          <Link href={`?folderId=${tab.id}`} key={tab.id} onClick={handleClick}>
-            <Li>{tab.name}</Li>
+        {folderData.map((tab: FolderData) => (
+          <Link href={`?folderId=${tab.id}`} key={tab.id}>
+            <Li className={tab.id === Number(folderId) ? "active" : ""}>{tab.name}</Li>
           </Link>
         ))}
       </Ul>

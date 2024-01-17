@@ -29,6 +29,7 @@ export const CardLink = styled.a`
   display: flex;
   flex-direction: column;
   box-shadow: 0 0.5rem 2.4rem 0 rgba(0, 0, 0, 0.08);
+  border-radius: 0 0 1.5rem 1.5rem;
   color: var(--Black);
   background-color: var(--White);
 
