@@ -7,7 +7,7 @@ import isValidURL from "@/utils/isValidURL";
 
 interface Props {
   inputValue: string;
-  folderListData: UserFolders[] | undefined;
+  folderListData?: UserFolders[];
 }
 
 function AddLinkButton({ inputValue, folderListData }: Props) {
@@ -25,7 +25,7 @@ function AddLinkButton({ inputValue, folderListData }: Props) {
 
   return (
     <>
-      {isOpenModal && (
+      {isOpenModal && folderListData && folderListData.length > 0 && (
         <ModalContainer onClose={handleCloseModal}>
           <AddLinkModalContent
             inputValue={inputValue}

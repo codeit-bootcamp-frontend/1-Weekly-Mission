@@ -6,14 +6,15 @@ import chainIcon from "../../assets/images/chain.svg";
 import Image from "next/image";
 import classNames from "classnames";
 import isValidURL from "@/utils/isValidURL";
+import AddLinkButton from "./AddLinkButton";
 
 interface Props {
+  folderData?: UserFolders[];
   inputValue: string;
   onChange: (value: string) => void;
-  children?: ReactNode;
 }
 
-function AddLinkInput({ inputValue, onChange, children }: Props) {
+function AddLinkInput({ folderData, inputValue, onChange }: Props) {
   const [error, setError] = useState(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -25,30 +26,34 @@ function AddLinkInput({ inputValue, onChange, children }: Props) {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!isValidURL(inputValue)) {
+    if (!isValidURL(inputValue) || !(folderData && folderData.length > 0)) {
       setError(true);
-      return;
     }
   };
 
   return (
     <form className={styles.addLinkInput} onSubmit={handleSubmit}>
-      <Image
-        className={styles.chain_icon}
-        src={chainIcon}
-        alt="돋보기 모양 아이콘"
-      />
-      <input
-        className={classNames(styles.input, error ? styles.red : "")}
-        name="addLink"
-        placeholder="링크를 추가해 보세요"
-        value={inputValue}
-        onChange={handleChange}
-      />
+      <div className={styles.inputContainer}>
+        <Image
+          className={styles.chain_icon}
+          src={chainIcon}
+          alt="돋보기 모양 아이콘"
+        />
+        <input
+          className={classNames(styles.input, error ? styles.red : "")}
+          name="addLink"
+          placeholder="링크를 추가해 보세요"
+          value={inputValue}
+          onChange={handleChange}
+        />
+      </div>
       {error && (
         <div className={styles.error}>URL 형식에 맞게 입력해주세요.</div>
       )}
-      {children}
+      {error && (!folderData || folderData.length === 0) && (
+        <div className={styles.error}>폴더를 먼저 생성해 주세요.</div>
+      )}
+      <AddLinkButton inputValue={inputValue} folderListData={folderData} />
     </form>
   );
 }

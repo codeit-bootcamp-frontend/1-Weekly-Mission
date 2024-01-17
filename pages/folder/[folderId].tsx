@@ -82,12 +82,11 @@ const FolderPage = () => {
       </nav>
       <main className={styles.main}>
         <AddLink>
-          <AddLinkInput inputValue={inputValue} onChange={setInputValue}>
-            <AddLinkButton
-              inputValue={inputValue}
-              folderListData={folderData}
-            />
-          </AddLinkInput>
+          <AddLinkInput
+            folderData={folderData}
+            inputValue={inputValue}
+            onChange={setInputValue}
+          />
         </AddLink>
         <Search linksListData={linksListData} onChange={setSearchData} />
         <Category>

@@ -5,6 +5,10 @@
   max-width: 80rem;
 }
 
+.inputContainer {
+  position: relative;
+}
+
 .chain_icon {
   position: absolute;
   top: 50%;
@@ -31,9 +35,7 @@
 }
 
 .error {
-  position: absolute;
-  bottom: -2rem;
-  left: 1rem;
+  padding-top: 0.5rem;
   font-size: 1.4rem;
   color: var(--red);
 }
