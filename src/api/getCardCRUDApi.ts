@@ -1,4 +1,4 @@
-/*folder에 관한 api*/
+/*card에 관한 api*/
 
 import { axiosInstance } from "./axiosInstance";
 
@@ -35,5 +35,4 @@ export async function deleteCard(cardId: string) {
   return response;
 }
 
-// TODO - card update ap
-// TODO - user에 대한 전체 카드 리스트 조회
+// TODO - card update api
