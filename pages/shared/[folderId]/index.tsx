@@ -7,16 +7,54 @@ import { ReadOnlyCard } from "@/src/link/ui-read-only-card";
 import { SearchBar } from "@/src/link/ui-search-bar";
 import { useSearchLink } from "@/src/link/util-search-link/useSearchLink";
 import { useRouter } from "next/router";
-import { useGetUser } from "@/src/user/data-access-user/useGetUser";
-import { useGetSharedLinks } from "@/src/link/data-access-link";
-import { useQuery } from "@tanstack/react-query";
+import { QueryClient, dehydrate, useQuery } from "@tanstack/react-query";
 import fetcher from "@/src/sharing/util/axiosInstance";
 import { Folder, Return_folder } from "@/src/folder/type";
 import { UserRawData } from "@/src/user/type";
-import isDefined from "@/utils/isDefined";
 import { LinkRawData } from "@/src/link/type";
 import { mapLinksData } from "@/src/link/util-map";
+import { GetServerSidePropsContext } from "next";
+import { getAccessTokenFromCookie } from "@/utils/getAccessToken";
 
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const { folderId } = context.query;
+  const accessToken = getAccessTokenFromCookie(context);
+
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery({
+    queryKey: ["folder", folderId],
+    queryFn: () =>
+      fetcher<Return_folder[]>({
+        url: `folders/${folderId}`,
+        method: "GET",
+        headers: {
+          Authorization: accessToken,
+        },
+      }),
+  });
+
+  const fetchedFolder = queryClient.getQueryData(["folder", folderId]);
+
+  const folder = fetchedFolder?.data?.[0];
+  const userId = folder?.user_id;
+
+  await queryClient.prefetchQuery({
+    queryKey: ["currentUser", userId],
+    queryFn: () =>
+      fetcher<UserRawData[]>({ method: "get", url: `users/${userId}` }),
+  });
+
+  await queryClient.prefetchQuery({
+    queryKey: ["links", folderId],
+    queryFn: () =>
+      fetcher<LinkRawData[]>({
+        url: `/folders/${folderId}/links`,
+        method: "GET",
+      }),
+  });
+
+  return { props: { dehydratedState: dehydrate(queryClient) } };
+}
 const SharedPage = () => {
   const router = useRouter();
   const { folderId } = router.query;

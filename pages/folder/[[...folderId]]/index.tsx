@@ -6,7 +6,7 @@ import { ALL_LINKS_ID } from "@/src/link/data-access-link/constant";
 import { LinkForm } from "@/src/link/feature-link-form";
 import { CardList } from "@/src/link/feature-card-list";
 import { useSearchLink } from "@/src/link/util-search-link";
-import { ROUTE, useIntersectionObserver } from "@/src/sharing/util";
+import { useIntersectionObserver } from "@/src/sharing/util";
 import { useRouter } from "next/router";
 import { useMemo } from "react";
 import { getAccessTokenFromCookie } from "@/utils/getAccessToken";
