@@ -2,27 +2,23 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import Dropdown from "@/components/Nav/Dropdown/Dropdown";
-import { useUserInfoStore } from "@/store/UserInfo";
 import { UserType } from "@/types/UserType";
 
 import styles from "./Nav.module.scss";
 
-function Nav() {
+interface NavProps {
+  userInfo?: UserType | null;
+}
+
+function Nav({ userInfo }: NavProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const user = useUserInfoStore((state) => state.userInfo);
-  const [userInfo, setUserInfo] = useState<UserType | null>();
 
   const handleCloseDropdown = () => {
     setTimeout(() => setIsOpen(false), 200);
   };
-
-  useEffect(() => {
-    if (user) setUserInfo(user);
-    else setUserInfo(null);
-  }, [user]);
 
   return (
     <nav className={styles["nav"]}>

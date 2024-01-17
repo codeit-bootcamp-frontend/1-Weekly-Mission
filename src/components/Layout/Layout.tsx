@@ -19,15 +19,20 @@ export default function Layout({ children }: PropsWithChildren) {
     enabled: !!accessToken,
   });
 
+  const userInfo = useUserInfoStore((state) => state.userInfo);
   const addUser = useUserInfoStore((state) => state.addUser);
+  const deleteUser = useUserInfoStore((state) => state.deleteUser);
 
   useEffect(() => {
+    if (userInfo) return;
+
     if (data) addUser(data);
+    else deleteUser();
   }, [data]);
 
   return (
     <>
-      {!noNavPage.includes(route) && <Nav />}
+      {!noNavPage.includes(route) && <Nav userInfo={userInfo} />}
       {children}
       {!noNavPage.includes(route) && <Footer />}
     </>
