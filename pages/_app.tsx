@@ -10,6 +10,9 @@ import "@/assets/styles/colors.css";
 import "@/assets/styles/reset.css";
 import "@/assets/styles/loadingSpinner.css";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useState } from "react";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 declare global {
   interface Window {
@@ -19,7 +22,16 @@ declare global {
 
 export default function App({ Component, pageProps }: AppProps) {
   const isLoading = useLoading();
-
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            staleTime: 60 * 1000,
+          },
+        },
+      })
+  );
   return (
     <>
       <Head>
@@ -49,18 +61,21 @@ export default function App({ Component, pageProps }: AppProps) {
           content="https://visitbusan.net/uploadImgs/files/cntnts/20211130150754165_wufrotr"
         />
       </Head>
-      <AuthProvider>
-        <UserProvider>
-          <ObserverProvider>
-            {isLoading && (
-              <div className="loading">
-                <div className="spinner"></div>
-              </div>
-            )}
-            <Component {...pageProps} />
-          </ObserverProvider>
-        </UserProvider>
-      </AuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <UserProvider>
+            <ObserverProvider>
+              {isLoading && (
+                <div className="loading">
+                  <div className="spinner"></div>
+                </div>
+              )}
+              <Component {...pageProps} />
+              <ReactQueryDevtools />
+            </ObserverProvider>
+          </UserProvider>
+        </AuthProvider>
+      </QueryClientProvider>
     </>
   );
 }

@@ -32,3 +32,9 @@
     right: 1rem;
   }
 }
+
+.error {
+  padding-top: 0.5rem;
+  font-size: 1.4rem;
+  color: var(--red);
+}

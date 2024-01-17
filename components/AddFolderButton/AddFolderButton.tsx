@@ -8,12 +8,9 @@ import plusWhiteImg from "@/assets/images/plus_white.svg";
 
 import styles from "./AddFolderButton.module.css";
 import useModal from "@/hooks/useModal";
+import AddFolderModalContent from "../Modal/AddFolderModalContent/AddFolderModalContent";
 
-interface Props {
-  children?: ReactNode;
-}
-
-function AddFolderButton({ children }: Props) {
+function AddFolderButton() {
   const { isOpenModal, openModal, closeModal } = useModal(false);
 
   const handleOpenModal = () => {
@@ -35,7 +32,9 @@ function AddFolderButton({ children }: Props) {
         />
       </button>
       {isOpenModal && (
-        <ModalContainer onClose={handleCloseModal}>{children}</ModalContainer>
+        <ModalContainer onClose={handleCloseModal}>
+          <AddFolderModalContent onClose={handleCloseModal} />
+        </ModalContainer>
       )}
     </>
   );

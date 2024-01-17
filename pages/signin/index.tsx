@@ -11,10 +11,8 @@ import createFieldErrorHandler from "@/utils/createFieldErrorHandler";
 
 import { EMAIL_FIELD_INFO, PW_FIELD_INFO } from "@/constants/constants";
 import { useAuthContext } from "@/contexts/AuthContext";
-import { useSetUserId } from "@/contexts/UserContext";
 
 function SignIn() {
-  const setUserId = useSetUserId();
   const router = useRouter();
   const {
     handleSubmit,

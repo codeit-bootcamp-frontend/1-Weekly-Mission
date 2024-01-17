@@ -5,19 +5,19 @@ import styles from "./CategoryList.module.css";
 import CategoryButton from "./CategoryButton";
 
 interface Props {
-  folderListData?: UserFolderData;
-  currentFolder: Dispatch<SetStateAction<string>>;
+  folderListData?: UserFolders[];
+  onClick: Dispatch<SetStateAction<string>>;
   children: ReactNode;
 }
 
-function CategoryList({ folderListData, currentFolder, children }: Props) {
-  const folderListDataArray = folderListData?.data?.sort((a, b) => a.id - b.id);
+function CategoryList({ folderListData, onClick, children }: Props) {
+  const folderListDataArray = folderListData?.sort((a, b) => a.id - b.id);
 
   return (
     <div className={styles.categoryList}>
       <ul className={styles.list}>
         <li>
-          <CategoryButton id={"all"} currentFolder={currentFolder}>
+          <CategoryButton id={"all"} onClick={onClick}>
             전체
           </CategoryButton>
         </li>
@@ -26,7 +26,7 @@ function CategoryList({ folderListData, currentFolder, children }: Props) {
 
           return (
             <li key={item.id}>
-              <CategoryButton id={item.id} currentFolder={currentFolder}>
+              <CategoryButton id={item.id} onClick={onClick}>
                 {item.name}
               </CategoryButton>
             </li>

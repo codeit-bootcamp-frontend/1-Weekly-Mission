@@ -10,14 +10,10 @@ import saveTokens from "@/utils/saveTokens";
 import removeTokens from "@/utils/removeTokens";
 
 interface UserInfoProps {
-  email: string;
   id: number;
-  image_source: string;
   name: string;
-}
-
-interface UserInfoData {
-  data: UserInfoProps[];
+  image_source: string;
+  email: string;
 }
 
 interface LoginProps {
@@ -35,10 +31,6 @@ interface AuthContextProps {
 interface Token {
   accessToken: string;
   refreshToken: string;
-}
-
-interface TokenData {
-  data: Token;
 }
 
 interface LoginProps {
@@ -62,11 +54,11 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     let nextUser;
 
     try {
-      const response = await fetcher<UserInfoData>({
+      const response = await fetcher<UserInfoProps[]>({
         url: "/users",
         method: "get",
       });
-      nextUser = response.data.data[0];
+      nextUser = response.data[0];
     } finally {
       if (nextUser) {
         setUser(nextUser);
@@ -77,12 +69,13 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const login = async ({ email, password }: LoginProps) => {
     try {
-      const response = await fetcher<TokenData>({
-        url: "/sign-in",
+      const response = await fetcher<Token>({
+        url: "/auth/sign-in",
         method: "post",
         data: { email, password },
       });
-      const { accessToken, refreshToken } = response.data.data;
+      console.log(response.data);
+      const { accessToken, refreshToken } = response.data;
       saveTokens({ accessToken, refreshToken });
       getUser();
       return true;

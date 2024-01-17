@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.17.9",
+    "@tanstack/react-query-devtools": "^5.17.9",
     "axios": "^1.6.2",
     "classnames": "^2.3.2",
     "mem": "^10.0.0",

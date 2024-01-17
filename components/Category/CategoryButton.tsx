@@ -9,17 +9,17 @@ import { useRouter } from "next/router";
 
 interface Props {
   id: number | "all";
-  currentFolder: Dispatch<SetStateAction<string>>;
+  onClick: Dispatch<SetStateAction<string>>;
   children: ReactNode;
 }
 
-function CategoryButton({ id, currentFolder, children }: Props) {
+function CategoryButton({ id, onClick, children }: Props) {
   const router = useRouter();
   const folderID = useFolderId();
   const setFolderId = useSetFolderId();
 
   const handleLoadClick = () => {
-    currentFolder(String(children));
+    onClick(String(children));
     setFolderId(id);
     router.push(`/folder/${id}`);
   };
@@ -29,7 +29,11 @@ function CategoryButton({ id, currentFolder, children }: Props) {
   }`;
 
   return (
-    <button className={buttonClasses} onClick={handleLoadClick}>
+    <button
+      className={buttonClasses}
+      onClick={handleLoadClick}
+      disabled={folderID === id}
+    >
       {children}
     </button>
   );

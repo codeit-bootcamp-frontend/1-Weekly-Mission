@@ -5,6 +5,10 @@
   max-width: 80rem;
 }
 
+.inputContainer {
+  position: relative;
+}
+
 .chain_icon {
   position: absolute;
   top: 50%;
@@ -16,7 +20,7 @@
 
 .input {
   display: flex;
-  padding: 1.6rem 2rem 1.6rem 4.2rem;
+  padding: 1.6rem 11rem 1.6rem 4.2rem;
   border: none;
   border: 1px solid var(--linkbrary-primary-color, #6d6afe);
   width: 100%;
@@ -24,6 +28,16 @@
   font-size: 1.6rem;
   line-height: 3.52rem;
   border-radius: 1.5rem;
+}
+
+.input.red {
+  border: 1px solid var(--red);
+}
+
+.error {
+  padding-top: 0.5rem;
+  font-size: 1.4rem;
+  color: var(--red);
 }
 
 /* Tablet 화면 크기 (768px 이상 ~ 1199px 이하) */
@@ -39,7 +53,7 @@
   }
 
   .input {
-    padding: 1rem 1rem 1rem 3.4rem;
+    padding: 1rem 10rem 1rem 3.4rem;
     font-size: 1.4rem;
     line-height: 3.1rem;
   }

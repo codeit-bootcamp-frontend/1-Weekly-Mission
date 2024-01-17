@@ -92,6 +92,7 @@ export default function Landing() {
                   styles.backgroundClipText
                 )}
               >
+                {" "}
                 관리
               </span>
               하세요
@@ -115,6 +116,7 @@ export default function Landing() {
                   styles.backgroundClipText
                 )}
               >
+                {" "}
                 공유
               </span>
               해 보세요

@@ -1,19 +1,21 @@
-import { ReactNode } from "react";
 import classNames from "classnames";
 import styles from "./AddLinkButton.module.css";
 import ModalContainer from "../Modal/ModalContainer/ModalContainer";
 import useModal from "@/hooks/useModal";
+import AddLinkModalContent from "../Modal/AddLinkModalContent/AddLinkModalContent";
+import isValidURL from "@/utils/isValidURL";
 
 interface Props {
   inputValue: string;
-  children?: ReactNode;
+  folderListData?: UserFolders[];
 }
 
-function AddLinkButton({ inputValue, children }: Props) {
+function AddLinkButton({ inputValue, folderListData }: Props) {
   const { isOpenModal, openModal, closeModal } = useModal(false);
 
   const handleOpenModal = () => {
     if (!inputValue) return;
+    if (!isValidURL(inputValue)) return;
     openModal();
   };
 
@@ -23,8 +25,14 @@ function AddLinkButton({ inputValue, children }: Props) {
 
   return (
     <>
-      {isOpenModal && (
-        <ModalContainer onClose={handleCloseModal}>{children}</ModalContainer>
+      {isOpenModal && folderListData && folderListData.length > 0 && (
+        <ModalContainer onClose={handleCloseModal}>
+          <AddLinkModalContent
+            inputValue={inputValue}
+            folderListData={folderListData}
+            onClose={handleCloseModal}
+          />
+        </ModalContainer>
       )}
       <button
         className={classNames(styles.cta, styles.ctaShort)}

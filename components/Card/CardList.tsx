@@ -5,8 +5,8 @@ import SharedPageCardItem from "./SharedPageCardItem";
 
 interface CardListProps {
   type: "folder" | "shared";
-  LinksData: LinksData | undefined;
-  folderListData?: UserFolderData;
+  LinksData: FolderLink[] | undefined;
+  folderListData?: UserFolders[];
 }
 
 function CardList({
@@ -15,8 +15,8 @@ function CardList({
   folderListData,
 }: CardListProps): ReactNode {
   return (
-    LinksData?.data &&
-    LinksData.data.map((link) => {
+    LinksData &&
+    LinksData.map((link) => {
       const { id, created_at, url, title, description, image_source } = link;
 
       const formattedCreatedAt = formatDate(created_at);
@@ -27,6 +27,7 @@ function CardList({
         return (
           <FolderPageCardItem
             key={url}
+            id={id}
             folderListData={folderListData}
             formatTimeDiff={formatTimeDiff}
             formattedCreatedAt={formattedCreatedAt}
@@ -40,7 +41,7 @@ function CardList({
       if (type === "shared") {
         return (
           <SharedPageCardItem
-            key={id}
+            key={url}
             formatTimeDiff={formatTimeDiff}
             formattedCreatedAt={formattedCreatedAt}
             url={url}

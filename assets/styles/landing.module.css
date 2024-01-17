@@ -6,13 +6,13 @@
   align-items: center;
   flex-direction: column;
   padding-top: 7rem;
-  background-color: var(--linkbrary-bg);
   width: 100%;
+  background-color: var(--linkbrary-bg);
 }
 
 .addLinkButton {
-  max-width: 35rem;
   width: 100%;
+  max-width: 35rem;
 }
 
 .heroHeadingWrapper {
@@ -40,9 +40,9 @@
 }
 
 .contentList {
-  background-color: #fff;
   padding-top: 7rem;
   padding-bottom: 12rem;
+  background-color: #fff;
 }
 
 .contentItem {
@@ -81,6 +81,7 @@
   font-size: 4.8rem;
   font-weight: 700;
   letter-spacing: -0.3rem;
+  word-break: keep-all;
   grid-area: title;
 }
 

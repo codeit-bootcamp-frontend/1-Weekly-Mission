@@ -38,6 +38,7 @@ function AuthForm({
   const linkText = type === "signIn" ? "회원가입 하기" : "로그인 하기";
   const socialDescription =
     type === "signIn" ? "소셜 로그인" : "다른 방식으로 가입하기";
+  const button = type === "signIn" ? "로그인" : "회원가입";
 
   return (
     <main className={styles.mainContainer}>
@@ -78,7 +79,7 @@ function AuthForm({
           )}
         </div>
 
-        <Button size={40}>로그인</Button>
+        <Button size={40}>{button}</Button>
       </form>
 
       <SignPageSocial socialDescription={socialDescription} />

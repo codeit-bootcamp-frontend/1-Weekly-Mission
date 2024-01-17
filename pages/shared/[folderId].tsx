@@ -13,13 +13,13 @@ import fetcher from "@/lib/axios";
 import CardList from "@/components/Card/CardList";
 
 interface Props {
-  userData: UserData;
-  folderData: UserFolderData;
-  linksListData: LinksData;
+  userData: User[];
+  folderData: UserFolder[];
+  linksListData: FolderLink[];
 }
 
 const SharedPage = ({ userData, folderData, linksListData }: Props) => {
-  const [searchData, setSearchData] = useState<LinksData | undefined>(
+  const [searchData, setSearchData] = useState<FolderLink[] | undefined>(
     linksListData
   );
 
@@ -33,9 +33,9 @@ const SharedPage = ({ userData, folderData, linksListData }: Props) => {
       </nav>
       <main className={styles.main}>
         <FolderInfo
-          profileImage={userData?.data?.[0]?.image_source}
-          userName={userData?.data?.[0]?.name}
-          folderName={folderData?.data?.[0]?.name || ""}
+          profileImage={userData?.[0]?.image_source}
+          userName={userData?.[0]?.name}
+          folderName={folderData?.[0]?.name || ""}
         />
         <Search linksListData={linksListData} onChange={setSearchData} />
         <Card>
@@ -59,25 +59,21 @@ export const getServerSideProps = async (
 
   try {
     if (folderId !== undefined) {
-      const response = await fetcher<UserFolderData>({
+      const folderResponse = await fetcher<UserFolder[]>({
         url: `/folders/${folderId}`,
       });
-      const userId = response.data.data[0].user_id;
-      const [userDataResponse, userFolderResponse, linksResponse] =
-        await Promise.all([
-          fetcher<UserData>({ url: `/users/${userId}` }),
-          fetcher<UserFolderData>({
-            url: `/users/${userId}/folders/${folderId}`,
-          }),
-          fetcher<LinksData>({
-            url: `/users/${userId}/links?folderId=${folderId}`,
-          }),
-        ]);
+      const userId = folderResponse.data[0].user_id;
+      const [userDataResponse, linksResponse] = await Promise.all([
+        fetcher<User[]>({ url: `/users/${userId}` }),
+        fetcher<FolderLink[]>({
+          url: `/folders/${folderId}/links`,
+        }),
+      ]);
 
       return {
         props: {
           userData: userDataResponse.data,
-          folderData: userFolderResponse.data,
+          folderData: folderResponse.data,
           linksListData: linksResponse.data,
         },
       };

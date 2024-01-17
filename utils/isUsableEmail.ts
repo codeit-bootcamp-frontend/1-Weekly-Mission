@@ -6,12 +6,8 @@ type CheckedEmails = {
   [email: string]: boolean;
 };
 
-interface IsUsableNickname {
-  isUsableNickname: boolean;
-}
-
-interface IsUsableNicknameData {
-  data: IsUsableNickname;
+interface IsUsableEmail {
+  isUsableEmail: boolean;
 }
 
 interface IsUsableEmailProps {
@@ -40,14 +36,14 @@ const isUsableEmail = async ({
   }
 
   try {
-    const response = await fetcher<IsUsableNicknameData>({
-      url: "/check-email",
+    const response = await fetcher<IsUsableEmail>({
+      url: "/users/check-email",
       method: "post",
       data: { email },
     });
-    const { isUsableNickname } = response.data.data;
+    const { isUsableEmail } = response.data;
 
-    if (isUsableNickname) {
+    if (isUsableEmail) {
       setCachedEmails((prevValues) => ({
         ...prevValues,
         [email]: true,

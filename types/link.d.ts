@@ -11,3 +11,12 @@ interface Link {
   image_source: string;
   folder_id: number;
 }
+
+interface FolderLink {
+  id: number;
+  created_at: string;
+  url: string;
+  title: string;
+  image_source: string;
+  description: string;
+}
