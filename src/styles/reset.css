@@ -33,3 +33,10 @@ button {
   cursor: pointer;
   background: transparent;
 }
+
+/* devtooles를 위한 임시 설정 */
+aside {
+  & * {
+    font-size: 13px !important;
+  }
+}

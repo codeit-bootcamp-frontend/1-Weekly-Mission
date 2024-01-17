@@ -1,0 +1,30 @@
+.header-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--color-gray1);
+  padding: 2rem 0 6rem;
+
+  & p {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+  }
+  & h3 {
+    text-align: center;
+    font-feature-settings:
+      "clig" off,
+      "liga" off;
+
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  & img {
+    border-radius: 50%;
+  }
+}

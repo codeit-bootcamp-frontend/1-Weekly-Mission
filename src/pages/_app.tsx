@@ -1,21 +1,24 @@
+import { Toaster } from "react-hot-toast";
 import type { AppProps } from "next/app";
-import { useRouter } from "next/router";
-import { Nav, Footer } from "@/components/common";
-import { AuthProvider } from "@/contexts/AuthProvider";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { CookiesProvider } from "react-cookie";
+
 import "@/styles/reset.css";
 import "@/styles/global.scss";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 export default function App({ Component, pageProps }: AppProps) {
-  const { route } = useRouter();
-  const hasNav = ["/", "/folder", "/shared"];
+  const queryClient = new QueryClient();
 
   return (
     <>
-      <AuthProvider>
-        {hasNav.includes(route) && <Nav isSticky={route !== "/folder"} />}
-        <Component {...pageProps} />
-        {hasNav.includes(route) && <Footer />}
-      </AuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <CookiesProvider>
+          <Toaster />
+          <Component {...pageProps} />
+        </CookiesProvider>
+        <ReactQueryDevtools initialIsOpen={true} />
+      </QueryClientProvider>
     </>
   );
 }

@@ -1,38 +1,40 @@
-import { useState } from "react";
-import Head from "next/head";
-import { getSharedFolder, getSharedUser } from "@/api";
-import { SearchBar, CardList } from "@/components/common";
-import { ShareHeader } from "@/components/shared";
-import { SharedFolderInterface, SharedUserInterface } from "@/types";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+
+import { getFolderInfo } from "@/api/getFolderCRUDApi";
+import Layout from "@/components/Layout/Layout";
+import SharedHeader from "@/components/SharedHeader/SharedHeader";
+import SearchBar from "@/components/SearchBar/SearchBar";
+
 import styles from "./SharedPage.module.scss";
+import SharedCardList from "@/components/CardList/SharedCardList";
 
-// TODO - 지금은 shared user id와 folder id가 정해져있어서 getServerSideProps가 받는 인자가 없지만, 나중에 확장성을 위해 context 인자를 받는 식으로도 고쳐볼 것.
-export async function getServerSideProps() {
-  let sharedUser: SharedUserInterface = await getSharedUser();
-  let sharedFolder: SharedFolderInterface = await getSharedFolder();
-  return {
-    props: {
-      sharedUser,
-      sharedFolder,
-    },
-  };
-}
-
-export default function SharedPage({
-  sharedUser,
-  sharedFolder,
-}: {
-  sharedUser: SharedUserInterface;
-  sharedFolder: SharedFolderInterface;
-}) {
+export default function SharedPage() {
   const [keyword, setKeyword] = useState("");
-  return (
-    <>
-      <Head>
-        <title>shared</title>
-      </Head>
-      <ShareHeader sharedUser={sharedUser} sharedFolder={sharedFolder} />
+  const router = useRouter();
+  const { userId, folderId } = router.query;
 
+  const { data: folderData } = useQuery({
+    queryKey: ["folder-info", folderId],
+    queryFn: () => getFolderInfo(folderId as string),
+    enabled: !!folderId,
+    retry: 3,
+  });
+
+  // BUG - 버그..
+  //   useEffect(() => {
+  //     if (!userId) {
+  //       router.push("/404");
+  //     }
+  //   }, []);
+
+  return (
+    <Layout>
+      <SharedHeader
+        userId={userId as string}
+        folderTitle={folderData ? folderData[0].name : "전체"}
+      />
       <div className={styles["folder-content"]}>
         <SearchBar onChange={setKeyword} keys={keyword} />
         {keyword && (
@@ -42,10 +44,14 @@ export default function SharedPage({
             </h1>
           </div>
         )}
+        <div className={styles["card-list-section"]}>
+          <SharedCardList
+            userId={userId as string}
+            folderId={folderId}
+            keyword={keyword}
+          />
+        </div>
       </div>
-      <div className={styles["card-list-section"]}>
-        <CardList cardList={sharedFolder?.folder.links} keyword={keyword} />
-      </div>
-    </>
+    </Layout>
   );
 }

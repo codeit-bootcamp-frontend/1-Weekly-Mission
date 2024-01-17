@@ -1,0 +1,43 @@
+@import "@/styles/global.scss";
+
+.background {
+  z-index: $MODAL_BACKGROUND_ZINDEX;
+  display: flex;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+  inset: 0;
+}
+
+.container {
+  position: fixed;
+  padding: 3rem 4rem;
+  background-color: white;
+  border-radius: 8px;
+  z-index: $MODAL_CONTAINER_ZINDEX;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  font-size: 2rem;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  padding: 3.2rem 4rem;
+  justify-content: center;
+  align-items: center;
+  & form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
