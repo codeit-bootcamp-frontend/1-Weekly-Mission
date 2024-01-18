@@ -1,5 +1,3 @@
-const ACCESS_TOKEN = "accessToken";
-
 export const setAccessToken = (value: string) => {
   if (typeof window !== "undefined") {
     document.cookie = `accessToken=${value}`;

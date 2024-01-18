@@ -2,8 +2,8 @@ import { cookies } from "next/headers";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-type Method = "GET" | "POST" | "PUT" | "DELETE";
-interface Cache {
+type MethodType = "GET" | "POST" | "PUT" | "DELETE";
+interface CacheType {
   cache?: RequestCache;
   next?: {
     revalidate: number;
@@ -11,38 +11,38 @@ interface Cache {
 }
 
 interface InstanceProps {
-  method: Method;
+  method: MethodType;
   url: string;
-  body?: BodyInit;
-  cache?: Cache;
+  body?: {};
+  cache?: CacheType;
 }
 
-type RequestState = "success" | "error";
-interface Error {
+type RequestStateType = "success" | "error";
+interface ErrorType {
   status: number;
   message: string;
 }
 
-interface ResponseProps<T> {
-  state: RequestState;
+interface ResponsePropsType<T> {
+  state: RequestStateType;
   data?: T;
-  error?: Error;
+  error?: ErrorType;
 }
 
 const instance = async <T>({ method, url, body, cache }: InstanceProps) => {
   const cookieStore = cookies();
   const accessToken = cookieStore.get("accessToken")?.value;
 
-  const response = await fetch(`${BASE_URL}${url}`, { method, body, ...cache, ...(accessToken && { headers: { Authorization: `Bearer ${accessToken}` } }) });
+  const response = await fetch(`${BASE_URL}${url}`, { method, body: JSON.stringify(body), ...cache, ...(accessToken && { headers: { Authorization: `Bearer ${accessToken}` } }) });
 
   if (response.status >= 400) {
-    const res: ResponseProps<T> = {
+    const res: ResponsePropsType<T> = {
       state: "error",
       error: { status: response.status, ...(await response.json()) },
     };
     return res;
   } else {
-    const res: ResponseProps<T> = {
+    const res: ResponsePropsType<T> = {
       state: "success",
       data: await response.json(),
     };
@@ -51,8 +51,8 @@ const instance = async <T>({ method, url, body, cache }: InstanceProps) => {
 };
 
 export const request = {
-  get: <T>(url: string, cache?: Cache) => instance<T>({ method: "GET", url, cache }),
-  post: <T>(url: string, body: BodyInit) => instance<T>({ method: "POST", url, body }),
-  put: <T>(url: string, body: BodyInit) => instance<T>({ method: "PUT", url, body }),
+  get: <T>(url: string, cache?: CacheType) => instance<T>({ method: "GET", url, cache }),
+  post: <T>(url: string, body: {}) => instance<T>({ method: "POST", url, body }),
+  put: <T>(url: string, body: {}) => instance<T>({ method: "PUT", url, body }),
   delete: <T>(url: string) => instance<T>({ method: "DELETE", url }),
 };
