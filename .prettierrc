@@ -6,7 +6,7 @@
   "singleQuote": false,
   "trailingComma": "all",
   "tabWidth": 2,
-  "importOrder": ["^@/components/(.*)$", "^@/hooks/(.*)$", "^@/services/(.*)$", "^@/store/(.*)$", "^@/utils/(.*)$", "^@/types/(.*)$", "^@/assets/(.*)$", "^[./]"],
+  "importOrder": ["^@/components/(.*)$", "^@/hooks/(.*)$", "^@/service/(.*)$", "^@/store/(.*)$", "^@/utils/(.*)$", "^@/types/(.*)$", "^@/assets/(.*)$", "^[./]"],
   "importOrderSortSpecifiers": true,
   "plugins": ["@trivago/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss"]
 }
