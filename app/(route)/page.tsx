@@ -1,12 +1,11 @@
-import API from "@/service/api";
+import SERVER_API from "@/service/serverApi";
 
 const Home = async () => {
-  const data = await API.user.getUser();
-  const title = data?.data?.[0].name;
-
+  const data = await SERVER_API.user.getUser();
+  console.log(data);
   return (
     <>
-      <div className="w- 500 h-500 bg-primary-light">{title}</div>
+      <div className="h-500 w-500 bg-primary-light text-40">{data?.data?.[0].name ?? "NONE"} </div>
     </>
   );
 };
