@@ -2,9 +2,11 @@
 
 import { useState, ChangeEvent } from "react";
 import Image from "next/image";
-import styles from "./LinkAddBar.module.scss";
+
 import LinkAddModal from "@/modals/LinkAddModal/LinkAddModal";
-import { useModalStore } from "@/store/useModalStore";
+import { useModalStore } from "@/store/ModalStore";
+
+import styles from "./LinkAddBar.module.scss";
 
 function LinkAddBar() {
   const [keyword, setKeyword] = useState("");

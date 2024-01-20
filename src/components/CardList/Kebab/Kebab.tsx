@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 import LinkDeleteModal from "@/modals/LinkDeleteModal/LinkDeleteModal";
-import { useModalStore } from "@/store/useModalStore";
+import { useModalStore } from "@/store/ModalStore";
 
 import styles from "./Kebab.module.scss";
 

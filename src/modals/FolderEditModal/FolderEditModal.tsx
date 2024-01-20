@@ -4,10 +4,10 @@ import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { editFolder } from "@/api/getFolderCRUDApi";
 import useToast from "@/hooks/useToast";
 import ModalCreator from "@/modals/ModalCreator";
+import { useModalStore } from "@/store/ModalStore";
 import { FolderAddFormType } from "@/types/FormType";
 
 import styles from "./FolderEditModal.module.scss";
-import { useModalStore } from "@/store/useModalStore";
 
 interface FolderEditModalProps {
   folderId: string;

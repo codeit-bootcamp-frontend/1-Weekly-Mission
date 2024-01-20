@@ -5,7 +5,7 @@ import { getFolderList } from "@/api/getFolderCRUDApi";
 import { createCard } from "@/api/getCardCRUDApi";
 import useToast from "@/hooks/useToast";
 import ModalCreator from "@/modals/ModalCreator";
-import { useModalStore } from "@/store/useModalStore";
+import { useModalStore } from "@/store/ModalStore";
 
 import styles from "./LinkAddModal.module.scss";
 

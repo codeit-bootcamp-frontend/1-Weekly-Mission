@@ -4,7 +4,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createFolder } from "@/api/getFolderCRUDApi";
 import useToast from "@/hooks/useToast";
 import ModalCreator from "@/modals/ModalCreator";
-import { useModalStore } from "@/store/useModalStore";
+import { useModalStore } from "@/store/ModalStore";
 import { FolderAddFormType } from "@/types/FormType";
 
 import styles from "./FolderAddModal.module.scss";

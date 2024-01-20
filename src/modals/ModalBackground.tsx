@@ -1,6 +1,8 @@
 import { PropsWithChildren } from "react";
+
+import { useModalStore } from "@/store/ModalStore";
+
 import styles from "./ModalBackground.module.scss";
-import { useModalStore } from "@/store/useModalStore";
 
 function ModalBackground() {
   const hideModal = useModalStore((state) => state.hideModal);
