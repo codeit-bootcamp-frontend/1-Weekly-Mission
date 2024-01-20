@@ -1,6 +1,7 @@
 /*Card 컴포넌트*/
 
 import Link from "next/link";
+import { useDrag, useDrop } from "react-dnd";
 
 import formatDate from "@/utils/formatDate";
 import calcDate from "@/utils/calcDate";
@@ -9,18 +10,49 @@ import Kebab from "@/components/CardList/Kebab/Kebab";
 
 import styles from "./Card.module.scss";
 import Favorite from "../Favorite/Favorite";
+import { useRef } from "react";
 
 interface CardProps {
   card: CardType;
   isShared?: boolean;
 }
 
+const type = "CARD";
+
 export default function Card({ card, isShared }: CardProps) {
   const str = calcDate(card.created_at);
+  // const ref = useRef(null);
+  // const [{ isDragging }, drag] = useDrag({
+  //   type: type,
+  //   item: { id: card.id, card: card },
+  //   collect: (monitor) => {
+  //     return {
+  //       isDragging: monitor.isDragging(),
+  //     };
+  //   },
+  // });
+
+  // const [, drop] = useDrop({
+  //   accept: type,
+  //   hover: (item: { card: CardType }, monitor) => {
+  //     const draggedItem = item.card;
+  //     const isOver = monitor.isOver();
+  //     const canDrop = monitor.canDrop();
+
+  //     if (isOver && canDrop) {
+  //     }
+  //   },
+  // });
+
+  // drag(drop(ref));
 
   return (
     <>
-      <div className={styles["card-container"]}>
+      <div
+        className={styles["card-container"]}
+        // ref={ref}
+        // style={{ opacity: isDragging ? 0 : 1 }}
+      >
         {!isShared && (
           <>
             <Favorite cardId={String(card?.id)} isFilled={card.favorite} />

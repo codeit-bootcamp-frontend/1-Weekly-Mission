@@ -1,24 +1,22 @@
-/*CardList 컴포넌트
+/*CardList 컴포넌트*/
 
-cardList: cardlist 값을 받아 Card 컴포넌트들을 map으로 리턴
-keyword: keyword 값을 받아 keyword가 포함된 card 컴포넌트들만 filter 해서 map으로 리턴하고,
-받은 keyword가 없다면 전체 card 컴포넌트들을 map으로 리턴
-onClick: Card 컴포넌트에게 내려줌
-folderList: Card 컴포넌트에게 내려줌
-*/
 import Card from "@/components/CardList/Card/Card";
 import { useQuery } from "@tanstack/react-query";
-import { CardType } from "@/types/CardType";
+
 import { getAllCards, getCards } from "@/api/getCardCRUDApi";
+import { CardType } from "@/types/CardType";
 
 import styles from "./CardList.module.scss";
+import { useState } from "react";
 
 interface CardListProps {
   folderId?: string;
   keyword?: string;
 }
 
-function CardList({ folderId, keyword = "" }: CardListProps) {
+export default function CardList({ folderId, keyword = "" }: CardListProps) {
+  // BUG - draggableList에 data: cardList 값을 넣으면 무한 렌더링 발생..
+  const [draggableList, setDraggableList] = useState<CardType[]>([]);
   const { data: cardList } = useQuery({
     queryKey: ["card-list", folderId],
     queryFn: () => {
@@ -46,6 +44,7 @@ function CardList({ folderId, keyword = "" }: CardListProps) {
       return searchText.includes(searchTerm);
     });
   }
+
   return (
     <section className={styles["card-section"]}>
       {currentCardList?.map((card: CardType) => {
@@ -54,5 +53,3 @@ function CardList({ folderId, keyword = "" }: CardListProps) {
     </section>
   );
 }
-
-export default CardList;
