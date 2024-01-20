@@ -8,7 +8,7 @@ folderList: Card 컴포넌트에게 내려줌
 */
 import Card from "@/components/CardList/Card/Card";
 import { useQuery } from "@tanstack/react-query";
-
+import { CardType } from "@/types/CardType";
 import { getAllCards, getCards } from "@/api/getCardCRUDApi";
 
 import styles from "./CardList.module.scss";
@@ -38,7 +38,7 @@ function CardList({ folderId, keyword = "" }: CardListProps) {
   if (keyword) {
     const searchTerm = keyword.toLowerCase().split(" ").join("");
 
-    currentCardList = cardList.filter((card) => {
+    currentCardList = cardList.filter((card: CardType) => {
       const searchText = `${card?.description}${card?.url}${card?.title}`
         .toLowerCase()
         .split(" ")
@@ -48,7 +48,7 @@ function CardList({ folderId, keyword = "" }: CardListProps) {
   }
   return (
     <section className={styles["card-section"]}>
-      {currentCardList?.map((card) => {
+      {currentCardList?.map((card: CardType) => {
         return <Card card={card} key={card.id} />;
       })}
     </section>

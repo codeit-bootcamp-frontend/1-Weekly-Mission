@@ -4,6 +4,7 @@ import Card from "@/components/CardList/Card/Card";
 import { useQuery } from "@tanstack/react-query";
 
 import { getCards, getSharedAllCards } from "@/api/getCardCRUDApi";
+import { CardType } from "@/types/CardType";
 
 import styles from "./CardList.module.scss";
 
@@ -37,7 +38,7 @@ export default function SharedCardList({
   if (keyword) {
     const searchTerm = keyword.toLowerCase().split(" ").join("");
 
-    currentCardList = cardList.filter((card) => {
+    currentCardList = cardList.filter((card: CardType) => {
       const searchText = `${card?.description}${card?.url}${card?.title}`
         .toLowerCase()
         .split(" ")
@@ -47,7 +48,7 @@ export default function SharedCardList({
   }
   return (
     <section className={styles["card-section"]}>
-      {currentCardList?.map((card) => {
+      {currentCardList?.map((card: CardType) => {
         return <Card card={card} key={card.id} isShared={true} />;
       })}
     </section>
