@@ -20,7 +20,6 @@ const Shared = async ({ params }: Props) => {
     <>
       <Banner userId={userId} folderId={folderId} />
       <section className="mx-auto flex w-full max-w-[106rem] flex-col items-center px-32 pb-60 pt-20">
-        <SearchInput />
         <Cards type="shared" data={links?.data} />
       </section>
     </>
