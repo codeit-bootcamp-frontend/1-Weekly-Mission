@@ -9,8 +9,8 @@ const Header = async () => {
   const userInfo = user?.data;
 
   return (
-    <header className="h-63 w-full bg-primary-light py-12 tablet:h-95 tablet:py-20">
-      <div className="mx-auto flex h-full max-w-[192rem] items-center justify-between px-32 pc:px-200">
+    <header className="h-63 w-full bg-primary-light px-32 py-12 tablet:h-95 tablet:py-20 pc:px-200">
+      <div className="mx-auto flex h-full max-w-[104rem] items-center justify-between">
         <IconLinkbrary />
         {isLoggedIn ? (
           <div className="flex items-center gap-6">
