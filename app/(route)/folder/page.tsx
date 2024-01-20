@@ -2,33 +2,18 @@
 
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import Cards from "@/components/card/Cards";
 import SearchInput from "@/components/input/SearchInput";
 import API from "@/service/api";
-import { filterLinks } from "@/utils/filterLinks";
-import { FolderType, LinkType } from "@/types/type";
+import { FolderType } from "@/types/type";
 import Banner from "./_components/Banner";
 import FolderButton from "./_components/FolderButton";
+import Links from "./_components/Links";
 
 const Folder = () => {
   const params = useSearchParams();
   const selectedFolderId = Number(params.get("folderId"));
 
-  const [links, setLinks] = useState<LinkType[]>([]);
   const [folders, setFolders] = useState<FolderType[]>([]);
-
-  const searchKeyword = params.get("keyword");
-  const filteredLinks = filterLinks(links, searchKeyword);
-
-  const getLinks = async (folderId?: number) => {
-    if (!folderId) {
-      const item = await API.link.getLinks();
-      setLinks(item?.data ?? []);
-    } else {
-      const item = await API.link.getLinksById(folderId);
-      setLinks(item?.data ?? []);
-    }
-  };
 
   const getFolders = async () => {
     const item = await API.folder.getFolders();
@@ -36,7 +21,6 @@ const Folder = () => {
   };
 
   useEffect(() => {
-    getLinks(selectedFolderId);
     getFolders();
   }, [selectedFolderId]);
 
@@ -55,7 +39,7 @@ const Folder = () => {
             </li>
           ))}
         </ul>
-        <Cards type="shared" data={filteredLinks} />
+        <Links />
       </section>
     </>
   );

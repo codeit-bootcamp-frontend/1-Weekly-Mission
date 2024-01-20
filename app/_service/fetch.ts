@@ -6,7 +6,11 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const instance = async <T>({ method, url, body }: InstanceProps) => {
   const accessToken = getAccessToken();
 
-  const response = await fetch(`${BASE_URL}${url}`, { method, body: JSON.stringify(body), ...(accessToken && { headers: { Authorization: `Bearer ${accessToken}` } }) });
+  const response = await fetch(`${BASE_URL}${url}`, {
+    method,
+    body: JSON.stringify(body),
+    ...(accessToken && { headers: { Authorization: `Bearer ${accessToken}`, cache: "no-store" } }),
+  });
 
   if (response.status >= 400) {
     const res: ResponseProps<T> = {
