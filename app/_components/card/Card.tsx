@@ -12,13 +12,13 @@ const DEFAULT_CARD = {
 1;
 
 interface Props {
-  type: "share" | "folder";
+  type: "shared" | "folder";
   data?: LinkType;
 }
 
 const Card = ({ type, data }: Props) => {
   const title = reduceText(data?.title, 10) ?? DEFAULT_CARD.title;
-  const description = reduceText(data?.description, 70) ?? DEFAULT_CARD.description;
+  const description = reduceText(data?.description, 100) ?? DEFAULT_CARD.description;
   const createdDate = new Date(data?.created_at ?? DEFAULT_CARD.create_at);
   const url = data?.url ?? DEFAULT_CARD.url;
   const imageSrc = data?.image_source ?? DEFAULT_CARD.imageSrc;
@@ -28,9 +28,9 @@ const Card = ({ type, data }: Props) => {
       <div className="relative h-225 w-full overflow-hidden rounded-t-lg">
         <Image src={imageSrc} alt="링크 이미지" fill className="object-cover hover:scale-125 hover:duration-700" />
       </div>
-      <div className="flex flex-col gap-10 px-20 py-15">
-        <p className="text-12 text-gray-100">{createdDate.toLocaleDateString("ko")}</p>
-        <p className="text-16">{title}</p>
+      <div className="gap-10 px-20 py-15">
+        <p className="mb-5 text-12 text-gray-100">{createdDate.toLocaleDateString("ko")}</p>
+        <p className="mb-3 text-16">{title}</p>
         <p className="text-12">{description}</p>
       </div>
     </a>
