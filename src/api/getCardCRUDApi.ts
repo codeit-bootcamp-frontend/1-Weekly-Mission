@@ -35,4 +35,10 @@ export async function deleteCard(cardId: string) {
   return response;
 }
 
-// TODO - card update api
+// card update api
+export async function updateCardFavorite(cardId: string, favorite: boolean) {
+  const response = await axiosInstance.put(`/links/${cardId}`, {
+    favorite: favorite,
+  });
+  return response;
+}

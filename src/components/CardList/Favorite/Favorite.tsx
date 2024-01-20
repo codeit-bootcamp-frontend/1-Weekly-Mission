@@ -5,6 +5,8 @@
 import Image from "next/image";
 
 import styles from "./Favorite.module.scss";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { updateCardFavorite } from "@/api/getCardCRUDApi";
 
 interface FavoriteProps {
   cardId: string;
@@ -12,7 +14,15 @@ interface FavoriteProps {
 }
 
 export default function Favorite({ cardId, isFilled }: FavoriteProps) {
-  const handleStarButton = () => {};
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation({
+    mutationFn: () => updateCardFavorite(cardId, !isFilled),
+    onSettled: () => queryClient.invalidateQueries({ queryKey: ["card-list"] }),
+  });
+
+  const handleStarButton = () => {
+    mutate();
+  };
 
   return (
     <>
