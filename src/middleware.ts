@@ -5,7 +5,8 @@ const NOT_REQUIRED_AUTH = ["/signin", "/signup"];
 
 export async function middleware(request: NextRequest) {
   const jwt = request.cookies.get("accessToken");
-  if (!jwt && request.nextUrl.pathname.startsWith("/folders")) {
+  const refJwt = request.cookies.get("refreshToken");
+  if (!jwt && !refJwt && request.nextUrl.pathname.startsWith("/folders")) {
     return NextResponse.redirect(new URL(`/signin`, request.url));
   }
   if (jwt && NOT_REQUIRED_AUTH.includes(request.nextUrl.pathname)) {

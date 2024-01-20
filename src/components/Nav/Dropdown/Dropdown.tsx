@@ -13,6 +13,7 @@ export default function Dropdown() {
 
   const handleLogout = () => {
     removeCookie("accessToken");
+    removeCookie("refreshToken");
     deleteUser();
     queryClient.invalidateQueries({ queryKey: ["user"] });
     router.push("/");
