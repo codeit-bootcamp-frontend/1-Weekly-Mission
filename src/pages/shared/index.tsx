@@ -23,10 +23,15 @@ export default function SharedPage() {
     retry: 3,
   });
 
+  useEffect(() => {
+    if (typeof folderId !== "string" && typeof folderId !== "undefined") {
+      router.replace("/folders");
+      useToast(false, "잘못된 경로입니다!");
+    }
+  }, [folderId, router]);
+
   if (typeof folderId !== "string") {
-    router.push("/folders");
-    useToast(false, "잘못된 경로입니다!");
-    return;
+    return null;
   }
 
   return (
