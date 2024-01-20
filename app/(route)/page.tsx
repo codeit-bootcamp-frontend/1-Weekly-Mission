@@ -1,12 +1,14 @@
+import Card from "@/components/Card";
 import SERVER_API from "@/service/serverApi";
 
 const Home = async () => {
-  const data = await SERVER_API.user.getUser();
-  console.log(data);
+  const data = await SERVER_API.link.getLinks();
+  console.log(data?.data?.[0]);
+
   return (
-    <>
-      <div className="h-500 w-500 bg-primary-light text-40">{data?.data?.[0].name ?? "NONE"} </div>
-    </>
+    <div className="h-500 w-500 bg-gray-60 p-30">
+      <Card type="share" data={data?.data?.[0]} />
+    </div>
   );
 };
 

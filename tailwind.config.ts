@@ -67,7 +67,11 @@ const config: Config = {
       full: "9999px",
     },
     spacing: PX_ENTRIES,
+    boxShadow: {
+      md: "0 0.5rem 2.5rem 0 rgba(0,0,0,0.08)",
+    },
   },
+
   plugins: [],
 };
 export default config;
