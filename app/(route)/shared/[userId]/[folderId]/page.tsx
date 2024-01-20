@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Cards from "@/components/card/Cards";
+import SearchInput from "@/components/input/SearchInput";
 import SERVER_API from "@/service/serverApi";
 import Banner from "./_components/Banner";
 
@@ -20,7 +20,7 @@ const Shared = async ({ params }: Props) => {
     <>
       <Banner userId={userId} folderId={folderId} />
       <section className="mx-auto flex w-full max-w-[106rem] flex-col items-center px-32 pb-60 pt-20">
-        <div className="h-40 w-full bg-gray-60"></div>
+        <SearchInput />
         <Cards type="shared" data={links?.data} />
       </section>
     </>
