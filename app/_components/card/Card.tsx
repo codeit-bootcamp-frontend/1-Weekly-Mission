@@ -24,7 +24,7 @@ const Card = ({ type, data }: Props) => {
   const imageSrc = data?.image_source ?? DEFAULT_CARD.imageSrc;
 
   return (
-    <a href={url} target="_blank" rel="noreferrer noopener" className="block h-full max-h-340 w-full max-w-340 rounded-lg bg-white shadow-md">
+    <a href={url} target="_blank" rel="noreferrer noopener" className="block h-full max-h-340 w-full min-w-300 max-w-340 rounded-lg bg-white shadow-md">
       <div className="relative h-225 w-full overflow-hidden rounded-t-lg">
         <Image src={imageSrc} alt="링크 이미지" fill className="object-cover hover:scale-125 hover:duration-700" />
       </div>
