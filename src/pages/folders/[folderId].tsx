@@ -10,6 +10,7 @@ import FolderTagList from "@/components/folder/FolderTagList/FolderTagList";
 import Layout from "@/components/Layout/Layout";
 import LinkAddBar from "@/components/LinkAddBar/LinkAddBar";
 import SearchBar from "@/components/SearchBar/SearchBar";
+import useToast from "@/hooks/useToast";
 
 import styles from "./FolderPage.module.scss";
 
@@ -23,6 +24,12 @@ export default function CustomFolderPage() {
     queryFn: () => getFolderInfo(folderId as string),
     enabled: !!folderId,
   });
+
+  if (typeof folderId !== "string") {
+    router.push("/folders");
+    useToast(false, "잘못된 경로입니다!");
+    return;
+  }
 
   return (
     <Layout>
