@@ -1,19 +1,24 @@
 import Image from "next/image";
-import { useState } from "react";
+import { MouseEvent, useEffect, useState } from "react";
+import { mutate } from "swr";
 import classNames from "classnames";
 import styles from "./Card.module.css";
 
-import Star from "public/assets/star.svg";
-import KebabMenu from "../Kebabmenu";
+import KebabMenu from "@/components/Kebabmenu";
+import ToggleButton from "@/components/button/ToggleButton";
+import FilledStarIcon from "@/components/ui/icons/FilledStarIcon";
+import StarIcon from "@/components/ui/icons/Star";
 
 import { getCreatedDate, getDiffTime } from "@/common/utils/dateUtils";
 import { LinkData } from "@/types/link";
+import { DOMAIN_URL } from "@/common/constants";
 
 interface CardItemProps {
   link: LinkData;
 }
 
 export default function CardItem({ link }: CardItemProps) {
+  const [accessToken, setAccessToken] = useState<string | null>();
   const [imageUrl, setImageUrl] = useState(link.image_source);
 
   const { description, image_source, created_at } = link;
@@ -24,6 +29,38 @@ export default function CardItem({ link }: CardItemProps) {
   const handleImageError = () => {
     setImageUrl("/images/logo.svg");
   };
+
+  const fetcher = async (url: string) => {
+    if (accessToken) {
+      return await fetch(`${DOMAIN_URL}${url}`, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json; charset=utf-8",
+        },
+        body: JSON.stringify({ favorite: true }),
+      }).then((res) => res.json());
+    }
+  };
+
+  const toggleLiked = async (e: MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+
+    try {
+      const result = await fetcher(`/links/${link.id}`);
+      console.log(result); // error
+
+      mutate(`/links`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (localStorage.getItem("accessToken") !== null) {
+      setAccessToken(localStorage.getItem("accessToken"));
+    }
+  }, [accessToken]);
 
   return (
     <div className={styles.wrapper}>
@@ -39,7 +76,12 @@ export default function CardItem({ link }: CardItemProps) {
           />
         </div>
         <div className={styles.liked}>
-          <Star />
+          <ToggleButton
+            toggle={link.favorite}
+            onToggle={toggleLiked}
+            onIcon={<FilledStarIcon />}
+            offIcon={<StarIcon />}
+          />
         </div>
       </div>
       <div className={styles["card-info"]}>
