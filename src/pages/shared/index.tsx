@@ -3,6 +3,8 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 import { getFolderInfo } from "@/api/getFolderCRUDApi";
 import SharedCardList from "@/components/CardList/SharedCardList";
@@ -51,13 +53,15 @@ export default function SharedPage() {
             </h1>
           </div>
         )}
-        <div className={styles["card-list-section"]}>
-          <SharedCardList
-            userId={userId as string}
-            folderId={folderId}
-            keyword={keyword}
-          />
-        </div>
+        <DndProvider backend={HTML5Backend}>
+          <div className={styles["card-list-section"]}>
+            <SharedCardList
+              userId={userId as string}
+              folderId={folderId}
+              keyword={keyword}
+            />
+          </div>
+        </DndProvider>
       </div>
     </Layout>
   );

@@ -17,7 +17,7 @@ interface CardProps {
   isShared?: boolean;
   id: number;
   index: number;
-  moveCard: any;
+  moveCard: (drag: number, ind: number) => void;
 }
 
 const ItemTypes = {
@@ -34,7 +34,7 @@ export default function Card({
   const str = calcDate(card.created_at);
   const ref = useRef(null); // (*)
 
-  const [{ isDragging }, drag] = useDrag({
+  const [, drag] = useDrag({
     type: ItemTypes.CARD,
     item: { id, index, type: ItemTypes.CARD },
     collect: (monitor) => ({
@@ -42,11 +42,11 @@ export default function Card({
     }),
   });
 
-  // BUG - 타입 에러 수정
   const [, drop] = useDrop({
     accept: ItemTypes.CARD,
-    drop: (item, monitor) => moveCard(item.index, index),
+    drop: (item: CardProps) => moveCard(item.index, index),
   });
+
   drag(drop(ref));
 
   return (

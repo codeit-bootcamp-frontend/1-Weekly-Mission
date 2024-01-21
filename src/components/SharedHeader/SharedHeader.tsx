@@ -23,8 +23,6 @@ export default function SharedHeader({
     retry: 3,
   });
 
-  console.log(sharedUserData);
-
   return (
     <div className={styles["header-container"]}>
       <Image

@@ -23,7 +23,6 @@ export default function FolderShareModal({
 }: FolderShareModalProps) {
   const userInfo = useUserInfoStore((state) => state.userInfo);
   const router = useRouter();
-  console.log(router.basePath);
   const handleLinkCopyButton = () => {
     // TODO - 배포 후 링크 수정할 것.
     if (navigator.clipboard) {
