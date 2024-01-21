@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 
+import LinkAddModal from "@/modals/LinkAddModal/LinkAddModal";
 import LinkDeleteModal from "@/modals/LinkDeleteModal/LinkDeleteModal";
 import { useModalStore } from "@/store/ModalStore";
 
@@ -21,9 +22,12 @@ function KebabMenu({ cardId, cardUrl }: KebabProps) {
       {isModalOpen && modalName === "LinkDeleteModal" && (
         <LinkDeleteModal cardId={cardId} cardUrl={cardUrl} />
       )}
+      {isModalOpen && modalName === "LinkAddModal" && (
+        <LinkAddModal link={cardUrl} />
+      )}
       <div className={styles["kebab-menu"]}>
         <button onClick={() => showModal("LinkDeleteModal")}>삭제하기</button>
-        <button>폴더에 추가</button>
+        <button onClick={() => showModal("LinkAddModal")}>폴더에 추가</button>
       </div>
     </>
   );
