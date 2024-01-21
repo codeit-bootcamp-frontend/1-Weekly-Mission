@@ -38,7 +38,7 @@ export async function deleteCard(cardId: string) {
 // card update api
 export async function updateCardFavorite(cardId: string, favorite: boolean) {
   const response = await axiosInstance.put(`/links/${cardId}`, {
-    favorite: favorite,
+    favorite: !!favorite,
   });
   return response;
 }

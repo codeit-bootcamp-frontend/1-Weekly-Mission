@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useState } from "react";
 
 import { updateCardFavorite } from "@/api/getCardCRUDApi";
 
@@ -14,9 +15,15 @@ interface FavoriteProps {
 
 export default function Favorite({ cardId, isFilled }: FavoriteProps) {
   const queryClient = useQueryClient();
+  const [fakeFilled, setFakeFilled] = useState(isFilled);
+
   const { mutate } = useMutation({
+    onMutate: () => setFakeFilled(!fakeFilled),
     mutationFn: () => updateCardFavorite(cardId, !isFilled),
-    onSettled: () => queryClient.invalidateQueries({ queryKey: ["card-list"] }),
+    onSettled: () => {
+      setFakeFilled(isFilled);
+      queryClient.invalidateQueries({ queryKey: ["card-list"] });
+    },
   });
 
   const handleStarButton = () => {
@@ -26,7 +33,7 @@ export default function Favorite({ cardId, isFilled }: FavoriteProps) {
   return (
     <>
       <button className={styles["star-button"]} onClick={handleStarButton}>
-        {isFilled ? (
+        {fakeFilled ? (
           <Image
             src="/icons/filled-start-icon.svg"
             width={34}
