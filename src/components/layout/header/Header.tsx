@@ -13,11 +13,11 @@ interface HeaderProps {
   isLoading: boolean;
 }
 
-const HIDE_HEADER = ["/folder"];
+const HIDE_HEADER = ["/folder", "/folder/[id]"];
 
 export default function Header({ user, isLoading }: HeaderProps) {
   const router = useRouter();
-  const isHideHeader = HIDE_HEADER.includes(router.asPath);
+  const isHideHeader = HIDE_HEADER.includes(router.pathname);
 
   if (isLoading) {
     return <Loading />; // 로딩 UI 점검
