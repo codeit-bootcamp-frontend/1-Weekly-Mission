@@ -1,6 +1,6 @@
 "use client";
 
-import { QueryClient, useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { ChangeEvent, useState } from "react";
 import API from "@/service/api";
 import Modal from "./Modal";
@@ -16,7 +16,7 @@ interface Props {
 }
 
 const ChangeFolderNameModal = ({ folderId, folderName }: Props) => {
-  const queryClient = new QueryClient();
+  const queryClient = useQueryClient();
   const [newFolderName, setNewFolderName] = useState("");
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -26,6 +26,7 @@ const ChangeFolderNameModal = ({ folderId, folderName }: Props) => {
   const changeFolderName = useMutation({
     mutationFn: ({ folderId, newFolderName }: ChangeFolderNameProps) => API.folder.changeFolderName(folderId, { name: newFolderName }),
     onSuccess: () => {
+      console.log("HELLO");
       queryClient.invalidateQueries({ queryKey: ["folders"] });
     },
   });
