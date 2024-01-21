@@ -7,7 +7,7 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
 import { getFolderInfo } from "@/api/getFolderCRUDApi";
-import CardList from "@/components/CardList/CardList";
+import CardListWrapper from "@/components/CardList/Wrapper/CardListWrapper";
 import FolderMaker from "@/components/folder/FolderMaker/FolderMaker";
 import FolderModifier from "@/components/folder/FolderModifier copy/FolderModifier";
 import FolderTagList from "@/components/folder/FolderTagList/FolderTagList";
@@ -65,7 +65,7 @@ export default function CustomFolderPage() {
         />
         <DndProvider backend={HTML5Backend}>
           <div className={styles["card-list-section"]}>
-            <CardList folderId={folderId} keyword={keyword} />
+            <CardListWrapper folderId={folderId} keyword={keyword} />
           </div>
         </DndProvider>
       </div>

@@ -3,19 +3,19 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { getCards, getSharedAllCards } from "@/api/getCardCRUDApi";
-import TestCardList from "./TestCardList";
+import CardList from "@/components/CardList/CardList";
 
-interface CardListProps {
+interface SharedCardListProps {
   userId: string;
   folderId?: string;
   keyword?: string;
 }
 
-export default function SharedCardList({
+export default function SharedCardListWrapper({
   userId,
   folderId,
   keyword = "",
-}: CardListProps) {
+}: SharedCardListProps) {
   const { data: cardList } = useQuery({
     queryKey: ["card-list", folderId],
     queryFn: () => {
@@ -24,5 +24,5 @@ export default function SharedCardList({
     },
     staleTime: 1000 * 60,
   });
-  return <TestCardList isShared={true} keyword={keyword} cardList={cardList} />;
+  return <CardList isShared={true} keyword={keyword} cardList={cardList} />;
 }

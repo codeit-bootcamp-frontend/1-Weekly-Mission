@@ -7,7 +7,7 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
 import { getFolderInfo } from "@/api/getFolderCRUDApi";
-import SharedCardList from "@/components/CardList/SharedCardList";
+import SharedCardListWrapper from "@/components/CardList/Wrapper/SharedCardListWrapper";
 import Layout from "@/components/Layout/Layout";
 import SharedHeader from "@/components/SharedHeader/SharedHeader";
 import SearchBar from "@/components/SearchBar/SearchBar";
@@ -55,7 +55,7 @@ export default function SharedPage() {
         )}
         <DndProvider backend={HTML5Backend}>
           <div className={styles["card-list-section"]}>
-            <SharedCardList
+            <SharedCardListWrapper
               userId={userId as string}
               folderId={folderId}
               keyword={keyword}

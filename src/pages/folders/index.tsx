@@ -4,6 +4,7 @@ import { useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
+import CardListWrapper from "@/components/CardList/Wrapper/CardListWrapper";
 import FolderMaker from "@/components/folder/FolderMaker/FolderMaker";
 import FolderTagList from "@/components/folder/FolderTagList/FolderTagList";
 import Layout from "@/components/Layout/Layout";
@@ -11,7 +12,6 @@ import LinkAddBar from "@/components/LinkAddBar/LinkAddBar";
 import SearchBar from "@/components/SearchBar/SearchBar";
 
 import styles from "./FolderPage.module.scss";
-import CardList from "@/components/CardList/CardList";
 
 export default function FolderPage() {
   const [keyword, setKeyword] = useState("");
@@ -33,7 +33,7 @@ export default function FolderPage() {
         <FolderMaker />
         <DndProvider backend={HTML5Backend}>
           <div className={styles["card-list-section"]}>
-            <CardList keyword={keyword} />
+            <CardListWrapper keyword={keyword} />
           </div>
         </DndProvider>
       </div>
