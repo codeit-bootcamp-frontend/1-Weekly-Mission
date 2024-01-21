@@ -1,3 +1,5 @@
+/* 페이지들의 공통 레이아웃 컴포넌트 */
+
 import { useRouter } from "next/router";
 import { PropsWithChildren, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";

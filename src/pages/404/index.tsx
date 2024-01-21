@@ -1,7 +1,11 @@
+/* 에러url에서 보여주는 404 페이지 */
+
 import Image from "next/image";
 import Link from "next/link";
-import styles from "./ErrorPage.module.scss";
+
 import ErrorImg from "public/images/error-img.png";
+
+import styles from "./ErrorPage.module.scss";
 
 export default function ErrorPage() {
   return (

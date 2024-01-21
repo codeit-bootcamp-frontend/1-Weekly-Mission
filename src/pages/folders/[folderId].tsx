@@ -1,3 +1,5 @@
+/* folders/{folderId} 페이지 */
+
 import { useRouter } from "next/router";
 import { useState, useLayoutEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
@@ -12,8 +14,6 @@ import LinkAddBar from "@/components/LinkAddBar/LinkAddBar";
 import SearchBar from "@/components/SearchBar/SearchBar";
 import useToast from "@/hooks/useToast";
 
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
 import styles from "./FolderPage.module.scss";
 
 export default function CustomFolderPage() {
@@ -61,11 +61,9 @@ export default function CustomFolderPage() {
           folderId={folderId}
           folderTitle={data ? data[0].name : ""}
         />
-        <DndProvider backend={HTML5Backend}>
-          <div className={styles["card-list-section"]}>
-            <CardList folderId={folderId} keyword={keyword} />
-          </div>
-        </DndProvider>
+        <div className={styles["card-list-section"]}>
+          <CardList folderId={folderId} keyword={keyword} />
+        </div>
       </div>
     </Layout>
   );

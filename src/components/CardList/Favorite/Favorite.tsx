@@ -1,12 +1,11 @@
-/*StarButton 컴포넌트:
-  Card 컴포넌트의 좌측 상단 별모양 버튼.
-*/
+/* Card 컴포넌트에 들어갈 StarButton 컴포넌트*/
 
 import Image from "next/image";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+
+import { updateCardFavorite } from "@/api/getCardCRUDApi";
 
 import styles from "./Favorite.module.scss";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { updateCardFavorite } from "@/api/getCardCRUDApi";
 
 interface FavoriteProps {
   cardId: string;

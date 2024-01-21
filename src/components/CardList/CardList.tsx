@@ -1,13 +1,12 @@
 /*CardList 컴포넌트*/
 
-import Card from "@/components/CardList/Card/Card";
 import { useQuery } from "@tanstack/react-query";
 
 import { getAllCards, getCards } from "@/api/getCardCRUDApi";
+import Card from "@/components/CardList/Card/Card";
 import { CardType } from "@/types/CardType";
 
 import styles from "./CardList.module.scss";
-import { useState } from "react";
 
 interface CardListProps {
   folderId?: string;
@@ -15,8 +14,6 @@ interface CardListProps {
 }
 
 export default function CardList({ folderId, keyword = "" }: CardListProps) {
-  // BUG - draggableList에 data: cardList 값을 넣으면 무한 렌더링 발생..
-  const [draggableList, setDraggableList] = useState<CardType[]>([]);
   const { data: cardList } = useQuery({
     queryKey: ["card-list", folderId],
     queryFn: () => {

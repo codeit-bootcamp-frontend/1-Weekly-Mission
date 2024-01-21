@@ -1,7 +1,11 @@
+/* 메인 페이지 */
+
 import Link from "next/link";
+
 import ResponsiveImg from "@/components/ResponsiveImg/ResponsiveImg";
-import styles from "@/styles/Home.module.scss";
 import Layout from "@/components/Layout/Layout";
+
+import styles from "@/styles/Home.module.scss";
 
 export default function Home() {
   return (

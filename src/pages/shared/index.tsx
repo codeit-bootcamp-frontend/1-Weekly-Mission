@@ -1,3 +1,5 @@
+/* 공유받은 폴더를 보여주는 shared 페이지 */
+
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";

@@ -1,3 +1,5 @@
+/* 폴더 이름 수정 모달 */
+
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 

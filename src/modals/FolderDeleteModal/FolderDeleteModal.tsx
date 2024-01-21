@@ -1,3 +1,5 @@
+/* 폴더 삭제 모달 */
+
 import { useRouter } from "next/router";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 

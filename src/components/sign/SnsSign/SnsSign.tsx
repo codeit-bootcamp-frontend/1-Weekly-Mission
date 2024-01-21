@@ -1,5 +1,10 @@
+/*  signin, signup 페이지에 들어갈 카카오톡, 구글 로그인 컴포넌트
+TODO - 후에 OAuth 기능을 연동해볼 것..
+*/
+
 import Image from "next/image";
 import Link from "next/link";
+
 import styles from "./SnsSign.module.scss";
 
 function SnsSign({ label = "" }) {

@@ -7,6 +7,7 @@
 
 import { useState, ChangeEvent } from "react";
 import Image from "next/image";
+
 import styles from "./SearchBar.module.scss";
 
 function SearchBar({

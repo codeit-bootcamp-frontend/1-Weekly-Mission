@@ -1,3 +1,5 @@
+/* shared 페이지에서 폴더를 공유한 유저의 프로필을 보여주는 header 컴포넌트 */
+
 import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
 

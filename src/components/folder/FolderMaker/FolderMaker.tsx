@@ -2,6 +2,7 @@
   AddFolderModal 모달을 띄우는 버튼 컴포넌트.
   만약 화면의 크기가 tablet 미만이 되면 floating button 형태로 렌더링됨.
 */
+
 import FolderAddModal from "@/modals/FolderAddModal/FolderAddModal";
 import { useModalStore } from "@/store/ModalStore";
 

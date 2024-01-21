@@ -1,3 +1,5 @@
+/* 전체 링크를 보여주는 folders 페이지 */
+
 import { useState } from "react";
 
 import FolderMaker from "@/components/folder/FolderMaker/FolderMaker";

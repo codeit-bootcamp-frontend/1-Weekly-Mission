@@ -1,3 +1,8 @@
+/* 링크 추가 모달
+TODO - 디자인 수정할 것
+TODO - 이미 추가된 폴더는 어떻게 표시할지 고민할 것
+*/
+
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 

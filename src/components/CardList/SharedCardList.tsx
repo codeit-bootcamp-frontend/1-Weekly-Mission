@@ -1,10 +1,10 @@
 /*CardList 컴포넌트*/
 
-import Card from "@/components/CardList/Card/Card";
 import { useQuery } from "@tanstack/react-query";
 
 import { getCards, getSharedAllCards } from "@/api/getCardCRUDApi";
 import { CardType } from "@/types/CardType";
+import Card from "@/components/CardList/Card/Card";
 
 import styles from "./CardList.module.scss";
 

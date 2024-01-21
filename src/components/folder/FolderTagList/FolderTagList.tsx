@@ -1,3 +1,5 @@
+/* folders 페이지에서 렌더링되는 폴더 이름 태그 버튼 list */
+
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";

@@ -1,4 +1,4 @@
-/*LinkAddBar 컴포넌트*/
+/* link를 추가할 수 있는 LinkAddBar 컴포넌트 */
 
 import { useState, ChangeEvent } from "react";
 import Image from "next/image";
