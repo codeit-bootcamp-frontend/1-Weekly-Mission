@@ -1,6 +1,8 @@
 /* 전체 링크를 보여주는 folders 페이지 */
 
 import { useState } from "react";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 import FolderMaker from "@/components/folder/FolderMaker/FolderMaker";
 import FolderTagList from "@/components/folder/FolderTagList/FolderTagList";
@@ -29,9 +31,11 @@ export default function FolderPage() {
 
         <FolderTagList />
         <FolderMaker />
-        <div className={styles["card-list-section"]}>
-          <CardList keyword={keyword} />
-        </div>
+        <DndProvider backend={HTML5Backend}>
+          <div className={styles["card-list-section"]}>
+            <CardList keyword={keyword} />
+          </div>
+        </DndProvider>
       </div>
     </Layout>
   );

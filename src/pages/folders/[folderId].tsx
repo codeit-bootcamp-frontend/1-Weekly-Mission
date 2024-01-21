@@ -3,6 +3,8 @@
 import { useRouter } from "next/router";
 import { useState, useLayoutEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 import { getFolderInfo } from "@/api/getFolderCRUDApi";
 import CardList from "@/components/CardList/CardList";
@@ -61,9 +63,11 @@ export default function CustomFolderPage() {
           folderId={folderId}
           folderTitle={data ? data[0].name : ""}
         />
-        <div className={styles["card-list-section"]}>
-          <CardList folderId={folderId} keyword={keyword} />
-        </div>
+        <DndProvider backend={HTML5Backend}>
+          <div className={styles["card-list-section"]}>
+            <CardList folderId={folderId} keyword={keyword} />
+          </div>
+        </DndProvider>
       </div>
     </Layout>
   );

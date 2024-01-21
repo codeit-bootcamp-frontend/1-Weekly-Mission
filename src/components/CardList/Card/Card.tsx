@@ -7,20 +7,50 @@ import calcDate from "@/utils/calcDate";
 import { CardType } from "@/types/CardType";
 import Kebab from "@/components/CardList/Kebab/Kebab";
 import Favorite from "@/components/CardList/Favorite/Favorite";
-
+import { useRef } from "react";
 import styles from "./Card.module.scss";
+import { useDrag, useDrop } from "react-dnd";
 
 interface CardProps {
   card: CardType;
   isShared?: boolean;
+  id: number;
+  index: number;
+  moveCard: any;
 }
 
-export default function Card({ card, isShared }: CardProps) {
+const ItemTypes = {
+  CARD: "card",
+};
+
+export default function Card({
+  card,
+  isShared,
+  id,
+  index,
+  moveCard,
+}: CardProps) {
   const str = calcDate(card.created_at);
+  const ref = useRef(null); // (*)
+
+  const [{ isDragging }, drag] = useDrag({
+    type: ItemTypes.CARD,
+    item: { id, index, type: ItemTypes.CARD },
+    collect: (monitor) => ({
+      isDragging: !!monitor.isDragging(),
+    }),
+  });
+
+  // BUG - 타입 에러 수정
+  const [, drop] = useDrop({
+    accept: ItemTypes.CARD,
+    drop: (item, monitor) => moveCard(item.index, index),
+  });
+  drag(drop(ref));
 
   return (
     <>
-      <div className={styles["card-container"]}>
+      <div ref={ref} className={styles["card-container"]}>
         {!isShared && (
           <>
             <Favorite cardId={String(card?.id)} isFilled={card.favorite} />

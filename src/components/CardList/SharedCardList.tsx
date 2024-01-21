@@ -1,5 +1,6 @@
 /*CardList 컴포넌트*/
 
+import { useState, useCallback, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import { getCards, getSharedAllCards } from "@/api/getCardCRUDApi";
@@ -28,28 +29,61 @@ export default function SharedCardList({
     staleTime: 1000 * 60,
   });
 
-  if (!cardList || cardList.length === 0) {
+  const [cards, setCards] = useState<CardType[]>([]);
+
+  useEffect(() => {
+    if (cardList) {
+      setCards(() => {
+        return [...cardList];
+      });
+    }
+    if (keyword) {
+      const searchTerm = keyword.toLowerCase().split(" ").join("");
+      const currentCardList = cards.filter((card: CardType) => {
+        const searchText = `${card?.description}${card?.url}${card?.title}`
+          .toLowerCase()
+          .split(" ")
+          .join("");
+        return searchText.includes(searchTerm);
+      });
+      setCards(() => {
+        return [...currentCardList];
+      });
+    }
+  }, [cardList, keyword]);
+
+  const moveCard = useCallback(
+    (dragIndex: number, hoverIndex: number) => {
+      const dragCard = cards[dragIndex];
+      let currentCard = cards;
+      currentCard.splice(dragIndex, 1);
+      currentCard.splice(hoverIndex, 0, dragCard);
+      setCards(() => {
+        return [...currentCard];
+      });
+    },
+    [cards],
+  );
+
+  if (!cards || cards.length === 0) {
     return (
       <div className={styles["no-card-list"]}> 저장된 링크가 없습니다.</div>
     );
   }
-  let currentCardList = cardList;
 
-  if (keyword) {
-    const searchTerm = keyword.toLowerCase().split(" ").join("");
-
-    currentCardList = cardList.filter((card: CardType) => {
-      const searchText = `${card?.description}${card?.url}${card?.title}`
-        .toLowerCase()
-        .split(" ")
-        .join("");
-      return searchText.includes(searchTerm);
-    });
-  }
   return (
     <section className={styles["card-section"]}>
-      {currentCardList?.map((card: CardType) => {
-        return <Card card={card} key={card.id} isShared={true} />;
+      {cards?.map((card: CardType, index: number) => {
+        return (
+          <Card
+            index={index}
+            id={card.id}
+            moveCard={moveCard}
+            card={card}
+            key={card.id}
+            isShared={true}
+          />
+        );
       })}
     </section>
   );
