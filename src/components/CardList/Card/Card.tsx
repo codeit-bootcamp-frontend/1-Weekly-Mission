@@ -1,15 +1,16 @@
 /*Card 컴포넌트*/
 
 import Link from "next/link";
+import { useDrag, useDrop } from "react-dnd";
+import { useRef } from "react";
 
+import Kebab from "@/components/CardList/Kebab/Kebab";
+import Favorite from "@/components/CardList/Favorite/Favorite";
 import formatDate from "@/utils/formatDate";
 import calcDate from "@/utils/calcDate";
 import { CardType } from "@/types/CardType";
-import Kebab from "@/components/CardList/Kebab/Kebab";
-import Favorite from "@/components/CardList/Favorite/Favorite";
-import { useRef } from "react";
+
 import styles from "./Card.module.scss";
-import { useDrag, useDrop } from "react-dnd";
 
 interface CardProps {
   card: CardType;

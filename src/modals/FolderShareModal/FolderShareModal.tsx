@@ -23,13 +23,14 @@ export default function FolderShareModal({
 }: FolderShareModalProps) {
   const userInfo = useUserInfoStore((state) => state.userInfo);
   const router = useRouter();
-
+  console.log(router.basePath);
   const handleLinkCopyButton = () => {
-    // BUG - 버그남. 내가 원하는 링크가 복사되지 않음.. 링크 다시 확인하기.
+    // TODO - 배포 후 링크 수정할 것.
     if (navigator.clipboard) {
       navigator.clipboard
         .writeText(
-          router && `/shared?userId=${userInfo?.id}&folderId=${folderId}`,
+          router &&
+            `http://localhost:3000/shared?userId=${userInfo?.id}&folderId=${folderId}`,
         )
         .then(() => useToast(true, "링크가 복사되었습니다!"))
         .catch(() => {
