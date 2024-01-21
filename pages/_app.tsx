@@ -71,7 +71,9 @@ export default function App({ Component, pageProps }: AppProps) {
                 </div>
               )}
               <Component {...pageProps} />
-              <ReactQueryDevtools />
+              <div style={{ fontSize: "16px" }}>
+                <ReactQueryDevtools />
+              </div>
             </ObserverProvider>
           </UserProvider>
         </AuthProvider>
