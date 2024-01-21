@@ -22,7 +22,7 @@ const Home = () => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-30 py-30">
+    <div className="flex h-screen flex-col items-center gap-30 py-30">
       <div className="h-60 w-300">
         <Button onClick={handleSignin}>로그인</Button>
       </div>
