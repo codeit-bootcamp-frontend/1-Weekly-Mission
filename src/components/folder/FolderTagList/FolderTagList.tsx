@@ -37,22 +37,25 @@ export default function FolderTagList({ currentId }: FolderTagListProps) {
   return (
     <div className={styles["folder-list"]}>
       <div className={styles["folder-tag"]}>
-        <button
-          className={styles["folder-button"]}
-          data-selected={currentId ? false : true}
-        >
-          <Link href={`/folders`}>{INITIAL_FOLDER.name}</Link>
-        </button>
+        <Link href={`/folders`}>
+          <button
+            className={styles["folder-button"]}
+            data-selected={currentId ? false : true}
+          >
+            {INITIAL_FOLDER.name}
+          </button>
+        </Link>
         {folderList.map((folder) => {
           if ("id" in folder) {
             return (
-              <button
-                className={styles["folder-button"]}
-                key={folder.id ?? 0}
-                data-selected={currentId === String(folder.id)}
-              >
-                <Link href={`/folders/${folder.id}`}>{folder.name}</Link>
-              </button>
+              <Link href={`/folders/${folder.id}`} key={folder.id ?? 0}>
+                <button
+                  className={styles["folder-button"]}
+                  data-selected={currentId === String(folder.id)}
+                >
+                  {folder.name}
+                </button>
+              </Link>
             );
           }
         })}

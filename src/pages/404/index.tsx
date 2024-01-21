@@ -18,9 +18,9 @@ export default function ErrorPage() {
             <br />
             Check link path once again!
           </p>
-          <button className={styles["home-button"]}>
-            <Link href="/">HOME</Link>
-          </button>
+          <Link href="/">
+            <button className={styles["home-button"]}>HOME</button>
+          </Link>
         </div>
         <div className={styles["img-content"]}>
           <Image src={ErrorImg} fill alt="error image" />

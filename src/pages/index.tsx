@@ -15,9 +15,9 @@ export default function Home() {
           <span className={styles["important"]}>세상의 모든 정보</span>를 <br />
           쉽게 저장하고 관리해 보세요
         </h1>
-        <button className={styles["link-button"]}>
-          <Link href="/folders">링크 추가하기</Link>
-        </button>
+        <Link href="/folders">
+          <button className={styles["link-button"]}>링크 추가하기</button>
+        </Link>
         <div className={styles["sample-img"]}>
           <ResponsiveImg src="/images/home-img.png" alt="home" />
         </div>

@@ -48,11 +48,13 @@ function Nav({ userInfo }: NavProps) {
             <span>{userInfo.email}</span>
           </button>
         ) : (
-          <button
-            className={`${styles["link-button"]} ${styles["signin-button"]}`}
-          >
-            <Link href="/signin">로그인</Link>
-          </button>
+          <Link href="/signin">
+            <button
+              className={`${styles["link-button"]} ${styles["signin-button"]}`}
+            >
+              로그인
+            </button>
+          </Link>
         )}
       </div>
     </nav>
