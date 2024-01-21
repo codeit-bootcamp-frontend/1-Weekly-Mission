@@ -1,5 +1,5 @@
 import { IconLink } from "public/svgs";
-import Button from "@/components/Button";
+import { Button } from "@/components/buttons";
 
 const Banner = () => {
   return (

@@ -29,7 +29,7 @@ const FolderButton = ({ children, folderId, selected }: Props) => {
   return (
     <button
       onClick={handleClick}
-      className={`w-fit rounded-sm border border-solid border-primary px-10 py-6 text-14 tablet:px-12 tablet:py-8 tablet:text-16 ${selected ? "bg-primary text-white" : ""}`}
+      className={`w-fit flex-shrink-0 rounded-sm border border-solid border-primary px-10 py-6 text-14 tablet:px-12 tablet:py-8 tablet:text-16 ${selected ? "bg-primary text-white" : ""}`}
     >
       {children}
     </button>

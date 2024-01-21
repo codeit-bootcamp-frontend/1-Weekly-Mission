@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { IconLinkbrary } from "public/svgs";
 import SERVER_API from "@/service/serverApi";
-import Button from "./Button";
+import { Button } from "./buttons";
 
 const Header = async () => {
   const user = await SERVER_API.user.getUser();

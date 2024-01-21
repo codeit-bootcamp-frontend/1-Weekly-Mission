@@ -1,5 +1,5 @@
-import Cards from "@/components/card/Cards";
-import SearchInput from "@/components/input/SearchInput";
+import Cards from "@/components/cards/Cards";
+import SearchInput from "@/components/inputs/SearchInput";
 import SERVER_API from "@/service/serverApi";
 import Banner from "./_components/Banner";
 

@@ -9,7 +9,7 @@ const instance = async <T>({ method, url, body }: InstanceProps) => {
   const response = await fetch(`${BASE_URL}${url}`, {
     method,
     body: JSON.stringify(body),
-    ...(accessToken && { headers: { Authorization: `Bearer ${accessToken}`, cache: "no-store" } }),
+    ...(accessToken && { headers: { "Content-Type": "application/json", Authorization: `Bearer ${accessToken}` } }),
   });
 
   if (response.status >= 400) {
