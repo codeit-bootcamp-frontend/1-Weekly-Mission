@@ -38,8 +38,8 @@ export default function CardItem({ link }: CardItemProps) {
           Authorization: `Bearer ${accessToken}`,
           "Content-Type": "application/json; charset=utf-8",
         },
-        body: JSON.stringify({ favorite: true }),
-      }).then((res) => res.json());
+        body: JSON.stringify({ favorite: !link.favorite }),
+      }).then(() => mutate("/links"));
     }
   };
 
@@ -49,8 +49,6 @@ export default function CardItem({ link }: CardItemProps) {
     try {
       const result = await fetcher(`/links/${link.id}`);
       console.log(result); // error
-
-      mutate(`/links`);
     } catch (error) {
       console.log(error);
     }
