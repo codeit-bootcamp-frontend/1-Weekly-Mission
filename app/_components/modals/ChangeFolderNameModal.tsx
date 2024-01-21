@@ -24,11 +24,8 @@ const ChangeFolderNameModal = ({ folderId, folderName }: Props) => {
   };
 
   const changeFolderName = useMutation({
-    mutationFn: ({ folderId, newFolderName }: ChangeFolderNameProps) => API.folder.changeFolderName(folderId, { name: newFolderName }),
-    onSuccess: () => {
-      console.log("HELLO");
-      queryClient.invalidateQueries({ queryKey: ["folders"] });
-    },
+    mutationFn: ({ folderId, newFolderName }: ChangeFolderNameProps) => API.folder.changeFolderName(folderId, newFolderName),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["folders"] }),
   });
 
   const handleSubmit = () => {

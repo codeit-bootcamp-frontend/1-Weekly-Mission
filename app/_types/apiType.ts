@@ -7,7 +7,7 @@ export interface ReqPostFolders {
 }
 export type ResPostFolders = [FolderType];
 
-export interface ReqPutFolders {
+export interface ReqPostFolders {
   name: string;
 }
 export type ResPutFolders = [FolderType];

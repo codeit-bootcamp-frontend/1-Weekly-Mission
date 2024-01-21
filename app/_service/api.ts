@@ -16,8 +16,9 @@ const user = {
 const folder = {
   getFolders: async () => await request.get<T.ResGetFolders>("/folders"),
   getFolderById: async (folderId: number) => await request.get<T.ResGetFolders>(`/folders/${folderId}`),
+  createFolder: async (name: string) => await request.post("/folders", { name }),
   deleteFolder: async (folderId: number) => await request.delete(`/folders/${folderId}`),
-  changeFolderName: async (folderId: number, body: T.ReqPutFolders) => await request.put(`/folders/${folderId}`, body),
+  changeFolderName: async (folderId: number, name: string) => await request.put(`/folders/${folderId}`, { name }),
 };
 
 const link = {
