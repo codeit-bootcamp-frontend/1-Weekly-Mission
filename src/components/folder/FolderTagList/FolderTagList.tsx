@@ -1,13 +1,14 @@
 /* folders 페이지에서 렌더링되는 폴더 이름 태그 버튼 list */
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import { getFolderList } from "@/api/getFolderCRUDApi";
-import { FoldersArray, InitialFolderType } from "@/types/FolderType";
+import { InitialFolderType } from "@/types/FolderType";
 
 import styles from "./FolderTagList.module.scss";
+import { useFolderListStore } from "@/store/FolderLilstStore";
 
 const INITIAL_FOLDER: InitialFolderType = {
   name: "전체",
@@ -24,13 +25,14 @@ export default function FolderTagList({ currentId }: FolderTagListProps) {
     staleTime: 1000 * 30,
   });
 
-  const [folderList, setFolderList] = useState<FoldersArray>([]);
+  const folderList = useFolderListStore((state) => state.folderList);
+  const setFolderList = useFolderListStore((state) => state.setFolderList);
 
   useEffect(() => {
     if (data && data.length > 0) {
-      setFolderList(() => [...data]);
+      setFolderList(data);
     } else {
-      setFolderList(() => []);
+      setFolderList([]);
     }
   }, [data]);
 

@@ -3,13 +3,13 @@ TODO - 디자인 수정할 것
 TODO - 이미 추가된 폴더는 어떻게 표시할지 고민할 것
 */
 
-import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 
-import { getFolderList } from "@/api/getFolderCRUDApi";
 import { createCard } from "@/api/getCardCRUDApi";
 import useToast from "@/hooks/useToast";
 import ModalCreator from "@/modals/ModalCreator";
+import { useFolderListStore } from "@/store/FolderLilstStore";
 import { useModalStore } from "@/store/ModalStore";
 
 import styles from "./LinkAddModal.module.scss";
@@ -19,15 +19,10 @@ interface ModalProps {
 }
 
 export default function LinkAddModal({ link }: ModalProps) {
-  const { register, getValues, handleSubmit, formState } = useForm({
+  const { register, getValues } = useForm({
     mode: "onBlur",
   });
-
-  const { data: folderList } = useQuery({
-    queryKey: ["folder-list"],
-    queryFn: () => getFolderList(),
-    staleTime: 1000 * 30,
-  });
+  const folderList = useFolderListStore((state) => state.folderList);
   const hideModal = useModalStore((state) => state.hideModal);
   const queryClient = useQueryClient();
 
@@ -43,8 +38,9 @@ export default function LinkAddModal({ link }: ModalProps) {
   const handleSubmitButton = () => {
     if (folderList) {
       folderList.forEach((folder) => {
-        if (getValues(`id.${folder.id}`) && folder.id)
-          mutate({ url: link, folderId: String(folder.id) });
+        if ("id" in folder)
+          if (getValues(`id.${folder.id}`) && folder.id)
+            mutate({ url: link, folderId: String(folder.id) });
       });
     }
     hideModal();
@@ -57,7 +53,7 @@ export default function LinkAddModal({ link }: ModalProps) {
       {folderList && (
         <div>
           {folderList.map((folder) => {
-            if (folder) {
+            if ("id" in folder) {
               return (
                 <div className={styles["folder-checkbox"]} key={folder.id ?? 0}>
                   <input
