@@ -7,6 +7,7 @@ import ModalTitle from "../ModalTitle/ModalTitle";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import fetcher from "@/lib/axios";
 import { useFolderId } from "@/contexts/UserContext";
+import { UserFolders } from "@/@types/folder.types";
 
 interface Props {
   currentFolderName: string;

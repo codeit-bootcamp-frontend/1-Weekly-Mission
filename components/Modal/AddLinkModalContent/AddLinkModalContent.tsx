@@ -11,6 +11,7 @@ import ModalButton from "../ModalButton/ModalButton";
 import Image from "next/image";
 import fetcher from "@/lib/axios";
 import { useSetFolderId } from "@/contexts/UserContext";
+import { UserFolders } from "@/@types/folder.types";
 
 interface Props {
   inputValue: string;
@@ -74,23 +75,28 @@ function AddLinkModalContent({ inputValue, folderListData, onClose }: Props) {
         <p className={styles.link}>{inputValue}</p>
       </div>
       <div className={styles.optionsContainer}>
-        {folderListDataArray?.map((folder) => (
-          <div
-            className={classNames(
-              styles.optionContainer,
-              selectedFolder === folder && styles.selected
-            )}
-            key={folder.id}
-            id={folder.name}
-            onClick={() => handleCheckClick(folder)}
-          >
-            <div className={styles.option}>
-              <h2>{folder.name}</h2>
-              <p>{`${folder?.link_count}개 링크`}</p>
+        {folderListDataArray?.map((folder) => {
+          if (folder.name === "⭐️ 즐겨찾기") return;
+          return (
+            <div
+              className={classNames(
+                styles.optionContainer,
+                selectedFolder === folder && styles.selected
+              )}
+              key={folder.id}
+              id={folder.name}
+              onClick={() => handleCheckClick(folder)}
+            >
+              <div className={styles.option}>
+                <h2>{folder.name}</h2>
+                <p>{`${folder?.link_count}개 링크`}</p>
+              </div>
+              {selectedFolder === folder && (
+                <Image src={checkImg} alt="check" />
+              )}
             </div>
-            {selectedFolder === folder && <Image src={checkImg} alt="check" />}
-          </div>
-        ))}
+          );
+        })}
       </div>
       <ModalButton color="blue" onClick={handleAddLink}>
         추가하기

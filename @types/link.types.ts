@@ -1,7 +1,7 @@
-interface LinksData {
+export interface LinksData {
   data: Link[];
 }
-interface Link {
+export interface Link {
   id: number;
   created_at: string;
   updated_at: null;
@@ -12,8 +12,9 @@ interface Link {
   folder_id: number;
 }
 
-interface FolderLink {
+export interface FolderLink {
   id: number;
+  favorite: boolean;
   created_at: string;
   url: string;
   title: string;

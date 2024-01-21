@@ -2,6 +2,8 @@ import { ReactNode } from "react";
 import FolderPageCardItem from "./FolderPageCardItem";
 import { formatDate, getTimeDiff, prettyFormatTimeDiff } from "@/utils/utils";
 import SharedPageCardItem from "./SharedPageCardItem";
+import { FolderLink } from "@/@types/link.types";
+import { UserFolders } from "@/@types/folder.types";
 
 interface CardListProps {
   type: "folder" | "shared";
@@ -17,7 +19,15 @@ function CardList({
   return (
     LinksData &&
     LinksData.map((link) => {
-      const { id, created_at, url, title, description, image_source } = link;
+      const {
+        id,
+        created_at,
+        url,
+        title,
+        description,
+        image_source,
+        favorite,
+      } = link;
 
       const formattedCreatedAt = formatDate(created_at);
       const timeDiff = getTimeDiff(created_at);
@@ -28,6 +38,7 @@ function CardList({
           <FolderPageCardItem
             key={url}
             id={id}
+            favorite={favorite}
             folderListData={folderListData}
             formatTimeDiff={formatTimeDiff}
             formattedCreatedAt={formattedCreatedAt}

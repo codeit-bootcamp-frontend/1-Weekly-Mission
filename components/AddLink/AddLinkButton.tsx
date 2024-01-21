@@ -4,6 +4,7 @@ import ModalContainer from "../Modal/ModalContainer/ModalContainer";
 import useModal from "@/hooks/useModal";
 import AddLinkModalContent from "../Modal/AddLinkModalContent/AddLinkModalContent";
 import isValidURL from "@/utils/isValidURL";
+import { UserFolders } from "@/@types/folder.types";
 
 interface Props {
   inputValue: string;

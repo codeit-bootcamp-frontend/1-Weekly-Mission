@@ -6,12 +6,14 @@ import CardMenu from "@/components/CardMenu/CardMenu";
 import { blurDataURL } from "@/utils/utils";
 
 import logoImg from "@/assets/images/emptyImg.svg";
-import starImg from "@/assets/images/star.svg";
 
 import styles from "./CardItem.module.css";
+import CardFavoriteButton from "./CardFavoriteButton";
+import { UserFolders } from "@/@types/folder.types";
 
 interface FolderPageCardItemProps {
   id: number;
+  favorite: boolean;
   folderListData: UserFolders[];
   formatTimeDiff: string;
   formattedCreatedAt: string;
@@ -23,6 +25,7 @@ interface FolderPageCardItemProps {
 
 function FolderPageCardItem({
   id,
+  favorite,
   folderListData,
   formatTimeDiff,
   formattedCreatedAt,
@@ -48,9 +51,7 @@ function FolderPageCardItem({
           blurDataURL={blurDataURL}
         />
       </Link>
-      <button className={styles.bookmarkButton}>
-        <Image src={starImg} alt="즐겨찾기 이미지" />
-      </button>
+      <CardFavoriteButton isFavorite={favorite} linkId={id} />
       <div className={styles.contentContainer}>
         <div className={styles.container}>
           <p className={styles.timeDiff}>{formatTimeDiff}</p>

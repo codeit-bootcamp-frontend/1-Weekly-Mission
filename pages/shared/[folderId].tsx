@@ -11,6 +11,9 @@ import NavBar from "@/components/NavBar/NavBar";
 import styles from "@/assets/styles/sharedPage.module.css";
 import fetcher from "@/lib/axios";
 import CardList from "@/components/Card/CardList";
+import { FolderLink } from "@/@types/link.types";
+import { UserFolder } from "@/@types/folder.types";
+import { User } from "@/@types/user.types";
 
 interface Props {
   userData: User[];

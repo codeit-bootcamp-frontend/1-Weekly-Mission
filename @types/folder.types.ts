@@ -1,9 +1,9 @@
 // sample folder
-interface Folder {
+export interface Folder {
   folder: FolderData;
 }
 
-interface FolderData {
+export interface FolderData {
   id: number;
   name: string;
   owner: Owner;
@@ -11,13 +11,13 @@ interface FolderData {
   count: number;
 }
 
-interface Owner {
+export interface Owner {
   id: number;
   name: string;
   profileImageSource: string;
 }
 
-interface FolderLinks {
+export interface FolderLinks {
   id?: number;
   createdAt: string;
   url: string;
@@ -27,11 +27,11 @@ interface FolderLinks {
 }
 
 // user folder
-interface UserFolderData {
+export interface UserFolderData {
   data: UserFolder[];
 }
 
-interface UserFolders {
+export interface UserFolders {
   created_at: string;
   favorite: boolean;
   id: number;
@@ -39,7 +39,7 @@ interface UserFolders {
   name: string;
 }
 
-interface UserFolder {
+export interface UserFolder {
   id: number;
   created_at: string;
   favorite: boolean;

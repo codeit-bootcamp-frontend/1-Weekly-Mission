@@ -8,6 +8,7 @@ import {
 } from "react";
 
 import SearchBar from "./SearchBar";
+import { FolderLink } from "@/@types/link.types";
 
 interface Props {
   linksListData?: FolderLink[];
