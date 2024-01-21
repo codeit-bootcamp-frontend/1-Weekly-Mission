@@ -20,6 +20,7 @@ import { Folder } from "@/types/folder";
 import { LinkData } from "@/types/link";
 import { FolderContext } from "@/context/SelectedFolderContext";
 import { checkMatchedAllLinks } from "@/common/utils/matchedKeyword";
+import { DEFAULT } from "@/common/constants";
 
 export default function FolderPage() {
   const router = useRouter();
@@ -30,7 +31,6 @@ export default function FolderPage() {
   const [addLinkValue, setAddLinkValue] = useState("");
   const [keyword, setKeyword] = useState("");
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const [filteredLinks, setFilteredLinks] = useState<LinkData[]>([]);
 
   const { data: foldersData, isLoading } = useFolder("/folders");
   const { data: linksData } = useSWR(`/folders/${router.query.id}/links`);
@@ -48,13 +48,10 @@ export default function FolderPage() {
 
   const handleOnChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value);
-    const searchedLinks = checkMatchedAllLinks(e.target.value, links);
-    setFilteredLinks(searchedLinks.length !== 0 ? searchedLinks : []);
   };
 
   const handleDeletekeyword = () => {
     setKeyword("");
-    setFilteredLinks(links);
   };
 
   const handleSelectedFolder = (category: string) => {
@@ -65,11 +62,8 @@ export default function FolderPage() {
   };
 
   useEffect(() => {
-    if (linksData) {
-      setFilteredLinks(linksData);
-    }
     setSelected(selectedFolderName);
-  }, [linksData, selectedFolderName]);
+  }, [selectedFolderName]);
 
   return (
     <>
@@ -101,7 +95,7 @@ export default function FolderPage() {
           )}
           <S.MenuContainer>
             <Categories
-              categories={["전체", ...folderNames]}
+              categories={[DEFAULT, ...folderNames]}
               selected={selected}
               onClick={handleSelectedFolder}
             />
@@ -113,12 +107,12 @@ export default function FolderPage() {
           {isLoading && <Loading />}
           <S.MenuContainer>
             <S.SubTitle>{selected}</S.SubTitle>
-            {selected !== "전체" && <Options selected={selected} />}
+            {selected !== DEFAULT && <Options selected={selected} />}
           </S.MenuContainer>
           {!isLoading && links.length === 0 ? (
             <S.Blank>저장된 링크가 없습니다</S.Blank>
           ) : (
-            <CardList links={filteredLinks} />
+            <CardList links={checkMatchedAllLinks(keyword, links)} />
           )}
         </S.Contents>
       </Layout>

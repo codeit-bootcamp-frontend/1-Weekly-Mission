@@ -7,7 +7,6 @@ import { Folder } from "@/types/folder";
 import { LinkData } from "@/types/link";
 import { useFolder } from "@/hooks/useFolder";
 import { FolderContext } from "@/context/SelectedFolderContext";
-import { checkMatchedAllLinks } from "@/common/utils/matchedKeyword";
 
 export default function Folder() {
   const router = useRouter();
@@ -24,17 +23,12 @@ export default function Folder() {
   const folders: Folder[] = foldersData ?? [];
   const links: LinkData[] = linksData ?? [];
 
-  const [filteredLinks, setFilteredLinks] = useState<LinkData[]>([]);
-
   const handleOnChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value);
-    const searchedLinks = checkMatchedAllLinks(e.target.value, linksData);
-    setFilteredLinks(searchedLinks.length !== 0 ? searchedLinks : []);
   };
 
   const handleDeletekeyword = () => {
     setKeyword("");
-    setFilteredLinks(links);
   };
 
   const handleSelectedFolder = (category: string) => {
@@ -56,14 +50,11 @@ export default function Folder() {
   }, [router]);
 
   useEffect(() => {
-    if (linksData) {
-      setFilteredLinks(linksData);
-    }
     if (foldersData) {
       const folders = foldersData.map((folder: Folder) => folder.name);
       setFolderNames(folders);
     }
-  }, [linksData, foldersData]);
+  }, [foldersData]);
 
   return (
     <FolderUI
@@ -73,7 +64,6 @@ export default function Folder() {
       isLoading={isLoading}
       folderNames={folderNames}
       links={links}
-      filteredLinks={filteredLinks}
       handleAddLink={handleAddLink}
       handleOnChangeInput={handleOnChangeInput}
       handleDeletekeyword={handleDeletekeyword}

@@ -1,4 +1,5 @@
 import { ReactNode, createContext, useState } from "react";
+import { DEFAULT } from "@/common/constants";
 
 interface Context {
   selectedFolderName: string;
@@ -15,7 +16,6 @@ export const FolderContext = createContext<Context>({
 });
 
 export function FolderContextProvider({ children }: Props) {
-  const DEFAULT = "전체";
   const [selectedFolderName, setSelectedFolderName] = useState(DEFAULT);
 
   const updateFolderName = (category: string) => {

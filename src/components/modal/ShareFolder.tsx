@@ -1,12 +1,13 @@
-import { MouseEvent, useContext, useEffect } from "react";
+import { useRouter } from "next/router";
+import { MouseEvent, useEffect } from "react";
 import * as S from "./modalStyles/ShareFolderStyles";
-import { FolderContext } from "@/context/FolderContext";
 
 import ModalTitle from "./ModalTitle";
 
 import { shareOnKakao } from "@/common/libraries/shareKakaoLink";
 import { shareOnFacebook } from "@/common/libraries/shareFacebookLink";
 import { shareOnClipboard } from "@/common/libraries/shreClipboardLink";
+import { useFolder } from "@/hooks/useFolder";
 
 const icons = [
   { name: "카카오톡", action: "kakao" },
@@ -19,7 +20,10 @@ interface ShareFolderProps {
 }
 
 export default function ShareFolder({ currentFolderName }: ShareFolderProps) {
-  const { folderNameList } = useContext(FolderContext);
+  const router = useRouter();
+  const folderId = Number(router.query.id);
+
+  const { data } = useFolder("/users");
 
   /*
    * 현재 선택한 폴더와 일치하는 folder의 userId, folderId
@@ -27,14 +31,14 @@ export default function ShareFolder({ currentFolderName }: ShareFolderProps) {
    */
   const handleShareFolder = (e: MouseEvent<HTMLDivElement>) => {
     const shareOnSns = (e.target as HTMLImageElement).id;
-    const folderInfo = folderNameList.filter((folder) => folder.name === currentFolderName);
-    const { user_id, id } = folderInfo[0];
 
     if (shareOnSns === "kakao") {
-      shareOnKakao(user_id, id);
+      shareOnKakao(data[0]?.id, folderId);
     } else if (shareOnSns === "facebook") {
-      shareOnFacebook(user_id, id);
-    } else shareOnClipboard(user_id, id);
+      shareOnFacebook(data[0]?.id, folderId);
+    } else {
+      shareOnClipboard(data[0]?.id, folderId);
+    }
   };
 
   useEffect(() => {
