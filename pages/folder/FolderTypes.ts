@@ -8,7 +8,6 @@ export interface FolderUIProps {
   isLoading: boolean;
   folderNames: string[];
   links: LinkData[];
-  filteredLinks: LinkData[];
   handleAddLink: (link: string) => void;
   handleOnChangeInput: (e: ChangeEvent<HTMLInputElement>) => void;
   handleDeletekeyword: () => void;

@@ -24,7 +24,7 @@ export default function AddFolders({ onClose }: AddFoldersProps) {
           "Content-Type": "application/json; charset=utf-8",
         },
         body: JSON.stringify({ name }),
-      }).then((res) => res.json());
+      }).then(() => mutate("/folders"));
     }
   };
 
@@ -35,7 +35,6 @@ export default function AddFolders({ onClose }: AddFoldersProps) {
   const handleCreateFolder = async () => {
     try {
       await fetcher("/folders", folderName);
-      mutate("/folders");
       onClose();
     } catch (error) {
       console.log(error);

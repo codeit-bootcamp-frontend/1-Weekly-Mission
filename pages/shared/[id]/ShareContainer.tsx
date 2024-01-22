@@ -16,33 +16,23 @@ export default function Share() {
   const router = useRouter();
   const folderId = router.query.id;
 
+  const [keyword, setKeyword] = useState("");
+
   const { data, isLoading } = useSWR(`/folders/${folderId}`);
   const { data: linksData } = useSWR(`/folders/${folderId}/links`);
 
   const links: LinkData[] = linksData ?? [];
 
-  const [keyword, setKeyword] = useState("");
-  const [filteredLinks, setFilteredLinks] = useState<LinkData[]>(links);
-
   /** @TODO 검색바 관련 로직 분리해보기(folder에서도 사용하므로) */
   const handleOnChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     if (linksData) {
       setKeyword(e.target.value);
-      const searchedLinks = checkMatchedAllLinks(e.target.value, linksData);
-      setFilteredLinks(searchedLinks.length !== 0 ? searchedLinks : []);
     }
   };
 
   const handleDeletekeyword = () => {
     setKeyword("");
-    setFilteredLinks(links);
   };
-
-  useEffect(() => {
-    if (linksData) {
-      setFilteredLinks(linksData);
-    }
-  }, [linksData]);
 
   return (
     <main>
@@ -60,7 +50,7 @@ export default function Share() {
                 handleOnChangeInput={handleOnChangeInput}
                 handleDelete={handleDeletekeyword}
               />
-              <CardList links={filteredLinks} />
+              <CardList links={checkMatchedAllLinks(keyword, links)} />
             </S.Contents>
           </section>
         </Layout>

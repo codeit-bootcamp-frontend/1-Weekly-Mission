@@ -14,6 +14,8 @@ import Options from "@/components/Options";
 
 import { FolderUIProps } from "./FolderTypes";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import { DEFAULT } from "@/common/constants";
+import { checkMatchedAllLinks } from "@/common/utils/matchedKeyword";
 
 export default function FolderUI(props: FolderUIProps) {
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -50,7 +52,7 @@ export default function FolderUI(props: FolderUIProps) {
           )}
           <S.MenuContainer>
             <Categories
-              categories={["전체", ...props.folderNames]}
+              categories={[DEFAULT, ...props.folderNames]}
               selected={props.selected}
               onClick={props.handleSelectedFolder}
             />
@@ -66,9 +68,9 @@ export default function FolderUI(props: FolderUIProps) {
             <>
               <S.MenuContainer>
                 <S.SubTitle>{props.selected}</S.SubTitle>
-                {props.selected !== "전체" && <Options selected={props.selected} />}
+                {props.selected !== DEFAULT && <Options selected={props.selected} />}
               </S.MenuContainer>
-              <CardList links={props.filteredLinks} />
+              <CardList links={checkMatchedAllLinks(props.keyword, props.links)} />
             </>
           )}
         </S.Contents>
