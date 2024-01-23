@@ -10,6 +10,7 @@ import ModalContainer from "@/components/Modal/ModalContainer/ModalContainer";
 import kebabImg from "@/assets/images/kebab.svg";
 
 import styles from "./CardMenu.module.css";
+import { UserFolders } from "@/@types/folder.types";
 
 interface Props {
   linkId: number;

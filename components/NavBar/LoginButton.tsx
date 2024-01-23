@@ -20,7 +20,7 @@ function LoginButton() {
   };
   const handleLogout = () => {
     removeTokens();
-    router.push("/");
+    window.location.href = "/";
   };
 
   useEffect(() => {

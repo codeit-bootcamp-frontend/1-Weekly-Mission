@@ -20,4 +20,6 @@ const PW_FIELD_INFO = {
 
 const BASE_URL = "https://bootcamp-api.codeit.kr/api/linkbrary/v1";
 
-export { EMAIL_FIELD_INFO, PW_FIELD_INFO, BASE_URL };
+const ENDPOINT_REFRESH_TOKEN = "auth/refresh-token";
+
+export { EMAIL_FIELD_INFO, PW_FIELD_INFO, BASE_URL, ENDPOINT_REFRESH_TOKEN };

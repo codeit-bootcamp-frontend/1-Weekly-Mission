@@ -1,15 +1,15 @@
-interface SampleUser {
+export interface SampleUser {
   id: number;
   name: string;
   email: string;
   profileImageSource: string;
 }
 
-interface UserData {
+export interface UserData {
   data: User[];
 }
 
-interface User {
+export interface User {
   id: number;
   created_at: string;
   name: string;

@@ -3,6 +3,7 @@ import { ReactNode, Dispatch, SetStateAction } from "react";
 import styles from "./CategoryList.module.css";
 
 import CategoryButton from "./CategoryButton";
+import { UserFolders } from "@/@types/folder.types";
 
 interface Props {
   folderListData?: UserFolders[];

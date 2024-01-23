@@ -7,6 +7,7 @@ import Image from "next/image";
 import classNames from "classnames";
 import isValidURL from "@/utils/isValidURL";
 import AddLinkButton from "./AddLinkButton";
+import { UserFolders } from "@/@types/folder.types";
 
 interface Props {
   folderData?: UserFolders[];

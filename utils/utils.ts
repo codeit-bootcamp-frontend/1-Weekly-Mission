@@ -1,4 +1,4 @@
-const formatDate = (value) => {
+const formatDate = (value: string) => {
   const date = new Date(value);
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
@@ -7,12 +7,13 @@ const formatDate = (value) => {
   return formattedCreatedAt;
 };
 
-const getTimeDiff = (target, base = new Date()) => {
+const getTimeDiff = (target: string, base = new Date()) => {
   const targetDate = new Date(target);
-  return base - targetDate;
+  const timeDiff = base.getTime() - targetDate.getTime();
+  return timeDiff;
 };
 
-const prettyFormatTimeDiff = (diff) => {
+const prettyFormatTimeDiff = (diff: number) => {
   const minutes = Math.floor(diff / (1000 * 60));
   const hours = Math.floor(minutes / 60);
   const days = Math.floor(hours / 24);
@@ -58,7 +59,7 @@ const prettyFormatTimeDiff = (diff) => {
   return `${years} years ago`;
 };
 
-const shareKakao = (route) => {
+const shareKakao = (route: string) => {
   const { Kakao } = window;
   if (Kakao) {
     if (!Kakao.isInitialized()) {
@@ -90,16 +91,12 @@ const shareKakao = (route) => {
   }
 };
 
-const shareFacebook = (route) => {
+const shareFacebook = (route: string) => {
   const facebookShareURL = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
     route
   )}`;
 
   window.open(facebookShareURL, "_blank");
-};
-
-const typeCheckParam = (type, param) => {
-  return typeof param === type ? +param : undefined;
 };
 
 const blurDataURL =
@@ -111,6 +108,5 @@ export {
   prettyFormatTimeDiff,
   shareKakao,
   shareFacebook,
-  typeCheckParam,
   blurDataURL,
 };

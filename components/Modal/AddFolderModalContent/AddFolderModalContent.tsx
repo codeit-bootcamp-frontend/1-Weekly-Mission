@@ -5,6 +5,7 @@ import ModalTitle from "../ModalTitle/ModalTitle";
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import fetcher from "@/lib/axios";
+import { UserFolders } from "@/@types/folder.types";
 
 interface Props {
   onClose: () => void;

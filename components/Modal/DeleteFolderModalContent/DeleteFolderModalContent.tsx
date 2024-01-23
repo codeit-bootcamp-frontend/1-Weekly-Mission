@@ -8,6 +8,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import fetcher from "@/lib/axios";
 import { useFolderId, useSetFolderId } from "@/contexts/UserContext";
 import { useRouter } from "next/router";
+import { UserFolders } from "@/@types/folder.types";
 
 interface Props {
   onClose: () => void;

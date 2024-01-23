@@ -9,12 +9,9 @@ import Search from "@/components/Search/Search";
 import Category from "@/components/Category/Category";
 import Card from "@/components/Card/Card";
 import NotFoundLink from "@/components/NotFoundLink/NotFoundLink";
-import AddLinkModalContent from "@/components/Modal/AddLinkModalContent/AddLinkModalContent";
 import AddLinkInput from "@/components/AddLink/AddLinkInput";
 import CategoryList from "@/components/Category/CategoryList";
 import AddFolderButton from "@/components/AddFolderButton/AddFolderButton";
-import AddFolderModalContent from "@/components/Modal/AddFolderModalContent/AddFolderModalContent";
-import AddLinkButton from "@/components/AddLink/AddLinkButton";
 import CurrentFolder from "@/components/FolderUtils/CurrentFolder";
 import FolderEdit from "@/components/FolderUtils/FolderEdit";
 import Footer from "@/components/Footer/Footer";
@@ -24,6 +21,8 @@ import CardList from "@/components/Card/CardList";
 import styles from "@/assets/styles/folderPage.module.css";
 import fetcher from "@/lib/axios";
 import removeTokens from "@/utils/removeTokens";
+import { FolderLink } from "@/@types/link.types";
+import { UserFolders } from "@/@types/folder.types";
 
 const FolderPage = () => {
   const router = useRouter();
@@ -40,17 +39,11 @@ const FolderPage = () => {
   });
 
   const folderId = router.query.folderId;
-
   const { data: linksListData } = useQuery<FolderLink[]>({
     queryKey: ["links", folderId],
     queryFn: async () => {
-      const userId = localStorage.getItem("userId");
-
       const response = await fetcher<FolderLink[]>({
-        url:
-          folderId === "all"
-            ? `/users/${userId}/links`
-            : `/folders/${folderId}/links`,
+        url: folderId === "all" ? `/links` : `/folders/${folderId}/links`,
       });
 
       return response.data;
@@ -68,7 +61,6 @@ const FolderPage = () => {
     }
   }, [router]);
 
-  // 검색 로직 추가
   useEffect(() => {
     setSearchData(linksListData);
   }, [linksListData]);
@@ -99,12 +91,13 @@ const FolderPage = () => {
         </Category>
         <FolderUtils>
           <CurrentFolder>{currentFolderName}</CurrentFolder>
-          {currentFolderName !== "전체" && (
-            <FolderEdit
-              currentFolderName={currentFolderName}
-              setCurrentFolderName={setCurrentFolderName}
-            />
-          )}
+          {currentFolderName !== "전체" &&
+            currentFolderName !== "⭐️ 즐겨찾기" && (
+              <FolderEdit
+                currentFolderName={currentFolderName}
+                setCurrentFolderName={setCurrentFolderName}
+              />
+            )}
         </FolderUtils>
         <Card>
           <CardList

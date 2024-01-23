@@ -74,8 +74,8 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
         method: "post",
         data: { email, password },
       });
-      console.log(response.data);
       const { accessToken, refreshToken } = response.data;
+
       saveTokens({ accessToken, refreshToken });
       getUser();
       return true;
