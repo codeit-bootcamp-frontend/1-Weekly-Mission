@@ -1,65 +1,78 @@
-import type { Config } from 'tailwindcss';
+import type { Config } from "tailwindcss";
 
-const createPxrEntries = (size: number) => {
+const createPxEntries = (size: number) => {
   return {
-    0: '0',
+    0: "0",
     ...Array.from(Array(size + 1)).reduce((accumulator, _, i) => {
-      return { ...accumulator, [`${i}pxr`]: `${i * 0.1}rem` };
+      return { ...accumulator, [`${i}`]: `${i / 10}rem` };
     }),
   };
 };
 
-const PXR_ENTRIES = createPxrEntries(100);
+const PX_ENTRIES = createPxEntries(500);
 
 const config: Config = {
-  content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/containers/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
-
+  content: ["./app/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     screens: {
-      mobile: '360px',
-      tablet: '768px',
-      pc: '1200px',
+      mobile: "360px",
+      tablet: "768px",
+      pc: "1200px",
     },
-    spacing: PXR_ENTRIES,
-    fontSize: PXR_ENTRIES,
     zIndex: {
-      base: '1',
-      nav: '2',
-      popup: '999',
-      floating: '1000',
+      base: "1",
+      nav: "2",
+      popup: "999",
+      floating: "1000",
     },
     colors: {
-      primary: 'var(--primary)',
-      background: 'var(--background)',
-      red: 'var(--red)',
-      white: 'var(--white)',
+      transparent: "transparent",
+      primary: {
+        DEFAULT: "rgb(var(--primary) / <alpha-value>)",
+        light: "rgb(var(--primary-light) / <alpha-value>)",
+      },
+      blue: "rgb(var(--blue) / <alpha-value>)",
+      red: "rgb(var(--red) / <alpha-value>)",
+      black: "rgb(var(--black) / <alpha-value>)",
+      white: "rgb(var(--white) / <alpha-value>)",
       gray: {
-        10: 'var(--gray-10)',
-        20: 'var(--gray-20)',
-        60: 'var(--gray-60)',
-        100: 'var(--gray-100)',
-        light: 'var(--gray-light)',
+        10: "rgb(var(--gray-10) / <alpha-value>)",
+        20: "rgb(var(--gray-20) / <alpha-value>)",
+        60: "rgb(var(--gray-60) / <alpha-value>)",
+        100: "rgb(var(--gray-100) / <alpha-value>)",
       },
-      'julge-black': 'var(--julge-black)',
-      dark: '#222222',
-      transparent: 'transparent',
     },
-    extend: {
-      keyframes: {
-        fade: {
-          '0%': { opacity: '1' },
-          '100%': { opacity: '0' },
-        },
-      },
-      animation: {
-        fadeOut: 'fade 2s ease-in-out',
-      },
+    fontFamily: {
+      sans: ["Pretendard", "Arial"],
+    },
+    fontSize: {
+      12: "1.2rem",
+      14: "1.4rem",
+      16: "1.6rem",
+      18: "1.8rem",
+      24: "2.4rem",
+      32: "3.2rem",
+      40: "4rem",
+      64: "6.4rem",
+    },
+    fontWeight: {
+      400: "400",
+      500: "500",
+      600: "600",
+      700: "700",
+    },
+    borderRadius: {
+      sm: "0.5rem",
+      md: "1rem",
+      lg: "1.5rem",
+      full: "9999px",
+    },
+    spacing: PX_ENTRIES,
+    boxShadow: {
+      md: "0 0.5rem 2.5rem 0 rgba(0,0,0,0.08)",
     },
   },
+
   plugins: [],
 };
 export default config;

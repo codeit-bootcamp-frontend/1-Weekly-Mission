@@ -1,5 +1,5 @@
 {
-  "name": "fe-weekly-mission",
+  "name": "next-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,26 +9,28 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "axios": "^1.6.0",
-    "next": "13.5.6",
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.15.5",
+    "@tanstack/react-query": "^5.17.19",
+    "@tanstack/react-query-devtools": "^5.17.19",
+    "@tanstack/react-query-next-experimental": "^5.17.19",
+    "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
-    "react-hook-form": "^7.49.2",
-    "react-timeago": "^7.2.0"
+    "react-hook-form": "^7.49.3"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/node": "^20",
-    "@types/react": "^18",
+    "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",
-    "@types/react-timeago": "^4.1.6",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
-    "eslint-config-next": "13.5.6",
+    "eslint-config-next": "14.0.4",
     "eslint-config-prettier": "^9.1.0",
     "postcss": "^8",
-    "prettier": "^3.1.1",
     "prettier-plugin-tailwindcss": "^0.5.9",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
