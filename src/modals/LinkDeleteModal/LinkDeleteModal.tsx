@@ -1,12 +1,14 @@
+/* 링크 삭제 모달 */
+
 import { useRouter } from "next/router";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { deleteCard } from "@/api/getCardCRUDApi";
-import ModalCreator from "@/modals/ModalCreator";
 import useToast from "@/hooks/useToast";
+import ModalCreator from "@/modals/ModalCreator";
+import { useModalStore } from "@/store/ModalStore";
 
 import styles from "./LinkDeleteModal.module.scss";
-import { useModalStore } from "@/store/useModalStore";
 
 interface LinkDeleteModalProps {
   cardId: string;

@@ -1,12 +1,14 @@
+/* 폴더 삭제 모달 */
+
 import { useRouter } from "next/router";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 
 import { deleteFolder } from "@/api/getFolderCRUDApi";
 import useToast from "@/hooks/useToast";
 import ModalCreator from "@/modals/ModalCreator";
+import { useModalStore } from "@/store/ModalStore";
 
 import styles from "./FolderDeleteModal.module.scss";
-import { useModalStore } from "@/store/useModalStore";
 
 interface FolderDeleteModalProps {
   folderId: string;

@@ -1,8 +1,10 @@
-/*StarButton 컴포넌트:
-  Card 컴포넌트의 좌측 상단 별모양 버튼.
-*/
+/* Card 컴포넌트에 들어갈 StarButton 컴포넌트*/
 
 import Image from "next/image";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useState } from "react";
+
+import { updateCardFavorite } from "@/api/getCardCRUDApi";
 
 import styles from "./Favorite.module.scss";
 
@@ -12,12 +14,26 @@ interface FavoriteProps {
 }
 
 export default function Favorite({ cardId, isFilled }: FavoriteProps) {
-  const handleStarButton = () => {};
+  const queryClient = useQueryClient();
+  const [fakeFilled, setFakeFilled] = useState(isFilled);
+
+  const { mutate } = useMutation({
+    onMutate: () => setFakeFilled(!fakeFilled),
+    mutationFn: () => updateCardFavorite(cardId, !isFilled),
+    onSettled: () => {
+      setFakeFilled(isFilled);
+      queryClient.invalidateQueries({ queryKey: ["card-list"] });
+    },
+  });
+
+  const handleStarButton = () => {
+    mutate();
+  };
 
   return (
     <>
       <button className={styles["star-button"]} onClick={handleStarButton}>
-        {isFilled ? (
+        {fakeFilled ? (
           <Image
             src="/icons/filled-start-icon.svg"
             width={34}

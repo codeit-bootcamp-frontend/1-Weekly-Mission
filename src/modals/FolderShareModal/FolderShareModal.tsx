@@ -1,11 +1,16 @@
-import Image from "next/image";
+/* 폴더 공유 모달
+TODO - 카톡, 페북 공유 기능 구현할 것
+TODO - 링크 복사 제대로 고칠 것
+*/
 
-import ModalCreator from "@/modals/ModalCreator";
+import Image from "next/image";
+import { useRouter } from "next/router";
+
 import useToast from "@/hooks/useToast";
+import ModalCreator from "@/modals/ModalCreator";
+import { useUserInfoStore } from "@/store/UserInfo";
 
 import styles from "./FolderShareModal.module.scss";
-import { useUserInfoStore } from "@/store/UserInfo";
-import { useRouter } from "next/router";
 
 interface FolderShareModalProps {
   folderId: string;
@@ -18,13 +23,13 @@ export default function FolderShareModal({
 }: FolderShareModalProps) {
   const userInfo = useUserInfoStore((state) => state.userInfo);
   const router = useRouter();
-
   const handleLinkCopyButton = () => {
-    // BUG - 버그남.
+    // TODO - 배포 후 링크 수정할 것.
     if (navigator.clipboard) {
       navigator.clipboard
         .writeText(
-          router && `/shared?userId=${userInfo?.id}&folderId=${folderId}`,
+          router &&
+            `http://localhost:3000/shared?userId=${userInfo?.id}&folderId=${folderId}`,
         )
         .then(() => useToast(true, "링크가 복사되었습니다!"))
         .catch(() => {

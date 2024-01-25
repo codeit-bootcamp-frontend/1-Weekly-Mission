@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 
 import Dropdown from "@/components/Nav/Dropdown/Dropdown";
+import useDropdown from "@/hooks/useDropdown";
 import { UserType } from "@/types/UserType";
 
 import styles from "./Nav.module.scss";
@@ -14,15 +14,10 @@ interface NavProps {
 }
 
 function Nav({ userInfo }: NavProps) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleCloseDropdown = () => {
-    setTimeout(() => setIsOpen(false), 200);
-  };
+  const { isOpen, handleOpen, handleClose } = useDropdown();
 
   return (
     <nav className={styles["nav"]}>
-      {isOpen && <Dropdown />}
       <div className={styles["gnb"]}>
         <Link href="/">
           <Image
@@ -34,25 +29,30 @@ function Nav({ userInfo }: NavProps) {
           />
         </Link>
         {userInfo ? (
-          <button
-            className={styles["user-info"]}
-            onClick={() => setIsOpen(true)}
-            onBlur={handleCloseDropdown}
-          >
-            <Image
-              src={userInfo?.image_source || "/images/no-profile.png"}
-              alt="profile"
-              width={20}
-              height={20}
-            />
-            <span>{userInfo.email}</span>
-          </button>
+          <div className={styles["wrapper"]}>
+            {isOpen && <Dropdown />}
+            <button
+              className={styles["user-info"]}
+              onClick={handleOpen}
+              onBlur={handleClose}
+            >
+              <Image
+                src={userInfo?.image_source || "/images/no-profile.png"}
+                alt="profile"
+                width={20}
+                height={20}
+              />
+              <span>{userInfo.email}</span>
+            </button>
+          </div>
         ) : (
-          <button
-            className={`${styles["link-button"]} ${styles["signin-button"]}`}
-          >
-            <Link href="/signin">로그인</Link>
-          </button>
+          <Link href="/signin">
+            <button
+              className={`${styles["link-button"]} ${styles["signin-button"]}`}
+            >
+              로그인
+            </button>
+          </Link>
         )}
       </div>
     </nav>

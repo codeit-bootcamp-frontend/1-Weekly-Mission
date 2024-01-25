@@ -1,5 +1,6 @@
+/* 로그인 페이지 */
+
 import SignLayout from "@/components/sign/SignLayout/SignLayout";
-import styles from "./SignInPage.module.scss";
 import SigninForm from "@/components/sign/SignForm/SigninForm";
 
 function SignInPage() {

@@ -1,4 +1,4 @@
-function calcDate(value: string = "") {
+export default function calcDate(value: string = "") {
   const now = new Date(); // 현재 날짜 및 시간
   const createdDate = new Date(value);
 
@@ -31,5 +31,3 @@ function calcDate(value: string = "") {
   str = helpCalc(year, 100, "year");
   if (str) return str;
 }
-
-export default calcDate;

@@ -1,7 +1,11 @@
+/* 에러url에서 보여주는 404 페이지 */
+
 import Image from "next/image";
 import Link from "next/link";
-import styles from "./ErrorPage.module.scss";
+
 import ErrorImg from "public/images/error-img.png";
+
+import styles from "./ErrorPage.module.scss";
 
 export default function ErrorPage() {
   return (
@@ -14,9 +18,9 @@ export default function ErrorPage() {
             <br />
             Check link path once again!
           </p>
-          <button className={styles["home-button"]}>
-            <Link href="/">HOME</Link>
-          </button>
+          <Link href="/">
+            <button className={styles["home-button"]}>HOME</button>
+          </Link>
         </div>
         <div className={styles["img-content"]}>
           <Image src={ErrorImg} fill alt="error image" />

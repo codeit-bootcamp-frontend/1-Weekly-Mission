@@ -7,7 +7,7 @@ import Image from "next/image";
 import FolderDeleteModal from "@/modals/FolderDeleteModal/FolderDeleteModal";
 import FolderEditModal from "@/modals/FolderEditModal/FolderEditModal";
 import FolderShareModal from "@/modals/FolderShareModal/FolderShareModal";
-import { useModalStore } from "@/store/useModalStore";
+import { useModalStore } from "@/store/ModalStore";
 
 import styles from "./FolderModifier.module.scss";
 

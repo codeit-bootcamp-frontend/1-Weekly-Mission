@@ -21,7 +21,7 @@ axiosInstance.interceptors.request.use(
   },
 );
 
-axios.interceptors.response.use(
+axiosInstance.interceptors.response.use(
   (res) => res,
   async (error) => {
     const {
@@ -36,7 +36,7 @@ axios.interceptors.response.use(
         setCookie("accessToken", data.accessToken);
         setCookie("refreshToken", data.refreshToken);
         originRequest.headers["Authorization"] = `Bearer ${data.accessToken}`;
-        return axios(originRequest);
+        return axiosInstance(originRequest);
       }
     }
     return Promise.reject(error);

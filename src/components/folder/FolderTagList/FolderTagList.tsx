@@ -1,11 +1,14 @@
+/* folders 페이지에서 렌더링되는 폴더 이름 태그 버튼 list */
+
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import { getFolderList } from "@/api/getFolderCRUDApi";
-import { FoldersArray, InitialFolderType } from "@/types/FolderType";
+import { InitialFolderType } from "@/types/FolderType";
 
 import styles from "./FolderTagList.module.scss";
+import { useFolderListStore } from "@/store/FolderLilstStore";
 
 const INITIAL_FOLDER: InitialFolderType = {
   name: "전체",
@@ -22,35 +25,39 @@ export default function FolderTagList({ currentId }: FolderTagListProps) {
     staleTime: 1000 * 30,
   });
 
-  const [folderList, setFolderList] = useState<FoldersArray>([]);
+  const folderList = useFolderListStore((state) => state.folderList);
+  const setFolderList = useFolderListStore((state) => state.setFolderList);
 
   useEffect(() => {
     if (data && data.length > 0) {
-      setFolderList(() => [...data]);
+      setFolderList(data);
     } else {
-      setFolderList(() => []);
+      setFolderList([]);
     }
   }, [data]);
 
   return (
     <div className={styles["folder-list"]}>
       <div className={styles["folder-tag"]}>
-        <button
-          className={styles["folder-button"]}
-          data-selected={currentId ? false : true}
-        >
-          <Link href={`/folders`}>{INITIAL_FOLDER.name}</Link>
-        </button>
+        <Link href={`/folders`}>
+          <button
+            className={styles["folder-button"]}
+            data-selected={currentId ? false : true}
+          >
+            {INITIAL_FOLDER.name}
+          </button>
+        </Link>
         {folderList.map((folder) => {
           if ("id" in folder) {
             return (
-              <button
-                className={styles["folder-button"]}
-                key={folder.id ?? 0}
-                data-selected={currentId === String(folder.id)}
-              >
-                <Link href={`/folders/${folder.id}`}>{folder.name}</Link>
-              </button>
+              <Link href={`/folders/${folder.id}`} key={folder.id ?? 0}>
+                <button
+                  className={styles["folder-button"]}
+                  data-selected={currentId === String(folder.id)}
+                >
+                  {folder.name}
+                </button>
+              </Link>
             );
           }
         })}

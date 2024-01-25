@@ -1,3 +1,5 @@
+/* 모달 createPortal 컴포넌트 */
+
 import { PropsWithChildren } from "react";
 import ReactDom from "react-dom";
 

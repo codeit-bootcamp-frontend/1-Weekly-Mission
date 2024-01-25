@@ -19,6 +19,16 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  animation: slide 0.2s ease-in-out;
+}
+
+@keyframes slide {
+  from {
+    top: 45%;
+  }
+  to {
+    top: 50%;
+  }
 }
 
 .close-button {
